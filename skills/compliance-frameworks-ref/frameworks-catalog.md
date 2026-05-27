@@ -154,4 +154,4 @@
 ### PCI-DSS v4.0.1
 - Cardholder data. Relevant if processing credit cards directly (most small companies use Stripe/payment processors that handle this).
 
-Use Bastion MCP for managing these frameworks if applicable to your business.
+Use Bastion MCP for managing these frameworks when your business handles customer data.

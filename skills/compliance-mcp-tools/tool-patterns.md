@@ -89,7 +89,7 @@ mcp__claude_ai_CLEO_LEGAL_API__customs/landed-cost
 ```
 LANDED COST -- [Product] -- [Origin] -> [Destination]
 HS Code: [code] (confidence: [score])
-Duty rate: [MFN] / [FTA if applicable]
+Duty rate: [MFN] / [FTA preferential rate when origin qualifies]
 FTA: [name or "none"]
 
 COST BREAKDOWN (per shipment / per unit):
