@@ -7,63 +7,76 @@ description: Use when setting up, updating, or publishing a public-facing trust 
 
 ## Quick Reference
 
-| Action | MCP Tool | Fallback |
-|--------|----------|----------|
-| Read current config | `bastion__get-trust-center-config` | Check trust center URL directly |
-| Update config | `bastion__put-trust-center` | Update via Bastion UI |
-| Check linked policies | `bastion__list-customer-policies` | Review policy inventory |
-| Get framework status | `bastion__get-frameworks-stats` | Audit dashboard |
+| Action | MCP Tool | Detail |
+|--------|----------|--------|
+| Read config | `mcp__bastion__get-trust-center-config` | Full current state |
+| Update config | `mcp__bastion__put-trust-center` | Replaces entire config |
+| List policies | `mcp__bastion__list-customer-policies` | Link public-facing summaries |
+| Framework stats | `mcp__bastion__get-frameworks-stats` | Certification progress |
 
 ## Setup Flow
 
 ```dot
 digraph setup {
   rankdir=LR; node [shape=box style=rounded fontsize=10];
-  read [label="Read current\nconfig"];
-  faq [label="Add\n8-12 FAQs"];
-  seo [label="Set SEO\ntitle + desc\n+ keywords"];
-  style [label="Customize\ncolors"];
-  publish [label="Publish"];
-  read -> faq -> seo -> style -> publish;
+  get [label="GET config"];
+  faq [label="Draft FAQs"];
+  seo [label="Set SEO"];
+  merge [label="Merge\n+ PUT"];
+  verify [label="GET verify"];
+  get -> faq -> seo -> merge -> verify;
 }
 ```
 
 ## Update Protocol
 
-**Always read before writing.** `put-trust-center` replaces the config. Omitting a field can unpublish your center or delete FAQs.
+**PUT replaces entire config.** Omitting a field deletes it. Always GET first, merge changes, PUT full payload, GET to verify.
 
-1. `get-trust-center-config` — capture full current state
-2. Modify only the fields you need to change
-3. Preserve all other fields in the PUT payload
-4. Verify after update with another GET
+## FAQ Template
 
-## FAQ Topics (target 8-12)
+| Q | Answer guidance |
+|---|-----------------|
+| Data encryption? | AES-256 at rest, TLS 1.3 in transit. Name provider. |
+| Access control? | RBAC, MFA, least-privilege, quarterly reviews. |
+| Incident response? | Detection < 1h, containment < 4h, GDPR Art. 33 (72h). |
+| Employee training? | Onboarding + annual refresher + phishing sims. |
+| Certifications? | Active certs with dates. Use `get-frameworks-stats`. |
+| Data retention? | Period + deletion process. Ref `policy-management`. |
+| Vendor management? | Due diligence, annual review, DPA required. |
+| Business continuity? | RTO/RPO targets, quarterly failover tests. |
+| Penetration testing? | Annual third-party. Share date, not report. |
+| Privacy rights? | Contact email, DSAR, 30-day response. |
 
-Data handling, encryption, access control, incident response, certifications, compliance frameworks, vendor management, data retention, backup & recovery, employee training, penetration testing, privacy rights.
+Answers support **markdown**. 2-4 sentences. Link excerpts, never full policies.
 
-FAQ answers support **markdown**. Keep 2-4 sentences each. Link policy excerpts, never full text.
+## SEO
 
-## SEO Configuration
-
-| Field | Guidance |
-|-------|----------|
-| **title** | "[Company] Trust Center" or "[Company] Security & Compliance" |
-| **description** | 1-2 sentences, include "security", "compliance", "data protection" |
-| **keywords** | Mix of: brand terms, framework names (ISO 27001, SOC 2, GDPR), domain terms (trust center, security, compliance, data protection) |
+- **title**: "[Company] Trust Center"
+- **description**: Include "security", "compliance", "data protection"
+- **keywords**: `ISO 27001, SOC 2, GDPR, trust center, security compliance, data protection, encryption, access control`
+- Framework names are high-intent: "ISO 27001 certified", "SOC 2 compliant"
 
 ## Workflow
 
-1. **Audit** — Read config. Published or draft? FAQ count? SEO set?
-2. **Content** — Draft all FAQs. Verify each answer against actual policies.
-3. **SEO** — Set title, description, keywords targeting prospect search terms.
-4. **Style** — `background_color` hex value matching brand. Light backgrounds preferred.
-5. **Publish** — Enable, verify public URL renders.
-6. **Maintain** — Update on policy changes, new certs, or framework additions.
+1. **Audit** -- `mcp__bastion__get-trust-center-config`. Published? FAQ count? SEO set?
+2. **Content** -- FAQ template above. Verify answers against `policy-management`.
+3. **SEO** -- Title + description + keywords.
+4. **Style** -- `background_color` hex. Light preferred.
+5. **Publish** -- Enable, verify URL.
+6. **Maintain** -- Update on new certs (`compliance-reporting`), policy changes.
+
+## Usage Example
+
+```
+mcp__bastion__get-trust-center-config  # → {published: false, faqs: [], seo: {}}
+mcp__bastion__put-trust-center(config={published: true, faqs: [...], seo: {...}, background_color: "#F8F9FA"})
+mcp__bastion__get-trust-center-config  # → verify
+```
 
 ## Common Mistakes
 
-- **PUT without GET** — Partial updates overwrite the entire config. Always read first, merge changes, then write.
-- **Linking full policy text** — Trust center is public. Link to summaries or excerpts, never the full internal policy document.
-- **Stale certification claims** — If your ISO 27001 cert expired or SOC 2 report is from 2 years ago, update or remove the claim.
-- **Generic answers** — "We take security seriously" is meaningless. State specific controls: "AES-256 at rest, TLS 1.3 in transit, MFA enforced for all employees."
-- **Publishing before review** — Have someone outside the security team read the FAQs. If they can't understand the answers, rewrite them.
+- **PUT without GET** -- Partial update overwrites entire config. Always read-modify-write.
+- **Linking full policy documents** -- Trust center is public. Link summaries only, never internal policies.
+- **Stale cert claims** -- Expired ISO 27001 or old SOC 2 report = liability. Check dates via `mcp__bastion__get-frameworks-stats`.
+- **Generic answers** -- "We take security seriously" is meaningless. State specific controls: "AES-256, TLS 1.3, MFA enforced."
+- **Missing SEO keywords** -- Prospects search "ISO 27001 trust center" not your company name. Include framework names.

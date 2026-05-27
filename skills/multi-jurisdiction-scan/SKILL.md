@@ -5,24 +5,20 @@ description: Use when mapping regulatory obligations across multiple countries o
 
 # Multi-Jurisdiction Scan
 
-Parallel regulatory scan across 6 jurisdiction clusters via `superpowers:dispatching-parallel-agents`.
+Parallel regulatory scan across 6 clusters. **Dependency**: `superpowers:dispatching-parallel-agents`.
 
 ## Flow
 
 ```dot
 digraph {
   rankdir=TB; node [shape=box style=rounded fontsize=10];
-  orch [label="Orchestrator\nCollect profile + products\n+ target markets" shape=hexagon];
+  orch [label="Orchestrator\nCollect profile" shape=hexagon];
   subgraph cluster_p {
     label="Parallel (one agent per cluster)"; style=dashed;
-    eu [label="EU\nGDPR, AI Act, CRA\nNIS2, DORA, CSRD"];
-    us [label="US\nCCPA, FDA, FTC\nSEC, state-level"];
-    uk [label="UK\nUK GDPR, FCA\nMHRA, CMA"];
-    apac [label="APAC\nPIPL, APPI, PIPA\nPDPA, AU Privacy"];
-    latam [label="LATAM\nLGPD, LFPDPPP\nArgentina, Colombia"];
-    mena [label="MENA+Africa\nGCC, POPIA\nNDPR, Kenya DPA"];
+    eu [label="EU"]; us [label="US"]; uk [label="UK"];
+    apac [label="APAC"]; latam [label="LATAM"]; mena [label="MENA+Africa"];
   }
-  consol [label="Consolidation\nDeduplicate + risk rank" shape=hexagon];
+  consol [label="Consolidation\nDeduplicate + rank" shape=hexagon];
   orch -> eu; orch -> us; orch -> uk; orch -> apac; orch -> latam; orch -> mena;
   eu -> consol; us -> consol; uk -> consol; apac -> consol; latam -> consol; mena -> consol;
 }
@@ -30,48 +26,59 @@ digraph {
 
 ## Prerequisites
 
-Collect before dispatch: company description, products, target markets, data types processed.
+Collect before dispatch: company description, products, target markets, data types, industry vertical.
 
-## Cluster Agent Prompt
+## Cluster Agent Prompt Template
+
+Replace `{{placeholders}}`. Copy-paste ready.
 
 ```markdown
-Scan [CLUSTER] regulations for: Company=[description], Products=[list], Data=[types].
+You are a regulatory analyst for {{CLUSTER_NAME}} ({{CLUSTER_COUNTRIES}}).
+Company: {{COMPANY_DESCRIPTION}} | Products: {{PRODUCT_LIST}} | Data: {{DATA_TYPES}} | Industry: {{INDUSTRY_VERTICAL}}
 
-Per applicable regulation return:
-1. Name + official reference
-2. Status: in_force | adopted_not_yet_in_force | proposed
-3. Key obligations (max 3 bullets)
-4. Deadline or next milestone
-5. Risk: RED (<6mo/penalties active) | ORANGE (12mo) | YELLOW (>12mo) | GREEN
-6. Cross-border flag: affects other clusters?
+Scan applicable regulations. Use Cleo Insight MCP (search_signals, list_regulations) if available, else WebSearch on official sources only.
 
-Use Cleo Insight MCP (search_signals, list_regulations) if available, else WebSearch on official sources.
-Return: table sorted by risk descending.
+Return EXACTLY this table format:
+| regulation | reference | status | key_obligations | deadline | risk_color | cross_border_flag |
+
+- regulation: Official name
+- reference: Legal citation (e.g. "Regulation (EU) 2016/679")
+- status: in_force | adopted_not_yet_in_force | proposed
+- key_obligations: Max 3 points, semicolon-separated
+- deadline: YYYY-MM-DD or "ongoing"
+- risk_color: RED (<6mo/penalties active) | ORANGE (6-12mo) | YELLOW (>12mo) | GREEN
+- cross_border_flag: YES if affects entities outside this cluster
+
+Sort: RED first, then ORANGE, YELLOW, GREEN.
+Watch-fors: {{CLUSTER_WATCHFORS}}
+Exclude regulations clearly inapplicable to this company.
 ```
 
-**Cluster watch-fors**: EU = delegated acts under AI Act | US = state fragmentation, no federal privacy | UK = adequacy status, FCA Consumer Duty | APAC = data localization mandates | LATAM = LGPD enforcement ramp-up | MENA = rapid legislative activity, variable enforcement.
+**Watch-fors per cluster**: EU=delegated acts under AI Act, NIS2 transpositions | US=state fragmentation (17+ privacy laws) | UK=adequacy expiry, FCA Consumer Duty | APAC=data localization (CN/IN/VN/ID) | LATAM=LGPD enforcement ramp | MENA=rapid new legislation, variable enforcement.
 
-## Consolidation Agent
+## Consolidation — Deduplication
 
 ```markdown
-Merge 6 jurisdiction results into:
-1. Unified regulation inventory (regulation, jurisdictions, status, deadline, risk)
-2. Deduplicate cross-border regulations (e.g., GDPR adequacy spans EU+UK+APAC)
-3. Risk heatmap: cluster x risk-level matrix
-4. Top 10 priority deadlines
-5. Cross-border dependency map
+Merge 6 cluster tables. DEDUP RULES:
+1. Same regulation in multiple clusters (e.g. GDPR in EU+UK post-Brexit): merge into ONE row,
+   jurisdiction="EU, UK", keep stricter deadline and higher risk_color.
+2. Adequacy-linked: note in cross_border_flag.
+3. Same-purpose regs (GDPR vs UK GDPR vs LGPD): separate rows, add "family" tag.
+
+OUTPUT: 1) Deduplicated table with "jurisdictions" column 2) Risk heatmap: cluster x risk_color
+3) Top 10 deadlines by date 4) Cross-border dependency map
 ```
 
 ## Output
 
-1. **Regulation inventory** -- full table per jurisdiction
-2. **Risk heatmap** -- cluster x risk matrix
-3. **Priority deadlines** -- top 10 by date
-4. **Cross-border obligations** -- inter-cluster dependencies
+1. **Regulation inventory** -- deduplicated, jurisdiction-tagged
+2. **Risk heatmap** -- 6 clusters x 4 risk levels
+3. **Priority deadlines** -- top 10
+4. **Cross-border map** -- inter-cluster dependencies
 
 ## Red Flags
 
-- **Skipping "proposed"**: These become law. Track with estimated timelines.
-- **Ignoring sub-national**: US state laws and EU member-state implementations create real obligations.
-- **Single-source research**: Cross-reference official gazette + regulator site + enforcement tracker.
-- **Stale data**: Landscape shifts quarterly. Flag scan date prominently.
+- **Skipping "proposed"**: Track with estimated timelines -- these become law.
+- **Ignoring sub-national**: US state laws, EU member-state transpositions create real obligations.
+- **Single-source**: Cross-reference official gazette + regulator site + enforcement tracker.
+- **Stale data**: Flag scan date prominently. Landscape shifts quarterly.

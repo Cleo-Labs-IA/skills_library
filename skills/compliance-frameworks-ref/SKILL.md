@@ -9,18 +9,25 @@ Quick lookup for 10 major compliance frameworks. For detailed per-framework data
 
 ## Framework Selector
 
-| Need | Start with |
-|------|-----------|
-| SaaS selling to enterprise | SOC 2 Type II |
-| EU personal data | GDPR |
-| Broad security certification | ISO 27001 |
-| Healthcare / PHI | HIPAA |
-| Credit card processing | PCI-DSS v4.0 |
-| AI product in EU | AI Act |
-| Critical infrastructure EU | NIS2 |
-| Financial services EU | DORA |
-| California consumer data | CCPA/CPRA |
-| EU sustainability reporting | CSRD |
+| Need | Start with | Why first |
+|------|-----------|-----------|
+| SaaS selling to enterprise | SOC 2 Type II | Unlocks enterprise deals; 70%+ of procurement requires it |
+| EU personal data | GDPR | Legal obligation, not optional; highest penalty ceiling |
+| Broad security certification | ISO 27001 | Maps to most other frameworks; internationally recognized |
+| Healthcare / PHI | HIPAA | No market access without BAAs and safeguards |
+| Credit card processing | PCI-DSS v4.0.1 | Mandatory for any cardholder data; card brands enforce |
+| AI product in EU | AI Act | Classification determines entire compliance path |
+| Critical infrastructure EU | NIS2 | Member-state transposition deadlines are NOW |
+| Financial services EU | DORA | Effective Jan 2025; regulator expectations immediate |
+| California consumer data | CCPA/CPRA | Largest US state privacy law; CPPA actively enforcing |
+| EU sustainability reporting | CSRD | Phased rollout underway; double materiality required |
+
+**Start-here by company type**:
+- **SaaS startup**: SOC 2 first, then ISO 27001 (controls overlap ~60%)
+- **EU data processor**: GDPR first, then ISO 27001 for operational backbone
+- **Healthcare SaaS**: HIPAA + SOC 2 together (SOC 2 + HIPAA criteria)
+- **Fintech in EU**: DORA + PCI-DSS (payments) + GDPR (data)
+- **AI company in EU**: AI Act classification first, then GDPR for training data
 
 ## Cross-Framework Control Mapping
 
@@ -37,5 +44,6 @@ Quick lookup for 10 major compliance frameworks. For detailed per-framework data
 
 1. **Single framework** -- load `frameworks-catalog.md`, find the section.
 2. **Control mapping** -- use the table above for overlaps, then check catalog details.
-3. **Scoping** -- framework selector + catalog timeline and pitfalls.
-4. **Audit prep** -- catalog certification cycle and common mistakes.
+3. **Scoping** -- framework selector + company type -> catalog timeline and pitfalls.
+4. **Audit prep** -- catalog certification cycle, penalties, and common mistakes.
+5. **Multi-framework** -- start with the "Start-here by company type" guidance, implement shared controls once.

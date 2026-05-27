@@ -7,39 +7,48 @@ description: Use when monitoring regulatory changes, triaging new signals, asses
 
 ## Quick Reference
 
-| Action | MCP Tool | Fallback |
-|--------|----------|----------|
-| Search signals | `Cleo_Insight__search_signals` | WebSearch for regulatory news |
-| Signal details | `Cleo_Insight__get_signal` | WebFetch on official gazette URL |
-| List regulations | `Cleo_Insight__list_regulations` | Manual framework inventory |
-| Regulation details | `Cleo_Insight__get_regulation` | Read source document |
-| List authorities | `Cleo_Insight__list_authorities` | — |
-| List countries | `Cleo_Insight__list_countries` | — |
-| List products | `Cleo_Insight__list_products` | — |
+| Action | MCP Tool | Key params |
+|--------|----------|------------|
+| Search signals | `mcp__claude_ai_Cleo_Insight__search_signals` | `risk_level, q, country, product_id, hs_code, limit, after` |
+| Signal details | `mcp__claude_ai_Cleo_Insight__get_signal` | `id` (string) |
+| List regulations | `mcp__claude_ai_Cleo_Insight__list_regulations` | `limit, after` (cursor pagination) |
+| Regulation details | `mcp__claude_ai_Cleo_Insight__get_regulation` | `id` (string) |
+| List authorities | `mcp__claude_ai_Cleo_Insight__list_authorities` | — |
+| List countries | `mcp__claude_ai_Cleo_Insight__list_countries` | 49 tracked |
+| List products | `mcp__claude_ai_Cleo_Insight__list_products` | returns `product_id` for filters |
 
-## Signal Triage Flow
+## Risk Level Color Map
+
+| Level | Color | SLA |
+|-------|-------|-----|
+| `critical` | RED | Triage within 24h |
+| `high` | ORANGE | Triage within 72h |
+| `medium` | YELLOW | Next weekly review |
+| `low` | GREEN | Monthly batch |
+
+## Signal Triage Decision Tree
 
 ```dot
 digraph triage {
-  rankdir=LR; node [shape=box style=rounded fontsize=10];
-  search [label="Search signals\n(filters: risk, country,\nproduct, HS code)"];
-  assess [label="Read signal\nexec summary +\nimpact rationale"];
-  decide [label="Business\nimpact?" shape=diamond];
-  action [label="Generate\naction cards"];
-  park [label="Park for\nnext review"];
-  search -> assess -> decide;
-  decide -> action [label="yes"];
-  decide -> park [label="no"];
+  rankdir=TB; node [shape=box style=rounded fontsize=10];
+  new [label="New signal"];
+  risk [label="Risk level?" shape=diamond];
+  deadline [label="Deadline\n< 180 days?" shape=diamond];
+  impact [label="Touches our\nproducts/markets?" shape=diamond];
+  urgent [label="URGENT\nAction card + owner\n+ deadline"];
+  plan [label="PLANNED\nAdd to roadmap"];
+  park [label="PARK\nRevisit next quarter"];
+  watch [label="WATCH\nMonitor only"];
+  new -> risk;
+  risk -> deadline [label="critical/high"];
+  risk -> impact [label="medium"];
+  risk -> watch [label="low"];
+  deadline -> urgent [label="yes"];
+  deadline -> plan [label="no"];
+  impact -> plan [label="yes"];
+  impact -> park [label="no"];
 }
 ```
-
-## Search Filters
-
-- **risk_level**: `critical` | `high` | `medium` | `low`
-- **country**: ISO code or name (49 countries tracked)
-- **product_id**: from `list_products`
-- **hs_code**: Harmonized System code
-- **free-text**: keyword search across signal titles and summaries
 
 ## Regulation Statuses
 
@@ -52,24 +61,29 @@ digraph triage {
 
 ## Workflow
 
-1. **Discover** — Search signals with relevant filters. Start broad (country + product), narrow by risk.
-2. **Read** — Get signal details. Focus on: executive summary, obligations list, enforcement date.
-3. **Assess** — Cross-reference with your product catalog. Does this regulation touch your materials, markets, or supply chain?
-4. **Act** — Extract action cards from signal. Each card = one concrete obligation with deadline and suggested owner.
-5. **Monitor** — Track regulation status changes. `adopted_not_yet_in_force` signals need calendar entries for effective dates.
+1. **Discover** -- `search_signals(country="FR", product_id="cosmetics", risk_level="critical")`. Start broad, narrow by risk.
+2. **Read** -- `get_signal(id)`. Focus on: executive summary, obligations list, enforcement date.
+3. **Assess** -- Cross-reference with product catalog. Use `product-compliance` skill for substance checks.
+4. **Act** -- Extract action cards: one obligation = one card with deadline + owner.
+5. **Monitor** -- `adopted_not_yet_in_force` signals need calendar entries. Pipe high-risk signals to `compliance-gap-analysis`.
+
+## Usage Example
+
+```
+# Morning triage: critical signals in EU markets
+search_signals(risk_level="critical", country="EU", limit=20)
+# For each signal → get_signal(id) → read impact rationale
+# If product impact → create action card → assign to product-compliance
+```
 
 ## Without MCP
 
-When Cleo Insight tools are unavailable:
-
-1. Use WebSearch for regulatory news by jurisdiction and sector
-2. Check official gazettes (EUR-Lex, Federal Register, etc.)
-3. Manually extract obligations and deadlines
-4. Structure findings as: regulation name, status, effective date, impacted products, required actions
+Use WebSearch for EUR-Lex, Federal Register, ECHA notifications. Structure as: regulation name, status, effective date, impacted products, required actions.
 
 ## Common Mistakes
 
-- **Ignoring `adopted_not_yet_in_force`** — These have hard deadlines. Treat as actionable, not informational.
-- **Searching too narrowly** — A chemical regulation may affect cosmetics, electronics, AND toys. Search by substance, not just product category.
-- **Skipping impact rationale** — The signal summary alone is insufficient. Always read the full impact rationale before triaging to "no impact."
-- **Confusing authority with jurisdiction** — One authority may enforce across multiple countries (e.g., ECHA covers all EU member states).
+- **Skipping impact rationale** -- Signal summary != full analysis. Always call `get_signal(id)` before triaging to "no impact."
+- **Searching only by product** -- A chemical ban affects cosmetics AND electronics AND toys. Search by substance or HS code too.
+- **Ignoring `adopted_not_yet_in_force`** -- These have hard deadlines. Lead time for reformulation is 6-12 months.
+- **Confusing authority with jurisdiction** -- ECHA covers 27 EU states. One signal, 27 markets impacted.
+- **Pagination miss** -- `list_regulations` is cursor-paginated. Always check `after` token; default `limit` may truncate results.

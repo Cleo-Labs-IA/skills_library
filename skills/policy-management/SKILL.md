@@ -7,65 +7,70 @@ description: Use when drafting, reviewing, approving, or maintaining compliance 
 
 ## Quick Reference
 
-| Action | MCP Tool | Fallback |
-|--------|----------|----------|
-| List all policies | `bastion__list-customer-policies` | Manual policy inventory spreadsheet |
-| Read policy details | `bastion__get-customer-policy-by-id` | Read policy document directly |
-| Check compliance gaps | `bastion__list-failing-compliance-tests` | Audit report review |
-| Upload evidence | `bastion__upload-compliance-document` | Manual upload via Bastion UI |
+| Action | MCP Tool | Returns |
+|--------|----------|---------|
+| List policies | `mcp__bastion__list-customer-policies` | `policyId, version, category, type, status, filename` |
+| Read policy | `mcp__bastion__get-customer-policy-by-id` | Full policy text + metadata |
+| Failing tests | `mcp__bastion__list-failing-compliance-tests` | Tests blocked by missing/outdated policies |
+| Upload doc | `mcp__bastion__upload-compliance-document` | Attach evidence to a test |
+| Test detail | `mcp__bastion__get-compliance-test-detail` | Which policy is expected |
 
-## Policy Types
-
-| Domain | Covers |
-|--------|--------|
-| Information Security | ISMS scope, objectives, roles |
-| Data Protection | GDPR/privacy, processing records, DPIA |
-| Access Control | Least privilege, MFA, provisioning/deprovisioning |
-| Incident Response | Detection, escalation, notification timelines |
-| Risk Management | Risk register, assessment methodology, appetite |
-| Vendor Management | Due diligence, SLA monitoring, offboarding |
-| Asset Management | Inventory, classification, acceptable use |
-| Awareness & Training | Onboarding, annual training, phishing tests |
-| DR/BC | RTO/RPO, backup strategy, failover testing |
-| Physical Security | Office access, visitor logs, clean desk |
-
-## Lifecycle
+## Policy Lifecycle
 
 ```dot
 digraph lifecycle {
   rankdir=LR; node [shape=box style=rounded fontsize=10];
-  draft [label="Draft"];
-  review [label="Review"];
-  approve [label="Approve\n(2nd person)"];
-  publish [label="Publish"];
+  draft [label="Draft\n(author)"];
+  review [label="Review\n(owner)"];
+  approve [label="Approve\n(2nd admin)"];
+  publish [label="Publish\n+ upload"];
   maintain [label="Annual\nReview"];
   draft -> review -> approve -> publish -> maintain;
-  maintain -> review [label="changes needed"];
+  maintain -> review [label="changes\nneeded"];
+  approve -> draft [label="rejected" style=dashed];
 }
 ```
 
+**BLOCKER: Policy owners cannot approve their own policies.** Bastion enforces separation of duties. Solution: invite a 2nd admin to the Bastion workspace before starting the approval cycle.
+
+## ISO 27001 Annex A Policy Mapping
+
+| Policy domain | Annex A controls |
+|---------------|-----------------|
+| Information Security | A.5.1-5.3 (policies, roles) |
+| Access Control | A.8.2-8.5 (authentication, privilege) |
+| Data Protection | A.5.34 (privacy), A.8.11-8.12 (masking, DLP) |
+| Incident Response | A.5.24-5.28 (IR lifecycle) |
+| Risk Management | A.5.7 (threat intel), A.8.8 (vuln mgmt) |
+| Vendor Management | A.5.19-5.22 (supplier chain) |
+| Asset Management | A.5.9-5.13 (inventory, classification) |
+| Awareness & Training | A.6.3 (security awareness) |
+| DR/BC | A.5.29-5.30 (ICT continuity) |
+| Physical Security | A.7.1-7.14 (physical controls) |
+
 ## Workflow
 
-1. **Inventory** — `list-customer-policies` to see what exists. Map against required policy types for your framework (ISO 27001 needs all 10 above).
-2. **Gap analysis** — Compare inventory against failing compliance tests. Missing policy = draft from scratch. Outdated = trigger review cycle.
-3. **Draft** — Write policy with: purpose, scope, roles & responsibilities, policy statements, exceptions process, review schedule.
-4. **Review** — Policy owner reviews for accuracy and feasibility. Check alignment with actual operational practices.
-5. **Approve** — Second person approves. **Owner cannot approve their own policy.**
-6. **Publish** — Upload to compliance platform. Link from trust center if public-facing summary needed.
-7. **Maintain** — Annual review minimum. Trigger immediate review on: security incidents, regulatory changes, org restructuring.
+1. **Inventory** -- `mcp__bastion__list-customer-policies`. Map `category` against the 10 domains above.
+2. **Gap analysis** -- Cross-ref with `mcp__bastion__list-failing-compliance-tests`. Missing = draft. Outdated = review.
+3. **Draft** -- Purpose, scope, roles, statements, exceptions, review schedule. Concrete: "MFA on all prod systems."
+4. **Review** -- Owner checks against actual operations. Use `compliance-frameworks-ref` for wording.
+5. **Approve** -- Different person from owner. Solo founder: invite 2nd admin first.
+6. **Publish** -- `mcp__bastion__upload-compliance-document`. Link summaries from `trust-center`.
+7. **Maintain** -- Annual minimum. Immediate on: incidents, reg changes, reorgs.
 
-## Review Triggers
+## Usage Example
 
-- Annual calendar reminder (mandatory)
-- Post-incident lessons learned
-- New regulation affecting scope
-- Organizational change (M&A, new product line, new market)
-- Failed compliance test referencing the policy
+```
+mcp__bastion__list-customer-policies
+# → [{policyId: "pol_42", version: 3, category: "access_control", status: "published"}...]
+mcp__bastion__get-customer-policy-by-id(policyId="pol_42")
+# → Full text + last review date + owner
+```
 
 ## Common Mistakes
 
-- **Owner self-approving** — Bastion enforces separation of duties. Always designate a different approver than the author/owner.
-- **Copy-pasting templates verbatim** — Auditors check that policies reflect actual practices. A policy claiming 24/7 SOC when you have none will fail audit.
-- **Forgetting version control** — Every edit must be a new version with change log. Never overwrite without tracking what changed.
-- **Writing policies nobody reads** — Keep policy statements concrete and actionable. "Passwords must be 12+ characters with MFA" beats "appropriate authentication measures shall be employed."
-- **Missing the annual review** — Even if nothing changed, document "reviewed, no changes needed" with date and reviewer name.
+- **Owner self-approving** -- Bastion returns 403. Always have a 2nd admin. Solo founders: invite a co-admin before starting policy cycle.
+- **Copy-pasting templates verbatim** -- Auditors verify policies match operations. Claiming "24/7 SOC" without one = major nonconformity.
+- **Forgetting version control** -- Every edit = new `version`. Never overwrite without changelog.
+- **Missing annual review** -- Even with no changes, document "reviewed, no changes needed" + date + reviewer.
+- **Not linking to failing tests** -- Use `security-posture` to find which tests reference which policy. Fix the policy gap, then `refresh-compliance-test`.

@@ -5,43 +5,81 @@ description: Use when classifying products by HS code, calculating duties or lan
 
 # Customs & Trade Compliance
 
-Classification, duties, dual-use screening, and sanctions via the Cleo Legal API v2 customs module.
+Classification, duties, dual-use, and sanctions via Cleo Legal API v2 customs module.
 
-**ADVISORY DISCLAIMER** -- every response using customs data MUST include: "This information is for informational purposes only and does not constitute legal, customs, or trade compliance advice. Consult a licensed customs broker or trade compliance attorney for binding determinations."
+**DISCLAIMER** (mandatory on every response): "For informational purposes only. Not legal, customs, or trade compliance advice. Consult a licensed customs broker for binding determinations."
+
+## HS Code Hierarchy
+
+HS is international to 6 digits only. Beyond that, national extensions apply.
+
+| Level | Digits | Example |
+|-------|--------|---------|
+| Chapter (HS2) | 2 | 85 = Electrical machinery |
+| Heading (HS4) | 4 | 8517 = Telephones |
+| Subheading (HS6) | 6 | 8517.12 = Smartphones |
+| CN8 (EU) | 8 | 8517.12.00 |
+| HTS (US) | 10 | 8517.12.00.50 |
+
+HS6 is the international limit. Digits 7+ are country-specific -- never assume transferability.
+
+## Sanctions Authorities (8 covered)
+
+| Code | List |
+|------|------|
+| UN_SC | Consolidated List |
+| US_OFAC | SDN (Specially Designated Nationals) |
+| UK_FCDO | UK Sanctions CSV |
+| AU_DFAT | Consolidated List |
+| CA_GAC | Consolidated Autonomous |
+| JP_MOF | End-User + Entity Lists |
+| CH_SECO | SECO Sanctions (EU-aligned) |
+| KZ_MFA | National List |
+
+**Gap**: EU Consolidated List not direct; CH_SECO is EU-aligned proxy.
+
+## Landed Cost Formula
+
+```
+landed_cost = product_value + shipping + insurance + duty + special_duty + VAT + handling
+  duty         = product_value * duty_rate
+  special_duty = anti-dumping + countervailing + safeguard
+  VAT          = (product_value + duty + special_duty) * VAT_rate
+  handling     = broker fees + port charges + customs processing
+```
+
+Always check FTA preferential rates first -- can reduce duty to 0%.
 
 ## API Endpoints
 
-| Endpoint | Purpose | Inputs |
-|----------|---------|--------|
-| `customs/lookup` | Classify by HS code | description, destination country |
-| `customs/reverse-classify` | Unclassified product to candidate HS codes | description, materials, use |
-| `customs/obligations` | Duties, excise, restrictions per HS code | HS code, destination |
-| `customs/duties` | Tariff rates by origin/destination/year | HS code, origin, destination, year |
-| `customs/landed-cost` | Total delivered cost breakdown | HS code, origin, dest, value, shipping |
-| `customs/dual-use-check` | Wassenaar + EU 2021/821 + US CCL | description, specs, destination |
-| `compliance/check` | Composite (5 units): classify + obligations + alternatives + dual-use + parallel import | description, origin, destination |
-| `sanctions/search` | Entity screening: UN, OFAC, UK FCDO, AU DFAT, CA GAC, JP MOF, CH SECO, KZ MFA | entity name, country |
+| Endpoint | Purpose |
+|----------|---------|
+| `customs/lookup` | Classify by HS code |
+| `customs/reverse-classify` | Product description to candidate HS codes |
+| `customs/obligations` | Duties + restrictions per HS+destination |
+| `customs/duties` | Tariff rates by origin/destination/year |
+| `customs/landed-cost` | Full delivered cost breakdown |
+| `customs/dual-use-check` | Wassenaar + EU 2021/821 + US CCL |
+| `compliance/check` | Composite (5 units): classify+obligations+dual-use+alternatives+parallel |
+| `sanctions/search` | Entity screening across 8 authorities |
 
 ## Workflows
 
-**New product**: `reverse-classify` -> review confidence -> `obligations` per market -> `dual-use-check` if sensitive.
-
-**Landed cost**: `lookup` to confirm HS -> `duties` for rate -> `landed-cost` for full breakdown (duties + excise + VAT/GST + fees).
-
-**Entity screening**: `sanctions/search` -> if hits: show authority, list type, date, basis. If clean: caveat point-in-time validity. Recommend monthly re-screening.
-
-**Pre-export**: `dual-use-check` -> if flagged: identify control list, ECCN, license requirement. If clear but sensitive category: note spec-dependent classification.
+**New product**: `reverse-classify` -> `obligations` per market -> `dual-use-check` if sensitive.
+**Landed cost**: `lookup` -> `duties` (check FTA) -> `landed-cost`.
+**Entity screening**: `sanctions/search` -> hits: authority+list+date+basis. Clean: caveat point-in-time. Monthly re-screen.
+**Pre-export**: `dual-use-check` -> flagged: control list+ECCN+license. Clear+sensitive: note spec thresholds.
 
 ## Confidence Rules
 
-- **>= 0.85, gap >= 0.15**: Primary classification. Proceed.
-- **>= 0.70, gap >= 0.15**: Likely. Recommend professional verification for high-value shipments.
-- **< 0.70 OR gap < 0.15**: Ambiguous. Present top candidates. Do NOT proceed to duties until user selects. Recommend binding ruling from customs authority.
+- **>=0.85, gap>=0.15**: Proceed.
+- **>=0.70, gap>=0.15**: Likely. Professional verification for high-value.
+- **<0.70 OR gap<0.15**: Ambiguous. Present candidates, do NOT proceed. Recommend binding ruling.
 
 ## Red Flags
 
-- **Missing disclaimer** -- non-negotiable on every customs response.
-- **HS treated as universal** -- harmonized to 6 digits only. Digits 7-10 are country-specific.
-- **Ignoring FTAs** -- preferential rates can dramatically reduce duties. Check origin-based preferences.
-- **Stale sanctions** -- lists update multiple times per month. Never reuse old results.
-- **Coverage gaps** -- 8 authorities covered, but not all (e.g., EU consolidated list not direct). Flag if user's jurisdiction is missing.
+- **Missing disclaimer**: Non-negotiable on every response.
+- **HS >6 digits assumed universal**: Digits 7+ are country-specific.
+- **Ignoring FTAs**: Preferential rates can zero out duties.
+- **Stale sanctions**: Lists update multiple times/month. Never reuse old results.
+- **Coverage gaps**: 8 authorities, not all. Flag missing jurisdictions.

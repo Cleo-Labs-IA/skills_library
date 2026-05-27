@@ -7,74 +7,78 @@ description: Use when triaging code security findings, remediating vulnerabiliti
 
 ## Quick Reference
 
-| Action | MCP Tool | Fallback |
-|--------|----------|----------|
-| List security issues | `bastion__list-code-security-issues` | GitHub Security tab / SAST reports |
-| Issue details | `bastion__get-code-security-issue-by-id` | Read SAST finding in source |
-| Remediate issue | `bastion__post-customer-issues-remediation` | Fix code + close issue manually |
-| Dependabot status | `bastion__get-github-dependabot-resolution` | `gh api /repos/{owner}/{repo}/dependabot/alerts` |
-| Refresh test | `bastion__refresh-compliance-test` | Re-run scan manually |
-| Failing tests | `bastion__list-failing-compliance-tests` | Audit dashboard review |
+| Action | MCP Tool | Key detail |
+|--------|----------|------------|
+| List issues | `mcp__bastion__list-code-security-issues` | Sort by severity |
+| Issue detail | `mcp__bastion__get-code-security-issue-by-id` | rule, severity, file, line range |
+| Remediate | `mcp__bastion__post-customer-issues-remediation` | Requires `remediationId` enum |
+| Dependabot | `mcp__bastion__get-github-dependabot-resolution` | Returns pass/fail/no_test |
+| Refresh test | `mcp__bastion__refresh-compliance-test` | After any remediation |
+| Failing tests | `mcp__bastion__list-failing-compliance-tests` | Security-related subset |
 
-## Remediation States
+## Remediation ID Enum
 
-| State | When to use |
-|-------|-------------|
-| `resolved` | Code fix deployed and verified |
-| `accepted_risk` | Risk acknowledged, documented rationale, won't fix |
-| `false_positive` | Finding is incorrect, document why |
-| `open` | Reset to open for re-triage |
+| `remediationId` | Use when |
+|-----------------|----------|
+| `changeStatusCloseManually` | Code fix deployed and verified |
+| `changeStatusCloseAutomatically` | Auto-resolved by dependency update |
+| `changeStatusAcceptedRisk` | Won't fix; documented rationale required |
+| `changeStatusFalsePositive` | Finding is incorrect; document why |
+| `changeStatusOpen` | Reset to open for re-triage |
 
 ## Triage Flow
 
 ```dot
 digraph triage {
   rankdir=TB; node [shape=box style=rounded fontsize=10];
-  list [label="List issues\n(critical first)"];
-  read [label="Read finding:\nrule, severity,\nfile, line range"];
-  decide [label="Real\nvuln?" shape=diamond];
-  fix [label="Fix code\n→ resolved"];
-  fp [label="Document\n→ false_positive"];
-  accept [label="Risk accept?\n(needs rationale)" shape=diamond];
-  ar [label="Document\n→ accepted_risk"];
-  fix2 [label="Plan fix\n→ open"];
+  list [label="list-code-security-issues\n(critical first)"];
+  read [label="get-code-security-issue-by-id\nrule + severity + file"];
+  real [label="Real\nvuln?" shape=diamond];
+  fixable [label="Fixable\nnow?" shape=diamond];
+  fix [label="Fix code\n→ changeStatusCloseManually"];
+  fp [label="Document\n→ changeStatusFalsePositive"];
+  accept [label="Rationale\ndocumented?" shape=diamond];
+  ar [label="→ changeStatusAcceptedRisk"];
+  plan [label="→ changeStatusOpen\n(plan fix)"];
   refresh [label="refresh-compliance-test"];
-  list -> read -> decide;
-  decide -> fix [label="yes, fixable now"];
-  decide -> fp [label="no"];
-  decide -> accept [label="yes, not fixable now"];
-  accept -> ar [label="yes + rationale"];
-  accept -> fix2 [label="no"];
+  list -> read -> real;
+  real -> fixable [label="yes"];
+  real -> fp [label="no"];
+  fixable -> fix [label="yes"];
+  fixable -> accept [label="no"];
+  accept -> ar [label="yes"];
+  accept -> plan [label="no"];
   fix -> refresh; fp -> refresh; ar -> refresh;
 }
 ```
 
-## Device Compliance Checklist
+## Device Compliance
 
 | Control | Check | Fix |
 |---------|-------|-----|
-| FileVault | Disk encryption enabled | System Preferences > Security > FileVault ON |
-| Firewall | macOS firewall active | System Preferences > Security > Firewall ON |
-| MDM | Device enrolled + user associated | Enroll via MDM portal (UI only, no MCP) |
-| OS updates | Latest security patches | Software Update |
-| Screen lock | Auto-lock <= 5 minutes | System Preferences > Lock Screen |
+| FileVault ON | `fdesetup status` | System Settings > FileVault |
+| Firewall ON | `com.apple.alf globalstate` | System Settings > Firewall |
+| MDM enrolled | Must show `mdm.bastion.tech` | Bastion UI only (no MCP) |
+| OS updated | `softwareupdate -l` | Software Update |
+| Screen lock <= 5min | Lock screen timeout | System Settings > Lock Screen |
 
-## Branch Protection
+## Dependabot States
 
-Required: reviews >= 1, CI status checks, signed commits, no force push on main, admin enforcement.
+`pass` = resolved. `fail` = open alerts (response includes repo list). `no_test` = not enabled.
 
 ## Workflow
 
-1. **List** — `list-code-security-issues`, sort by criticality: critical > high > medium > low.
-2. **Read** — Full details per finding: SAST rule, severity, file path, line range, repo.
-3. **Assess** — Real vulnerability? Check reachability, user-controlled inputs, existing mitigations.
-4. **Act** — Fix code, mark false positive, or accept risk with rationale.
-5. **Verify** — `refresh-compliance-test` after remediation.
-6. **Dependencies** — `get-github-dependabot-resolution` for open alerts. Upgrade or pin.
+1. **List** -- `mcp__bastion__list-code-security-issues`. Critical > high > medium > low.
+2. **Read** -- `mcp__bastion__get-code-security-issue-by-id`. Check reachability + mitigations.
+3. **Remediate** -- `mcp__bastion__post-customer-issues-remediation` with correct `remediationId`.
+4. **Verify** -- `mcp__bastion__refresh-compliance-test` after every remediation.
+5. **Deps** -- `mcp__bastion__get-github-dependabot-resolution`. On `fail`, upgrade listed repos.
+6. **Devices** -- Check table above. Feed gaps to `compliance-remediation`.
 
 ## Common Mistakes
 
-- **Bulk-accepting risk without rationale** — Each `accepted_risk` needs specific justification. "Low priority" is not a rationale.
-- **Fixing code but not refreshing** — Bastion won't know it's resolved until you `refresh-compliance-test`.
-- **Ignoring medium/low before audit** — Auditors see everything. Triage all findings.
-- **Device compliance via MCP** — MDM enrollment requires Bastion UI. No MCP tool exists.
+- **Wrong `remediationId`** -- `changeStatusCloseManually` without actual fix. Auditors verify.
+- **Bulk `changeStatusAcceptedRisk`** -- Each needs specific justification. "Low priority" is not a rationale.
+- **Fixing without refreshing** -- Bastion caches state. Always `refresh-compliance-test`.
+- **Ignoring `no_test`** -- Means Dependabot not enabled. Enable it; no alerts != no vulnerabilities.
+- **MDM via MCP** -- Enrollment requires Bastion UI. No API exists. Plan manual step.

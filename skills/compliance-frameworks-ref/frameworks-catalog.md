@@ -3,86 +3,84 @@
 ## ISO 27001:2022
 
 - **Scope**: ISMS for any organization.
-- **Structure**: 93 controls in 4 themes -- Organizational (37), People (8), Physical (14), Technological (34).
-- **Certification**: Stage 1 (doc review) + Stage 2 (on-site audit). 3-year certificate, annual surveillance.
-- **Penalties**: No fines -- loss of cert means lost contracts.
-- **Pitfalls**: Policies that don't match operations; neglecting internal audit; risk register not maintained.
+- **Structure**: 93 controls in 4 themes -- Organizational (37), People (8), Physical (14), Technological (34). Clauses 4-10 define ISMS; Annex A is normative.
+- **Certification**: Stage 1 (doc review) + Stage 2 (on-site). 3-year cert, annual surveillance.
+- **Penalties**: No fines -- loss of cert = lost contracts, procurement disqualification.
+- **Pitfalls**: Policies not matching ops; no internal audit; risk register unmaintained; SoA missing exclusion justifications.
 - **Timeline**: Startup 3-6mo, mid-size 6-12mo, enterprise 12-18mo.
 
 ## SOC 2 Type II
 
-- **Scope**: Service orgs storing/processing customer data. US-origin, globally recognized.
-- **Structure**: 5 TSCs -- Security (required), Availability, Processing Integrity, Confidentiality, Privacy.
-- **Certification**: Type I = point-in-time. Type II = 6-12mo observation period. Annual audit.
+- **Scope**: Service orgs storing/processing customer data. US-origin (AICPA), globally recognized.
+- **Structure**: 5 Trust Service Criteria -- Security (CC, required), Availability, Processing Integrity, Confidentiality, Privacy. Security has 9 CC categories (CC1-CC9).
+- **Certification**: Type I = point-in-time. Type II = 6-12mo observation. Annual audit by CPA firm.
 - **Penalties**: No regulatory fines. Loss of report = lost enterprise deals.
-- **Pitfalls**: Too many TSCs initially; evidence gaps during observation; confusing SOC 2 with SOC 1.
+- **Pitfalls**: Too many TSCs initially (start Security only); evidence gaps during observation; confusing SOC 2 with SOC 1.
 - **Timeline**: Readiness 2-3mo + observation 6-12mo.
 
 ## HIPAA
 
 - **Scope**: PHI in US healthcare. Covered Entities + Business Associates.
-- **Structure**: Privacy Rule, Security Rule (admin/physical/technical safeguards), Breach Notification (60-day to individuals, HHS, media if >500).
-- **Certification**: None formal. Compliance via risk analysis, policies, BAAs.
-- **Penalties**: $100-$50K per violation, max $1.5M/category/year. Criminal up to $250K + 10 years.
-- **Pitfalls**: Missing BAAs; no formal risk analysis; assuming cloud provider handles everything.
-- **Timeline**: 3-6mo initial. BAA negotiation adds weeks.
+- **Structure**: Privacy Rule, Security Rule (42 specs: admin/physical/technical), Breach Notification (60 days; media if >500 affected).
+- **Penalties**: 4 tiers by knowledge. Range $137-$68,928/violation. Annual cap $2,067,813 per violation category (2024 adjusted). Criminal: up to $250K + 10 years.
+- **Pitfalls**: Missing BAAs; no formal risk analysis; assuming cloud provider covers all; minimum necessary violations.
+- **Timeline**: 3-6mo initial. BAA negotiation 2-6 weeks/vendor.
 
 ## GDPR
 
-- **Scope**: Personal data of EU/EEA individuals, regardless of processor location.
-- **Structure**: 6 legal bases. DPO for public bodies/large-scale monitoring. DPIA for high-risk. ROPA. 72h breach notification.
-- **Penalties**: Up to 20M EUR or 4% global turnover. Tiered: 10M/2% and 20M/4%.
-- **Pitfalls**: Consent overuse vs legitimate interest; no processing inventory; outdated transfer mechanisms post-Schrems II.
-- **Timeline**: 3-9mo initial. Ongoing maintenance substantial.
+- **Scope**: Personal data of EU/EEA individuals, regardless of processor location. Extraterritorial.
+- **Structure**: 6 legal bases. DPO for public bodies/large-scale monitoring. DPIA for high-risk. ROPA required. 72h breach notification.
+- **Penalties**: Tier 1: EUR 10M/2%. Tier 2: EUR 20M/4% global turnover (whichever higher). Records: Meta EUR 1.2B (2023).
+- **Pitfalls**: Consent overuse vs legitimate interest; no ROPA; outdated transfers post-Schrems II; cookie theater.
+- **Timeline**: 3-9mo initial. Ongoing DSAR/DPIA maintenance.
 
-## EU AI Act
+## EU AI Act (Reg 2024/1689)
 
-- **Scope**: AI systems in EU market. Risk-based.
-- **Structure**: Unacceptable (banned), High (conformity assessment), Limited (transparency), Minimal (voluntary).
-- **Key dates**: Aug 2025 prohibited practices. Aug 2026 high-risk obligations. Foundation models 2025-2027.
-- **Penalties**: 35M/7% for prohibited; 15M/3% high-risk; 7.5M/1.5% misinformation.
-- **Pitfalls**: Not classifying risk level early; ignoring foundation model downstream obligations.
+- **Scope**: AI systems in EU market. Risk-based: Unacceptable (banned), High (conformity+CE), Limited (transparency), Minimal (voluntary).
+- **Key dates**: Feb 2025 prohibited practices. Aug 2025 GPAI obligations. Aug 2026 high-risk. Aug 2027 Annex I products.
+- **Penalties**: EUR 35M/7% prohibited. EUR 15M/3% high-risk. EUR 7.5M/1.5% misinformation.
+- **Pitfalls**: Not classifying risk early; ignoring GPAI downstream obligations; assuming "minimal" without assessment.
 - **Timeline**: Classification 1-2mo. High-risk conformity 6-18mo.
 
-## NIS2
+## NIS2 (Dir 2022/2555)
 
-- **Scope**: Essential (energy, transport, health, digital infra) + Important entities (18 sectors) in EU.
-- **Structure**: Risk-management (Art.21), incident reporting (24h early warning + 72h notification + 1-month report), supply chain security.
-- **Penalties**: Essential: 10M/2%. Important: 7M/1.4%.
-- **Pitfalls**: Assuming out of scope; ignoring supply chain obligations; no 24h reporting capability.
-- **Timeline**: Gap analysis 1-2mo, implementation 3-9mo.
+- **Scope**: Essential (11 sectors) + Important (7 sectors) in EU. Threshold: >50 employees or >EUR 10M turnover.
+- **Structure**: Art.21 (10 minimum measures), incident reporting (24h+72h+1mo), supply chain, management liability.
+- **Penalties**: Essential: EUR 10M/2%. Important: EUR 7M/1.4%. Management personal liability.
+- **Pitfalls**: Assuming out of scope; ignoring supply chain; no 24h reporting capability.
+- **Timeline**: Gap 1-2mo, implementation 3-9mo. Transposition deadlines: Oct 2024 (many states delayed to 2025).
 
-## DORA
+## DORA (Reg 2022/2554)
 
-- **Scope**: EU financial entities + critical ICT third-party providers.
-- **Structure**: 5 pillars -- ICT risk mgmt, incident reporting (24h), resilience testing (TLPT every 3yr), third-party risk, info sharing.
-- **Penalties**: Member state defined. Critical third-party: up to 1% daily worldwide turnover.
-- **Pitfalls**: Underestimating third-party documentation; missing incident classification taxonomy.
-- **Timeline**: 6-12mo gap remediation. Third-party contracts take longer.
+- **Scope**: EU financial entities + critical ICT providers. Effective Jan 17, 2025.
+- **Structure**: 5 pillars -- ICT risk mgmt, incident reporting (4h+24h+1mo), resilience testing (TLPT/3yr), third-party risk (ICT register), info sharing.
+- **Penalties**: Member state defined. Critical third-party: 1%/day worldwide turnover. Management liability.
+- **Pitfalls**: ICT contract register underestimated; missing incident taxonomy; TLPT scope; subcontracting chains.
+- **Timeline**: Gap remediation 6-12mo. Contract renegotiation 3-12mo additional.
 
-## PCI-DSS v4.0
+## PCI-DSS v4.0.1
 
 - **Scope**: Any entity storing/processing/transmitting cardholder data.
-- **Structure**: 12 requirements, ~250 sub-requirements. SAQ (small merchants) vs ROC (Level 1). QSA performs ROC.
-- **Key date**: March 2025 -- all v4.0 requirements mandatory.
+- **Structure**: 12 requirements, ~250 sub-requirements. SAQ (small) vs ROC (Level 1, by QSA). v4.0.1 released June 2024.
+- **Key date**: March 31, 2025 -- all future-dated v4.0 requirements mandatory (targeted risk analysis, authenticated scanning, script integrity).
 - **Cycle**: Annual assessment. Quarterly ASV scans. Annual pentest.
 - **Penalties**: $5K-$100K/month from card brands. Loss of processing privileges.
-- **Pitfalls**: Scope creep; storing prohibited data (CVV); assuming SAQ when ROC required.
+- **Pitfalls**: Scope creep; storing CVV/full track; SAQ vs ROC eligibility; ignoring P2PE for scope reduction.
 - **Timeline**: SAQ 1-3mo. ROC 3-9mo.
 
 ## CCPA/CPRA
 
-- **Scope**: California consumers' PI. Thresholds: $25M revenue, 100K consumers, or 50%+ revenue from data sales.
-- **Structure**: Rights: Know, Delete, Opt-Out, Correct, Limit Sensitive PI. CPPA enforcement. 45-day response window.
-- **Penalties**: $2,500/violation, $7,500/intentional. Private action for breaches: $100-$750/consumer.
-- **Pitfalls**: Ignoring Global Privacy Control; not distinguishing "sale" from "sharing" under CPRA.
-- **Timeline**: 2-4mo initial. Ongoing request handling costs.
+- **Scope**: California PI. Thresholds: $25M revenue, 100K+ consumers, or 50%+ revenue from data sales/sharing.
+- **Structure**: Rights: Know, Delete, Opt-Out, Correct, Limit Sensitive PI. CPPA enforcement. 45-day DSAR window.
+- **Penalties**: $2,500/violation, $7,500/intentional. Private action: $100-$750/consumer for breaches. No cure period under CPRA.
+- **Pitfalls**: Ignoring GPC signals (legally binding); sale vs sharing distinction; service provider contracts; dark patterns.
+- **Timeline**: 2-4mo initial.
 
-## CSRD
+## CSRD (Dir 2022/2464)
 
-- **Scope**: EU sustainability reporting. Large companies + listed SMEs. Replaces NFRD.
-- **Structure**: Double materiality. 12 ESRS standards (E/S/G). Limited assurance (reasonable by 2028).
-- **Rollout**: 2024 >500 employees. 2025 large companies. 2026 listed SMEs. 2028 non-EU >150M EU revenue.
-- **Penalties**: Member state defined. Expected to align with financial reporting penalties.
-- **Pitfalls**: Underestimating Scope 3 data collection; treating as comms exercise; missing double materiality.
-- **Timeline**: Materiality assessment 2-4mo. First report 6-12mo.
+- **Scope**: EU sustainability reporting. Large companies + listed SMEs.
+- **Structure**: Double materiality. 12 ESRS (E5+S4+G1+2 cross-cutting). Limited assurance now, reasonable by 2028.
+- **Rollout**: FY2024 >500emp (NFRD). FY2025 large. FY2026 listed SMEs. FY2028 non-EU >EUR 150M EU revenue.
+- **Penalties**: Member state defined, expected financial-reporting-level. Director liability in some jurisdictions.
+- **Pitfalls**: Scope 3 data collection; treating as comms not audit; missing double materiality; 6-12mo data infrastructure lead time.
+- **Timeline**: Materiality 2-4mo. First report 6-12mo.
