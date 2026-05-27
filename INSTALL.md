@@ -39,3 +39,7 @@ Claude will use `product-compliance`, `labeling-compliance`, and `market-entry-c
 ```bash
 rm -rf ~/.claude/skills/comply
 ```
+
+## Disclaimer
+
+These skills provide compliance guidance, not legal advice. Always verify against official sources before making business decisions.

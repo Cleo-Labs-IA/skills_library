@@ -50,3 +50,9 @@ Small physical product companies that need to:
 ## License
 
 MIT
+
+## Disclaimer
+
+**This is compliance guidance, not legal advice.** The skills provide a starting point based on publicly available regulations. They do not replace a qualified regulatory consultant, safety assessor, or legal counsel.
+
+Regulatory data (substance limits, enforcement dates, fee amounts) changes frequently. Always verify critical information against official sources before making business decisions. Cleo Labs is not liable for decisions made based on these skills.
