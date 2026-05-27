@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>skills_library — La bibliotheque de skills compliance pour agents IA</title>
-<meta name="description" content="12 skills compliance open-source pour Claude Code. Verification substances, etiquetage, entree marche, veille reglementaire. 131 pays, 78 reglementations.">
+<title>skills_library — CEO Pitch Deck | Cleo Labs</title>
+<meta name="description" content="28 skills compliance open-source pour Claude Code. La plus grande bibliotheque de skills compliance pour agents IA.">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after {
@@ -28,13 +28,8 @@
   --c-text: rgba(0, 0, 0, 0.87);
   --c-text-2: rgba(0, 0, 0, 0.62);
   --c-text-3: rgba(0, 0, 0, 0.45);
-  --c-pass: #1A1A1A;
-  --c-pass-bg: rgba(0,0,0,0.04);
-  --c-risk: #946B2D;
-  --c-risk-bg: rgba(148,107,45,0.08);
   --c-mint: #6EC9A0;
   --c-coral: #F07060;
-  --c-teal: #00B4D8;
   --c-jaune: #F5C800;
   --c-violet: #7B3FA0;
   --r-sm: 8px;
@@ -80,12 +75,12 @@ body {
   overflow-x: hidden;
 }
 
-/* ─── TYPOGRAPHY ─── */
+/* TYPOGRAPHY */
 .t-display {
   font-size: clamp(2.5rem, 6vw, 3.5rem);
   font-weight: 700;
   line-height: 1.08;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   color: var(--c-ink);
 }
 
@@ -132,26 +127,19 @@ body {
   color: var(--c-text-3);
 }
 
-/* ─── LAYOUT ─── */
+/* LAYOUT */
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 var(--s-24);
 }
 
-/* ─── GRADIENT CANVASES ─── */
-.gc-hero {
+/* GRADIENT CANVASES */
+.gc-peach {
   background:
     radial-gradient(ellipse 80% 60% at 20% 40%, rgba(240, 112, 96, 0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(0, 8, 207, 0.05) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 50% 80%, rgba(110, 201, 160, 0.06) 0%, transparent 60%),
-    var(--c-card);
-}
-
-.gc-warm {
-  background:
-    radial-gradient(ellipse 70% 50% at 30% 50%, rgba(240, 112, 96, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 70% 60%, rgba(245, 200, 0, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(245, 200, 0, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 50% 80%, rgba(110, 201, 160, 0.05) 0%, transparent 60%),
     var(--c-card);
 }
 
@@ -165,11 +153,18 @@ body {
 .gc-mint {
   background:
     radial-gradient(ellipse 70% 50% at 60% 40%, rgba(110, 201, 160, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 30% 60%, rgba(0, 180, 216, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 30% 60%, rgba(0, 8, 207, 0.05) 0%, transparent 50%),
     var(--c-card);
 }
 
-/* ─── CARDS ─── */
+.gc-warm {
+  background:
+    radial-gradient(ellipse 70% 50% at 30% 50%, rgba(240, 112, 96, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 70% 60%, rgba(245, 200, 0, 0.05) 0%, transparent 50%),
+    var(--c-card);
+}
+
+/* CARDS */
 .card-warm {
   background: var(--c-card);
   border-radius: var(--r-md);
@@ -198,11 +193,11 @@ body {
   backdrop-filter: var(--glass-blur);
   border: var(--glass-border);
   border-radius: var(--r-md);
-  padding: var(--s-24);
+  padding: var(--s-24) var(--s-32);
   box-shadow: var(--shadow-sm);
 }
 
-/* ─── BUTTONS ─── */
+/* BUTTONS */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -226,12 +221,30 @@ body {
   transform: translateY(-1px);
 }
 
-.btn-primary svg {
-  width: 18px;
-  height: 18px;
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-8);
+  padding: var(--s-12) var(--s-32);
+  background: transparent;
+  color: var(--c-ink);
+  border: 2px solid var(--c-ink);
+  border-radius: var(--r-pill);
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-apple),
+              transform var(--dur-fast) var(--ease-apple);
 }
 
-/* ─── ANIMATIONS ─── */
+.btn-outline:hover {
+  background: rgba(0,0,0,0.04);
+  transform: translateY(-1px);
+}
+
+/* ANIMATIONS */
 .fade-in {
   opacity: 0;
   transform: translateY(24px);
@@ -249,8 +262,9 @@ body {
 .fade-in.d3 { transition-delay: 300ms; }
 .fade-in.d4 { transition-delay: 400ms; }
 .fade-in.d5 { transition-delay: 500ms; }
+.fade-in.d6 { transition-delay: 600ms; }
 
-/* ─── NAV ─── */
+/* NAV */
 nav {
   position: fixed;
   top: 0;
@@ -261,7 +275,6 @@ nav {
   -webkit-backdrop-filter: var(--glass-blur);
   backdrop-filter: var(--glass-blur);
   border-bottom: 1px solid var(--c-border);
-  transition: background var(--dur-normal) var(--ease-apple);
 }
 
 .nav-inner {
@@ -279,11 +292,6 @@ nav {
   align-items: center;
   gap: var(--s-12);
   text-decoration: none;
-}
-
-.nav-logo svg {
-  height: 28px;
-  width: auto;
 }
 
 .nav-links {
@@ -326,12 +334,12 @@ nav {
   .nav-links { display: none; }
 }
 
-/* ─── SECTION SPACING ─── */
+/* SECTION SPACING */
 .section-landing {
   padding: var(--s-128) 0;
 }
 
-/* ─── HERO ─── */
+/* HERO */
 .hero-section {
   min-height: 100vh;
   display: flex;
@@ -345,40 +353,40 @@ nav {
   padding: var(--s-96) 0 var(--s-64);
 }
 
-.hero-wordmark {
-  margin-bottom: var(--s-48);
-}
-
-.hero-wordmark svg {
-  height: 32px;
-  width: auto;
-}
-
 .hero-title {
   font-family: var(--font-mono);
   margin-bottom: var(--s-16);
 }
 
 .hero-subtitle {
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto var(--s-48);
 }
 
-.hero-stats {
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--s-16);
+  flex-wrap: wrap;
+  margin-bottom: var(--s-64);
+}
+
+.hero-stats-bar {
   display: flex;
   justify-content: center;
   gap: var(--s-16);
   flex-wrap: wrap;
-  margin-bottom: var(--s-48);
 }
 
 .stat-glass {
   text-align: center;
-  min-width: 120px;
+  min-width: 130px;
+  padding: var(--s-24) var(--s-32);
 }
 
 .stat-glass .stat-value {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--c-ink);
   letter-spacing: -0.02em;
@@ -392,92 +400,35 @@ nav {
   margin-top: var(--s-4);
 }
 
-.hero-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--s-24);
-}
-
-.code-block {
-  background: var(--c-ink);
-  color: var(--c-mint);
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  padding: var(--s-12) var(--s-24);
-  border-radius: var(--r-sm);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--s-12);
-  cursor: pointer;
-  position: relative;
-  transition: transform var(--dur-fast) var(--ease-apple);
-  max-width: 100%;
-  overflow-x: auto;
-}
-
-.code-block:hover {
-  transform: translateY(-1px);
-}
-
-.code-block .copy-label {
-  color: var(--c-text-3);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  white-space: nowrap;
-  padding: 2px 8px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 4px;
-  flex-shrink: 0;
-}
-
-.code-block .copied-toast {
-  position: absolute;
-  top: -32px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--c-ink);
-  color: var(--c-white);
-  padding: 4px 12px;
-  border-radius: var(--r-sm);
-  font-size: 0.75rem;
-  font-weight: 600;
-  opacity: 0;
-  transition: opacity var(--dur-fast);
-  pointer-events: none;
-}
-
-.code-block .copied-toast.show {
-  opacity: 1;
-}
-
-/* ─── PROBLEM SECTION ─── */
-.problem-grid {
+/* SECTION 2 - CE QU'ON A CONSTRUIT */
+.built-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--s-24);
   margin-top: var(--s-64);
+  margin-bottom: var(--s-96);
 }
 
-.problem-card .problem-question {
-  font-size: 1.125rem;
-  font-weight: 600;
+.built-card-icon {
+  font-size: 2rem;
+  margin-bottom: var(--s-16);
+}
+
+.built-card-number {
+  font-size: 2rem;
+  font-weight: 700;
   color: var(--c-ink);
-  margin-bottom: var(--s-12);
+  letter-spacing: -0.03em;
+  margin-bottom: var(--s-8);
 }
 
-.problem-card .problem-answer {
+.built-card-desc {
   font-size: 0.9375rem;
   color: var(--c-text-2);
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
-/* ─── SKILLS SECTION ─── */
-.skills-subtitle {
-  max-width: 600px;
-  margin-bottom: var(--s-64);
-}
-
+/* SKILLS GRID */
 .tier-group {
   margin-bottom: var(--s-48);
 }
@@ -489,14 +440,14 @@ nav {
   margin-bottom: var(--s-16);
 }
 
-.tier-label .tier-dot {
+.tier-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
-.tier-label span:last-child {
+.tier-name {
   font-size: 0.6875rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -506,159 +457,73 @@ nav {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--s-16);
-}
-
-.skill-card {
-  border-left: 3px solid transparent;
-  padding-left: calc(var(--s-32) - 3px);
-}
-
-.skill-card .skill-name {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--c-ink);
-  margin-bottom: var(--s-8);
-}
-
-.skill-card .skill-desc {
-  font-size: 0.875rem;
-  color: var(--c-text-2);
-  line-height: 1.65;
-}
-
-.skill-card.border-blue { border-left-color: var(--c-blue); }
-.skill-card.border-mint { border-left-color: var(--c-mint); }
-.skill-card.border-coral { border-left-color: var(--c-coral); }
-.skill-card.border-violet { border-left-color: var(--c-violet); }
-
-/* ─── DATA SECTION ─── */
-.data-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--s-24);
-  margin-top: var(--s-64);
-  margin-bottom: var(--s-96);
-}
-
-.data-stat-card {
-  text-align: center;
-  padding: var(--s-48) var(--s-24);
-}
-
-.data-stat-card .big-number {
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 700;
-  color: var(--c-blue);
-  letter-spacing: -0.03em;
-  font-variant-numeric: tabular-nums;
-  margin-bottom: var(--s-8);
-}
-
-.data-stat-card .big-label {
-  font-size: 0.875rem;
-  color: var(--c-text-2);
-  font-weight: 500;
-}
-
-/* Timeline */
-.build-timeline {
-  position: relative;
-  padding-left: var(--s-48);
-  max-width: 700px;
-}
-
-.build-timeline::before {
-  content: '';
-  position: absolute;
-  left: 11px;
-  top: 8px;
-  bottom: 8px;
-  width: 2px;
-  background: var(--c-border);
-  border-radius: 1px;
-}
-
-.tl-item {
-  position: relative;
-  padding-bottom: var(--s-48);
-}
-
-.tl-item:last-child {
-  padding-bottom: 0;
-}
-
-.tl-dot {
-  position: absolute;
-  left: calc(-1 * var(--s-48) + 4px);
-  top: 6px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--c-white);
-  border: 2px solid var(--c-blue);
-  z-index: 1;
-}
-
-.tl-item:first-child .tl-dot { background: var(--c-blue); }
-
-.tl-item h4 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--c-ink);
-  margin-bottom: var(--s-4);
-}
-
-.tl-item p {
-  font-size: 0.875rem;
-  color: var(--c-text-2);
-  line-height: 1.6;
-}
-
-/* ─── GROWTH SECTION ─── */
-.growth-grid {
-  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--s-12);
+}
+
+.skill-chip {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-left: 3px solid transparent;
+  border-radius: var(--r-sm);
+  padding: var(--s-12) var(--s-16);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--c-ink);
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+}
+
+.skill-chip:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.skill-chip.border-blue { border-left-color: var(--c-blue); }
+.skill-chip.border-mint { border-left-color: var(--c-mint); }
+.skill-chip.border-coral { border-left-color: var(--c-coral); }
+.skill-chip.border-jaune { border-left-color: var(--c-jaune); }
+.skill-chip.border-violet { border-left-color: var(--c-violet); }
+.skill-chip.border-ink { border-left-color: rgba(26,26,26,0.3); }
+
+/* SECTION 3 - GROWTH */
+.growth-channels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: var(--s-24);
   margin-top: var(--s-64);
 }
 
-.growth-card {
+.channel-card {
   position: relative;
 }
 
-.growth-card .phase-number {
-  font-size: 3rem;
-  font-weight: 900;
-  color: var(--c-blue-light);
-  line-height: 1;
-  margin-bottom: var(--s-8);
+.channel-icon {
+  font-size: 1.75rem;
+  margin-bottom: var(--s-12);
 }
 
-.growth-card .phase-title {
+.channel-title {
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--c-ink);
   margin-bottom: var(--s-16);
 }
 
-.growth-card ul {
+.channel-points {
   list-style: none;
   padding: 0;
 }
 
-.growth-card ul li {
+.channel-points li {
   font-size: 0.875rem;
   color: var(--c-text-2);
   padding: var(--s-4) 0;
   padding-left: var(--s-16);
   position: relative;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
-.growth-card ul li::before {
+.channel-points li::before {
   content: '';
   position: absolute;
   left: 0;
@@ -669,7 +534,100 @@ nav {
   background: var(--c-text-3);
 }
 
-/* ─── EXAMPLES SECTION ─── */
+.channel-highlight {
+  margin-top: var(--s-16);
+  padding: var(--s-12) var(--s-16);
+  background: var(--c-blue-light);
+  border-radius: var(--r-sm);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--c-blue);
+  line-height: 1.5;
+}
+
+/* SECTION 4 - FUNNEL */
+.funnel-wrapper {
+  margin-top: var(--s-64);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.funnel-step {
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 2px;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  transition: transform var(--dur-fast) var(--ease-apple);
+}
+
+.funnel-step:hover {
+  transform: translateX(4px);
+}
+
+.funnel-bar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-white);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: var(--s-16) var(--s-24);
+  min-height: 72px;
+}
+
+.funnel-content {
+  flex: 1;
+  padding: var(--s-16) var(--s-24);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-16);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-left: none;
+}
+
+.funnel-product {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--c-ink);
+}
+
+.funnel-product span {
+  display: block;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  color: var(--c-text-3);
+  margin-top: 2px;
+}
+
+.funnel-metric {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--c-text-2);
+  white-space: nowrap;
+}
+
+.funnel-arrow {
+  text-align: center;
+  padding: var(--s-8) 0;
+  color: var(--c-text-3);
+  font-size: 0.75rem;
+}
+
+.funnel-step-1 .funnel-bar { background: var(--c-ink); width: 100%; max-width: 160px; }
+.funnel-step-2 .funnel-bar { background: var(--c-blue); width: 100%; max-width: 140px; }
+.funnel-step-3 .funnel-bar { background: var(--c-mint); width: 100%; max-width: 120px; }
+.funnel-step-4 .funnel-bar { background: var(--c-coral); width: 100%; max-width: 100px; }
+.funnel-step-5 .funnel-bar { background: var(--c-violet); width: 100%; max-width: 80px; }
+
+/* SECTION 5 - EXAMPLES */
 .examples-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -679,16 +637,15 @@ nav {
 
 .example-window {
   overflow: hidden;
-  padding: 0;
+  padding: 0 !important;
 }
 
-.example-window .window-bar {
+.window-bar {
   display: flex;
   align-items: center;
   gap: var(--s-8);
   padding: var(--s-12) var(--s-16);
-  border-bottom: 1px solid var(--c-border);
-  background: var(--c-surface);
+  background: var(--c-ink);
 }
 
 .window-bar .dot {
@@ -697,64 +654,56 @@ nav {
   border-radius: 50%;
 }
 
-.window-bar .dot-red { background: var(--c-coral); }
-.window-bar .dot-yellow { background: var(--c-jaune); }
-.window-bar .dot-green { background: var(--c-mint); }
+.dot-red { background: var(--c-coral); }
+.dot-yellow { background: var(--c-jaune); }
+.dot-green { background: var(--c-mint); }
 
 .window-bar .window-title {
   margin-left: var(--s-8);
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--c-text-3);
+  color: rgba(255,255,255,0.5);
 }
 
-.example-window .window-body {
+.window-body {
   padding: var(--s-24);
+  background: var(--c-ink);
+  color: var(--c-white);
 }
 
-.example-window .ex-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--c-ink);
-  margin-bottom: var(--s-8);
-}
-
-.example-window .ex-desc {
+.window-prompt {
+  font-family: var(--font-mono);
   font-size: 0.8125rem;
-  color: var(--c-text-2);
-  line-height: 1.6;
+  color: var(--c-mint);
   margin-bottom: var(--s-16);
+  line-height: 1.6;
 }
 
-.example-window .ex-steps {
+.window-prompt .prompt-sign {
+  color: rgba(255,255,255,0.4);
+  margin-right: var(--s-8);
+}
+
+.window-result {
   list-style: none;
   padding: 0;
 }
 
-.example-window .ex-steps li {
+.window-result li {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   padding: var(--s-4) 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--s-8);
+  line-height: 1.5;
 }
 
-.ex-steps .step-pass {
-  color: var(--c-pass);
-}
+.result-pass { color: var(--c-mint); }
+.result-warn { color: var(--c-jaune); }
+.result-icon { flex-shrink: 0; width: 16px; text-align: center; }
 
-.ex-steps .step-risk {
-  color: var(--c-risk);
-}
-
-.ex-steps .step-icon {
-  flex-shrink: 0;
-  width: 16px;
-  text-align: center;
-}
-
-/* ─── INSTALL SECTION ─── */
+/* SECTION 6 - INSTALL */
 .install-inner {
   text-align: center;
 }
@@ -768,7 +717,7 @@ nav {
   border-radius: var(--r-md);
   display: inline-block;
   margin-top: var(--s-48);
-  margin-bottom: var(--s-64);
+  margin-bottom: var(--s-16);
   cursor: pointer;
   position: relative;
   transition: transform var(--dur-fast) var(--ease-apple);
@@ -780,23 +729,30 @@ nav {
   transform: translateY(-1px);
 }
 
-.install-code .copied-toast {
+.install-hint {
+  font-size: 0.8125rem;
+  color: var(--c-text-3);
+  margin-bottom: var(--s-64);
+}
+
+.copied-toast {
   position: absolute;
-  top: -32px;
+  top: -36px;
   left: 50%;
   transform: translateX(-50%);
   background: var(--c-ink);
   color: var(--c-white);
-  padding: 4px 12px;
+  padding: 6px 16px;
   border-radius: var(--r-sm);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   opacity: 0;
   transition: opacity var(--dur-fast);
   pointer-events: none;
+  white-space: nowrap;
 }
 
-.install-code .copied-toast.show {
+.copied-toast.show {
   opacity: 1;
 }
 
@@ -822,7 +778,34 @@ nav {
   line-height: 1.6;
 }
 
-/* ─── FOOTER ─── */
+/* SECTION 7 - NEXT STEPS */
+.next-steps-list {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+}
+
+.next-steps-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--s-16);
+  padding: var(--s-16) 0;
+  border-bottom: 1px solid var(--c-border);
+  font-size: 1rem;
+  color: var(--c-ink);
+  line-height: 1.5;
+}
+
+.next-steps-list li:last-child {
+  border-bottom: none;
+}
+
+.step-status {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+}
+
+/* FOOTER */
 footer {
   padding: var(--s-64) 0;
   text-align: center;
@@ -858,13 +841,13 @@ footer .footer-built {
   color: var(--c-text-3);
 }
 
-/* ─── SCROLLBAR ─── */
+/* SCROLLBAR */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--c-surface); }
 ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.2); }
 
-/* ─── RESPONSIVE ─── */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .section-landing {
     padding: var(--s-64) 0;
@@ -874,33 +857,15 @@ footer .footer-built {
     padding: var(--s-64) 0 var(--s-48);
   }
 
-  .hero-stats {
-    gap: var(--s-12);
-  }
-
-  .stat-glass {
-    min-width: 80px;
-    padding: var(--s-16);
-  }
-
-  .stat-glass .stat-value {
-    font-size: 1.25rem;
-  }
-
-  .data-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .data-stat-card {
-    padding: var(--s-32) var(--s-16);
-  }
-
-  .code-block {
-    font-size: 0.6875rem;
-    padding: var(--s-8) var(--s-16);
+  .built-cards {
+    grid-template-columns: 1fr;
   }
 
   .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .growth-channels {
     grid-template-columns: 1fr;
   }
 
@@ -908,23 +873,49 @@ footer .footer-built {
     grid-template-columns: 1fr;
   }
 
-  .growth-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .problem-grid {
-    grid-template-columns: 1fr;
-  }
-
   .mcp-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-stats-bar {
+    gap: var(--s-8);
+  }
+
+  .stat-glass {
+    min-width: 70px;
+    padding: var(--s-16);
+  }
+
+  .stat-glass .stat-value {
+    font-size: 1.25rem;
+  }
+
+  .funnel-bar {
+    min-height: 56px;
+    padding: var(--s-12);
+    font-size: 0.6875rem;
+  }
+
+  .funnel-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-4);
+    padding: var(--s-12) var(--s-16);
+  }
+
+  .funnel-step-1 .funnel-bar,
+  .funnel-step-2 .funnel-bar,
+  .funnel-step-3 .funnel-bar,
+  .funnel-step-4 .funnel-bar,
+  .funnel-step-5 .funnel-bar {
+    max-width: 80px;
   }
 }
 </style>
 </head>
 <body>
 
-<!-- ============ NAV ============ -->
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">
@@ -934,11 +925,11 @@ footer .footer-built {
       </svg>
     </a>
     <ul class="nav-links">
-      <li><a href="#probleme">Probleme</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#donnees">Donnees</a></li>
+      <li><a href="#construit">Produit</a></li>
       <li><a href="#growth">Growth</a></li>
+      <li><a href="#funnel">Funnel</a></li>
       <li><a href="#exemples">Exemples</a></li>
+      <li><a href="#install">Installer</a></li>
     </ul>
     <a href="https://github.com/Cleo-Labs-IA/skills_library" target="_blank" rel="noopener" class="nav-cta">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -947,53 +938,43 @@ footer .footer-built {
   </div>
 </nav>
 
-<!-- ============ SECTION 1 — HERO ============ -->
-<section class="hero-section gc-hero">
+<!-- ====== SECTION 1 -- HERO ====== -->
+<section class="hero-section gc-peach">
   <div class="container">
     <div class="hero-inner">
 
-      <!-- Wordmark -->
-      <div class="hero-wordmark fade-in">
-        <svg width="180" height="42" viewBox="0 0 500 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="88" font-family="'Satoshi', sans-serif" font-weight="900" font-size="95" fill="#0008CF">cleo</text>
-          <text x="265" y="88" font-family="'Satoshi', sans-serif" font-weight="400" font-size="95" fill="#1A1A1A">LABS</text>
-        </svg>
+      <p class="t-label fade-in" style="margin-bottom: var(--s-24)">CLEO LABS &middot; MAI 2026</p>
+
+      <h1 class="t-display hero-title fade-in d1">skills_library</h1>
+      <p class="t-body hero-subtitle fade-in d2">La plus grande biblioth&egrave;que open-source de skills compliance pour agents IA. 28 skills. Pr&ecirc;te &agrave; distribuer.</p>
+
+      <!-- CTA buttons -->
+      <div class="hero-actions fade-in d3">
+        <a href="https://github.com/Cleo-Labs-IA/skills_library" target="_blank" rel="noopener" class="btn-primary">
+          Voir sur GitHub &rarr;
+        </a>
+        <a href="#install" class="btn-outline">
+          Installer en 30s
+        </a>
       </div>
 
-      <!-- Title -->
-      <h1 class="t-display hero-title fade-in d1">skills_library</h1>
-      <p class="t-body hero-subtitle fade-in d2">La bibliotheque de skills compliance open-source pour les agents IA</p>
-
-      <!-- Stats -->
-      <div class="hero-stats fade-in d3">
-        <div class="card-glass stat-glass">
-          <div class="stat-value" data-target="12">0</div>
+      <!-- Stats bar -->
+      <div class="card-glass hero-stats-bar fade-in d4">
+        <div class="stat-glass">
+          <div class="stat-value" data-target="28">0</div>
           <div class="stat-label">skills</div>
         </div>
-        <div class="card-glass stat-glass">
-          <div class="stat-value" data-target="20" data-suffix="K+">0</div>
+        <div class="stat-glass">
+          <div class="stat-value" data-target="50" data-suffix="K">0</div>
           <div class="stat-label">mots</div>
         </div>
-        <div class="card-glass stat-glass">
-          <div class="stat-value" data-target="500" data-suffix="K+">0</div>
-          <div class="stat-label">substances</div>
+        <div class="stat-glass">
+          <div class="stat-value" data-target="184">0</div>
+          <div class="stat-label">r&eacute;fs MCP</div>
         </div>
-        <div class="card-glass stat-glass">
-          <div class="stat-value" data-target="131">0</div>
-          <div class="stat-label">pays</div>
-        </div>
-      </div>
-
-      <!-- CTA -->
-      <div class="hero-actions fade-in d4">
-        <a href="https://github.com/Cleo-Labs-IA/skills_library" target="_blank" rel="noopener" class="btn-primary">
-          <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-          Voir sur GitHub
-        </a>
-        <div class="code-block" onclick="copyCommand(this, 'git clone https://github.com/Cleo-Labs-IA/skills_library.git ~/.claude/skills/comply')" role="button" tabindex="0">
-          <code>git clone https://github.com/Cleo-Labs-IA/skills_library.git ~/.claude/skills/comply</code>
-          <span class="copy-label">Copier</span>
-          <span class="copied-toast">Copie !</span>
+        <div class="stat-glass">
+          <div class="stat-value" data-target="0" data-prefix="" data-fixed="0">0</div>
+          <div class="stat-label">langage vague</div>
         </div>
       </div>
 
@@ -1001,258 +982,293 @@ footer .footer-built {
   </div>
 </section>
 
-<!-- ============ SECTION 2 — LE PROBLEME ============ -->
-<section class="section-landing gc-warm" id="probleme">
+<!-- ====== SECTION 2 -- CE QU'ON A CONSTRUIT ====== -->
+<section class="section-landing" id="construit">
   <div class="container">
     <div class="fade-in">
-      <p class="t-label" style="margin-bottom: var(--s-16)">Le probleme</p>
-      <h2 class="t-h1">Le cauchemar compliance des petites boites produit</h2>
+      <p class="t-label" style="margin-bottom: var(--s-16)">Voil&agrave; ce qu'on a construit</p>
+      <h2 class="t-h1">La biblioth&egrave;que compliance la plus compl&egrave;te pour agents IA</h2>
     </div>
 
-    <div class="problem-grid">
+    <!-- 3 summary cards -->
+    <div class="built-cards">
       <div class="card-white fade-in d1">
-        <p class="problem-question">Mon ingredient est-il interdit en EU ?</p>
-        <p class="problem-answer">13 bases de donnees, des limites differentes par pays. Aucun outil ne consolide tout ca pour une petite marque.</p>
+        <div class="built-card-icon">&#129514;</div>
+        <div class="built-card-number">28 skills</div>
+        <p class="built-card-desc">Couvrent tout le cycle compliance d'un produit physique : de l'ingr&eacute;dient au march&eacute;.</p>
       </div>
       <div class="card-white fade-in d2">
-        <p class="problem-question">Quels labels pour vendre au Japon ?</p>
-        <p class="problem-answer">Regles d'etiquetage differentes dans chaque marche. Allergenes, langues, pictogrammes, personne responsable -- tout change.</p>
+        <div class="built-card-icon">&#127758;</div>
+        <div class="built-card-number">6 verticales</div>
+        <p class="built-card-desc">Cosm&eacute;tique, alimentaire, &eacute;lectronique, textile, jouet, emballage.</p>
       </div>
       <div class="card-white fade-in d3">
-        <p class="problem-question">Combien ca coute d'entrer sur ce marche ?</p>
-        <p class="problem-answer">Droits de douane, certifications, notifications, tests labo -- un labyrinthe administratif qui bloque les petites equipes.</p>
+        <div class="built-card-icon">&#9889;</div>
+        <div class="built-card-number">Multi-agent</div>
+        <p class="built-card-desc">Scan parall&egrave;le de march&eacute;s, collecte d'evidence, pipeline r&eacute;glementaire.</p>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ============ SECTION 3 — LES 12 SKILLS ============ -->
-<section class="section-landing" id="skills">
-  <div class="container">
-    <div class="fade-in">
-      <p class="t-label" style="margin-bottom: var(--s-16)">La solution</p>
-      <h2 class="t-h1">12 skills qui repondent a une seule question</h2>
-      <p class="t-body skills-subtitle">Qu'est-ce que je dois faire pour vendre mon produit sur ce marche ?</p>
-    </div>
+    <!-- All 28 skills grouped by tier -->
 
-    <!-- Tier 1 — Product Core -->
+    <!-- Product Core -->
     <div class="tier-group fade-in">
       <div class="tier-label">
         <span class="tier-dot" style="background: var(--c-blue)"></span>
-        <span>Product Core</span>
+        <span class="tier-name">Product Core</span>
       </div>
       <div class="skills-grid">
-        <div class="card-white skill-card border-blue">
-          <div class="skill-name">product-compliance</div>
-          <p class="skill-desc">Verifie tes ingredients contre 13 bases de substances (CosIng, ECHA, REACH, Prop 65, FDA, EFSA...). Verdict par substance par juridiction.</p>
-        </div>
-        <div class="card-white skill-card border-blue">
-          <div class="skill-name">labeling-compliance</div>
-          <p class="skill-desc">Regles d'etiquetage pays par pays -- INCI, allergenes, avertissements, personne responsable, CE/UKCA, multi-langue.</p>
-        </div>
-        <div class="card-white skill-card border-blue">
-          <div class="skill-name">market-entry-checklist</div>
-          <p class="skill-desc">Checklist etape par etape pour entrer sur un nouveau marche -- de la classification produit a la premiere vente legale.</p>
-        </div>
+        <div class="skill-chip border-blue">product-compliance</div>
+        <div class="skill-chip border-blue">labeling</div>
+        <div class="skill-chip border-blue">market-entry</div>
+        <div class="skill-chip border-blue">substance-screening</div>
       </div>
     </div>
 
-    <!-- Tier 2 — Market Intel -->
+    <!-- Market Intel -->
     <div class="tier-group fade-in">
       <div class="tier-label">
         <span class="tier-dot" style="background: var(--c-mint)"></span>
-        <span>Market Intel</span>
+        <span class="tier-name">Market Intel</span>
       </div>
       <div class="skills-grid">
-        <div class="card-white skill-card border-mint">
-          <div class="skill-name">regulatory-intelligence</div>
-          <p class="skill-desc">Monitore les signaux qui peuvent bloquer ta vente -- interdictions de substances, changements d'etiquetage, rappels, deadlines.</p>
-        </div>
-        <div class="card-white skill-card border-mint">
-          <div class="skill-name">multi-jurisdiction-scan</div>
-          <p class="skill-desc">Scan parallele multi-agents sur tous tes marches cibles. Un agent par juridiction, synthese consolidee. 131 pays couverts.</p>
-        </div>
-        <div class="card-white skill-card border-mint">
-          <div class="skill-name">customs-and-trade</div>
-          <p class="skill-desc">Classification HS, calcul de droits, cout rendu, screening dual-use, verification sanctions. Tout pour franchir les frontieres.</p>
-        </div>
+        <div class="skill-chip border-mint">regulatory-intelligence</div>
+        <div class="skill-chip border-mint">multi-jurisdiction</div>
+        <div class="skill-chip border-mint">customs</div>
+        <div class="skill-chip border-mint">regulatory-calendar</div>
       </div>
     </div>
 
-    <!-- Tier 3 — Action -->
+    <!-- Action -->
     <div class="tier-group fade-in">
       <div class="tier-label">
         <span class="tier-dot" style="background: var(--c-coral)"></span>
-        <span>Action</span>
+        <span class="tier-name">Action</span>
       </div>
       <div class="skills-grid">
-        <div class="card-white skill-card border-coral">
-          <div class="skill-name">compliance-audit-sprint</div>
-          <p class="skill-desc">Sprint compliance pre-lancement -- identifie categorie, mappe reglementations, verifie substances, verifie etiquettes, estime couts.</p>
-        </div>
-        <div class="card-white skill-card border-coral">
-          <div class="skill-name">compliance-remediation</div>
-          <p class="skill-desc">Corrige les problemes pour debloquer l'entree sur le marche -- reformuler, reetiqueter, tester, certifier.</p>
-        </div>
-        <div class="card-white skill-card border-coral">
-          <div class="skill-name">evidence-blitz</div>
-          <p class="skill-desc">Collecte parallele de toute la documentation compliance -- docs securite, preuves etiquetage, docs substances, certifications.</p>
-        </div>
+        <div class="skill-chip border-coral">audit-sprint</div>
+        <div class="skill-chip border-coral">remediation</div>
+        <div class="skill-chip border-coral">evidence-blitz</div>
+        <div class="skill-chip border-coral">recall-response</div>
       </div>
     </div>
 
-    <!-- Tier 4 — Reference -->
+    <!-- Deep Dives -->
+    <div class="tier-group fade-in">
+      <div class="tier-label">
+        <span class="tier-dot" style="background: var(--c-jaune)"></span>
+        <span class="tier-name">Deep Dives</span>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-chip border-jaune">packaging</div>
+        <div class="skill-chip border-jaune">testing-cert</div>
+        <div class="skill-chip border-jaune">responsible-person</div>
+        <div class="skill-chip border-jaune">claims</div>
+        <div class="skill-chip border-jaune">import-export</div>
+        <div class="skill-chip border-jaune">marketplace</div>
+      </div>
+    </div>
+
+    <!-- Verticals -->
     <div class="tier-group fade-in">
       <div class="tier-label">
         <span class="tier-dot" style="background: var(--c-violet)"></span>
-        <span>Reference</span>
+        <span class="tier-name">Verticals</span>
       </div>
       <div class="skills-grid">
-        <div class="card-white skill-card border-violet">
-          <div class="skill-name">compliance-frameworks-ref</div>
-          <p class="skill-desc">Reference rapide des reglementations produit -- EU Cosmetics 1223/2009, REACH, FDA MoCRA, Prop 65, CE/UKCA, GPSR, EN 71, RoHS.</p>
-        </div>
-        <div class="card-white skill-card border-violet">
-          <div class="skill-name">compliance-mcp-tools</div>
-          <p class="skill-desc">Guide des 29 outils MCP -- Cleo Legal API (customs, substances, sanctions) + Cleo Insight (signaux, reglementations) + Bastion.</p>
-        </div>
-        <div class="card-white skill-card border-violet">
-          <div class="skill-name">compliance-reporting</div>
-          <p class="skill-desc">Matrice de conformite produit x marche. Exportable pour acheteurs, distributeurs, marketplaces. Le livrable final.</p>
-        </div>
+        <div class="skill-chip border-violet">cosmetics</div>
+        <div class="skill-chip border-violet">food</div>
+        <div class="skill-chip border-violet">electronics</div>
+        <div class="skill-chip border-violet">textile</div>
+        <div class="skill-chip border-violet">toy</div>
+        <div class="skill-chip border-violet">sustainability</div>
+        <div class="skill-chip border-violet">product-safety-incident</div>
       </div>
     </div>
+
+    <!-- Reference -->
+    <div class="tier-group fade-in">
+      <div class="tier-label">
+        <span class="tier-dot" style="background: rgba(26,26,26,0.3)"></span>
+        <span class="tier-name">Reference</span>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-chip border-ink">frameworks-ref</div>
+        <div class="skill-chip border-ink">mcp-tools</div>
+        <div class="skill-chip border-ink">reporting</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ============ SECTION 4 — COMMENT C'EST CONSTRUIT ============ -->
-<section class="section-landing gc-blue" id="donnees">
+<!-- ====== SECTION 3 -- LA MACHINE DE GROWTH ====== -->
+<section class="section-landing gc-warm" id="growth">
   <div class="container">
     <div class="fade-in">
-      <p class="t-label" style="margin-bottom: var(--s-16)">Les donnees</p>
-      <h2 class="t-h1">Construit a partir de donnees de production reelles</h2>
+      <p class="t-label" style="margin-bottom: var(--s-16)">La strat&eacute;gie</p>
+      <h2 class="t-h1">Comment on fait pour que tout le monde la t&eacute;l&eacute;charge</h2>
+      <p class="t-body" style="max-width: 640px; margin-top: var(--s-16);">Pas juste un repo GitHub qui prend la poussi&egrave;re. Un plan d'acquisition en 6 canaux.</p>
     </div>
 
-    <div class="data-stats">
-      <div class="card-white data-stat-card fade-in d1">
-        <div class="big-number" data-target="1479" data-animate="true">0</div>
-        <div class="big-label">sources legales</div>
-      </div>
-      <div class="card-white data-stat-card fade-in d2">
-        <div class="big-number" data-target="1680" data-suffix="K" data-animate="true">0</div>
-        <div class="big-label">documents juridiques</div>
-      </div>
-      <div class="card-white data-stat-card fade-in d3">
-        <div class="big-number" data-target="62" data-animate="true">0</div>
-        <div class="big-label">reglementations cataloguees</div>
-      </div>
-      <div class="card-white data-stat-card fade-in d4">
-        <div class="big-number" data-target="78" data-animate="true">0</div>
-        <div class="big-label">reglementations monitorees</div>
-      </div>
-    </div>
+    <div class="growth-channels">
 
-    <div class="fade-in">
-      <p class="t-label" style="margin-bottom: var(--s-32)">Processus de construction</p>
-    </div>
+      <!-- Canal 1 -->
+      <div class="card-warm channel-card fade-in d1" style="background: var(--c-white); border: 1px solid var(--c-border);">
+        <div class="channel-icon">&#128268;</div>
+        <div class="channel-title">Canal 1 &mdash; Plugin Claude Code officiel</div>
+        <ul class="channel-points">
+          <li>Soumission au registre de plugins Claude Code (Anthropic)</li>
+          <li>Si accept&eacute; = distribution &agrave; TOUS les utilisateurs Claude Code</li>
+          <li>Effet r&eacute;seau imm&eacute;diat sur toute la base install&eacute;e</li>
+          <li>Action : PR vers le repo Anthropic plugins, respecter leur format</li>
+        </ul>
+        <div class="channel-highlight">C'est le canal #1. Acceptation = distribution massive sans effort marketing.</div>
+      </div>
 
-    <div class="build-timeline fade-in">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <h4>8 agents d'exploration parallele</h4>
-        <p>Scan de tous les repos Cleo Labs -- cleo-insight, legal-sources, cleo-legal-api-v2, cleo-shopify, cleo-bi et 8 autres.</p>
+      <!-- Canal 2 -->
+      <div class="card-warm channel-card fade-in d2" style="background: var(--c-white); border: 1px solid var(--c-border);">
+        <div class="channel-icon">&#127919;</div>
+        <div class="channel-title">Canal 2 &mdash; Claude.ai MCP Integration</div>
+        <ul class="channel-points">
+          <li>Les skills utilisent Cleo Insight + Cleo Legal API via MCP</li>
+          <li>Chaque user qui installe les skills D&Eacute;COUVRE nos MCP servers</li>
+          <li>Funnel : skills (gratuit) &rarr; MCP (gratuit) &rarr; Cleo Insight (payant)</li>
+        </ul>
+        <div class="channel-highlight">Product-led growth pur. Le produit gratuit vend le produit payant.</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <h4>Cartographie MCP live</h4>
-        <p>20 outils Bastion + 9 outils Cleo Insight + Legal API interroges en direct. Vrais parametres, vrais retours.</p>
+
+      <!-- Canal 3 -->
+      <div class="card-warm channel-card fade-in d3" style="background: var(--c-white); border: 1px solid var(--c-border);">
+        <div class="channel-icon">&#129525;</div>
+        <div class="channel-title">Canal 3 &mdash; "Compliance in 30 seconds"</div>
+        <ul class="channel-points">
+          <li>S&eacute;rie de posts courts (Twitter/LinkedIn/TikTok) : un prompt, un r&eacute;sultat</li>
+          <li>"J'ai demand&eacute; &agrave; Claude si ma cr&egrave;me au r&eacute;tinol est l&eacute;gale en EU. R&eacute;ponse en 8s."</li>
+          <li>Format : screen recording du terminal Claude Code &rarr; r&eacute;sultat compliance</li>
+          <li>1 post/jour pendant 30 jours. Chaque post = 1 skill en action.</li>
+          <li>PAS de thread technique. Des r&eacute;sultats concrets pour fondateurs D2C.</li>
+        </ul>
       </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <h4>Extraction de donnees de production</h4>
-        <p>78 reglementations scannees, 25/77 tests ISO passing, profil Decathlon (49 pays), signaux compliance en temps reel.</p>
+
+      <!-- Canal 4 -->
+      <div class="card-warm channel-card fade-in d4" style="background: var(--c-white); border: 1px solid var(--c-border);">
+        <div class="channel-icon">&#127978;</div>
+        <div class="channel-title">Canal 4 &mdash; Shopify App Store + Marketplaces</div>
+        <ul class="channel-points">
+          <li>Les skills sont le cerveau derri&egrave;re l'app Shopify Cleo (Revenue-at-Risk)</li>
+          <li>Chaque marchant qui installe l'app utilise les skills sous le capot</li>
+          <li>Cross-pollination : "Powered by Comply skills" dans l'app</li>
+          <li>Extension : WooCommerce, BigCommerce, Prestashop</li>
+        </ul>
       </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <h4>v1.0 -- 15 skills corporate (8 694 mots)</h4>
-        <p>Architecture 4 tiers, 19 fichiers. Couverture corporate : RGPD, ISO 27001, SOC2, DORA, NIS2.</p>
+
+      <!-- Canal 5 -->
+      <div class="card-warm channel-card fade-in d5" style="background: var(--c-white); border: 1px solid var(--c-border);">
+        <div class="channel-icon">&#127891;</div>
+        <div class="channel-title">Canal 5 &mdash; Compliance Academy</div>
+        <ul class="channel-points">
+          <li>"Lancer sa marque cosm&eacute;tique en EU : le guide complet"</li>
+          <li>"Exporter au Japon : de A &agrave; Z"</li>
+          <li>"CE marking pour les nuls"</li>
+          <li>Chaque guide se termine par "Automatisez tout &ccedil;a avec skills_library"</li>
+          <li>Blog Cleo, Medium, Notion templates, newsletters D2C</li>
+          <li>SEO long-tail sur les requ&ecirc;tes compliance produit</li>
+        </ul>
+        <div class="channel-highlight">&Eacute;ducation comme canal d'acquisition. Le contenu am&egrave;ne le trafic, les skills convertissent.</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <h4>v1.1 -- Hardening avec 3 agents paralleles</h4>
-        <p>Injection de vrais parametres MCP, formules de scoring de production, prompts d'agents actionables.</p>
+
+      <!-- Canal 6 -->
+      <div class="card-warm channel-card fade-in d6" style="background: var(--c-white); border: 1px solid var(--c-border);">
+        <div class="channel-icon">&#129309;</div>
+        <div class="channel-title">Canal 6 &mdash; Partenariats verticaux</div>
+        <ul class="channel-points">
+          <li><strong>Labs de test</strong> (SGS, T&Uuml;V, Intertek, Eurofins) : "Recommandez nos skills &agrave; vos clients avant les tests"</li>
+          <li><strong>Incubateurs D2C</strong> (Station F, Y Combinator, Techstars) : "Le toolkit compliance de vos startups"</li>
+          <li><strong>Plateformes d'ingr&eacute;dients</strong> (Aroma-Zone, MakingCosmetics) : "V&eacute;rifiez la conformit&eacute; avant de formuler"</li>
+          <li><strong>R&eacute;seaux de Responsible Persons</strong> : "Pr&eacute;-qualifiez vos clients avec nos skills"</li>
+        </ul>
+        <div class="channel-highlight">Chaque partenaire = un canal de distribution avec cr&eacute;dibilit&eacute; int&eacute;gr&eacute;e.</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <h4>v2.0 -- Refonte produit physique (20 819 mots)</h4>
-        <p>Pivot strategique : suppression du corporate, focus produit physique. Suppression de 5 skills, reecriture de 10, creation de 2 nouveaux.</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <h4>Launch kit -- Distribution</h4>
-        <p>Repo public, README viral, INSTALL.md one-liner, EXAMPLES.md avec 5 scenarios. Posts prepares pour 6 plateformes.</p>
-      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ============ SECTION 5 — STRATEGIE DE GROWTH ============ -->
-<section class="section-landing" id="growth">
+<!-- ====== SECTION 4 -- LE FUNNEL ====== -->
+<section class="section-landing gc-blue" id="funnel">
   <div class="container">
     <div class="fade-in">
-      <p class="t-label" style="margin-bottom: var(--s-16)">Strategie</p>
-      <h2 class="t-h1">Plan de deploiement</h2>
+      <p class="t-label" style="margin-bottom: var(--s-16)">Le funnel</p>
+      <h2 class="t-h1">Du repo GitHub au revenu r&eacute;current</h2>
     </div>
 
-    <div class="growth-grid">
-      <div class="card-warm growth-card fade-in d1">
-        <div class="phase-number">01</div>
-        <div class="phase-title">Distribution</div>
-        <ul>
-          <li>GitHub public, README viral, one-liner install</li>
-          <li>Twitter/X -- thread 6 tweets</li>
-          <li>LinkedIn -- post long-form D2C</li>
-          <li>Reddit -- r/ClaudeAI, r/entrepreneur</li>
-          <li>Hacker News -- Show HN</li>
-          <li>Product Hunt -- launch day</li>
-        </ul>
+    <div class="funnel-wrapper fade-in d1">
+
+      <div class="funnel-step funnel-step-1">
+        <div class="funnel-bar">AWARENESS</div>
+        <div class="funnel-content">
+          <div class="funnel-product">
+            skills_library
+            <span>Open-source, gratuit</span>
+          </div>
+        </div>
       </div>
-      <div class="card-warm growth-card fade-in d2">
-        <div class="phase-number">02</div>
-        <div class="phase-title">Communaute</div>
-        <ul>
-          <li>GitHub Discussions pour Q&A</li>
-          <li>PRs : skill packs par industrie</li>
-          <li>Cosmetics, electronics, food, textile</li>
-          <li>Case studies communautaires</li>
-        </ul>
+      <div class="funnel-arrow">&darr; 15% installent les skills</div>
+
+      <div class="funnel-step funnel-step-2">
+        <div class="funnel-bar">ACTIVATION</div>
+        <div class="funnel-content">
+          <div class="funnel-product">
+            MCP servers Cleo
+            <span>Gratuit, d&eacute;couvert via les skills</span>
+          </div>
+          <div class="funnel-metric">15% &rarr; install</div>
+        </div>
       </div>
-      <div class="card-warm growth-card fade-in d3">
-        <div class="phase-number">03</div>
-        <div class="phase-title">Amplification</div>
-        <ul>
-          <li>Influenceurs D2C et indie makers</li>
-          <li>Blog : "12 skills en 1 session Opus"</li>
-          <li>Newsletter compliance</li>
-          <li>Integration Cursor, Windsurf, Codex</li>
-        </ul>
+      <div class="funnel-arrow">&darr; 30% connectent un MCP server</div>
+
+      <div class="funnel-step funnel-step-3">
+        <div class="funnel-bar">ENGAGEMENT</div>
+        <div class="funnel-content">
+          <div class="funnel-product">
+            Cleo Insight free tier
+            <span>Monitoring, signaux r&eacute;glementaires</span>
+          </div>
+          <div class="funnel-metric">30% &rarr; connect</div>
+        </div>
       </div>
-      <div class="card-warm growth-card fade-in d4">
-        <div class="phase-number">04</div>
-        <div class="phase-title">Monetisation</div>
-        <ul>
-          <li>Skills gratuits = lead gen pour Cleo Insight</li>
-          <li>Skills utilisent les MCP Cleo par defaut</li>
-          <li>Upsell : monitoring payant</li>
-          <li>Enterprise : skills custom + support</li>
-        </ul>
+      <div class="funnel-arrow">&darr; 5% passent en Pro</div>
+
+      <div class="funnel-step funnel-step-4">
+        <div class="funnel-bar">REVENUE</div>
+        <div class="funnel-content">
+          <div class="funnel-product">
+            Cleo Insight Pro
+            <span>&euro;349/mois &mdash; monitoring continu, signaux critiques</span>
+          </div>
+          <div class="funnel-metric">5% &rarr; payant</div>
+        </div>
       </div>
+      <div class="funnel-arrow">&darr; 20% upsell enterprise</div>
+
+      <div class="funnel-step funnel-step-5">
+        <div class="funnel-bar">EXPANSION</div>
+        <div class="funnel-content">
+          <div class="funnel-product">
+            Cleo Enterprise
+            <span>Custom &mdash; clients &agrave; fort volume</span>
+          </div>
+          <div class="funnel-metric">20% &rarr; upsell</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ============ SECTION 6 — EXEMPLES CONCRETS ============ -->
-<section class="section-landing gc-warm" id="exemples">
+<!-- ====== SECTION 5 -- EXEMPLES CONCRETS ====== -->
+<section class="section-landing" id="exemples">
   <div class="container">
     <div class="fade-in">
       <p class="t-label" style="margin-bottom: var(--s-16)">En action</p>
@@ -1260,8 +1276,9 @@ footer .footer-built {
     </div>
 
     <div class="examples-grid">
+
       <!-- Example 1 -->
-      <div class="card-white example-window fade-in d1" style="padding: 0;">
+      <div class="card-white example-window fade-in d1">
         <div class="window-bar">
           <span class="dot dot-red"></span>
           <span class="dot dot-yellow"></span>
@@ -1269,21 +1286,22 @@ footer .footer-built {
           <span class="window-title">claude-code</span>
         </div>
         <div class="window-body">
-          <div class="ex-title">Creme visage EU</div>
-          <div class="ex-desc">Substance check + labeling + market entry pour une creme avec 23 ingredients.</div>
-          <ul class="ex-steps">
-            <li class="step-pass"><span class="step-icon">&check;</span> 21/23 substances OK</li>
-            <li class="step-risk"><span class="step-icon">!</span> retinol -- max 0.3% (Annex III/217)</li>
-            <li class="step-risk"><span class="step-icon">!</span> phenoxyethanol -- max 1.0% (Annex V/29)</li>
-            <li class="step-pass"><span class="step-icon">&check;</span> Label INCI genere (FR + EN)</li>
-            <li class="step-pass"><span class="step-icon">&check;</span> Personne responsable EU requise</li>
-            <li class="step-pass"><span class="step-icon">&check;</span> DIP a preparer</li>
+          <div class="window-prompt">
+            <span class="prompt-sign">$</span>V&eacute;rifie ma cr&egrave;me visage r&eacute;tinol pour le march&eacute; EU
+          </div>
+          <ul class="window-result">
+            <li class="result-pass"><span class="result-icon">&#10003;</span> 21/23 substances OK (CosIng + REACH)</li>
+            <li class="result-warn"><span class="result-icon">!</span> R&eacute;tinol &mdash; max 0.3% (Annex III/217)</li>
+            <li class="result-warn"><span class="result-icon">!</span> Phenoxyethanol &mdash; max 1.0% (Annex V/29)</li>
+            <li class="result-pass"><span class="result-icon">&#10003;</span> Notification CPNP requise</li>
+            <li class="result-pass"><span class="result-icon">&#10003;</span> Responsible Person EU &agrave; d&eacute;signer</li>
+            <li class="result-pass"><span class="result-icon">&#10003;</span> DIP (Dossier Information Produit) &agrave; pr&eacute;parer</li>
           </ul>
         </div>
       </div>
 
       <!-- Example 2 -->
-      <div class="card-white example-window fade-in d2" style="padding: 0;">
+      <div class="card-white example-window fade-in d2">
         <div class="window-bar">
           <span class="dot dot-red"></span>
           <span class="dot dot-yellow"></span>
@@ -1291,21 +1309,22 @@ footer .footer-built {
           <span class="window-title">claude-code</span>
         </div>
         <div class="window-body">
-          <div class="ex-title">Enceinte Bluetooth US+EU</div>
-          <div class="ex-desc">Certifications FCC + CE, classification HS, RoHS, dual-use screening.</div>
-          <ul class="ex-steps">
-            <li class="step-pass"><span class="step-icon">&check;</span> HS : 8518.22 (loudspeakers)</li>
-            <li class="step-pass"><span class="step-icon">&check;</span> CE marking (RED 2014/53/EU)</li>
-            <li class="step-pass"><span class="step-icon">&check;</span> RoHS 2011/65/EU -- conforme</li>
-            <li class="step-risk"><span class="step-icon">!</span> WEEE registration obligatoire</li>
-            <li class="step-pass"><span class="step-icon">&check;</span> FCC Part 15 OK</li>
-            <li class="step-pass"><span class="step-icon">&check;</span> Droits : 4.9% (MFN)</li>
+          <div class="window-prompt">
+            <span class="prompt-sign">$</span>Enceinte Bluetooth &mdash; certifications US + EU
+          </div>
+          <ul class="window-result">
+            <li class="result-pass"><span class="result-icon">&#10003;</span> CE marking (RED 2014/53/EU)</li>
+            <li class="result-pass"><span class="result-icon">&#10003;</span> FCC Part 15 Subpart C</li>
+            <li class="result-pass"><span class="result-icon">&#10003;</span> RoHS 2011/65/EU &mdash; conforme</li>
+            <li class="result-warn"><span class="result-icon">!</span> WEEE registration obligatoire (chaque &Eacute;tat membre)</li>
+            <li class="result-pass"><span class="result-icon">&#10003;</span> HS : 8518.22 (loudspeakers)</li>
+            <li class="result-pass"><span class="result-icon">&#10003;</span> Droits : 4.9% (MFN EU), 0% (US)</li>
           </ul>
         </div>
       </div>
 
       <!-- Example 3 -->
-      <div class="card-white example-window fade-in d3" style="padding: 0;">
+      <div class="card-white example-window fade-in d3">
         <div class="window-bar">
           <span class="dot dot-red"></span>
           <span class="dot dot-yellow"></span>
@@ -1313,35 +1332,38 @@ footer .footer-built {
           <span class="window-title">claude-code</span>
         </div>
         <div class="window-body">
-          <div class="ex-title">Chocolat export Japon</div>
-          <div class="ex-desc">Customs + labeling + food sanitation pour du chocolat artisanal 72%.</div>
-          <ul class="ex-steps">
-            <li class="step-pass"><span class="step-icon">&check;</span> HS : 1806.32</li>
-            <li class="step-pass"><span class="step-icon">&check;</span> Tous additifs listes MHLW</li>
-            <li class="step-risk"><span class="step-icon">!</span> Etiquetage JA obligatoire (7 allergenes)</li>
-            <li class="step-risk"><span class="step-icon">!</span> Soja = allergene recommande JP</li>
-            <li class="step-pass"><span class="step-icon">&check;</span> Certificat sanitaire FR requis</li>
-            <li class="step-pass"><span class="step-icon">&check;</span> Droits : 10% (WTO bound)</li>
+          <div class="window-prompt">
+            <span class="prompt-sign">$</span>Compl&eacute;ment alimentaire export Japon
+          </div>
+          <ul class="window-result">
+            <li class="result-pass"><span class="result-icon">&#10003;</span> Food Sanitation Act &mdash; cat&eacute;gorie "health food"</li>
+            <li class="result-warn"><span class="result-icon">!</span> &Eacute;tiquetage JA obligatoire (7 allerg&egrave;nes majeurs)</li>
+            <li class="result-warn"><span class="result-icon">!</span> D&eacute;claration d'importation MHLW requise</li>
+            <li class="result-pass"><span class="result-icon">&#10003;</span> HS : 2106.90 (pr&eacute;parations alimentaires)</li>
+            <li class="result-pass"><span class="result-icon">&#10003;</span> Certificat sanitaire pays d'origine requis</li>
+            <li class="result-pass"><span class="result-icon">&#10003;</span> Droits : 8.8% (WTO bound rate)</li>
           </ul>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ============ SECTION 7 — INSTALLATION ============ -->
+<!-- ====== SECTION 6 -- INSTALLATION ====== -->
 <section class="section-landing gc-mint" id="install">
   <div class="container">
     <div class="install-inner">
       <div class="fade-in">
-        <p class="t-label" style="margin-bottom: var(--s-16)">Demarrage</p>
-        <h2 class="t-h1">Installation en 30 secondes</h2>
+        <p class="t-label" style="margin-bottom: var(--s-16)">Installation</p>
+        <h2 class="t-h1">Une seule commande</h2>
       </div>
 
-      <div class="install-code fade-in d1" onclick="copyCommand(this, 'git clone https://github.com/Cleo-Labs-IA/skills_library.git ~/.claude/skills/comply')" role="button" tabindex="0">
+      <div class="install-code fade-in d1" onclick="copyInstall(this)" role="button" tabindex="0">
         <code>git clone https://github.com/Cleo-Labs-IA/skills_library.git ~/.claude/skills/comply</code>
-        <span class="copied-toast">Copie !</span>
+        <span class="copied-toast">Copi&eacute; &#10003;</span>
       </div>
+      <p class="install-hint fade-in d1">Cliquez pour copier</p>
 
       <div class="fade-in d2">
         <p class="t-label" style="margin-bottom: var(--s-24)">MCP Servers optionnels</p>
@@ -1349,23 +1371,58 @@ footer .footer-built {
 
       <div class="mcp-grid fade-in d3">
         <div class="card-white mcp-card">
-          <div class="mcp-name">Cleo Legal API</div>
-          <p class="mcp-desc">Customs classification, substance checks, duty calculation, landed cost, sanctions screening.</p>
+          <div class="mcp-name">Cleo Insight</div>
+          <p class="mcp-desc">Signaux r&eacute;glementaires, suivi des r&eacute;gulations, autorit&eacute;s, produits, pays. Core pour le monitoring.</p>
         </div>
         <div class="card-white mcp-card">
-          <div class="mcp-name">Cleo Insight</div>
-          <p class="mcp-desc">Regulatory signals, regulation tracking, authorities, products, countries. Core pour le monitoring.</p>
+          <div class="mcp-name">Cleo Legal API</div>
+          <p class="mcp-desc">Classification douani&egrave;re, screening substances, calcul de droits, co&ucirc;t rendu, screening sanctions.</p>
         </div>
         <div class="card-white mcp-card">
           <div class="mcp-name">Bastion</div>
-          <p class="mcp-desc">ISO 27001 / SOC2 framework management. Pour les entreprises qui gerent aussi des donnees.</p>
+          <p class="mcp-desc">ISO 27001 si vous g&eacute;rez des donn&eacute;es clients. Framework management, evidence, compliance tests.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
+<!-- ====== SECTION 7 -- PROCHAINES ETAPES ====== -->
+<section class="section-landing" id="next">
+  <div class="container">
+    <div class="fade-in">
+      <p class="t-label" style="margin-bottom: var(--s-16)">Prochaines &eacute;tapes</p>
+      <h2 class="t-h1">Roadmap</h2>
+    </div>
+
+    <div class="card-warm fade-in d1" style="margin-top: var(--s-48); max-width: 700px;">
+      <ul class="next-steps-list">
+        <li>
+          <span class="step-status">&#9989;</span>
+          <span><strong>v3.0 &mdash; 28 skills pr&ecirc;tes</strong> &mdash; fait</span>
+        </li>
+        <li>
+          <span class="step-status">&#128284;</span>
+          <span>Soumission plugin Claude Code officiel</span>
+        </li>
+        <li>
+          <span class="step-status">&#128284;</span>
+          <span>Premi&egrave;re campagne "Compliance in 30 seconds"</span>
+        </li>
+        <li>
+          <span class="step-status">&#128284;</span>
+          <span>Partenariats labs (SGS, Eurofins)</span>
+        </li>
+        <li>
+          <span class="step-status">&#128284;</span>
+          <span>Compliance Academy &mdash; premier guide</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
 <footer>
   <div class="container">
     <p class="footer-brand">Cleo Labs &middot; Paris &middot; 2026</p>
@@ -1373,13 +1430,13 @@ footer .footer-built {
       <a href="https://github.com/Cleo-Labs-IA/skills_library" target="_blank" rel="noopener">GitHub</a>
       <a href="https://cleolabs.co" target="_blank" rel="noopener">cleolabs.co</a>
     </div>
-    <p class="footer-built">Built with Claude Opus 4.7</p>
+    <p class="footer-built">Built with Claude Code</p>
   </div>
 </footer>
 
-<!-- ============ SCRIPTS ============ -->
+<!-- ====== SCRIPTS ====== -->
 <script>
-// ─── Intersection Observer for fade-in ───
+// Intersection Observer for fade-in
 const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -1393,7 +1450,7 @@ const fadeObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
 
-// ─── Counter animation ───
+// Counter animation
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -1403,6 +1460,14 @@ const counterObserver = new IntersectionObserver((entries) => {
 
       const target = parseInt(el.dataset.target);
       const suffix = el.dataset.suffix || '';
+      const prefix = el.dataset.prefix !== undefined ? el.dataset.prefix : '';
+
+      // Special case for "0" stat
+      if (el.dataset.fixed === '0') {
+        el.textContent = '0';
+        return;
+      }
+
       const duration = 1200;
       const start = performance.now();
 
@@ -1411,80 +1476,28 @@ const counterObserver = new IntersectionObserver((entries) => {
         const progress = Math.min(elapsed / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
         const current = Math.round(eased * target);
-
-        if (suffix === 'K') {
-          el.textContent = (current / 1000).toFixed(current >= 1000 ? 2 : 0).replace('.', ',') + ' M';
-          if (progress >= 1) {
-            el.textContent = '28';
-          }
-        } else {
-          el.textContent = current.toLocaleString('fr-FR') + suffix;
-        }
-
+        el.textContent = prefix + current.toLocaleString('fr-FR') + suffix;
         if (progress < 1) requestAnimationFrame(tick);
       }
 
-      if (suffix === 'K') {
-        // Special handling for counter
-        el.textContent = '28';
-      } else {
-        requestAnimationFrame(tick);
-      }
+      requestAnimationFrame(tick);
     }
   });
 }, { threshold: 0.5 });
 
-// Observe hero stats
 document.querySelectorAll('.stat-value[data-target]').forEach(el => counterObserver.observe(el));
 
-// Observe big numbers in data section
-document.querySelectorAll('.big-number[data-target]').forEach(el => {
-  const bigObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        if (el.dataset.counted) return;
-        el.dataset.counted = 'true';
-
-        const target = parseInt(el.dataset.target);
-        const suffix = el.dataset.suffix || '';
-        const duration = 1400;
-        const start = performance.now();
-
-        function tick(now) {
-          const elapsed = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const current = Math.round(eased * target);
-
-          if (suffix === 'K') {
-            const m = (current / 1000);
-            el.textContent = m.toFixed(2).replace('.', ',') + 'M';
-            if (progress >= 1) el.textContent = '28';
-          } else {
-            el.textContent = current.toLocaleString('fr-FR');
-          }
-
-          if (progress < 1) requestAnimationFrame(tick);
-        }
-
-        requestAnimationFrame(tick);
-      }
-    });
-  }, { threshold: 0.5 });
-  bigObserver.observe(el);
-});
-
-// ─── Click-to-copy ───
-function copyCommand(block, text) {
+// Click-to-copy install command
+function copyInstall(block) {
+  const text = 'git clone https://github.com/Cleo-Labs-IA/skills_library.git ~/.claude/skills/comply';
   navigator.clipboard.writeText(text).then(() => {
     const toast = block.querySelector('.copied-toast');
     toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 1500);
+    setTimeout(() => toast.classList.remove('show'), 1800);
   });
 }
 
-// ─── Smooth scroll ───
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
