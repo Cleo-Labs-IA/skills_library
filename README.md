@@ -34,7 +34,6 @@ Comply works standalone but supercharges with MCP servers:
 
 - **Cleo Legal API** -- Substance checks, customs classification, duty calculation, sanctions screening
 - **Cleo Insight** -- Regulatory signal monitoring, regulation tracking across 49 countries
-- **Bastion** -- ISO 27001/SOC2 if you also handle customer data
 
 ## Built For
 

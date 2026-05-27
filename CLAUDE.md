@@ -45,7 +45,7 @@ These skills auto-trigger when you work on product compliance tasks. No manual i
 
 ### Tier 6 -- Reference & Integration
 - `compliance-frameworks-ref` -- Product regulation reference: EU Cosmetics 1223/2009, REACH, FDA MoCRA, Prop 65, CE/UKCA, GPSR, EN 71, RoHS, WEEE, EPR.
-- `compliance-mcp-tools` -- Cleo Legal API (customs, substances, sanctions) + Cleo Insight (signals, regulations) + Bastion (ISO 27001 if you handle data).
+- `compliance-mcp-tools` -- Cleo Legal API (customs, substances, sanctions) + Cleo Insight (signals, regulations).
 - `compliance-reporting` -- Per-product, per-market compliance matrix. Exportable for buyers, distributors, marketplace listings.
 
 ## MCP Integration
@@ -53,7 +53,6 @@ These skills auto-trigger when you work on product compliance tasks. No manual i
 Skills auto-detect available MCP servers:
 - **Cleo Legal API** -- Customs classification, substance checks, duty calculation, landed cost, sanctions screening. Core for product compliance.
 - **Cleo Insight** -- Regulatory signals, regulation tracking, authorities, products, countries. Core for monitoring.
-- **Bastion** -- ISO 27001/SOC2 framework management. Only relevant if you also handle customer data (e-commerce, SaaS component).
 
 Without MCP, skills fall back to manual workflows with web search and file-based evidence.
 
