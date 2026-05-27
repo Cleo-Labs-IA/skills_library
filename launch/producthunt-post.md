@@ -8,10 +8,10 @@ Comply is an open-source library of 12 AI skills for Claude Code that handle pro
 
 Ask "Can I sell my face cream in the EU?" and get instant answers: substance limits, labeling requirements, certifications needed, customs costs, and a full market entry checklist.
 
-Built for small product companies (cosmetics, food, electronics, toys, textiles) by Cleo Labs after 2 years of monitoring 78 regulations across 49 countries.
+Built for small product companies (cosmetics, food, electronics, toys, textiles) by Cleo Labs from real production compliance workflows.
 
 ## Key Features
-🧪 Substance check against 500K+ chemicals across 13 databases
+🧪 Substance check against 13 regulatory databases
 🏷️ Country-specific labeling rules (EU, US, UK, Japan, Korea)
 📋 Market entry checklists with timelines and cost estimates
 🚢 Customs classification and landed cost calculator

@@ -32,7 +32,7 @@ Claude will use `product-compliance`, `labeling-compliance`, and `market-entry-c
 | Server | What it adds | Install |
 |--------|-------------|---------|
 | **Cleo Insight** | Live regulatory signals across 49 countries | [Setup on claude.ai](https://claude.ai) |
-| **Cleo Legal API** | Substance database (500K+), customs classification, sanctions | [Setup on claude.ai](https://claude.ai) |
+| **Cleo Legal API** | Substance checks, customs classification, duty calculation, sanctions screening | [Setup on claude.ai](https://claude.ai) |
 | **Bastion** | ISO 27001/SOC2 if you handle customer data | [bastion.tech](https://bastion.tech) |
 
 ## Uninstall

@@ -37,7 +37,7 @@ No consultant needed.
 ## Tweet 4 (what's inside)
 
 12 skills covering:
-• Substance checks (500K+ chemicals across 13 databases)
+• Substance checks across 13 regulatory databases
 • Labeling rules per country
 • Market entry checklists (EU, US, UK, JP, KR, CA)
 • Customs classification + landed cost
@@ -58,9 +58,9 @@ Then just talk to Claude Code about your product. The skills auto-trigger.
 
 ## Tweet 6 (CTA)
 
-Built from 1,479 legal sources across 131 countries.
-78 regulations monitored. 1.68M legal documents.
-62 regulation catalogs. 500K+ substance records.
+Built from real compliance workflows at Cleo Labs.
+28 skills. 50K words. 184 MCP tool references.
+Zero vague language. 100% actionable.
 
 Star ⭐ if useful. Fork if you want to add your industry.
 

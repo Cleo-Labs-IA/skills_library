@@ -1012,7 +1012,7 @@ footer .footer-built {
     <div class="problem-grid">
       <div class="card-white fade-in d1">
         <p class="problem-question">Mon ingredient est-il interdit en EU ?</p>
-        <p class="problem-answer">13 bases de donnees, 500K substances, des limites differentes par pays. Aucun outil ne consolide tout ca pour une petite marque.</p>
+        <p class="problem-answer">13 bases de donnees, des limites differentes par pays. Aucun outil ne consolide tout ca pour une petite marque.</p>
       </div>
       <div class="card-white fade-in d2">
         <p class="problem-question">Quels labels pour vendre au Japon ?</p>
@@ -1415,7 +1415,7 @@ const counterObserver = new IntersectionObserver((entries) => {
         if (suffix === 'K') {
           el.textContent = (current / 1000).toFixed(current >= 1000 ? 2 : 0).replace('.', ',') + ' M';
           if (progress >= 1) {
-            el.textContent = '1,68M';
+            el.textContent = '28';
           }
         } else {
           el.textContent = current.toLocaleString('fr-FR') + suffix;
@@ -1425,8 +1425,8 @@ const counterObserver = new IntersectionObserver((entries) => {
       }
 
       if (suffix === 'K') {
-        // Special handling for 1.68M
-        el.textContent = '1,68M';
+        // Special handling for counter
+        el.textContent = '28';
       } else {
         requestAnimationFrame(tick);
       }
@@ -1460,7 +1460,7 @@ document.querySelectorAll('.big-number[data-target]').forEach(el => {
           if (suffix === 'K') {
             const m = (current / 1000);
             el.textContent = m.toFixed(2).replace('.', ',') + 'M';
-            if (progress >= 1) el.textContent = '1,68M';
+            if (progress >= 1) el.textContent = '28';
           } else {
             el.textContent = current.toLocaleString('fr-FR');
           }

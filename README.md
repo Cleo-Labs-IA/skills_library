@@ -47,14 +47,6 @@ Small physical product companies that need to:
 - Get CE/UKCA/FCC certification for electronics and toys
 - Comply with REACH, CLP, FDA MoCRA, Prop 65, and dozens of other regulations
 
-## Built From
-
-Extracted from production compliance operations at [Cleo Labs](https://cleolabs.co):
-- 78 regulations monitored across 49 countries
-- 1,479 legal sources across 131 countries
-- 1.68M legal documents with pgvector embeddings
-- 62 catalogued regulations with 500K+ substance records
-- Multi-agent pipelines processing 2,500+ articles per scan
 
 ## License
 

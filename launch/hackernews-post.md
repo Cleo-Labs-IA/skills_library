@@ -4,7 +4,7 @@
 Show HN: Open-source compliance skills for Claude Code – check product legality across markets
 
 ## Body
-We built Cleo Labs, a regulatory intelligence platform. After 2 years monitoring 78 regulations across 49 countries, we extracted our compliance knowledge into 12 reusable Claude Code skills.
+We built Cleo Labs, a regulatory intelligence platform. We extracted our compliance knowledge into 28 reusable Claude Code skills.
 
 Install: `git clone https://github.com/Cleo-Labs-IA/skills_library.git ~/.claude/skills/comply`
 
@@ -14,12 +14,12 @@ Our skills let you ask Claude Code questions like "Is my face cream with retinol
 
 Under the hood:
 - 13 substance databases (CosIng, ECHA, REACH, Prop 65, FDA, EFSA, etc.)
-- 500K+ chemical substances with regulatory limits per jurisdiction
+- 13 substance databases with regulatory limits per jurisdiction
 - Country-specific labeling rules (EU, US, UK, Japan, Korea, Canada)
 - HS code classification and landed cost calculation
 - Multi-agent architecture (parallel market scans)
 
-Data sourced from 1.68M legal documents across 131 countries.
+Built from real production compliance workflows.
 
 Limitations: this is compliance guidance, not legal advice. You still need a safety assessor to sign off your CPSR. But it eliminates weeks of research.
 

@@ -2,7 +2,7 @@
 
 We just open-sourced our compliance skills library.
 
-After 2 years building regulatory AI at Cleo Labs — monitoring 78 regulations across 49 countries, indexing 1.68M legal documents, cataloging 500K+ chemical substances — we packaged everything we learned into 12 reusable AI skills.
+After building regulatory AI at Cleo Labs, we packaged our compliance knowledge into 28 reusable AI skills for Claude Code.
 
 They work with Claude Code (Anthropic's CLI). You install them in 30 seconds:
 
@@ -25,7 +25,7 @@ Who is this for?
 • Anyone selling across EU, US, UK, Japan, Korea, Canada
 
 What's inside:
-• product-compliance — substance check with 500K+ chemical database
+• product-compliance — substance check against 13 regulatory databases
 • labeling-compliance — country-specific labeling rules
 • market-entry-checklist — step-by-step market entry
 • customs-and-trade — HS codes, duties, landed cost, sanctions
