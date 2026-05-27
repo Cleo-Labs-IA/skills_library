@@ -7,6 +7,31 @@ description: Use when checking labeling requirements for a product in a target m
 
 Country-specific labeling requirements for physical products. What must be on your label to legally sell in each market.
 
+## MCP Tools for Labeling Compliance
+
+```
+# Search for labeling regulation changes by jurisdiction
+mcp__claude_ai_Cleo_Insight__search_signals(q="labeling", country="FR", limit=25)
+mcp__claude_ai_Cleo_Insight__search_signals(q="allergen declaration", country="US", limit=25)
+
+# Get full details of a specific labeling regulation
+mcp__claude_ai_Cleo_Insight__get_regulation(id="<regulation-id>")
+
+# Search labeling requirements by jurisdiction via Legal API
+# Use /v2/search endpoint for targeted labeling queries:
+mcp__claude_ai_CLEO_LEGAL_API__compliance/check
+  product_description: "face cream 50ml"
+  ingredients: ["retinol", "niacinamide"]
+  target_markets: ["EU", "US", "UK"]
+# Returns substance + labeling flags per market
+
+# List all tracked regulations to find labeling-specific ones
+mcp__claude_ai_Cleo_Insight__list_regulations(limit=100)
+# Filter results for labeling, packaging, and marking requirements
+```
+
+See `compliance-mcp-tools` skill for full tool patterns and authentication.
+
 ## The Rule
 
 **If your label is wrong, your product cannot be sold -- even if the product itself is perfectly safe and compliant.** Labeling is the #1 reason products get stopped at customs or pulled from shelves.
@@ -181,7 +206,7 @@ No mandatory symbol in EU (CE covers it), but many markets use the "RoHS complia
 | Age warning | "Not suitable for children under 36 months" + specific hazard | Age grading label |
 | CE mark | Required | Not applicable |
 | ASTM mark | Not applicable | Not mandatory but widely used |
-| Small parts warning | Mandatory if applicable | Mandatory (choking hazard) |
+| Small parts warning | Mandatory for toys with detachable parts < 36mm | Mandatory (choking hazard) |
 | Importer info | EU address | US importer or domestic manufacturer |
 | Tracking info | Batch, manufacturer, model | Permanent distinguishing mark, batch info |
 | Third-party testing | EU-type examination for some categories | **Mandatory** for all children's products |
@@ -194,7 +219,7 @@ No mandatory symbol in EU (CE covers it), but many markets use the "RoHS complia
 | Country of origin | Recommended | Mandatory |
 | Care instructions | Recommended (ISO 3758 symbols) | Mandatory (ASTM D5489 or care symbols) |
 | Manufacturer/importer | Mandatory | Mandatory (RN or WPL number) |
-| Flammability | If applicable | 16 CFR 1610 compliance label |
+| Flammability | Required for clothing textiles (EN ISO 14116) | 16 CFR 1610 compliance label |
 
 ## Multi-Language Requirements
 

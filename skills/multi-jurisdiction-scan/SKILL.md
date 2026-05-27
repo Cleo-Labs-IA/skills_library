@@ -55,6 +55,26 @@ PRODUCT PROFILE:
 
 Replace `{{placeholders}}`. Dispatch via `superpowers:dispatching-parallel-agents`.
 
+**Each agent MUST use MCP tools. Fallback to WebSearch only when MCP is unavailable.**
+
+### Pre-Dispatch: Company Context (run once before spawning agents)
+
+```
+# Get company profile for context
+mcp__claude_ai_Cleo_Insight__get_company_profile
+# Returns: company info, industry, registered products
+
+# Get product inventory for mapping
+mcp__claude_ai_Cleo_Insight__list_products
+# Returns: product IDs needed for signal searches
+
+# Get full regulation inventory
+mcp__claude_ai_Cleo_Insight__list_regulations(limit=100)
+# Returns: all tracked regulations -- distribute relevant subset to each agent
+```
+
+### Per-Agent Template
+
 ```markdown
 You are a product regulatory analyst for {{MARKET}} ({{COUNTRY_CODES}}).
 
@@ -65,7 +85,36 @@ HS Code: {{HS_CODE}}
 Origin: {{MANUFACTURING_ORIGIN}}
 Special: {{SPECIAL_CHARACTERISTICS}}
 
-Run these 5 checks for {{MARKET}}. Use Cleo Insight MCP (search_signals, list_regulations, get_regulation) and Cleo Legal API (compliance/check, customs/duties) if available, else WebSearch official sources.
+**MANDATORY MCP CALLS** (execute all before writing your report):
+
+```
+# 1. Search signals for this jurisdiction
+mcp__claude_ai_Cleo_Insight__search_signals(country="{{COUNTRY_CODE}}", limit=25)
+mcp__claude_ai_Cleo_Insight__search_signals(country="{{COUNTRY_CODE}}", q="{{PRODUCT_CATEGORY}}", limit=25)
+
+# 2. Get regulation details for any flagged regulations
+mcp__claude_ai_Cleo_Insight__get_regulation(id="<regulation-id>")
+# Call once per relevant regulation found in step 1
+
+# 3. Substance compliance check
+mcp__claude_ai_CLEO_LEGAL_API__compliance/check
+  ingredients: {{INGREDIENTS_LIST}}
+  target_markets: ["{{COUNTRY_CODE}}"]
+
+# 4. Customs classification and duty
+mcp__claude_ai_CLEO_LEGAL_API__customs/reverse-classify
+  product_description: "{{PRODUCT_NAME}}"
+mcp__claude_ai_CLEO_LEGAL_API__customs/duties
+  hs_code: "{{HS_CODE}}"
+  origin: "{{MANUFACTURING_ORIGIN}}"
+  destination: "{{COUNTRY_CODE}}"
+
+# 5. Fallback: WebSearch for gaps MCP does not cover
+WebSearch("{{PRODUCT_CATEGORY}} labeling requirements {{MARKET}} 2026")
+WebSearch("{{PRODUCT_CATEGORY}} certification requirements {{MARKET}}")
+```
+
+Run these 5 checks for {{MARKET}}.
 
 **CHECK 1: APPLICABLE REGULATIONS**
 | Regulation | Reference | Status | Key requirements for this product |

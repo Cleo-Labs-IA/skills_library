@@ -40,7 +40,7 @@ mcp__claude_ai_CLEO_LEGAL_API__customs/duties
   origin: "..."
   destination: "..."
 
-# ISO 27001 posture (if applicable)
+# ISO 27001 posture (pull when company handles customer data)
 mcp__bastion__get-frameworks-stats
 ```
 
@@ -156,7 +156,7 @@ MARKETPLACE PRODUCT COMPLIANCE -- [Product Name]
 FOR AMAZON / [MARKETPLACE]:
 
 Product Safety:
-  [ ] Safety data sheet (if applicable)
+  [ ] Safety data sheet (required for products classified hazardous under CLP/GHS)
   [ ] Test reports from accredited laboratory
   [ ] Declaration of Conformity (CE / UKCA)
   [ ] Product liability insurance certificate

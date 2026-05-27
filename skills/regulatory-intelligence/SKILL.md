@@ -130,8 +130,10 @@ REVENUE AT RISK IF IGNORED: [EUR/USD amount or "market exit"]
 
 | Regulation | Effective | Affects | Action |
 |-----------|-----------|---------|--------|
-| GPSR 2023/988 | Dec 2024 | ALL consumer products | Technical documentation + serious risk reporting |
-| EU Battery Regulation | Feb 2024 (phased) | Electronics with batteries | Carbon footprint, recycled content, QR code |
+| GPSR 2023/988 (General Product Safety) | Dec 2024 | ALL consumer products | Technical documentation + serious risk reporting + economic operator obligations |
+| EU Cosmetics 1223/2009 Annex II updates | Ongoing | Cosmetics | Monitor substance ban signals -- new entries restrict previously allowed ingredients without transition period |
+| REACH SVHC candidate list additions | Biannual (Jun + Dec) | ALL products containing chemicals | Screen every ingredient against updated candidate list; SVHC > 0.1% w/w triggers notification + communication duty |
+| EU Battery Regulation 2023/1542 | Feb 2024 (phased to 2027) | Electronics with batteries, e-bikes, EVs | Carbon footprint declaration (2025), recycled content minimums (2027), QR code with battery passport (2027), collection targets |
 | EU Packaging & Waste | 2025+ (phased) | ALL packaged products | Recyclability, recycled content, EPR |
 | Retinol limits (cosmetics) | 2025 | Cosmetics with retinol | Max 0.3% face, 0.05% body |
 | PFAS restriction (proposed) | ~2027 | Wide range of products | Phase-out of "forever chemicals" |
@@ -141,7 +143,8 @@ REVENUE AT RISK IF IGNORED: [EUR/USD amount or "market exit"]
 
 | Regulation | Effective | Affects | Action |
 |-----------|-----------|---------|--------|
-| MoCRA implementation | 2024+ (phased) | Cosmetics | Facility registration, product listing, adverse event reporting, GMP |
+| FDA MoCRA enforcement | 2024+ (phased, GMP deadline 2026) | Cosmetics | Facility registration, product listing, adverse event reporting, GMP compliance, safety substantiation |
+| Prop 65 new listings | Ongoing (quarterly) | ALL products sold in California | Monitor OEHHA new listings; each new substance triggers label assessment for every product sold in CA |
 | PFAS state bans | 2025+ (varies by state) | Cosmetics (WA, CO, CA), food packaging, textiles | Reformulate or exit state markets |
 | EPR laws (state-level) | 2025+ | Packaged products (CA, CO, OR, etc.) | Register, report, pay eco-fee |
 

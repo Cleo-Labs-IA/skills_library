@@ -138,7 +138,7 @@ Per-unit landed cost = Total / number of units in shipment
 
 ### VAT Rates by Country
 
-| Country | Standard VAT | Reduced (if applicable to your product) |
+| Country | Standard VAT | Reduced rate (check product category) |
 |---------|-------------|----------------------------------------|
 | France | 20% | 5.5% on food, 10% on some products |
 | Germany | 19% | 7% on food, books |
@@ -167,7 +167,7 @@ mcp__claude_ai_CLEO_LEGAL_API__customs/dual-use-check
 - Precision instruments
 - Products with military or surveillance applications
 
-**If flagged**: You may need an export license. Do NOT ship without one. Penalties are severe (criminal in many jurisdictions).
+**If flagged**: An export license is required. Do NOT ship without one. Penalties are severe (criminal in many jurisdictions).
 
 ## Sanctions Screening
 

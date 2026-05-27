@@ -111,7 +111,7 @@ Quick self-check:
 | **Cosmetics** | CPSR (Cosmetic Product Safety Report) | MoCRA registration | CPSR equivalent | 4-8 weeks | EUR 1,500-5,000 per product |
 | **Electronics** | CE (self-declare or NB) | FCC (lab test) | UKCA | 6-12 weeks | EUR 3,000-15,000 |
 | **Toys** | CE + EN 71 testing | CPSIA third-party testing | UKCA + toy safety | 8-16 weeks | EUR 2,000-8,000 |
-| **Food/supplements** | EFSA novel food (if applicable) | FDA GRAS (if applicable) | FSA | Varies widely | EUR 500-50,000+ |
+| **Food/supplements** | EFSA novel food (required for novel ingredients) | FDA GRAS (required for new food substances) | FSA | Varies widely | EUR 500-50,000+ |
 | **Medical devices** | CE + MDR conformity | FDA 510(k) or PMA | UKCA + MDR | 3-24 months | EUR 10,000-500,000+ |
 | **Textiles** | REACH compliance testing | CPSIA (if children's) + FTC | UK REACH | 2-4 weeks | EUR 500-3,000 |
 | **General consumer** | GPSR + technical documentation | CPSC compliance | UK Product Safety | 4-8 weeks | EUR 1,000-5,000 |
@@ -173,7 +173,7 @@ Without FTA: Duty would be 6.5% = EUR 0.36/unit -> EUR 7.37/unit
 | **EU (electronics)** | No single portal; Declaration of Conformity must be available | Technical documentation | Before CE marking |
 | **EU (food)** | Member state food authority | Food business registration | Before first sale |
 | **US (cosmetics)** | FDA MoCRA portal | Facility registration + product listing | Required since 2024 |
-| **US (electronics)** | FCC Equipment Authorization (if applicable) | Test reports, FCC ID | Before sale |
+| **US (electronics)** | FCC Equipment Authorization (required for intentional radiators) | Test reports, FCC ID | Before sale |
 | **US (food)** | FDA facility registration + FFR | Prior notice for imports | Before import |
 | **UK (cosmetics)** | UK SCPN (Submit Cosmetic Product Notification) | Same as CPNP but for UK | Before placing on market |
 | **Canada** | Health Canada Cosmetic Notification | Cosmetic notification form | Before sale |
@@ -218,7 +218,7 @@ DOCUMENTATION ON FILE:
 [ ] Technical documentation / Product Information File
 [ ] Safety assessment / CPSR (cosmetics)
 [ ] Test reports from accredited lab
-[ ] Declaration of Conformity (if applicable)
+[ ] Declaration of Conformity (required for CE/UKCA marked products)
 [ ] Insurance (product liability)
 
 STATUS: [ ] READY TO SELL / [ ] BLOCKED BY: ________________

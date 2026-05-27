@@ -7,6 +7,39 @@ description: Use when fixing compliance issues to unblock market entry, deciding
 
 Fix compliance issues to unblock market entry. Focus: reformulate, relabel, test, certify. Practical actions with timelines and cost estimates.
 
+## MCP Tools for Remediation
+
+Before remediating, pull the test details to understand exactly what failed:
+
+```
+# 1. Get full failure details for a compliance test
+mcp__bastion__get-compliance-test-detail(testId="<test-id>")
+# Returns: test name, status, failing assets, expected evidence, linked policies
+
+# 2. Upload evidence documents (base64-encoded)
+mcp__bastion__upload-compliance-document(name="CPSR-GlowSerum-2026.pdf", document="data:application/pdf;base64,...")
+# Returns: evidenceDocumentId
+
+# 3. Attach evidence to a failing test
+mcp__bastion__add-compliance-test-evidence(testId="<test-id>", name="Product safety report", description="CPSR and stability tests for Glow Serum", evidenceDocumentId="<doc-id>")
+# OR link to an external URL:
+mcp__bastion__add-compliance-test-evidence(testId="<test-id>", name="Lab test results", description="EN 71 testing by SGS", link="https://example.com/report.pdf")
+
+# 4. Mark test ready for auditor review
+mcp__bastion__mark-compliance-test-ready-for-review(testId="<test-id>")
+
+# 5. Exclude a test entirely (with justification and expiry)
+mcp__bastion__exclude-compliance-test(testId="<test-id>", comment="Not applicable -- product line discontinued", excludeUntil="2027-01-01")
+
+# 6. Exclude specific assets from a test (per-asset granularity)
+mcp__bastion__put-compliance-test-exclude-asset(testsToUpdate=[{"testId": "<test-id>", "assetId": "<asset-id>", "comment": "Dev environment -- not in scope"}])
+
+# 7. Refresh a test after remediation to re-evaluate status
+mcp__bastion__refresh-compliance-test(complianceIntegrationConfigurationId="<config-id>", testIds=["<test-id>"])
+```
+
+**Workflow**: get-compliance-test-detail -> fix the issue -> upload-compliance-document -> add-compliance-test-evidence -> refresh-compliance-test -> mark-compliance-test-ready-for-review.
+
 ## Decision Tree
 
 When a compliance check returns FLAG, FAIL, or NEEDS_REVIEW, follow this tree:

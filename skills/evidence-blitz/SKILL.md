@@ -7,6 +7,35 @@ description: Use when gathering all compliance evidence for a certification or a
 
 Gather all compliance evidence for certification, audit, retail buyer, or marketplace listing. Parallel agents per document category.
 
+## MCP Tools by Agent Role
+
+### Auto-Fix Agent (refresh tests after remediation)
+```
+mcp__bastion__refresh-compliance-test(complianceIntegrationConfigurationId="<config-id>", testIds=["<test-id-1>", "<test-id-2>"])
+```
+
+### Evidence Agent (upload and attach evidence)
+```
+# Upload a document
+mcp__bastion__upload-compliance-document(name="stability-report-2026.pdf", document="data:application/pdf;base64,...")
+
+# Attach to a test
+mcp__bastion__add-compliance-test-evidence(testId="<test-id>", name="Stability report", description="6-month accelerated stability test by SGS", evidenceDocumentId="<doc-id>")
+
+# Mark test ready for review
+mcp__bastion__mark-compliance-test-ready-for-review(testId="<test-id>")
+```
+
+### Exclusions Agent (exclude non-applicable tests)
+```
+mcp__bastion__exclude-compliance-test(testId="<test-id>", comment="Product line discontinued Q1 2026", excludeUntil="2027-01-01")
+```
+
+### Asset Agent (exclude specific assets from tests)
+```
+mcp__bastion__put-compliance-test-exclude-asset(testsToUpdate=[{"testId": "<test-id>", "assetId": "<asset-id>", "comment": "Staging environment -- out of audit scope"}])
+```
+
 ## When to Use
 
 - Preparing for a product audit or inspection
@@ -95,7 +124,7 @@ MARKET CERTIFICATIONS:
 [ ] Product liability insurance certificate
 
 CORPORATE:
-[ ] GMP certificate (if applicable)
+[ ] GMP certificate (required for cosmetics ISO 22716, food FSSC 22000)
 [ ] ISO 22716 (cosmetics GMP)
 [ ] FSSC 22000 / ISO 22000 (food safety)
 [ ] Quality management system documentation
@@ -190,7 +219,7 @@ TABLE OF CONTENTS:
 2. Safety Assessment
    - CPSR / Risk Assessment
    - Test reports (stability, microbio, safety)
-   - Clinical/human testing (if applicable)
+   - Clinical/human testing (required for SPF claims, dermatological claims)
 
 3. Substance Compliance
    - Certificates of Analysis (per ingredient)

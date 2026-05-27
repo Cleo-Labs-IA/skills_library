@@ -95,7 +95,7 @@ Each substance gets a verdict **per jurisdiction**:
 | Verdict | Meaning | Visual | Action Required |
 |---------|---------|--------|-----------------|
 | `COMPLIANT` | Meets all limits in this jurisdiction | GREEN | None |
-| `FLAG` | Close to threshold, data incomplete, or warning label needed | ORANGE | Investigate: retest concentration, check recent amendments, consider reformulation margin |
+| `FLAG` | Close to threshold, data incomplete, or warning label needed | ORANGE | Retest concentration, check recent amendments, add safety margin to formulation |
 | `FAIL` | Exceeds limit, banned substance, or missing approval | RED | **Cannot sell.** Reformulate, get exemption, or drop this market |
 | `NEEDS_REVIEW` | Confidence < 0.5, conflicting sources, or no data found | YELLOW | Manual expert review required before any decision |
 
