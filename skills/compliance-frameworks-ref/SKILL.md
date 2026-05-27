@@ -1,49 +1,59 @@
 ---
 name: compliance-frameworks-ref
-description: Use when comparing compliance frameworks, checking framework-specific requirements, identifying control overlaps, scoping a new certification, or answering questions about specific framework rules
+description: Use when looking up specific product regulations, comparing requirements between frameworks, understanding what a regulation requires, or scoping certification for a physical product
 ---
 
-# Compliance Frameworks Reference
+# Product Compliance Frameworks Reference
 
-Quick lookup for 10 major compliance frameworks. For detailed per-framework data, load `frameworks-catalog.md`.
+Quick reference for product regulations that affect physical goods. For detailed per-framework data, load `frameworks-catalog.md`.
 
 ## Framework Selector
 
-| Need | Start with | Why first |
-|------|-----------|-----------|
-| SaaS selling to enterprise | SOC 2 Type II | Unlocks enterprise deals; 70%+ of procurement requires it |
-| EU personal data | GDPR | Legal obligation, not optional; highest penalty ceiling |
-| Broad security certification | ISO 27001 | Maps to most other frameworks; internationally recognized |
-| Healthcare / PHI | HIPAA | No market access without BAAs and safeguards |
-| Credit card processing | PCI-DSS v4.0.1 | Mandatory for any cardholder data; card brands enforce |
-| AI product in EU | AI Act | Classification determines entire compliance path |
-| Critical infrastructure EU | NIS2 | Member-state transposition deadlines are NOW |
-| Financial services EU | DORA | Effective Jan 2025; regulator expectations immediate |
-| California consumer data | CCPA/CPRA | Largest US state privacy law; CPPA actively enforcing |
-| EU sustainability reporting | CSRD | Phased rollout underway; double materiality required |
+| Your Product | Start With | Why |
+|-------------|-----------|-----|
+| Cosmetics sold in EU | EU Cosmetics Reg 1223/2009 | Mandatory; covers safety, labeling, notification |
+| Cosmetics sold in US | FDA MoCRA + FTC | MoCRA now mandatory; FTC governs claims |
+| Electronics in EU | CE marking (LVD + EMC + RED + RoHS) | Cannot sell without CE |
+| Electronics in US | FCC + UL/safety | FCC mandatory for EMC; UL expected by retailers |
+| Toys in EU | Toy Safety Directive 2009/48/EC + EN 71 | Third-party testing required |
+| Toys in US | CPSIA + ASTM F963 | Mandatory third-party testing for children's products |
+| Food/supplements in EU | EU Food Info Reg 1169/2011 + Novel Food | Labeling + ingredient approvals |
+| Food/supplements in US | FDA (21 CFR) + DSHEA | Registration, labeling, GMP |
+| ANY product in EU | GPSR 2023/988 + REACH + CLP | GPSR applies to ALL consumer products since Dec 2024 |
+| ANY product in UK | UK Product Safety + UK REACH | Separate from EU since Brexit |
+| Product with chemicals | REACH (EU) + TSCA (US) | Chemical registration/restriction |
+| Children's product in US | CPSIA | Lead, phthalates, third-party testing, tracking labels |
+| Product with packaging | EPR/REP (EU member states) | Producer pays for packaging waste management |
 
-**Start-here by company type**:
-- **SaaS startup**: SOC 2 first, then ISO 27001 (controls overlap ~60%)
-- **EU data processor**: GDPR first, then ISO 27001 for operational backbone
-- **Healthcare SaaS**: HIPAA + SOC 2 together (SOC 2 + HIPAA criteria)
-- **Fintech in EU**: DORA + PCI-DSS (payments) + GDPR (data)
-- **AI company in EU**: AI Act classification first, then GDPR for training data
+## Cross-Framework Requirements Map
 
-## Cross-Framework Control Mapping
-
-| Control Domain | ISO 27001 | SOC 2 | HIPAA | GDPR | NIS2 | DORA |
-|---------------|-----------|-------|-------|------|------|------|
-| Access control | A.5.15-18 | CC6.1-3 | 164.312(d) | Art.32 | Art.21(2)(d) | Art.9 |
-| Encryption | A.8.24 | CC6.1 | 164.312(a)(2)(iv) | Art.32(1)(a) | Art.21(2)(d) | Art.9 |
-| Incident response | A.5.24-28 | CC7.3-5 | 164.308(a)(6) | Art.33-34 | Art.23 | Art.17-19 |
-| Risk assessment | A.5.7 | CC3.1-4 | 164.308(a)(1)(ii)(A) | Art.35 | Art.21(1) | Art.6 |
-| Vendor mgmt | A.5.19-22 | CC9.2 | 164.308(b)(1) | Art.28 | Art.21(2)(e) | Art.28-30 |
-| Training | A.6.3 | CC1.4 | 164.308(a)(5) | Art.39(1)(b) | Art.21(2)(g) | Art.13 |
+| Requirement | EU | US | UK | Canada | Japan | Korea |
+|-------------|----|----|-----|--------|-------|-------|
+| Pre-market safety assessment | Mandatory (CPSR for cosmetics, risk assessment for general) | Manufacturer responsibility (MoCRA adds requirements) | Mandatory (mirrors EU) | Varies by category | Varies | MFDS review for functional cosmetics |
+| Product notification/registration | CPNP (cosmetics), varies by category | FDA MoCRA (cosmetics), FDA (food) | UK SCPN (cosmetics) | Health Canada notification | PMDA for quasi-drugs | MFDS registration |
+| Responsible Person | Required (EU-based) | US Agent (foreign firms) | Required (UK-based, separate from EU) | Canadian representative | Japanese importer | Korean importer |
+| Substance restrictions | REACH + sector-specific | TSCA + sector-specific + state laws | UK REACH + sector-specific | CEPA + sector-specific | Chemical Substances Control Law | K-REACH + sector-specific |
+| Conformity marking | CE | FCC (electronics), varies | UKCA | CSA/cUL | PSE (electronics), varies | KC mark |
+| Labeling language | Official language of sale country | English | English | English + French | Japanese | Korean |
+| Post-market surveillance | GPSR requires it | CPSC recall reporting | Required | Required | Required | Required |
 
 ## How to Use
 
-1. **Single framework** -- load `frameworks-catalog.md`, find the section.
-2. **Control mapping** -- use the table above for overlaps, then check catalog details.
-3. **Scoping** -- framework selector + company type -> catalog timeline and pitfalls.
-4. **Audit prep** -- catalog certification cycle, penalties, and common mistakes.
-5. **Multi-framework** -- start with the "Start-here by company type" guidance, implement shared controls once.
+1. **Single product, single market**: Find your product type + market in the selector above, load `frameworks-catalog.md` for the specific framework.
+2. **Single product, multiple markets**: Use the cross-framework map to identify differences, then check each framework in the catalog.
+3. **New product launch**: Start with `market-entry-checklist` skill, use this reference for deep dives.
+4. **Regulation question**: Find the framework in the catalog, check structure, requirements, timeline, and pitfalls.
+5. **After a regulatory change**: Cross-reference the change with the requirements map to see which markets are affected.
+
+## Appendix: Data/IT Compliance
+
+If your product company also handles customer data (e-commerce, SaaS component), these frameworks may apply:
+
+| Framework | When it applies |
+|-----------|----------------|
+| GDPR | Processing EU personal data (e-commerce customers) |
+| ISO 27001 | Requested by enterprise buyers or for credibility |
+| SOC 2 | Requested by US enterprise buyers |
+| PCI-DSS | Processing credit card payments |
+
+These are secondary to product compliance. Use Bastion MCP for ISO 27001/SOC2 management.

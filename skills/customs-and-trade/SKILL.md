@@ -1,85 +1,241 @@
 ---
 name: customs-and-trade
-description: Use when classifying products by HS code, calculating duties or landed costs, screening for dual-use or sanctions, checking import/export restrictions, or handling any customs and trade compliance question
+description: Use when classifying a product by HS code, calculating import duties or landed cost, screening for dual-use or sanctions, checking import/export restrictions, or estimating total cost to enter a market
 ---
 
 # Customs & Trade Compliance
 
-Classification, duties, dual-use, and sanctions via Cleo Legal API v2 customs module.
+Classify your product, calculate what it costs to import, and screen for trade restrictions.
 
 **DISCLAIMER** (mandatory on every response): "For informational purposes only. Not legal, customs, or trade compliance advice. Consult a licensed customs broker for binding determinations."
 
-## HS Code Hierarchy
+## Why This Matters for Small Product Companies
 
-HS is international to 6 digits only. Beyond that, national extensions apply.
+Customs compliance is not optional. Get it wrong and your shipment gets:
+- **Held at customs** (days to weeks of delay)
+- **Charged wrong duty** (overpay or underpay -- both bad)
+- **Seized** (if product is restricted/prohibited and you did not know)
+- **Fined** (misclassification penalties)
 
-| Level | Digits | Example |
-|-------|--------|---------|
-| Chapter (HS2) | 2 | 85 = Electrical machinery |
-| Heading (HS4) | 4 | 8517 = Telephones |
-| Subheading (HS6) | 6 | 8517.12 = Smartphones |
-| CN8 (EU) | 8 | 8517.12.00 |
-| HTS (US) | 10 | 8517.12.00.50 |
+## HS Code Classification
 
-HS6 is the international limit. Digits 7+ are country-specific -- never assume transferability.
+The Harmonized System (HS) code determines EVERYTHING: duty rate, import restrictions, required certifications, statistical reporting.
 
-## Sanctions Authorities (8 covered)
+### HS Code Structure
 
-| Code | List |
-|------|------|
-| UN_SC | Consolidated List |
-| US_OFAC | SDN (Specially Designated Nationals) |
-| UK_FCDO | UK Sanctions CSV |
-| AU_DFAT | Consolidated List |
-| CA_GAC | Consolidated Autonomous |
-| JP_MOF | End-User + Entity Lists |
-| CH_SECO | SECO Sanctions (EU-aligned) |
-| KZ_MFA | National List |
+| Level | Digits | Example | Who Sets It |
+|-------|--------|---------|-------------|
+| Chapter | 2 | 33 = Essential oils & cosmetics | International (WCO) |
+| Heading | 4 | 3304 = Beauty/skin care preps | International (WCO) |
+| Subheading | 6 | 3304.99 = Other beauty preps | International (WCO) |
+| CN code | 8 | 3304.99.00 | EU (Combined Nomenclature) |
+| TARIC | 10 | 3304.99.00.00 | EU (tariff measures) |
+| HTS | 10 | 3304.99.50.00 | US (Harmonized Tariff Schedule) |
 
-**Gap**: EU Consolidated List not direct; CH_SECO is EU-aligned proxy.
+**Rule**: HS6 (first 6 digits) is universal. Digits 7+ are country-specific. Never assume an 8 or 10 digit code from one country works in another.
 
-## Landed Cost Formula
+### Common HS Codes for Physical Products
+
+| Product Type | Typical HS Code | Notes |
+|-------------|----------------|-------|
+| Face cream/moisturizer | 3304.99 | Under beauty/skin care preparations |
+| Lip products | 3304.10 | Lip make-up preparations |
+| Shampoo | 3305.10 | Hair shampoos |
+| Soap (toilet) | 3401.11 | For toilet use |
+| Perfume | 3303.00 | Perfumes and toilet waters |
+| Food supplements | 2106.90 | Other food preparations (varies if capsule/tablet) |
+| Electronic devices | 8471-8543 | Varies widely by type |
+| Toys | 9503 | Other toys |
+| Clothing | 6109-6114 | By material and type |
+| Cleaning products | 3402 | Organic surface-active agents |
+
+### Using MCP for Classification
 
 ```
-landed_cost = product_value + shipping + insurance + duty + special_duty + VAT + handling
-  duty         = product_value * duty_rate
-  special_duty = anti-dumping + countervailing + safeguard
-  VAT          = (product_value + duty + special_duty) * VAT_rate
-  handling     = broker fees + port charges + customs processing
+# Cleo Legal API -- classify from product description
+mcp__claude_ai_CLEO_LEGAL_API__customs/reverse-classify
+  product_description: "organic face moisturizer with retinol and hyaluronic acid, 50ml glass jar"
+# Returns: candidate HS codes with confidence scores
+
+# Verify specific HS code
+mcp__claude_ai_CLEO_LEGAL_API__customs/lookup
+  hs_code: "3304.99"
+# Returns: description, applicable measures, restrictions
 ```
 
-Always check FTA preferential rates first -- can reduce duty to 0%.
+### Confidence Rules
 
-## API Endpoints
+| Score | Gap | Action |
+|-------|-----|--------|
+| >= 0.85, gap >= 0.15 | Clear winner | Proceed with this code |
+| >= 0.70, gap >= 0.15 | Likely correct | Use it, but get professional verification for high-value shipments |
+| < 0.70 OR gap < 0.15 | Ambiguous | Do NOT proceed. Present candidates, recommend Binding Tariff Information (BTI) ruling |
 
-| Endpoint | Purpose |
-|----------|---------|
-| `customs/lookup` | Classify by HS code |
-| `customs/reverse-classify` | Product description to candidate HS codes |
-| `customs/obligations` | Duties + restrictions per HS+destination |
-| `customs/duties` | Tariff rates by origin/destination/year |
-| `customs/landed-cost` | Full delivered cost breakdown |
-| `customs/dual-use-check` | Wassenaar + EU 2021/821 + US CCL |
-| `compliance/check` | Composite (5 units): classify+obligations+dual-use+alternatives+parallel |
-| `sanctions/search` | Entity screening across 8 authorities |
+## Duty Calculation
 
-## Workflows
+```
+# Get duty rates
+mcp__claude_ai_CLEO_LEGAL_API__customs/duties
+  hs_code: "3304.99"
+  origin: "KR"          # Manufacturing country (ISO code)
+  destination: "FR"      # Import country (ISO code)
+  year: 2026
+# Returns: MFN rate, preferential rates (FTAs), anti-dumping, countervailing duties
+```
 
-**New product**: `reverse-classify` -> `obligations` per market -> `dual-use-check` if sensitive.
-**Landed cost**: `lookup` -> `duties` (check FTA) -> `landed-cost`.
-**Entity screening**: `sanctions/search` -> hits: authority+list+date+basis. Clean: caveat point-in-time. Monthly re-screen.
-**Pre-export**: `dual-use-check` -> flagged: control list+ECCN+license. Clear+sensitive: note spec thresholds.
+### Key Duty Rates (Cosmetics Example)
 
-## Confidence Rules
+| Route | MFN Rate | FTA Rate | FTA |
+|-------|----------|----------|-----|
+| Korea -> EU | 6.5% | 0% | EU-Korea FTA |
+| China -> EU | 6.5% | 6.5% (no FTA) | -- |
+| US -> EU | 6.5% | 6.5% (no FTA currently) | -- |
+| Korea -> US | 0-5.4% | 0% | KORUS FTA |
+| EU -> US | 0-5.4% | 0-5.4% (varies) | -- |
+| China -> US | 0-5.4% + Section 301 | varies | -- |
+| EU -> UK | 0% | 0% | TCA |
 
-- **>=0.85, gap>=0.15**: Proceed.
-- **>=0.70, gap>=0.15**: Likely. Professional verification for high-value.
-- **<0.70 OR gap<0.15**: Ambiguous. Present candidates, do NOT proceed. Recommend binding ruling.
+**Always check FTA eligibility first.** FTAs can reduce duty to 0% but require proof of origin (EUR.1, Form A, origin declaration on invoice).
 
-## Red Flags
+### Rules of Origin
 
-- **Missing disclaimer**: Non-negotiable on every response.
-- **HS >6 digits assumed universal**: Digits 7+ are country-specific.
-- **Ignoring FTAs**: Preferential rates can zero out duties.
-- **Stale sanctions**: Lists update multiple times/month. Never reuse old results.
-- **Coverage gaps**: 8 authorities, not all. Flag missing jurisdictions.
+FTA preferential rates require proof that the product "originates" in the FTA country. Rules vary by FTA:
+- **Wholly obtained**: grown/extracted/manufactured entirely in one country
+- **Substantial transformation**: sufficient processing (changes HS heading, value-added threshold)
+- **Cumulation**: materials from FTA partners can count
+
+For cosmetics made in Korea with ingredients from multiple countries: check if final manufacturing in Korea meets the specific origin rule in the EU-Korea FTA.
+
+## Landed Cost Calculation
+
+```
+# Full landed cost breakdown
+mcp__claude_ai_CLEO_LEGAL_API__customs/landed-cost
+  hs_code: "3304.99"
+  origin: "KR"
+  destination: "FR"
+  product_value: 5000      # EUR, FOB value of shipment
+  shipping: 500
+  insurance: 50
+# Returns: full cost breakdown
+```
+
+### Formula
+
+```
+Landed Cost = FOB + Shipping + Insurance + Duty + Special Duties + VAT + Handling
+
+Where:
+  FOB = product value at factory gate
+  Duty = CIF value x duty_rate
+  CIF = FOB + Shipping + Insurance
+  Special Duties = anti-dumping + countervailing + safeguard (usually 0)
+  VAT = (CIF + Duty + Special Duties) x VAT_rate
+  Handling = customs broker fee + port charges + customs processing
+
+Per-unit landed cost = Total / number of units in shipment
+```
+
+### VAT Rates by Country
+
+| Country | Standard VAT | Reduced (if applicable to your product) |
+|---------|-------------|----------------------------------------|
+| France | 20% | 5.5% on food, 10% on some products |
+| Germany | 19% | 7% on food, books |
+| UK | 20% | 0% on children's clothing, 5% on some items |
+| Italy | 22% | 4-10% on food |
+| Spain | 21% | 4-10% on food |
+| US | 0% federal | State sales tax 0-10.25% (not customs, collected at point of sale) |
+| Canada | 5% GST | + provincial PST/HST varies |
+| Japan | 10% | 8% on food |
+| Korea | 10% | -- |
+
+## Dual-Use Screening
+
+For products with technical components (electronics, chemicals, software):
+
+```
+mcp__claude_ai_CLEO_LEGAL_API__customs/dual-use-check
+  product_description: "wireless IoT sensor module with AES-256 encryption"
+  hs_code: "8517.62"
+# Returns: control list matches (Wassenaar, EU 2021/821, US CCL/EAR)
+```
+
+**When to check**:
+- Electronics with encryption (virtually all modern electronics)
+- High-purity chemicals
+- Precision instruments
+- Products with military or surveillance applications
+
+**If flagged**: You may need an export license. Do NOT ship without one. Penalties are severe (criminal in many jurisdictions).
+
+## Sanctions Screening
+
+Screen business partners (suppliers, distributors, customers) against sanctions lists:
+
+```
+mcp__claude_ai_CLEO_LEGAL_API__sanctions/search
+  entity_name: "ABC Trading Co"
+  country: "SY"
+# Returns: matches across 8 sanctions authorities
+```
+
+### Sanctions Authorities Covered
+
+| Code | Authority | List |
+|------|-----------|------|
+| UN_SC | United Nations | Consolidated List |
+| US_OFAC | US Treasury | SDN (Specially Designated Nationals) |
+| UK_FCDO | UK Foreign Office | UK Sanctions List |
+| AU_DFAT | Australia | Consolidated List |
+| CA_GAC | Canada | Consolidated Autonomous |
+| JP_MOF | Japan | Entity Lists |
+| CH_SECO | Switzerland | SECO (EU-aligned) |
+| KZ_MFA | Kazakhstan | National List |
+
+**Gap**: EU Consolidated List not directly covered; CH_SECO is an EU-aligned proxy.
+
+**Protocol**:
+- Screen BEFORE any transaction
+- Re-screen monthly (lists update multiple times per month)
+- Document all screening (date, result, lists checked)
+- Any match = stop transaction, seek legal advice
+
+## Workflow for New Product Import
+
+```
+1. CLASSIFY
+   customs/reverse-classify -> candidate HS codes
+   Select best match (confidence >= 0.85)
+   If ambiguous: request BTI from customs authority
+
+2. CHECK RESTRICTIONS
+   customs/obligations -> import requirements per market
+   dual-use-check -> if technical product
+
+3. CALCULATE COST
+   customs/duties -> check MFN and FTA rates
+   customs/landed-cost -> full delivered cost breakdown
+   Compare per-unit cost across origin options
+
+4. SCREEN PARTNERS
+   sanctions/search -> for each business partner
+   Document results
+
+5. PREPARE DOCUMENTATION
+   Commercial invoice (with HS code, origin, value)
+   Packing list
+   Certificate of origin (if claiming FTA rate)
+   Product-specific certificates (CE, lab reports)
+   Customs declaration form
+```
+
+## Common Mistakes
+
+- **Using HS codes beyond 6 digits across countries**: HS6 is international. Digits 7+ are national. A US HTS code does not work for EU customs.
+- **Ignoring FTAs**: Can save 5-10% on landed cost. Always check if an FTA exists between origin and destination.
+- **Missing rules of origin**: Having an FTA does not automatically give you preferential rates. You must prove your product qualifies under the rules of origin.
+- **Undervaluing for customs**: Customs authorities audit. Declared value must match commercial reality. Undervaluation = fines + seizure.
+- **Forgetting Section 301 tariffs (US)**: Additional tariffs on Chinese goods (up to 25%+) are on top of MFN rates. Check before sourcing from China.
+- **One-time sanctions check**: Lists change constantly. Monthly re-screening is minimum best practice.
+- **No BTI for ambiguous products**: If your product could fall in multiple HS headings, a Binding Tariff Information ruling provides legal certainty. Worth the effort for high-volume imports.

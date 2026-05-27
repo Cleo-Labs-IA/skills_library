@@ -1,10 +1,12 @@
 # Comply
 
-The world's most complete compliance skills library for AI coding agents.
+All-in-one compliance toolkit for physical product companies.
 
 ## What is Comply?
 
-Comply is a plugin of 15 production-grade skills that teach AI agents how to manage regulatory compliance end-to-end. Built from real-world compliance operations across ISO 27001, SOC 2, GDPR, AI Act, and 10+ other frameworks.
+Comply is a library of 12 production-grade skills that teach AI agents how to get physical products legally to market. Built for small businesses (1-10 people) selling cosmetics, food, supplements, electronics, toys, textiles, cleaning products, and more across multiple countries.
+
+One question drives everything: **"What do I need to do to sell my product in this market?"**
 
 ## Installation
 
@@ -21,18 +23,29 @@ Place the `comply/` directory in your Claude Code plugins path.
 
 | Tier | Skills | Purpose |
 |------|--------|---------|
-| **Core Process** | audit-sprint, gap-analysis, remediation, reporting | Run audits, find gaps, fix them, report |
-| **Domain** | regulatory-intelligence, policy-management, product-compliance, security-posture, trust-center | Deep expertise per compliance domain |
-| **Multi-Agent** | multi-jurisdiction-scan, compliance-pipeline, evidence-blitz | Parallel processing for speed |
-| **Reference** | frameworks-ref, mcp-tools, customs-and-trade | Quick lookup and integration guides |
+| **Product Core** | product-compliance, labeling-compliance, market-entry-checklist | Check substances, labels, and market requirements |
+| **Market Intel** | regulatory-intelligence, multi-jurisdiction-scan, customs-and-trade | Monitor regulations, scan markets, calculate duties |
+| **Action** | compliance-audit-sprint, compliance-remediation, evidence-blitz | Sprint to compliance, fix issues, gather evidence |
+| **Reference** | compliance-frameworks-ref, compliance-mcp-tools, compliance-reporting | Look up regulations, use tools, generate reports |
 
 ## MCP Integration
 
 Comply works standalone but supercharges with MCP servers:
 
-- **Bastion** — Automated compliance framework management
-- **Cleo Insight** — Regulatory intelligence and signal monitoring
-- **Cleo Legal API** — Legal document search and customs compliance
+- **Cleo Legal API** -- Substance checks, customs classification, duty calculation, sanctions screening
+- **Cleo Insight** -- Regulatory signal monitoring, regulation tracking across 49 countries
+- **Bastion** -- ISO 27001/SOC2 if you also handle customer data
+
+## Built For
+
+Small physical product companies that need to:
+- Check if their formulation is legal in the EU, US, UK, Canada, Japan, Korea
+- Understand what labels they need per market
+- Calculate landed cost (duty + VAT + handling) before entering a market
+- Monitor for substance bans or labeling changes that could block their product
+- Prepare documentation for marketplace listings (Amazon, retail buyers)
+- Get CE/UKCA/FCC certification for electronics and toys
+- Comply with REACH, CLP, FDA MoCRA, Prop 65, and dozens of other regulations
 
 ## Built From
 
@@ -41,7 +54,6 @@ Extracted from production compliance operations at [Cleo Labs](https://cleolabs.
 - 1,479 legal sources across 131 countries
 - 1.68M legal documents with pgvector embeddings
 - 62 catalogued regulations with 500K+ substance records
-- ISO 27001 certification journey (77 tests, 20+ integrations)
 - Multi-agent pipelines processing 2,500+ articles per scan
 
 ## License

@@ -1,170 +1,200 @@
 # MCP Tool Patterns & Reference
 
-## Workflow 1: Compliance Health Check
+## Workflow 1: Product Substance Check
 
-Full assessment of current compliance posture.
+Full compliance check for a product's ingredients across target markets.
 
 ```
-# Step 1: Get overall framework scores
-mcp__bastion__get-frameworks-stats
-# Returns: list of frameworks with passing/failing/total counts
+# Step 1: Check ingredients (Cleo Legal API)
+mcp__claude_ai_CLEO_LEGAL_API__compliance/check
+  product_description: "face moisturizer"
+  ingredients: ["water", "glycerin", "niacinamide", "retinol", "tocopherol"]
+  target_markets: ["EU", "US", "UK", "CA"]
+# Returns: per-ingredient, per-market compliance status with verdicts
+# Composite check (5 units): classify + obligations + dual-use + alternatives + parallel
 
-# Step 2: Drill into failing areas for target framework
-mcp__bastion__get-compliance-failing-summary
-  framework: "<framework-id>"
-# Returns: failing counts grouped by category/theme
+# Step 2: Cross-reference with recent signals (Cleo Insight)
+mcp__claude_ai_Cleo_Insight__search_signals
+  product_id: "<product-id>"       # from list_products
+  risk_level: "critical"
+  limit: 20
+# Check: any ingredient recently banned or restricted?
 
-# Step 3: Get all failing tests (paginate!)
-mcp__bastion__list-failing-compliance-tests
-  framework: "<framework-id>"
-  page: 1
-  per_page: 50
-# REPEAT: increment page until all fetched (check totalCount)
+# Step 3: For flagged substances, get regulation details
+mcp__claude_ai_Cleo_Insight__get_regulation
+  id: "<regulation-id>"
+# Focus: specific article, limit, effective date, transition period
 
-# Step 4: Sample detailed tests (3-5 representative failures)
-mcp__bastion__get-compliance-test-detail
-  compliance_test_id: "<test-id>"
-# Returns: description, status, integration, affected assets, evidence
-
-# Step 5: Synthesize
-# - Group failures by type (policy/technical/process/evidence)
-# - Identify blockers and quick wins
-# - Calculate score delta for each remediation phase
+# Step 4: Synthesize into verdict matrix
+# | Ingredient | CAS | EU | US | US-CA | UK | CA | Source |
+# Verdicts: COMPLIANT / FLAG / FAIL / NEEDS_REVIEW
 ```
 
 **Output template:**
 ```
-Framework: [name] — Score: [passing]/[total]
-Failing by category:
-  [category]: [count] ([list critical ones])
-Top blockers: [items blocking other tests]
-Quick wins: [items fixable in < 1 hour]
-Recommended next action: [specific step]
+SUBSTANCE CHECK -- [Product] -- [Date]
+Ingredients checked: [count]
+Markets: [list]
+
+VERDICT MATRIX:
+[table]
+
+NON-COMPLIANT DETAILS:
+[per substance: market, regulation, limit, actual, verdict, action required]
+
+REVENUE AT RISK:
+[per product-market pair]
 ```
 
-## Workflow 2: Fix a Failing Test
+## Workflow 2: Customs Classification & Landed Cost
 
 ```
-# Step 1: Understand the failure
-mcp__bastion__get-compliance-test-detail
-  compliance_test_id: "<test-id>"
-# Read: test type (auto/manual), integration, failing assets, existing evidence
+# Step 1: Classify product by HS code
+mcp__claude_ai_CLEO_LEGAL_API__customs/reverse-classify
+  product_description: "organic face moisturizer with retinol and hyaluronic acid, 50ml glass jar"
+# Returns: candidate HS codes with confidence scores
+# Select: confidence >= 0.85 AND gap >= 0.15
 
-# Step 2: Choose action path
-# - Test not applicable → exclude-compliance-test
-# - Specific asset out of scope → put-compliance-test-exclude-asset
-# - Manual test, evidence ready → add-compliance-test-evidence + mark-ready-for-review
-# - Auto test, fix applied externally → refresh-compliance-test
-# - Auto test, not yet fixed → tell user what to fix, then refresh later
+# Step 2: Verify selected HS code
+mcp__claude_ai_CLEO_LEGAL_API__customs/lookup
+  hs_code: "3304.99"
+# Returns: description, applicable measures, restrictions
 
-# Step 3a: Exclude (if N/A)
-mcp__bastion__exclude-compliance-test
-  compliance_test_id: "<test-id>"
-  comment: "Not applicable: [auditor-defensible justification, max 500 chars]"
+# Step 3: Check import obligations
+mcp__claude_ai_CLEO_LEGAL_API__customs/obligations
+  hs_code: "3304.99"
+  destination: "FR"
+# Returns: duties, restrictions, required documents, certifications
 
-# Step 3b: Evidence (if manual test)
-mcp__bastion__add-compliance-test-evidence
-  compliance_test_id: "<test-id>"
-  description: "[what this proves, max 500 chars]"
-  url: "https://..."
-# THEN always:
-mcp__bastion__mark-compliance-test-ready-for-review
-  compliance_test_id: "<test-id>"
+# Step 4: Get duty rates (check FTA!)
+mcp__claude_ai_CLEO_LEGAL_API__customs/duties
+  hs_code: "3304.99"
+  origin: "KR"
+  destination: "FR"
+  year: 2026
+# Returns: MFN rate, preferential rates per FTA, anti-dumping, countervailing
 
-# Step 3c: Refresh (if auto test, fix done)
-mcp__bastion__refresh-compliance-test
-  compliance_test_id: "<test-id>"
-# Wait ~30s, then re-check with get-compliance-test-detail
-
-# Step 4: Verify
-mcp__bastion__get-compliance-test-detail
-  compliance_test_id: "<test-id>"
-# Confirm status changed
+# Step 5: Calculate full landed cost
+mcp__claude_ai_CLEO_LEGAL_API__customs/landed-cost
+  hs_code: "3304.99"
+  origin: "KR"
+  destination: "FR"
+  product_value: 5000      # EUR, FOB value
+  shipping: 500
+  insurance: 50
+# Returns: duty, special duties, VAT, handling, total landed cost
 ```
 
-## Workflow 3: Answer a Compliance Question
-
+**Output template:**
 ```
-# Step 1: Check knowledge base freshness
-mcp__bastion__get-knowledge-base-status
-# Returns: last_refresh timestamp, status
+LANDED COST -- [Product] -- [Origin] -> [Destination]
+HS Code: [code] (confidence: [score])
+Duty rate: [MFN] / [FTA if applicable]
+FTA: [name or "none"]
 
-# Step 2: Refresh if stale (>24h or never refreshed)
-mcp__bastion__post-knowledge-base-refresh
-# Takes ~10 minutes. Do NOT query until status = "ready"
-
-# Step 3: Poll until ready (if just refreshed)
-mcp__bastion__get-knowledge-base-status
-# Repeat until status = "ready" (check every 60s, max 15 min)
-
-# Step 4: Ask the question
-mcp__bastion__post-knowledge-base-ask
-  question: "[specific compliance question]"
-# Returns: answer with source references
-
-# Tips:
-# - Ask specific questions, not broad ones ("What controls address endpoint encryption?" not "Tell me about security")
-# - The KB answers based on YOUR policies and evidence, not general knowledge
-# - If answer is insufficient, rephrase or break into sub-questions
+COST BREAKDOWN (per shipment / per unit):
+  FOB value:      EUR [X] / EUR [x/unit]
+  Shipping:       EUR [X] / EUR [x/unit]
+  Insurance:      EUR [X] / EUR [x/unit]
+  Duty:           EUR [X] / EUR [x/unit]  ([rate]%)
+  Special duties: EUR [X] / EUR [x/unit]
+  VAT:            EUR [X] / EUR [x/unit]  ([rate]%)
+  Handling:       EUR [X] / EUR [x/unit]
+  TOTAL LANDED:   EUR [X] / EUR [x/unit]
 ```
 
-## Workflow 4: Regulatory Signal Triage
+## Workflow 3: Regulatory Signal Monitoring
 
 ```
-# Step 1: Search for relevant signals
+# Step 1: Get your product catalog
+mcp__claude_ai_Cleo_Insight__list_products
+# Note product_id values for filtering
+
+# Step 2: Search signals by priority
+# Critical first
 mcp__claude_ai_Cleo_Insight__search_signals
-  risk_level: "critical"       # or "high", "medium", "low"
-  country: "FR"                # optional: ISO country code
-  product_id: "<product-id>"   # optional: from list_products
-  q: "AI regulation"           # optional: free-text search
+  risk_level: "critical"
+  product_id: "<product-id>"
+  limit: 20
 
-# Step 2: Read signal details
+# Then high
+mcp__claude_ai_Cleo_Insight__search_signals
+  risk_level: "high"
+  product_id: "<product-id>"
+  limit: 20
+
+# Step 3: Deep dive on actionable signals
 mcp__claude_ai_Cleo_Insight__get_signal
-  signal_id: "<signal-id>"
-# Focus on: executive summary, obligations, enforcement date, impact rationale
+  id: "<signal-id>"
+# Extract: what changed, who it affects, enforcement date, required action
 
-# Step 3: Check if signal maps to existing framework tests
+# Step 4: Check if signal maps to known regulation
+mcp__claude_ai_Cleo_Insight__get_regulation
+  id: "<regulation-id>"
+# Get: full regulation text, status, obligations
+
+# Step 5: Generate action cards
+# One card per signal that requires action (see regulatory-intelligence skill)
+```
+
+## Workflow 4: Dual-Use & Sanctions Screening
+
+```
+# Step 1: Dual-use check (for electronics, chemicals, precision instruments)
+mcp__claude_ai_CLEO_LEGAL_API__customs/dual-use-check
+  product_description: "wireless IoT sensor with AES-256 encryption"
+  hs_code: "8517.62"
+# Returns: control list matches (Wassenaar, EU 2021/821, US CCL/EAR)
+# If flagged: STOP. May need export license.
+
+# Step 2: Sanctions screening (for business partners)
+mcp__claude_ai_CLEO_LEGAL_API__sanctions/search
+  entity_name: "ABC Trading Co"
+  country: "SY"
+# Returns: matches across 8 authorities (UN, OFAC, UK, AU, CA, JP, CH, KZ)
+# Any match: STOP transaction. Seek legal advice.
+
+# Step 3: Document screening
+# Date, result, lists checked -- retain for audit trail
+```
+
+## Workflow 5: ISO 27001 / Data Compliance (Bastion)
+
+Only if your product company also handles customer data.
+
+```
+# Health check
+mcp__bastion__get-frameworks-stats
+# Returns: frameworks with passing/failing/total counts
+
+# Drill into failures
+mcp__bastion__get-compliance-failing-summary
+  framework: "iso27001-2022"
 mcp__bastion__list-failing-compliance-tests
-  framework: "<relevant-framework-id>"
-# Cross-reference signal obligations with failing tests
+  framework: "iso27001-2022"
+  page: 1
+  pageSize: 100
+# Paginate: check totalCount vs items.length
 
-# Step 4: Generate action items
-# For each obligation in the signal:
-#   - Map to compliance test if applicable
-#   - Set deadline based on enforcement date
-#   - Assign owner
-#   - Flag if current test is already failing (double priority)
+# Fix a failing test
+mcp__bastion__get-compliance-test-detail
+  compliance_test_id: "<test-id>"
+# Determine: exclude / evidence / refresh / fix
+
+# Upload evidence
+mcp__bastion__add-compliance-test-evidence
+  testId: "<test-id>"
+  name: "Product compliance documentation"
+  description: "Full product compliance file including CPSR and test reports (max 500 chars)"
+  link: "https://..."
+mcp__bastion__mark-compliance-test-ready-for-review
+  testId: "<test-id>"
+
+# Answer compliance question
+mcp__bastion__get-knowledge-base-status
+mcp__bastion__post-knowledge-base-ask
+  question: "What controls address product data encryption?"
 ```
-
-## Bastion Parameter Reference
-
-### Pagination Pattern
-
-```
-page: 1          # starts at 1
-per_page: 50     # max varies by endpoint, 50 is safe default
-```
-
-Always check response for `totalCount` or equivalent. Calculate: `totalPages = ceil(totalCount / per_page)`. Fetch all pages before analyzing.
-
-### Evidence Attachment
-
-Two methods:
-- **URL**: `url: "https://..."` -- link to external evidence (Google Doc, Confluence, S3, etc.)
-- **File**: `file_path: "/absolute/path"` -- direct upload, max ~50KB
-
-For files >50KB, instruct the user to upload via Bastion UI, then reference the uploaded document URL.
-
-### Exclusion Comments
-
-Max 500 characters. Must be auditor-defensible. Pattern:
-```
-"Not applicable: [entity type] does not [activity the control addresses].
-Justification: [specific reason]. Evidence: [supporting fact]."
-```
-
-Bad: "N/A", "Not relevant", "We don't do this"
-Good: "Not applicable: fully remote company with no physical office. No on-premise servers, visitor areas, or physical access points to secure."
 
 ## Cleo Insight Parameter Reference
 
@@ -177,33 +207,80 @@ Good: "Not applicable: fully remote company with no physical office. No on-premi
 | `country` | string | ISO code or country name (49 tracked) |
 | `product_id` | string | From `list_products` response |
 | `hs_code` | string | Harmonized System code |
+| `limit` | int | Results per page |
+| `after` | string | Cursor for pagination |
 
 Filters combine with AND logic. Start broad, narrow incrementally.
 
 ### Regulation Statuses
 
-| Status | Action |
-|--------|--------|
-| `in_force` | Active compliance required |
-| `adopted_not_yet_in_force` | Prepare -- set calendar for effective date |
-| `proposed` | Monitor -- no compliance action yet |
-| `under_review` | Monitor -- check for changes to existing compliance |
+| Status | Meaning | Action for your product |
+|--------|---------|------------------------|
+| `in_force` | Active compliance required | Must comply NOW |
+| `adopted_not_yet_in_force` | Published, effective date pending | Prepare -- set calendar, start compliance work |
+| `proposed` | Draft or consultation phase | Monitor -- no action yet but plan if likely to pass |
+| `under_review` | Existing regulation being revised | Check for changes to current compliance |
+
+## Cleo Legal API Parameter Reference
+
+### Confidence Rules (HS Classification)
+
+| Confidence | Gap | Action |
+|------------|-----|--------|
+| >= 0.85, gap >= 0.15 | Clear | Proceed with this HS code |
+| >= 0.70, gap >= 0.15 | Likely | Use it, get professional verification for high-value |
+| < 0.70 OR gap < 0.15 | Ambiguous | Do NOT proceed. Recommend binding ruling |
+
+### Sanctions Authorities
+
+| Code | Authority | Coverage |
+|------|-----------|----------|
+| UN_SC | UN Security Council | Consolidated List |
+| US_OFAC | US Treasury | SDN + other lists |
+| UK_FCDO | UK Foreign Office | UK Sanctions |
+| AU_DFAT | Australia | Consolidated List |
+| CA_GAC | Canada | Consolidated Autonomous |
+| JP_MOF | Japan | Entity Lists |
+| CH_SECO | Switzerland | EU-aligned proxy |
+| KZ_MFA | Kazakhstan | National List |
+
+**Gap**: EU Consolidated List not directly covered; CH_SECO is EU-aligned proxy.
+
+## Bastion Parameter Reference
+
+### Pagination
+
+```
+page: 1          # starts at 1
+pageSize: 50     # max 100 for most endpoints
+```
+
+Always check `totalCount`. Calculate: `totalPages = ceil(totalCount / pageSize)`.
+
+### Evidence Attachment
+
+Two methods:
+- **URL link**: `link: "https://..."` -- preferred for most evidence
+- **Document upload**: `mcp__bastion__upload-compliance-document` -> returns `evidenceDocumentId` -> use in `add-compliance-test-evidence`
+- Max upload ~50KB via MCP. Larger files: use Bastion UI.
+- **Must provide exactly one**: link OR evidenceDocumentId, not both.
+- **Max description**: 500 characters.
+
+### Exclusion Comments
+
+Max 500 characters. Must be auditor-defensible:
+- Good: "Not applicable: product company with no physical servers or on-premise data processing. All customer data handled by Stripe and Shopify."
+- Bad: "N/A", "Not relevant"
 
 ## Error Handling
 
 | Error | Cause | Fix |
 |-------|-------|-----|
-| 500 on evidence upload | File too large or malformed | Check size < 50KB, verify file exists |
-| Empty results on list-failing | Wrong framework ID | Re-check with get-frameworks-stats |
-| KB ask returns generic answer | KB not refreshed or question too broad | Refresh KB, wait, ask specific question |
-| Refresh doesn't change status | External fix not complete | Verify the fix in the source system |
-| Pagination returns same page | API caching | Wait 30s, retry with explicit page param |
-| Description truncated | Over 500 char limit | Shorten description, move details to linked doc |
-
-## Tool Availability Check
-
-Verify access with lightweight calls before workflows:
-- Bastion: `mcp__bastion__get-customer`
-- Cleo Insight: `mcp__claude_ai_Cleo_Insight__list_countries`
-
-If either fails, fall back to manual workflows.
+| Legal API auth failure | Token expired | Re-run authenticate -> complete_authentication |
+| Empty signal results | Wrong product_id or country | Verify with list_products / list_countries first |
+| HS classification low confidence | Vague product description | Add: composition, material, intended use, form factor |
+| Sanctions false positive | Common name | Add country filter, verify against full entity details |
+| Bastion 500 on upload | File too large or malformed | Check size < 50KB, verify base64 encoding |
+| Bastion pagination same page | API caching | Wait 30s, retry with explicit page param |
+| Bastion description truncated | Over 500 chars | Shorten, move details to linked document |
+| Insight pagination incomplete | Missing after cursor | Always check for after token in response |

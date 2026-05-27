@@ -1,100 +1,228 @@
 ---
 name: compliance-audit-sprint
-description: Use when running a full compliance framework assessment, starting a new framework audit, or asked to check overall compliance posture across all tests
+description: Use when running a pre-launch compliance sprint for a product, preparing for market entry across multiple countries, or conducting a full product compliance assessment before launch
 ---
 
 # Compliance Audit Sprint
 
-Run a complete assess-triage-remediate-verify cycle for any compliance framework.
+Run a compliance sprint for your product before launch or market entry. Not a framework audit -- a practical "can I sell this?" blitz.
 
-## Supported Frameworks
+## When to Use
 
-`iso27001-2022` | `soc2` | `hipaa` — pass as `framework` param to all MCP calls.
+- Before launching a new product
+- Before entering a new market with an existing product
+- After reformulating a product
+- Before a trade show or retail buyer meeting
+- When a regulation changes and you need to re-assess
 
-## Decision Flowchart
+## Sprint Flow
 
 ```dot
 digraph {
-  rankdir=TB
-  node [shape=diamond]
-  Start [shape=box label="Failing test"]
-  App [label="Applicable\nto org?"]
-  Type [label="Auto or\nmanual?"]
-  Fixed [label="Fixed\nexternally?"]
-  node [shape=box style=filled fillcolor="#e8f5e9"]
-  Exclude [label="exclude-compliance-test\ntestId + comment"]
-  Refresh [label="refresh-compliance-test\ncomplianceIntegrationConfigurationId"]
-  Ev [label="add-compliance-test-evidence\ntestId + name + description + link|docId\n-> mark-ready-for-review"]
-  Fix [label="Fix external system\nthen Refresh"]
-  Blocked [label="Log blocker\n(UI-only / vendor)"]
-  Start -> App
-  App -> Exclude [label="no"]
-  App -> Type [label="yes"]
-  Type -> Fixed [label="automatic"]
-  Type -> Ev [label="manual"]
-  Fixed -> Refresh [label="yes"]
-  Fixed -> Fix [label="no, fixable"]
-  Fixed -> Blocked [label="no, UI-only"]
+  rankdir=TB; node [shape=box style=rounded fontsize=10];
+  profile [label="1. Product Profile\nCategory, ingredients, markets"];
+  subgraph cluster_markets {
+    label="2. Parallel: One Agent Per Market"; style=dashed;
+    eu [label="EU Agent"]; us [label="US Agent"]; uk [label="UK Agent"];
+    ca [label="CA Agent"]; jp [label="JP Agent"]; other [label="[Other] Agent"];
+  }
+  consolidate [label="3. Consolidate\nUnified compliance map"];
+  action [label="4. Action Plan\nTimeline + cost + blockers"];
+  profile -> eu; profile -> us; profile -> uk; profile -> ca; profile -> jp; profile -> other;
+  eu -> consolidate; us -> consolidate; uk -> consolidate;
+  ca -> consolidate; jp -> consolidate; other -> consolidate;
+  consolidate -> action;
 }
 ```
 
-## Phase 1: Assess
+## Phase 1: Product Profile
+
+Collect before dispatching agents:
 
 ```
-mcp__bastion__get-frameworks-stats                              # all frameworks
-mcp__bastion__get-compliance-failing-summary  framework="iso27001-2022"
-mcp__bastion__list-failing-compliance-tests   framework="iso27001-2022"  page=1  pageSize=100
-# Paginate: compare totalCount vs items returned. Increment page until exhausted.
+PRODUCT PROFILE:
+  Name: ________________
+  Category: [cosmetics | food | supplement | electronics | toy | textile | cleaning | medical | general]
+  Subcategory: ________________ (e.g., "leave-on face cream with SPF")
+  
+  Ingredients/substances:
+  - [ingredient 1] (INCI/CAS: ______, concentration: ______%)
+  - [ingredient 2] (INCI/CAS: ______, concentration: ______%)
+  - ...
+  
+  Target markets: [EU, US, UK, CA, JP, KR, ...]
+  HS code (if known): ________________
+  Manufacturing origin: ________________
+  
+  Product specifics:
+  - Contains electronics: [yes/no]
+  - Contains batteries: [yes/no]
+  - For children under 14: [yes/no]
+  - Makes health/medical claims: [yes/no]
+  - Contains nanomaterials: [yes/no]
+  - Contains fragrance: [yes/no] (if yes, IFRA certificate available?)
 ```
 
-## Phase 2: Triage into 5 Buckets
+## Phase 2: Dispatch Market Agents
 
-| Bucket | Criteria | MCP Action |
-|--------|----------|------------|
-| **Exclude** | N/A to org (no office, no sub-processors) | `exclude-compliance-test` testId + comment |
-| **Refresh** | Already fixed externally (FileVault ON, branch protection set) | `refresh-compliance-test` complianceIntegrationConfigurationId + optional testIds[] |
-| **Evidence** | Manual test, proof exists but not uploaded | `add-compliance-test-evidence` then `mark-compliance-test-ready-for-review` |
-| **Fix** | Actual gap needing work | Route to `compliance-remediation` skill |
-| **Blocked** | UI-only (MDM user-assoc, policy approval) or vendor-dependent | Log with owner + ETA |
+Use `superpowers:dispatching-parallel-agents`. One agent per target market.
 
-Integration types from failing-summary: `bastion` (policies), `google` (workspace), `bastion_mdm` (device management), `github` (repos).
+### Market Agent Prompt Template
 
-## Phase 3: Parallelize
+```markdown
+You are a regulatory compliance analyst for {{MARKET_NAME}}.
+Product: {{PRODUCT_PROFILE}}
 
-Use `dispatching-parallel-agents` skill — three independent agents:
-- **Agent A**: Exclude all N/A tests (batch)
-- **Agent B**: Refresh all externally-fixed tests by integration config ID
-- **Agent C**: Upload evidence for manual tests (use `evidence-blitz` skill for bulk)
+Execute these 5 checks and return structured results:
 
-Fix and Blocked stay sequential (need human decisions).
+CHECK 1: APPLICABLE REGULATIONS
+List every regulation that applies to this product in {{MARKET_NAME}}.
+Use Cleo Insight MCP (search_signals, list_regulations) if available, else WebSearch official sources.
+Format: | Regulation | Reference | Status | Key requirements |
 
-## Phase 4: Verify + Report
+CHECK 2: SUBSTANCE COMPLIANCE
+For each ingredient, check against {{MARKET_NAME}} substance databases.
+Use Cleo Legal API (compliance/check) if available, else check official databases.
+Format: | Ingredient | CAS | Status | Limit | Actual | Verdict (COMPLIANT/FLAG/FAIL/NEEDS_REVIEW) | Source |
 
-1. Re-run `get-frameworks-stats` for updated score
-2. Compare before/after delta
-3. List remaining failures with `list-failing-compliance-tests`
-4. Generate report via `compliance-reporting` skill
+CHECK 3: LABELING REQUIREMENTS
+List all mandatory label elements for this product in {{MARKET_NAME}}.
+Flag any that are different from standard international practice.
+Format: | Element | Required? | Specification | Notes |
 
-## Example
+CHECK 4: CERTIFICATIONS NEEDED
+List required certifications, tests, and approvals.
+Format: | Certification | Required by | Timeline | Estimated cost | Lab/body |
+
+CHECK 5: MARKET-SPECIFIC GOTCHAS
+Any requirements unique to {{MARKET_NAME}} that are easy to miss.
+Examples: EPR registration, responsible person, notification portal, specific claims restrictions.
+
+Return results with confidence level (HIGH/MEDIUM/LOW) per check.
+```
+
+### MCP Usage in Agents
 
 ```
-User: "Run an ISO 27001 audit sprint"
+# Each market agent can use:
 
-1. get-frameworks-stats -> ISO27001: 14/75 passing
-2. get-compliance-failing-summary framework="iso27001-2022"
-   -> 61 failing: 23 manual, 31 auto (github:8, google:4, bastion_mdm:12, bastion:7), 7 N/A candidates
-3. list-failing-compliance-tests pages 1-1 pageSize=100 -> full list
-4. Triage: 7 exclude, 12 refresh, 18 evidence, 17 fix, 7 blocked
-5. Parallel: A excludes 7, B refreshes 12 (by integrationConfigId), C uploads 18
-6. Re-check: 14 -> 51 passing in one session
-7. Remaining 24 -> prioritized roadmap via compliance-gap-analysis
+# Cleo Insight -- find applicable regulations + recent signals
+mcp__claude_ai_Cleo_Insight__search_signals
+  country: "{{COUNTRY_CODE}}"
+  product_id: "{{PRODUCT_ID}}"
+  risk_level: "critical"
+
+mcp__claude_ai_Cleo_Insight__list_regulations
+  # Filter for product category
+
+# Cleo Legal API -- substance checks + customs
+mcp__claude_ai_CLEO_LEGAL_API__compliance/check
+  product_description: "{{PRODUCT_DESCRIPTION}}"
+  ingredients: {{INGREDIENTS_LIST}}
+  target_markets: ["{{MARKET_CODE}}"]
+
+# Bastion -- only if product company also handles customer data
+mcp__bastion__get-frameworks-stats  # ISO 27001 / SOC2 check
+```
+
+## Phase 3: Consolidation
+
+Merge all market agent results into unified view:
+
+```
+COMPLIANCE SPRINT RESULTS -- [Product Name] -- [Date]
+
+SUBSTANCE MATRIX (all markets):
+| Ingredient | CAS | EU | US | US-CA | UK | CA | JP | KR |
+|------------|-----|----|----|-------|----|----|----|-----|
+| [name] | [cas] | [verdict] | ... | ... | ... | ... | ... | ... |
+
+MARKET READINESS:
+| Market | Substances | Labeling | Certifications | Registration | Overall |
+|--------|-----------|---------|---------------|-------------|---------|
+| EU | GREEN | ORANGE | RED | ORANGE | RED |
+| US | GREEN | GREEN | GREEN | ORANGE | ORANGE |
+| UK | GREEN | ORANGE | RED | ORANGE | RED |
+
+RED = Cannot sell (blocker exists)
+ORANGE = Can sell after specific actions (list them)
+YELLOW = Needs investigation / low confidence
+GREEN = Ready to sell
+
+BLOCKERS (RED items):
+1. [Market] -- [Issue] -- [Required action] -- [Timeline] -- [Cost]
+
+ACTIONS NEEDED (ORANGE items):
+1. [Market] -- [Issue] -- [Required action] -- [Timeline] -- [Cost]
+```
+
+## Phase 4: Action Plan
+
+Generate a prioritized action plan:
+
+```
+ACTION PLAN -- [Product Name]
+
+PRIORITY 1 -- DO NOW (blocks all markets):
+[ ] [Action] -- [Timeline] -- [Cost] -- [Who]
+
+PRIORITY 2 -- MARKET-SPECIFIC BLOCKERS:
+[ ] [Market]: [Action] -- [Timeline] -- [Cost] -- [Who]
+
+PRIORITY 3 -- NICE TO HAVE (reduces risk):
+[ ] [Action] -- [Timeline] -- [Cost] -- [Who]
+
+TOTAL ESTIMATED COST: EUR/USD ______
+TOTAL ESTIMATED TIMELINE: ______ weeks
+FASTEST MARKET TO ENTER: ______ (ready in ______ weeks)
+LARGEST MARKET BLOCKED BY: ______
+```
+
+### Cost Estimation Guide
+
+| Action Type | Typical Cost | Timeline |
+|-------------|-------------|----------|
+| CPSR (cosmetic safety report) | EUR 1,500-5,000/product | 4-8 weeks |
+| CE marking (electronics, self-declare) | EUR 3,000-10,000 | 6-12 weeks |
+| CE marking (electronics, notified body) | EUR 8,000-25,000 | 12-20 weeks |
+| EN 71 toy safety testing | EUR 2,000-8,000 | 8-16 weeks |
+| FCC testing | USD 3,000-10,000 | 4-8 weeks |
+| REACH compliance testing | EUR 1,000-5,000 | 2-6 weeks |
+| Stability testing (cosmetics) | EUR 500-2,000 | 4-12 weeks |
+| Microbiological testing | EUR 300-800 | 1-2 weeks |
+| Responsible person service (EU) | EUR 500-3,000/year | 1-2 weeks setup |
+| CPNP notification | Free (but needs CPSR) | 1 day |
+| FDA MoCRA registration | Free (but needs label compliance) | 1 day |
+| Prop 65 assessment | USD 500-2,000 | 2-4 weeks |
+| Label translation + review | EUR 200-500/language | 1-2 weeks |
+| EPR registration (France/Germany) | EUR 200-1,000/year | 1-4 weeks |
+
+## Example Sprint
+
+```
+Product: "Glow Serum" -- face serum with niacinamide, retinol, hyaluronic acid, vitamin C
+Category: Cosmetics (leave-on)
+Markets: EU (France, Germany), US, UK
+Origin: Made in France
+
+Sprint results:
+  EU: GREEN (all substances compliant, label ready, CPSR done)
+  US: ORANGE (need MoCRA registration + Prop 65 check on retinol)
+  UK: ORANGE (need UK RP appointment + UK SCPN notification)
+
+Action plan:
+  P1: Prop 65 assessment for retinol -- USD 1,000 -- 2 weeks
+  P2: FDA MoCRA registration -- free -- 1 day
+  P2: Appoint UK RP -- GBP 500/year -- 1 week
+  P2: Notify on UK SCPN -- free -- 1 day
+  
+Total: ~EUR 1,500 | Timeline: 2 weeks | Fastest market: EU (ready now)
 ```
 
 ## Red Flags
 
-- **Pagination skipped**: pageSize max 100, default 25. Always check totalCount vs items.length.
-- **Refreshing unfixed tests**: Just re-confirms failure. Confirm fix happened first.
-- **Bulk excluding real gaps**: Excludes are auditor-visible. Only genuinely N/A tests.
-- **Wrong refresh param**: `refresh-compliance-test` takes `complianceIntegrationConfigurationId` (number), NOT testId.
-- **Evidence without submit**: `add-compliance-test-evidence` does NOT submit. Must call `mark-compliance-test-ready-for-review` after.
-- **Ignoring blocked bucket**: Track blockers or they silently stall the sprint.
+- **Skipping substance check**: A single banned ingredient blocks the entire product from a market. Always check substances first.
+- **Assuming one label fits all**: Each market has different language, format, and content requirements. Budget for market-specific labels.
+- **Forgetting post-market obligations**: Compliance is not one-time. You need adverse event reporting, EPR annual declarations, periodic safety updates.
+- **Underestimating timelines**: Certification (especially CE with notified body, or FDA submissions) can take months. Start early.
+- **Not parallelizing**: Markets are independent checks. Run them in parallel to compress timeline.
