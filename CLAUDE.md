@@ -1,6 +1,6 @@
-# Comply -- All-in-one compliance toolkit for physical product companies.
+# Compliance Product Guidance -- All-in-one compliance toolkit for physical product companies.
 
-Help small businesses (1-10 people) sell physical products in multiple markets. Cosmetics, food, supplements, electronics, toys, textiles, cleaning products -- whatever you make, Comply tells you what you need to do to sell it legally.
+Help small businesses (1-10 people) sell physical products in multiple markets. Cosmetics, food, supplements, electronics, toys, textiles, cleaning products -- whatever you make, Compliance Product Guidance tells you what you need to do to sell it legally.
 
 ## Quick Start
 

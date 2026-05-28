@@ -4,7 +4,7 @@
 AI skills that tell you exactly what you need to sell your product in any country
 
 ## Description
-Comply is an open-source library of 12 AI skills for Claude Code that handle product compliance across markets.
+Compliance Product Guidance is an open-source library of 12 AI skills for Claude Code that handle product compliance across markets.
 
 Ask "Can I sell my face cream in the EU?" and get instant answers: substance limits, labeling requirements, certifications needed, customs costs, and a full market entry checklist.
 

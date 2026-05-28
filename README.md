@@ -1,10 +1,10 @@
-# Comply
+# Compliance Product Guidance
 
 All-in-one compliance toolkit for physical product companies.
 
-## What is Comply?
+## What is Compliance Product Guidance?
 
-Comply is a library of 12 production-grade skills that teach AI agents how to get physical products legally to market. Built for small businesses (1-10 people) selling cosmetics, food, supplements, electronics, toys, textiles, cleaning products, and more across multiple countries.
+Compliance Product Guidance is a library of 12 production-grade skills that teach AI agents how to get physical products legally to market. Built for small businesses (1-10 people) selling cosmetics, food, supplements, electronics, toys, textiles, cleaning products, and more across multiple countries.
 
 One question drives everything: **"What do I need to do to sell my product in this market?"**
 
@@ -30,7 +30,7 @@ Place the `comply/` directory in your Claude Code plugins path.
 
 ## MCP Integration
 
-Comply works standalone but supercharges with MCP servers:
+Compliance Product Guidance works standalone but supercharges with MCP servers:
 
 - **Cleo Legal API** -- Substance checks, customs classification, duty calculation, sanctions screening
 - **Cleo Insight** -- Regulatory signal monitoring, regulation tracking across 49 countries
@@ -44,7 +44,7 @@ Small physical product companies that need to:
 - Monitor for substance bans or labeling changes that could block their product
 - Prepare documentation for marketplace listings (Amazon, retail buyers)
 - Get CE/UKCA/FCC certification for electronics and toys
-- Comply with REACH, CLP, FDA MoCRA, Prop 65, and dozens of other regulations
+- Compliance with REACH, CLP, FDA MoCRA, Prop 65, and dozens of other regulations
 
 
 ## License

@@ -4,7 +4,7 @@
 
 **You:** "I'm launching a face cream with retinol, niacinamide, and hyaluronic acid in France, Germany, and the UK. What do I need?"
 
-**Comply triggers:** `product-compliance` → `labeling-compliance` → `market-entry-checklist`
+**Skills triggered:** `product-compliance` → `labeling-compliance` → `market-entry-checklist`
 
 **Result:**
 - Retinol: restricted under EU Cosmetics Regulation Annex III — max 0.3% in body products, 0.05% in face (new 2025 limits)
@@ -18,7 +18,7 @@
 
 **You:** "I have a Bluetooth speaker I want to sell in the US and EU. What certifications do I need?"
 
-**Comply triggers:** `compliance-audit-sprint` → `compliance-frameworks-ref`
+**Skills triggered:** `compliance-audit-sprint` → `compliance-frameworks-ref`
 
 **Result:**
 - EU: CE marking (RED 2014/53/EU for radio), RoHS, WEEE registration, GPSR responsible person, DoC
@@ -32,7 +32,7 @@
 
 **You:** "I make artisanal chocolate bars and want to export to Japan. What's the process?"
 
-**Comply triggers:** `market-entry-checklist` → `customs-and-trade` → `labeling-compliance`
+**Skills triggered:** `market-entry-checklist` → `customs-and-trade` → `labeling-compliance`
 
 **Result:**
 - Food Sanitation Act: import notification to quarantine station
@@ -47,7 +47,7 @@
 
 **You:** "Is my plush toy with button eyes safe to sell in the EU for children under 3?"
 
-**Comply triggers:** `product-compliance` → `compliance-remediation`
+**Skills triggered:** `product-compliance` → `compliance-remediation`
 
 **Result:**
 - EN 71-1 (mechanical/physical): button eyes = choking hazard for <36 months → FAIL
@@ -62,7 +62,7 @@
 
 **You:** "I need compliance docs for my skincare line to list on Amazon EU"
 
-**Comply triggers:** `evidence-blitz` → `compliance-reporting`
+**Skills triggered:** `evidence-blitz` → `compliance-reporting`
 
 **Result: 4 parallel agents gather:**
 1. Safety docs: CPSR (Cosmetic Product Safety Report), stability tests, challenge tests

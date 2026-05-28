@@ -1,4 +1,4 @@
-# Install Comply in 30 seconds
+# Install Compliance Product Guidance in 30 seconds
 
 ## One-liner (Claude Code)
 

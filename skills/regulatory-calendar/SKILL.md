@@ -124,7 +124,7 @@ Generate `.ics` file entries for each deadline:
 ```
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Comply//Regulatory Calendar//EN
+PRODID:-//Compliance Product Guidance//Regulatory Calendar//EN
 BEGIN:VEVENT
 DTSTART:20261001T080000Z
 DTEND:20261001T090000Z
