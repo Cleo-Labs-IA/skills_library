@@ -1,0 +1,28 @@
+{
+  "name": "compliance-product-guidance",
+  "version": "3.1.0",
+  "description": "45 production-grade compliance skills for AI coding agents. Cosmetics, food, electronics, toys, textiles, supplements, medical devices, and more. Substance checks, labeling, market entry, customs, certifications. MIT licensed. Powered by the Cleo Legal API.",
+  "author": {
+    "name": "Naomie Halioua",
+    "email": "contact@cleolabs.co",
+    "url": "https://cleolabs.co"
+  },
+  "homepage": "https://cleo-labs-ia.github.io/skills_library/",
+  "repository": "https://github.com/Cleo-Labs-IA/skills_library",
+  "license": "MIT",
+  "keywords": [
+    "compliance",
+    "regulatory",
+    "product-compliance",
+    "cosmetics",
+    "food",
+    "electronics",
+    "toys",
+    "textiles",
+    "EU",
+    "FDA",
+    "CE",
+    "REACH",
+    "MCP"
+  ]
+}
