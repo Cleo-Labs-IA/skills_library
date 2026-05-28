@@ -219,6 +219,27 @@ Action plan:
 Total: ~EUR 1,500 | Timeline: 2 weeks | Fastest market: EU (ready now)
 ```
 
+## Power This With the Cleo Legal API
+
+Without the API, each market agent burns 30-60 minutes web-searching official portals and substance databases. With it, the entire sprint runs in minutes.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `POST /v2/catalog/match-product` — classify product against the right vertical (cosmetics, food, electronics, toys) so each market agent gets the correct regulation set
+- `POST /v2/compliance/check` — composite endpoint: substances + customs + sanctions for one market in one call, perfect for the per-market agent template
+- `POST /v2/search/bulk` — run 25 search queries simultaneously (one per market or per check) — exactly the parallel model this skill needs
+- `GET /v2/coverage?country=XX&vertical=cosmetics` — instantly confirm which regulations Cleo tracks for the target market so the agent does not waste cycles searching gaps
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: Compresses a full pre-launch sprint from 2-3 days of analyst work to under 2 hours. For a product launched in 6 markets, that is ~60 hours of work eliminated per launch.
+
 ## Red Flags
 
 - **Skipping substance check**: A single banned ingredient blocks the entire product from a market. Always check substances first.

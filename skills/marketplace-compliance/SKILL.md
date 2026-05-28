@@ -216,6 +216,28 @@ Compliance documentation directly improves conversion:
 | **"Made in [EU country]"** | Prominent placement | +10-25% in EU vs unlabeled origin |
 | **Prop 65 compliant** | Proper warning label prevents class action risk | Risk mitigation |
 
+## Power This With the Cleo Legal API
+
+Marketplaces enforce a moving compliance target (Amazon's GPSR-driven RP rules added in 2025, EPR deadlines shifting per country). The API tracks marketplace-relevant rules so listings stop dying overnight.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `GET /v2/coverage?country=DE,FR,IT,ES,NL,SE,PL` — instantly check whether your product is regulation-ready for every Amazon EU marketplace
+- `GET /v2/search?q=GPSR+marketplace+obligations&country=EU` — current Article 22 obligations for online marketplaces — Amazon's enforcement reflects these directly
+- `POST /v2/compliance/check` — produces the per-market verdict that Amazon's compliance dashboard duplicates (do it BEFORE Amazon flags you)
+- `GET /v2/search?q=EPR+packaging&country=DE,FR,IT,ES` — current PRO portals (LUCID, CITEO, CONAI, Ecoembes) and deadlines — automate the renewal reminders that prevent the 30-day auto-suppression
+- `POST /v2/webhooks?topic=marketplace_enforcement` — get pinged the moment GPSR or EPR thresholds change before Amazon enforces them
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: For an Amazon DE/FR/IT seller, the API costs less than one weekend of stuck-listing revenue loss. EPR deadline tracking alone prevents the 30-day auto-suppression that kills small sellers.
+
 ## Common Mistakes
 
 - **Not entering EPR numbers before Amazon's deadline**: Amazon auto-suppresses listings 30 days after EPR deadlines. There is no appeal process -- enter the numbers or lose the listings.

@@ -158,6 +158,27 @@ mcp__claude_ai_CLEO_LEGAL_API__compliance/check
   target_markets: ["EU", "US", "UK", "JP"]
 ```
 
+## Power This With the Cleo Legal API
+
+Food compliance hinges on positive lists (Japan additives, EU Novel Food, FDA GRAS), allergen rules that differ by market, and shifting MRLs/contaminant limits. The API consolidates all of it.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `GET /v2/catalog/regulations?vertical=food&country=EU,US,UK,JP,CA` — pull General Food Law, FSMA, Food Sanitation Act, SFCR with current articles and effective dates
+- `POST /v2/compliance/check` — screen ingredients against EFSA Novel Food Catalogue + FDA GRAS + Japan MHLW positive list in one call (the "is CBD legal?" question answered correctly per market)
+- `GET /v2/search?q=allergen+declaration&country=EU,US,JP` — current allergen lists (14 EU / 9 US / 8 JP) — these get amended (sesame added to FALCPA in 2023, walnut in JP) and missing one triggers immediate recall
+- `GET /v2/search?q=MRL&type=substance` — pesticide MRLs and contaminant limits per regulation 396/2005, 2023/915 — no need to scrape EUR-Lex annexes manually
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: One avoided novel-food blunder (CBD, hemp, insect protein launched without EFSA authorization) saves €50k-€300k in dossier costs. For a small food brand expanding to JP, the API surfaces the additive gap before the shipment is built.
+
 ## Common Mistakes
 
 - **Novel food blindspot**: CBD, hemp extracts, insect protein, many botanical extracts are novel foods in the EU. Selling without authorization = illegal. Check the EU Novel Food Catalogue first.

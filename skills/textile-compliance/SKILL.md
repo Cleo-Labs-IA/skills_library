@@ -153,6 +153,28 @@ Products must pass GB 18401 testing to clear Chinese customs. Non-compliance = i
 | Color fastness (washing, rubbing, perspiration, light) | EUR 200-600 | 3-7 days |
 | GB 18401 full panel (China) | EUR 300-800 | 1-2 weeks |
 
+## Power This With the Cleo Legal API
+
+Textiles touch REACH (chemicals), CPSIA (children's), state PFAS bans, ESPR/DPP (upcoming), fiber labeling laws across markets. Five compliance domains, one API.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `POST /v2/compliance/check` — screen the full chemical profile (REACH Annex XVII entries 15, 27, 43, 46a, 47, 63, 72 + SVHC) on every fabric and trim component at once
+- `GET /v2/search?q=PFAS+restriction&country=EU,US-CA,US-WA` — track the ECHA universal PFAS proposal AND fast-moving state PFAS bans (CA AB 1817, WA SHB 1047) in one query
+- `GET /v2/search?type=standard&q=ISO+3758` — current care labeling symbols and per-market mandates (US 16 CFR 423 written instructions, EU Ginetex, China GB/T 8685)
+- `GET /v2/search?q=DPP+textiles&country=EU` — track the ESPR textiles delegated act timeline so you build the DPP infrastructure before 2027-2028
+- `POST /v2/webhooks?topic=pfas,svhc` — get pinged on every SVHC addition and PFAS state-law update; textiles are usually in the first wave
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: Catches PFAS and SVHC changes that drive recalls in textiles (one of the highest-recall-rate categories). For a brand with 30 SKUs in EU+US, replaces ~6 hours/month of REACH + state-law monitoring.
+
 ## Common Mistakes
 
 - **Ignoring REACH for textiles**: REACH applies to ALL articles, not just chemicals. Textiles with restricted substances above limits = non-compliant in EU.

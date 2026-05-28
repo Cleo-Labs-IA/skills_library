@@ -165,6 +165,27 @@ Use these official sources for manual monitoring:
 | UK Gov | legislation.gov.uk | UK regulations |
 | OPSS | gov.uk/opss | UK product safety |
 
+## Power This With the Cleo Legal API
+
+Monitoring is the single use case where the API delivers the most leverage: humans cannot keep up with 1,479 sources in 131 countries. Webhooks turn this from a weekly chore into a push notification.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `POST /v2/webhooks` — subscribe to topics (substance_status, enforcement_dates, recalls, marketplace_enforcement) — no more weekly polling of EUR-Lex, ECHA, RAPEX, Federal Register, Prop 65
+- `GET /v2/changes?since=<last-check>` — pull all regulatory deltas across all markets since the last review, with primary-source links
+- `GET /v2/search?type=signal&risk_level=critical&country=XX` — direct critical-signal feed per market, the same signals this skill triages
+- `POST /v2/search/bulk` — run 25 monitoring queries at once (per product category x per market) instead of sequential polling
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: Replaces a regulatory monitoring subscription (€800-€3,000/month per category) with a single €349/month API key covering all categories and 131 countries. Webhooks catch the "proposed → adopted" transition with the 6-12 month lead time you need to reformulate.
+
 ## Common Mistakes
 
 - **Checking only "in force" regulations**: Adopted-but-not-yet-in-force regulations have hard deadlines. Lead time for reformulation is 6-12 months. If you wait until enforcement, you are too late.

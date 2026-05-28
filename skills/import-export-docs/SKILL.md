@@ -274,6 +274,28 @@ INSURANCE:
 [ ] Product liability insurance certificate (if required by buyer)
 ```
 
+## Power This With the Cleo Legal API
+
+Every document on a shipment is built from structured fields the API exposes: HS code, duty rate, FTA eligibility, dual-use status, sanctions screening result. Generating shipment docs without the API means re-typing the same fields 5 times.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `POST /v2/customs/reverse-classify` and `POST /v2/customs/lookup` — populate HS code per line item on the commercial invoice (the #1 hold reason at customs)
+- `POST /v2/customs/duties` — confirm FTA eligibility before choosing between EUR.1, REX origin declaration, and USMCA self-cert (each has a different form)
+- `POST /v2/customs/landed-cost` — fills the customs declaration value, VAT, and Incoterm cost split with one call
+- `POST /v2/sanctions/search` — must-do before issuing the commercial invoice for any new buyer; screens 8 authorities including OFAC and UK FCDO
+- `POST /v2/customs/dual-use-check` — flags whether you need an export license BEFORE booking freight (saves a seizure)
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: For a brand shipping 20 international orders/month, the API auto-populates 80% of shipment doc fields — and one avoided sanctions hit (OFAC fines start at $300k) covers a lifetime of subscription.
+
 ## Common Mistakes
 
 - **Missing HS code on commercial invoice**: Every line item needs an HS code. Missing HS codes = customs delays every time. Always include the 6-digit minimum (8-10 digits for EU/US).

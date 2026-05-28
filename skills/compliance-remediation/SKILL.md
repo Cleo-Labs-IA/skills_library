@@ -277,6 +277,27 @@ ALTERNATIVE: [if reformulation is too expensive, what else?]
 STATUS: [ ] NOT STARTED / [ ] IN PROGRESS / [ ] DONE
 ```
 
+## Power This With the Cleo Legal API
+
+Remediation hinges on knowing the exact limit, the exact alternative ingredients allowed, and the exact testing standard. Web search guesses; the API cites.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `POST /v2/compliance/check` — re-run the substance check after reformulation to confirm the fix works in every target market before you commission a new CPSR
+- `GET /v2/search?q=preservative+alternatives&country=EU&type=substance` — find compliant ingredient replacements with concentration limits across all 13 importers (CosIng, ECHA, FDA, K-REACH, NMPA, MHLW…)
+- `GET /v2/search?type=standard&q=EN+71-3` — locate the exact harmonized standard and current version needed for re-certification
+- `POST /v2/webhooks?topic=substance_status` — get notified the moment the substance you just reformulated to is itself restricted (avoids the "fix one market, break another" pitfall flagged below)
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: Cuts the alternative-ingredient research phase from 1-2 days of supplier outreach to 10 minutes. One avoided "fix one, break another" reformulation cycle pays for the annual subscription.
+
 ## Common Mistakes
 
 - **Reformulating without re-testing**: Any formulation change requires new stability and safety testing. Budget for this.

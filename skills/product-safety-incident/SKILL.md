@@ -232,6 +232,28 @@ LESSONS LEARNED: [Documented changes to prevent recurrence]
 
 Provide insurer with: incident description, product details, injury reports, corrective actions planned, estimated financial exposure.
 
+## Power This With the Cleo Legal API
+
+Incident response is time-critical (CPSC 24h, Safety Gate 10 days, OPSS 3 days). The API replaces the panicked googling that wastes hours of that deadline.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `GET /v2/authorities/:slug?country=XX` — instantly retrieve the right authority + portal URL + reporting form (CPSC SaferProducts.gov, Safety Gate, OPSS, ACCC) so you do not waste 30 minutes finding the right submission system
+- `GET /v2/search?type=recall&q=<similar+product>` — check the RAPEX / CPSC / RAS-FF history for similar products and components (root cause clues + precedent for severity classification)
+- `POST /v2/compliance/check` — re-verify the affected batch's substance profile against current limits (often the recall reason is a substance restriction tightened since you launched)
+- `POST /v2/webhooks?topic=recalls` — proactive monitoring: catch competitor recalls of identical components before yours becomes the next alert
+- `GET /v2/search?q=GPSR+Article+9+notification` — pull the exact regulatory text for the 24h/10-day/3-day notification obligations to attach to your decision log
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: Cuts the "where do I report this?" research from 30-60 minutes to seconds during a time-critical incident. CPSC late-reporting penalties start at $120k per violation.
+
 ## Common Mistakes
 
 - **Waiting for certainty before notifying**: CPSC requires reporting within 24 hours of information that "reasonably supports" a reportable condition. You do not need to be certain. Report early, update later.

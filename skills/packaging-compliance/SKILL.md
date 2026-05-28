@@ -162,6 +162,28 @@ RECYCLED CONTENT (plastic): [%]
 UK PLASTIC TAX LIABLE: [YES/NO -- < 30% recycled plastic AND > 10 tonnes/year]
 ```
 
+## Power This With the Cleo Legal API
+
+EPR is fragmented per-country, per-material, per-PRO — exactly what an API normalizes. PPWR/SUP/plastic tax rules also shift constantly.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `GET /v2/search?q=EPR+packaging&country=FR,DE,IT,ES,NL,BE,AT,PL,SE` — current scheme, PRO, eco-modulated fees, and deadlines for every EU member state
+- `GET /v2/search?q=PPWR&type=regulation` — track the phased PPWR transition (recyclability 2030, recycled content 35% by 2030, reuse targets) before retailer requirements bite
+- `GET /v2/search?q=plastic+tax&country=UK,IT,ES` — current rates (GBP 217.85/tonne UK, EUR 0.45/kg ES) with effective dates
+- `POST /v2/webhooks?topic=epr_deadlines` — get pinged 30-90 days before each country's annual declaration deadline (LUCID May 15, CITEO Feb 28…)
+- `GET /v2/authorities/:slug` — direct portal URLs for CITEO, LUCID/ZSVR, CONAI, Ecoembes, Afvalfonds, FTI
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: Missing the German LUCID May 15 deadline costs up to €200,000 + sales ban. The API's webhook alerting eliminates that risk class entirely.
+
 ## Common Mistakes
 
 - **Registering in your home country only**: EPR is per-market. Selling in France, Germany, and Spain = 3 separate EPR registrations with 3 separate annual declarations.

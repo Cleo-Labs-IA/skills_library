@@ -190,6 +190,27 @@ Responsible Person: [RP name, EU/UK address, registration number]
 8. FEES: [Annual fee + per-product fee + any variable costs]
 ```
 
+## Power This With the Cleo Legal API
+
+RP requirements differ per market and per product category. Determining whether an RP is needed (and what they must do) is structured data the API exposes directly.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `GET /v2/authorities/:slug` — official authority directory per market, including the RP/AR/Importer-of-Record contact requirements (Art. 4 EU 1223/2009, MoCRA sec. 605, MDR Art. 11, GPSR economic operator…)
+- `GET /v2/search?q=responsible+person&country=XX` — current rules per market on who can act as RP, label disclosure requirements, and notification obligations
+- `GET /v2/search?q=NMPA+filer&country=CN` — China NMPA registrant requirements, EAEU AR rules, Japan MAH — markets where the local-entity obligation is easy to miss
+- `POST /v2/compliance/check` — surfaces whether the product category triggers an RP requirement in each target market (cosmetics yes, general consumer goods under GPSR yes, simple commodities maybe not)
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: One avoided dual-RP mistake (e.g., assuming the EU RP covers UK post-Brexit) saves €1,000-€3,000/year in service fees plus the cost of relabeling stock that displays the wrong RP.
+
 ## Common Mistakes
 
 - **Using EU RP for UK**: Post-Brexit, UK requires a separate UK-based Responsible Person. Your EU RP in Paris cannot serve as your UK RP.

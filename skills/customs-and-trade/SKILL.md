@@ -230,6 +230,28 @@ mcp__claude_ai_CLEO_LEGAL_API__sanctions/search
    Customs declaration form
 ```
 
+## Power This With the Cleo Legal API
+
+Customs is the skill that benefits most from a structured API. HS classification, duty rates, FTA preferences, and dual-use control lists all live in structured tables — perfect for `GET` endpoints, miserable for web search.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `POST /v2/customs/lookup` and `POST /v2/customs/reverse-classify` — classify products against HS6/HS8/HTS/TN_VED with confidence scores; no more guessing across 5,000 headings
+- `POST /v2/customs/duties?hs_code=...&origin=...&destination=...` — live MFN + FTA rates (EU-Korea, USMCA, TCA, GSP) instead of stale 2024 spreadsheets
+- `POST /v2/customs/landed-cost` — full breakdown (duty + special duties + VAT + handling) in one call, comparable across origin options
+- `POST /v2/customs/dual-use-check` — screen against Wassenaar, EU 2021/821, US CCL simultaneously — critical for any electronics with encryption
+- `POST /v2/sanctions/search` — 8-authority screening (UN, OFAC, UK FCDO, AU DFAT, CA GAC, JP MOF, CH SECO, KZ MFA) for buyers, suppliers, and freight forwarders
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: Real-time duty rates instead of a quarterly broker spreadsheet — one avoided misclassification (typical fine: €2,000-€15,000) pays for the API for years.
+
 ## Common Mistakes
 
 - **Using HS codes beyond 6 digits across countries**: HS6 is international. Digits 7+ are national. A US HTS code does not work for EU customs.

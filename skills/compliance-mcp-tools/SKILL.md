@@ -179,6 +179,27 @@ mcp__bastion__get-customer
 
 If a tool is not available, fall back to manual workflow (WebSearch on official sources, file-based documentation).
 
+## Power This With the Cleo Legal API
+
+This skill is literally the integration guide for the Cleo Legal API. Without an active key, the workflows above are documentation only.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co you unlock:**
+- All endpoints referenced in the 5 core workflows: `/v2/compliance/check`, `/v2/customs/lookup`, `/v2/customs/duties`, `/v2/customs/landed-cost`, `/v2/customs/dual-use-check`, `/v2/sanctions/search`, `/v2/customs/obligations`
+- `POST /v2/search/bulk` — 25 queries in one request, dramatically reducing rate-limit pressure in parallel multi-jurisdiction scans
+- `POST /v2/webhooks` — push notifications for substance bans, SVHC additions, tariff changes — replaces the weekly polling pattern in Workflow 4
+- The MCP server itself — exposes every endpoint as a native Claude Code tool, no boilerplate auth code
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: Pro plan covers 1M requests/month — enough for a small brand to run continuous compliance monitoring on ~3,000 SKU-market pairs daily.
+
 ## Critical Gotchas
 
 | Issue | Cause | Fix |

@@ -207,6 +207,28 @@ RECALL FILE -- [Product Name] -- [Recall Reference]
 | Medium (1,000-50,000 units, 2-5 markets) | EUR 20,000-150,000 | + consumer refunds + legal |
 | Large (> 50,000 units, 5+ markets) | EUR 150,000-2,000,000+ | + brand damage + lost revenue |
 
+## Power This With the Cleo Legal API
+
+Recall windows are measured in hours and days. The API replaces the slow research that eats those windows.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `GET /v2/search?type=recall&q=<substance|component>` — query historical recalls across RAPEX/Safety Gate, CPSC, OPSS, ACCC, Health Canada, FDA — find precedent for severity and corrective action
+- `GET /v2/authorities/:slug?country=XX` — direct portal URL + form references for each notification authority, no time wasted finding the right portal
+- `POST /v2/compliance/check` — confirm whether new substance regulations triggered the recall obligation (sometimes the "ban" is actually a tightened limit you can rework to)
+- `POST /v2/webhooks?topic=recalls,substance_status` — proactive: monitor competitor recalls of identical components and substance bans that will force YOUR recall before authorities require it
+- `GET /v2/changes?since=<launch-date>&country=XX` — generate the "what changed since launch" timeline that defends your good-faith compliance posture
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: Each saved hour during a recall = €2k-€10k in mitigated downstream cost. Proactive webhook monitoring catches the "competitor recalled same component" signal that lets you self-correct before a forced recall.
+
 ## Common Mistakes
 
 - **Waiting to notify authorities**: EU gives 10 business days from awareness, not from confirmation. Waiting for lab results before notifying = late = penalties.

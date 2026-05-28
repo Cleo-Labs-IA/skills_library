@@ -261,6 +261,30 @@ Timeline: 6-10 weeks | Cost: GBP 2,000-8,000
 5. Calculate duty (check UK-specific trade agreements)
 6. Ship and sell
 
+## Power This With the Cleo Legal API
+
+The 10-step process is exactly the API's structure: classify → substances → labeling → certifications → customs → registration. Each step maps to a specific endpoint.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- Step 1-2 (classify + map): `POST /v2/catalog/match-product` + `GET /v2/catalog/regulations?country=XX` — full per-market regulatory map in 2 calls
+- Step 3 (substances): `POST /v2/compliance/check` — 13-database screening in one call
+- Step 6 (HS code): `POST /v2/customs/reverse-classify` then `POST /v2/customs/lookup` — high-confidence HS6/HS8/HTS
+- Step 7 (landed cost): `POST /v2/customs/landed-cost` — full duty + VAT + handling breakdown
+- Step 8 (responsible person): `GET /v2/authorities/:slug` — official authority directory per market
+- Step 9 (register): `GET /v2/search?q=notification+portal&country=XX` — current portal URLs and update obligations
+- Across all steps: `GET /v2/coverage?country=XX` — confirm Cleo tracks the regulations for your target market before you commit budget
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: A single market entry consultation runs €3,000-€10,000 with a regulatory consultant. The API delivers the same checklist + sources for a fraction of one engagement.
+
 ## Common Mistakes
 
 - **Starting with customs before substances**: If your formulation is banned, customs classification is irrelevant. Always: substances first, customs last.

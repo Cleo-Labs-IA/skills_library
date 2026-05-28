@@ -150,6 +150,28 @@ Mirrors EU Toy Safety Directive. Currently still aligned with EN 71 standards.
 | BPA | Restricted in toys for under-3 (EU) | Some state restrictions (not federal) |
 | Flame retardants | EN 71-9 limits on specific FRs | No federal toy-specific limits (state: CA, WA restrict certain FRs) |
 
+## Power This With the Cleo Legal API
+
+Toy safety is the highest-stakes category: failed tests = forced recall = criminal exposure. The API delivers the right standard, the right age-grading threshold, and the right chemical limits per market.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `GET /v2/search?type=standard&q=EN+71` — current EN 71 part versions (the suite is 14 parts and revises frequently); EN 71-3 element limits differ from ASTM F963 soluble limits
+- `POST /v2/compliance/check` — screen toy materials against EN 71-3, EN 71-9, CPSIA Sec 101 lead, Sec 108 phthalates, REACH Annex XVII restrictions, GB 6675 limits in one call
+- `GET /v2/catalog/regulations?vertical=toys&country=EU,US,UK,CN,JP` — full per-market obligation map (CE+EN 71, CPSIA+CPC+ASTM F963, UKCA, CCC+GB 6675, ST Mark)
+- `GET /v2/authorities/:slug?country=US` — CPSC-accepted lab directory for the mandatory third-party testing (you cannot self-test children's products)
+- `POST /v2/webhooks?topic=toy_safety` — alerts for the EU Toy Safety Regulation revision (proposed 2023, working through), ASTM F963 amendments, CPSIA tracking-label changes
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: One avoided toy recall typically costs €50k-€500k for a small brand. Catching an EN 71-3 limit change or a tightened ASTM F963 magnet requirement before production saves the recall outright.
+
 ## Common Mistakes
 
 - **Age grading to avoid testing**: Setting age 14+ to escape toy regulations does not work if the product is obviously designed for younger children. Authorities use the "reasonable foreseeability" test.

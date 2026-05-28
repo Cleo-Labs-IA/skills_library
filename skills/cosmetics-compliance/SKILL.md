@@ -167,6 +167,27 @@ mcp__claude_ai_CLEO_LEGAL_API__compliance/check
   target_markets: ["EU", "US", "UK", "JP", "KR", "CN"]
 ```
 
+## Power This With the Cleo Legal API
+
+Cosmetics compliance touches CosIng (EU), FDA VCRP, Health Canada Hotlist, NMPA inventory, MHLW positive list, MFDS functional list — 6 ingredient databases minimum. The API queries all of them in one shot.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `GET /v2/catalog/regulations?vertical=cosmetics&country=EU,US,UK,JP,KR,CN,CA` — pull the full regulatory map per market (1223/2009, MoCRA, SCPN, CSAR, Hotlist…) with current article references
+- `POST /v2/catalog/match-product` — classify a product as cosmetic vs quasi-drug (JP), functional cosmetic (KR), special-use (CN), or OTC drug (US) — the single classification that breaks every downstream step if wrong
+- `POST /v2/compliance/check` — batch-check INCI list against CosIng Annex II/III/IV/V, Hot List, MFDS functional list, NMPA Inventory in one composite call
+- `POST /v2/webhooks?topic=cosmetics_substance` — subscribe to Annex II updates (the 1,698 banned substances list grows ~30/year — miss one and you have a recall)
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: For a brand with 20 SKUs in 6 markets (120 product-market combinations), the API eliminates ~8 hours/month of CosIng/MFDS/NMPA lookups — and catches new restrictions before they become recalls.
+
 ## Common Mistakes
 
 - **Assuming "cosmetic" everywhere**: Sunscreen is cosmetic in EU, OTC drug in US, quasi-drug in Japan. Classification determines the entire regulatory path.

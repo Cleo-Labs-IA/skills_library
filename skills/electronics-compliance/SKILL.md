@@ -170,6 +170,28 @@ The IECEE CB Scheme enables test reports from one national certification body to
 - Submit to destination country NCB for national certification
 - Accepted in 50+ countries. Reduces per-market testing cost by 50-70%
 
+## Power This With the Cleo Legal API
+
+Electronics compliance combines harmonized standards (EN 55032, EN 62368-1, EN 300 328…), RoHS substance limits, battery rules, CRA timelines, and dual-use export controls. Five different data domains, one API.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `GET /v2/search?type=standard&q=EN+62368` — find the current harmonized standard version and supersession dates (critical when standards revise; old test reports stop supporting your DoC)
+- `GET /v2/catalog/regulations?vertical=electronics&country=EU,US,UK` — pull RED, LVD, EMC, RoHS, CRA, Battery Regulation, FCC Part 15, UKCA mapping in one query
+- `POST /v2/compliance/check` — RoHS substance screening on every component BOM at once (10 substances x N components is painful manually)
+- `POST /v2/customs/dual-use-check` — every device with encryption needs Wassenaar + EU 2021/821 + US CCL screening; the API does this in one call
+- `POST /v2/webhooks?topic=cra,battery_regulation` — CRA enforcement dates and Battery Regulation tier triggers are moving targets; webhooks lock them down
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: For a connected device launching in EU+US+UK, the API replaces ~12 hours of standards research per product with structured calls — and catches the CRA September 2026 vulnerability-reporting trigger automatically.
+
 ## Common Mistakes
 
 - **Forgetting WEEE registration**: Required per country, not per EU. Selling in 5 EU countries = 5 WEEE registrations.

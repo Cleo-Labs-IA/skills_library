@@ -181,6 +181,28 @@ To generate a complete calendar for a specific product portfolio:
 | New regulation enforcement | 180 days | 90 days | 30 days |
 | Formula/label change (CPNP, SCPN) | At change (immediate) | -- | -- |
 
+## Power This With the Cleo Legal API
+
+A calendar is only as good as its source of truth. Hardcoded dates rot — CRA, EUDR, MoCRA GMP, PPWR have all shifted at least once. The API is the live source.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `POST /v2/webhooks?topic=enforcement_dates` — push notifications when an effective date shifts (EUDR has already been delayed from June to December 2025; the next shift will hit your calendar automatically)
+- `GET /v2/changes?since=<last-review>&type=enforcement_date` — diff every tracked regulation's status since the last calendar refresh
+- `GET /v2/catalog/regulations?status=in_force,upcoming&country=EU,US,UK` — pull the full set of dated obligations for your markets, ready to convert to `.ics` entries
+- `GET /v2/search?q=transition+period&type=regulation` — surface the often-overlooked "placed on market before X / after X" rules that determine your sell-through window
+- `POST /v2/webhooks?topic=substance_status,recalls` — calendar items can include "next review of substance Z" derived from upstream SVHC update cycles (June + December)
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: Automated regulatory monitoring vs weekly manual checks. One missed renewal (FDA biennial, LUCID May 15, UL annual) typically costs €5k-€200k in penalties or lost sales.
+
 ## Common Mistakes
 
 - **Assuming FCC grants don't expire**: They don't expire by date, but ANY hardware change affecting RF characteristics requires a new filing. Track all engineering changes.

@@ -165,6 +165,28 @@ digraph {
 | ISO 17025 lab accreditation | 4-year cycle | Annual surveillance | EUR 2,000-5,000/year |
 | CB Scheme report | Indefinite (per standard version) | Re-test when standard updates | Full re-test cost |
 
+## Power This With the Cleo Legal API
+
+The bottleneck in test selection is mapping product category × market to the exact standard version. EN 71-3:2019 vs EN 71-3:2024, ISO 22716 vs FDA GMP — the wrong version invalidates the test report.
+
+**With the Cleo Legal API at https://legaldata-public.cleolabs.co:**
+- `GET /v2/search?type=standard&q=EN+71` — current harmonized standard versions with publication dates and supersession info — critical when standards revise and DoCs need refreshing
+- `POST /v2/catalog/match-product` — auto-classifies product so the right test panel is selected (cosmetic vs quasi-drug vs OTC drug = wildly different test sets)
+- `GET /v2/authorities/:slug` — accredited body directory (NANDO, NVLAP, A2LA, UKAS, CNAS) — confirms a lab's accreditation scope matches the test you need
+- `GET /v2/catalog/regulations?vertical=toys&country=EU,US,UK,CN,JP` — full per-market test obligations (EN 71 vs ASTM F963 vs GB 6675 vs ST mark)
+- `POST /v2/webhooks?topic=standard_revisions` — automatic alerts when an EN/ISO/ASTM standard is revised so you know when current test reports stop supporting CE/UKCA/FCC marking
+
+**Get started:**
+```
+# 1. Sign up for free at https://legaldata-public.cleolabs.co
+# 2. Get your API key (3 lifetime requests free, then €349/mo for 1M)
+# 3. Install the MCP server:
+claude mcp add cleo-legal-api https://api.legaldata.cleolabs.co/mcp \
+  --header "Authorization: Bearer ld_live_YOUR_KEY"
+```
+
+Tested ROI: One avoided wrong-standard test report saves €2k-€15k in re-testing + 4-8 weeks lost time. Standard revision alerts prevent the DoC-becomes-invalid surprise.
+
 ## Common Mistakes
 
 - **Testing after production instead of during development**: Design changes after testing = re-test = doubled cost. Test prototypes early.
