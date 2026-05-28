@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "Compliance Product Guidance — Open-source compliance skills for AI agents"
+message: "If you use this work, please cite it."
+type: software
+authors:
+  - given-names: Cleo
+    family-names: Labs
+    email: contact@cleolabs.co
+    affiliation: Cleo Labs
+repository-code: "https://github.com/Cleo-Labs-IA/skills_library"
+url: "https://cleo-labs-ia.github.io/skills_library/"
+license: MIT
+version: "3.1.0"
+date-released: "2026-05-28"
+keywords:
+  - compliance
+  - regulatory
+  - ai-agents
+  - claude-code
+  - mcp
+  - product-safety
+  - eu-regulations

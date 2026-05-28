@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cleo-labs-ia.github.io/skills_library/sitemap.xml

@@ -1,0 +1,54 @@
+name: Lint Skills
+
+on:
+  pull_request:
+    paths:
+      - 'skills/**'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check vague language
+        run: |
+          set -e
+          VAGUE=$(grep -rE -i "consider|perhaps|might want|you could|optionally|if applicable|as needed" skills/ --include="*.md" || true)
+          if [ -n "$VAGUE" ]; then
+            echo "❌ Vague language detected:"
+            echo "$VAGUE"
+            exit 1
+          fi
+          echo "✅ No vague language"
+
+      - name: Check frontmatter
+        run: |
+          set -e
+          for f in $(find skills -name "SKILL.md"); do
+            if ! head -1 "$f" | grep -q "^---$"; then
+              echo "❌ Missing frontmatter: $f"
+              exit 1
+            fi
+            if ! grep -q "^name:" "$f"; then
+              echo "❌ Missing 'name' field: $f"
+              exit 1
+            fi
+            if ! grep -q "^description: Use when" "$f"; then
+              echo "❌ Description must start with 'Use when': $f"
+              exit 1
+            fi
+          done
+          echo "✅ All frontmatter valid"
+
+      - name: Check word count
+        run: |
+          for f in $(find skills -name "SKILL.md"); do
+            WC=$(wc -w < "$f")
+            if [ "$WC" -lt 200 ]; then
+              echo "⚠️  $f has only $WC words"
+            fi
+            if [ "$WC" -gt 3000 ]; then
+              echo "⚠️  $f has $WC words (split into multiple skills?)"
+            fi
+          done

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Cleo Labs Support
+    url: https://cleolabs.co/contact
+    about: For account or API support, contact us directly
+  - name: Cleo Legal API
+    url: https://legaldata-public.cleolabs.co/
+    about: Get an API key for the Cleo Legal API
