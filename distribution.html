@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Distribution Strategy — skills_library · Cleo Labs</title>
+<meta name="description" content="A 6-tier acquisition playbook to reach 1,000+ GitHub stars and €34,900 MRR in 90 days for skills_library by Cleo Labs." />
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --c-blue: #0008CF;
+    --c-blue-hover: #0006A8;
+    --c-blue-light: rgba(0, 8, 207, 0.06);
+    --c-blue-medium: rgba(0, 8, 207, 0.12);
+    --c-ink: #1A1A1A;
+    --c-ink-hover: #333333;
+    --c-white: #FFFFFF;
+    --c-surface: #F9F8F6;
+    --c-card: #F0EFEC;
+    --c-border: rgba(0, 0, 0, 0.08);
+    --c-border-hover: rgba(0, 0, 0, 0.15);
+    --c-text: rgba(0, 0, 0, 0.87);
+    --c-text-2: rgba(0, 0, 0, 0.62);
+    --c-text-3: rgba(0, 0, 0, 0.45);
+    --c-pass: #1A1A1A;
+    --c-pass-bg: rgba(0,0,0,0.04);
+    --c-risk: #946B2D;
+    --c-risk-bg: rgba(148,107,45,0.08);
+    --c-mint: #6EC9A0;
+    --c-coral: #F07060;
+    --c-teal: #00B4D8;
+    --c-jaune: #F5C800;
+    --c-violet: #7B3FA0;
+    --r-sm: 8px;
+    --r-md: 16px;
+    --r-lg: 24px;
+    --r-pill: 9999px;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+    --shadow-md: 0 8px 32px rgba(0,0,0,0.06);
+    --shadow-lg: 0 16px 48px rgba(0,0,0,0.08);
+    --glass-bg: rgba(255,255,255,0.55);
+    --glass-blur: saturate(180%) blur(28px);
+    --ease-luxury: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--c-surface);
+    color: var(--c-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Typography */
+  .t-display { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; }
+  .t-h1 { font-size: 2.25rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; }
+  .t-h2 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; }
+  .t-h3 { font-size: 1.125rem; font-weight: 500; line-height: 1.35; }
+  .t-body { font-size: 1rem; font-weight: 400; }
+  .t-caption { font-size: 0.875rem; color: var(--c-text-2); }
+  .t-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--c-text-2); }
+  .mono { font-family: 'SF Mono', 'JetBrains Mono', 'Menlo', 'Consolas', monospace; font-feature-settings: 'tnum'; }
+
+  /* Layout */
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 96px 0; position: relative; }
+  @media (max-width: 768px) {
+    section { padding: 64px 0; }
+    .t-display { font-size: 2.25rem; }
+    .t-h1 { font-size: 1.65rem; }
+  }
+
+  /* Sticky nav */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--c-border);
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .nav-brand {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--c-ink);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-brand span { color: var(--c-blue); }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    color: var(--c-text-2);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.3s var(--ease-luxury);
+  }
+  .nav-links a:hover { color: var(--c-ink); }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: var(--r-pill);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s var(--ease-luxury);
+    border: none;
+    cursor: pointer;
+  }
+  .btn-ink { background: var(--c-ink); color: var(--c-white); }
+  .btn-ink:hover { background: var(--c-ink-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .btn-ghost { background: transparent; color: var(--c-ink); border: 1px solid var(--c-border); }
+  .btn-ghost:hover { background: var(--c-card); border-color: var(--c-border-hover); }
+
+  /* Gradient canvases */
+  .gc-blue {
+    background:
+      radial-gradient(at 20% 30%, rgba(0,8,207,0.10) 0%, transparent 50%),
+      radial-gradient(at 80% 20%, rgba(0,180,216,0.08) 0%, transparent 50%),
+      radial-gradient(at 50% 80%, rgba(110,201,160,0.06) 0%, transparent 50%),
+      var(--c-card);
+  }
+  .gc-peach {
+    background:
+      radial-gradient(at 15% 25%, rgba(240,112,96,0.10) 0%, transparent 50%),
+      radial-gradient(at 85% 30%, rgba(245,200,0,0.08) 0%, transparent 50%),
+      radial-gradient(at 60% 90%, rgba(123,63,160,0.05) 0%, transparent 50%),
+      var(--c-card);
+  }
+  .gc-mint {
+    background:
+      radial-gradient(at 70% 20%, rgba(110,201,160,0.12) 0%, transparent 50%),
+      radial-gradient(at 20% 70%, rgba(0,180,216,0.08) 0%, transparent 50%),
+      var(--c-card);
+  }
+
+  /* Cards */
+  .card {
+    background: var(--c-card);
+    border-radius: var(--r-md);
+    padding: 28px;
+    transition: transform 0.4s var(--ease-luxury), box-shadow 0.4s var(--ease-luxury);
+  }
+  .card-white {
+    background: var(--c-white);
+    border-radius: var(--r-md);
+    padding: 28px;
+    border: 1px solid var(--c-border);
+    transition: transform 0.4s var(--ease-luxury), box-shadow 0.4s var(--ease-luxury), border-color 0.4s var(--ease-luxury);
+  }
+  .card-white:hover { box-shadow: var(--shadow-md); border-color: var(--c-border-hover); transform: translateY(-2px); }
+
+  /* Glass card (for hero stats) */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: var(--r-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Hero */
+  .hero {
+    padding: 64px 0 96px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-inner { position: relative; z-index: 2; }
+  .hero .t-label { color: var(--c-blue); margin-bottom: 24px; }
+  .hero h1 { margin-bottom: 24px; color: var(--c-ink); max-width: 920px; }
+  .hero .subtitle { font-size: 1.25rem; color: var(--c-text-2); max-width: 720px; margin-bottom: 40px; }
+  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 56px; }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(0,0,0,0.06);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  .stat {
+    background: var(--c-white);
+    padding: 28px;
+    text-align: left;
+  }
+  .stat-value {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--c-ink);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-value .unit { font-size: 1rem; color: var(--c-text-2); font-weight: 500; }
+  .stat-label { font-size: 0.825rem; color: var(--c-text-2); }
+  @media (max-width: 768px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-value { font-size: 1.75rem; }
+  }
+
+  /* Section header */
+  .section-head { margin-bottom: 48px; }
+  .section-head .t-label { color: var(--c-blue); margin-bottom: 12px; }
+  .section-head h2 { margin-bottom: 12px; }
+  .section-head p { color: var(--c-text-2); max-width: 720px; font-size: 1.0625rem; }
+
+  /* Funnel */
+  .funnel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .funnel-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 24px;
+  }
+  .funnel-bar {
+    background: var(--c-white);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s var(--ease-luxury);
+  }
+  .funnel-bar:hover { box-shadow: var(--shadow-sm); }
+  .funnel-bar.b1 { width: 100%; }
+  .funnel-bar.b2 { width: 88%; margin-left: auto; margin-right: auto; }
+  .funnel-bar.b3 { width: 70%; margin-left: auto; margin-right: auto; }
+  .funnel-bar.b4 { width: 52%; margin-left: auto; margin-right: auto; }
+  .funnel-bar.b5 { width: 35%; margin-left: auto; margin-right: auto; background: var(--c-ink); color: var(--c-white); border-color: var(--c-ink); }
+  .funnel-bar.b5 .funnel-meta { color: rgba(255,255,255,0.7); }
+  .funnel-label { font-weight: 600; font-size: 0.95rem; }
+  .funnel-meta { font-size: 0.8125rem; color: var(--c-text-2); margin-top: 2px; }
+  .funnel-arrow {
+    text-align: center;
+    color: var(--c-text-3);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 4px 0;
+  }
+  .funnel-arrow strong { color: var(--c-blue); }
+
+  .unit-econ {
+    background: var(--c-white);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    padding: 24px 32px;
+    margin-top: 40px;
+    text-align: center;
+  }
+  .unit-econ strong { color: var(--c-blue); font-size: 1.25rem; }
+
+  /* Tier sections */
+  .tier-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: var(--r-pill);
+    background: var(--c-blue-light);
+    color: var(--c-blue);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+  .tier-divider {
+    height: 1px;
+    background: var(--c-border);
+    margin: 64px 0;
+  }
+
+  /* Channel cards grid */
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 900px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  .channel-card { position: relative; }
+  .channel-card .icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .channel-card .why {
+    color: var(--c-text-2);
+    font-size: 0.95rem;
+    margin: 12px 0 16px;
+    line-height: 1.55;
+  }
+  .channel-card ol, .channel-card ul {
+    padding-left: 18px;
+    color: var(--c-text);
+    font-size: 0.9rem;
+  }
+  .channel-card li { margin-bottom: 6px; }
+  .channel-card .reach {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--c-border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+  }
+  .reach-item { color: var(--c-text-2); }
+  .reach-item strong { color: var(--c-ink); }
+
+  .status-badge {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    padding: 4px 10px;
+    border-radius: var(--r-pill);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .status-not { background: var(--c-risk-bg); color: var(--c-risk); }
+  .status-progress { background: rgba(245,200,0,0.15); color: #806800; }
+  .status-done { background: rgba(110,201,160,0.18); color: #2A6B4A; }
+
+  /* Tables */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: var(--r-md);
+    border: 1px solid var(--c-border);
+    background: var(--c-white);
+    box-shadow: var(--shadow-sm);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+  th {
+    text-align: left;
+    padding: 14px 16px;
+    background: var(--c-card);
+    color: var(--c-text);
+    font-weight: 600;
+    border-bottom: 1px solid var(--c-border);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--c-border);
+    color: var(--c-text);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: rgba(0,0,0,0.015); }
+  tr:hover td { background: var(--c-blue-light); }
+  td.mono, th.mono { font-feature-settings: 'tnum'; font-variant-numeric: tabular-nums; }
+  td.target { font-weight: 700; color: var(--c-blue); }
+
+  .priority-p0 { color: var(--c-coral); font-weight: 700; }
+  .priority-p1 { color: var(--c-risk); font-weight: 600; }
+  .priority-p2 { color: var(--c-text-2); font-weight: 500; }
+
+  /* Calendar */
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 768px) {
+    .calendar-grid { grid-template-columns: 1fr; }
+  }
+  .week-card {
+    background: var(--c-white);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    padding: 24px;
+    position: relative;
+    transition: all 0.3s var(--ease-luxury);
+  }
+  .week-card:hover { box-shadow: var(--shadow-md); border-color: var(--c-border-hover); }
+  .week-num {
+    display: inline-block;
+    background: var(--c-ink);
+    color: var(--c-white);
+    padding: 4px 12px;
+    border-radius: var(--r-pill);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .week-dates { font-size: 0.8125rem; color: var(--c-text-2); margin-bottom: 6px; }
+  .week-theme { font-size: 1.0625rem; font-weight: 600; margin-bottom: 16px; color: var(--c-ink); }
+  .week-actions { list-style: none; padding: 0; }
+  .week-actions li {
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+    font-size: 0.875rem;
+    color: var(--c-text);
+    border-bottom: 1px solid var(--c-border);
+  }
+  .week-actions li:last-child { border-bottom: none; }
+  .week-actions li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid var(--c-border-hover);
+    border-radius: 4px;
+  }
+
+  /* Tagline grid */
+  .tagline-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  @media (max-width: 768px) { .tagline-grid { grid-template-columns: 1fr; } }
+  .tagline-card {
+    background: var(--c-white);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    padding: 28px;
+    position: relative;
+    transition: all 0.3s var(--ease-luxury);
+  }
+  .tagline-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .tagline-card.featured {
+    background: var(--c-ink);
+    color: var(--c-white);
+    border-color: var(--c-ink);
+  }
+  .tagline-card.featured .tagline-angle { color: rgba(255,255,255,0.7); }
+  .tagline-card.featured .tagline-quote { color: var(--c-white); }
+  .tagline-num {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--c-text-3);
+    line-height: 1;
+  }
+  .tagline-card.featured .tagline-num { color: rgba(255,255,255,0.2); }
+  .tagline-angle { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-blue); margin-bottom: 12px; }
+  .tagline-quote { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; max-width: 80%; }
+  .recommended-badge {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 4px 12px;
+    background: var(--c-mint);
+    color: var(--c-ink);
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: var(--r-pill);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* Anti-patterns */
+  .anti-card {
+    background: var(--c-white);
+    border: 1px solid var(--c-coral);
+    border-radius: var(--r-md);
+    padding: 32px;
+    position: relative;
+  }
+  .anti-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--c-coral);
+    border-radius: var(--r-md) 0 0 var(--r-md);
+  }
+  .anti-list { list-style: none; padding: 0; }
+  .anti-list li {
+    padding: 12px 0;
+    padding-left: 32px;
+    position: relative;
+    border-bottom: 1px solid var(--c-border);
+    font-size: 0.95rem;
+  }
+  .anti-list li:last-child { border-bottom: none; }
+  .anti-list li::before {
+    content: '✕';
+    position: absolute;
+    left: 4px;
+    top: 12px;
+    color: var(--c-coral);
+    font-weight: 700;
+  }
+
+  /* Principles list */
+  .principles {
+    counter-reset: principle;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 768px) { .principles { grid-template-columns: 1fr; } }
+  .principle {
+    counter-increment: principle;
+    background: var(--c-white);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    padding: 24px;
+    position: relative;
+    padding-left: 80px;
+  }
+  .principle::before {
+    content: counter(principle);
+    position: absolute;
+    left: 24px;
+    top: 24px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--c-blue);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .principle strong { display: block; margin-bottom: 6px; font-size: 1rem; }
+  .principle p { color: var(--c-text-2); font-size: 0.9rem; line-height: 1.55; }
+
+  /* Code block */
+  pre {
+    background: var(--c-ink);
+    color: var(--c-white);
+    padding: 24px;
+    border-radius: var(--r-md);
+    overflow-x: auto;
+    font-family: 'SF Mono', 'JetBrains Mono', 'Menlo', monospace;
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+  code.inline {
+    background: var(--c-card);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'SF Mono', 'JetBrains Mono', 'Menlo', monospace;
+    font-size: 0.85em;
+    color: var(--c-ink);
+  }
+
+  /* Footer */
+  footer {
+    background: var(--c-ink);
+    color: var(--c-white);
+    padding: 64px 0 40px;
+    margin-top: 64px;
+  }
+  footer .wrap { display: flex; flex-direction: column; gap: 32px; }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .footer-top { grid-template-columns: 1fr; }
+  }
+  .footer-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .footer-brand span { color: var(--c-mint); }
+  .footer-desc { color: rgba(255,255,255,0.6); margin-top: 8px; font-size: 0.95rem; }
+  .footer-col h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .footer-col a {
+    display: block;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    padding: 4px 0;
+    font-size: 0.9rem;
+    transition: color 0.3s var(--ease-luxury);
+  }
+  .footer-col a:hover { color: var(--c-white); }
+  .footer-bottom {
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.825rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* Fade-in animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s var(--ease-luxury), transform 0.8s var(--ease-luxury);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Channel quote box */
+  .quote-box {
+    background: var(--c-pass-bg);
+    border-left: 3px solid var(--c-ink);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-style: italic;
+    color: var(--c-text);
+    font-size: 0.9rem;
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  }
+
+  /* Subsection heading inside tier */
+  .subhead {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 48px 0 24px;
+    color: var(--c-ink);
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .subhead-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--c-blue);
+    color: var(--c-white);
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  /* Mini stat row */
+  .mini-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .mini-stat {
+    background: var(--c-pass-bg);
+    border-radius: var(--r-sm);
+    padding: 16px;
+    text-align: center;
+  }
+  .mini-stat .v { font-size: 1.5rem; font-weight: 700; color: var(--c-ink); }
+  .mini-stat .l { font-size: 0.75rem; color: var(--c-text-2); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* Pill */
+  .pill {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: var(--r-pill);
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--c-card);
+    color: var(--c-text);
+    margin: 2px 4px 2px 0;
+  }
+  .pill-blue { background: var(--c-blue-light); color: var(--c-blue); }
+
+  /* List with checks */
+  .check-list { list-style: none; padding: 0; }
+  .check-list li {
+    padding: 8px 0;
+    padding-left: 28px;
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--c-text);
+  }
+  .check-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--c-border-hover);
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">Cleo<span>·</span>Labs</a>
+    <div class="nav-links">
+      <a href="#north-star">North Star</a>
+      <a href="#tiers">Tiers</a>
+      <a href="#calendar">Calendar</a>
+      <a href="#metrics">Metrics</a>
+      <a href="#taglines">Taglines</a>
+      <a href="#api">API</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="hero gc-blue">
+  <div class="wrap hero-inner">
+    <div class="t-label reveal">DISTRIBUTION STRATEGY · CLEO LABS</div>
+    <h1 class="t-display reveal">How we get skills_library into every brand's toolkit.</h1>
+    <p class="subtitle reveal">A 6-tier acquisition playbook to reach 1,000+ GitHub stars and €34,900 MRR in 90 days. The skills are the bait. The API is the hook.</p>
+    <div class="hero-cta reveal">
+      <a class="btn btn-ink" href="https://github.com/Cleo-Labs-IA/skills_library" target="_blank" rel="noopener">View on GitHub →</a>
+      <a class="btn btn-ghost" href="#tiers">See the 6 tiers</a>
+    </div>
+
+    <div class="glass reveal">
+      <div class="t-label" style="margin-bottom: 20px;">Day 90 North Star targets</div>
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-value mono">1,000<span class="unit"> +</span></div>
+          <div class="stat-label">GitHub stars</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value mono">5,000<span class="unit"> +</span></div>
+          <div class="stat-label">Installs</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value mono">1,000<span class="unit"> +</span></div>
+          <div class="stat-label">Free API signups</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value mono">€34,900</div>
+          <div class="stat-label">MRR target</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- NORTH STAR + FUNNEL -->
+<section id="north-star">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="t-label">01 · North Star</div>
+      <h2 class="t-h1">The master funnel.</h2>
+      <p>Become THE default open-source compliance toolkit for AI coding agents. 100 paying customers at €349/mo = €34,900 MRR attributable purely to the skills. Each star is worth ~€35 in attributable MRR.</p>
+    </div>
+
+    <div class="funnel reveal">
+      <div class="funnel-bar b1">
+        <div>
+          <div class="funnel-label">skills_library on GitHub (free)</div>
+          <div class="funnel-meta">100% · top-of-funnel</div>
+        </div>
+        <div class="mono" style="font-weight: 700;">5,000 installs</div>
+      </div>
+      <div class="funnel-arrow">↓ <strong>15% activation</strong></div>
+      <div class="funnel-bar b2">
+        <div>
+          <div class="funnel-label">First skill run hits the API</div>
+          <div class="funnel-meta">free-tier banner or paywall trigger</div>
+        </div>
+        <div class="mono" style="font-weight: 700;">3,000 users</div>
+      </div>
+      <div class="funnel-arrow">↓ <strong>33% signup</strong></div>
+      <div class="funnel-bar b3">
+        <div>
+          <div class="funnel-label">Free Cleo Legal API tier</div>
+          <div class="funnel-meta">50 calls/day · legaldata-public.cleolabs.co</div>
+        </div>
+        <div class="mono" style="font-weight: 700;">1,000 signups</div>
+      </div>
+      <div class="funnel-arrow">↓ <strong>30% engagement</strong></div>
+      <div class="funnel-bar b4">
+        <div>
+          <div class="funnel-label">Hits cap / needs Pro features</div>
+          <div class="funnel-meta">multi-jurisdiction · history · webhooks</div>
+        </div>
+        <div class="mono" style="font-weight: 700;">300 ready</div>
+      </div>
+      <div class="funnel-arrow">↓ <strong>33% conversion</strong></div>
+      <div class="funnel-bar b5">
+        <div>
+          <div class="funnel-label">Cleo Insight Pro · €349/mo</div>
+          <div class="funnel-meta">100 paid · €34,900 MRR</div>
+        </div>
+        <div class="mono" style="font-weight: 700;">100 paid</div>
+      </div>
+    </div>
+
+    <div class="unit-econ reveal">
+      <div class="t-caption" style="text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">Unit economics</div>
+      <div>1 GitHub star ≈ <strong>€35 in attributable MRR</strong> · 1,000 stars → 5,000 installs (5x) → 1,000 free signups (20%) → 100 paid (10%)</div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section id="tiers" class="gc-peach">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="t-label">02 · The Playbook</div>
+      <h2 class="t-h1">The 6 distribution tiers.</h2>
+      <p>Ranked by ROI. Tier 1 is "do this week." Tier 6 compounds for years. Compounding > spikes — invest 70% in compounding assets, 30% in spikes.</p>
+    </div>
+
+    <!-- TIER 1 -->
+    <div class="reveal">
+      <span class="tier-meta">Tier 1 · Maximum Leverage · May 28 – Jun 3</span>
+      <h3 class="t-h1" style="margin-bottom: 16px;">Five hammers, one week.</h3>
+      <p style="color: var(--c-text-2); margin-bottom: 32px; max-width: 720px;">Highest leverage channels. If we only do these five, we still win.</p>
+
+      <div class="grid-2">
+        <!-- 1.1 -->
+        <div class="card-white channel-card">
+          <span class="status-badge status-progress">In Progress</span>
+          <span class="icon">⚓</span>
+          <div class="t-label" style="color: var(--c-blue); margin-bottom: 4px;">Channel 1.1</div>
+          <h4 class="t-h2">Anthropic Plugin Registry</h4>
+          <p class="why">Native distribution to every Claude Code user. The registry is the "App Store" for skills. Acceptance = featured surface area, default discoverability, implicit Anthropic endorsement.</p>
+          <strong style="font-size: 0.85rem;">Action steps:</strong>
+          <ol>
+            <li>Fork <code class="inline">anthropics/claude-code</code></li>
+            <li>Create <code class="inline">claude-plugin.json</code> at repo root</li>
+            <li>Run linter / schema validator locally</li>
+            <li>Security review pass (no shell-out, no hardcoded keys)</li>
+            <li>Open PR with demo GIF + SLA commitment</li>
+            <li>Tag <code class="inline">@alexalbert__</code> and Anthropic DevRel</li>
+          </ol>
+          <div class="reach">
+            <span class="reach-item"><strong>Reach:</strong> 50k–200k Claude Code users</span>
+            <span class="reach-item"><strong>Conv:</strong> 3–5% → 1,500–10,000 signups</span>
+          </div>
+        </div>
+
+        <!-- 1.2 -->
+        <div class="card-white channel-card">
+          <span class="status-badge status-not">Not Started</span>
+          <span class="icon">⭐</span>
+          <div class="t-label" style="color: var(--c-blue); margin-bottom: 4px;">Channel 1.2</div>
+          <h4 class="t-h2">Awesome Lists (10 PRs)</h4>
+          <p class="why">Each awesome list is a curated, search-indexed, high-DA backlink that drives qualified developer traffic for years. One PR = perpetual SEO.</p>
+          <div class="quote-box">skills_library — 28 Claude Code skills for product compliance (EU, US, UK, intl) — by Cleo Labs</div>
+          <strong style="font-size: 0.85rem;">Concrete action:</strong>
+          <ol>
+            <li>Spend one 2-hour block opening all 10 PRs</li>
+            <li>Same title template: "Add skills_library to &lt;category&gt;"</li>
+            <li>Track in spreadsheet: PR URL, opened date, merged status</li>
+          </ol>
+          <div class="reach">
+            <span class="reach-item"><strong>Reach:</strong> 10k–30k impressions / 12mo</span>
+            <span class="reach-item"><strong>Conv:</strong> 1–2%</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="height: 24px;"></div>
+
+      <div class="grid-2">
+        <!-- 1.3 Product Hunt -->
+        <div class="card-white channel-card">
+          <span class="status-badge status-not">Not Started</span>
+          <span class="icon">🐱</span>
+          <div class="t-label" style="color: var(--c-blue); margin-bottom: 4px;">Channel 1.3 · Tue Jun 9 · 00:01 PT</div>
+          <h4 class="t-h2">Product Hunt Launch</h4>
+          <p class="why">Single-day spike of 20–80k impressions, qualified maker/builder audience, lasting SEO ("Product of the Day" badge), and a permanent profile page.</p>
+          <strong style="font-size: 0.85rem;">Hunter targets (need 1):</strong>
+          <div style="margin: 12px 0;">
+            <span class="pill">Sahil Lavingia @shl</span>
+            <span class="pill">Jason Lemkin @jasonlk</span>
+            <span class="pill">Pieter Levels @levelsio</span>
+            <span class="pill">Marc Köhlbrugge @marckohlbrugge</span>
+            <span class="pill">Chris Messina @chrismessina</span>
+          </div>
+          <strong style="font-size: 0.85rem;">Launch day timeline (PT):</strong>
+          <ul>
+            <li><code class="inline">00:01</code> live · <code class="inline">00:05</code> maker comment · <code class="inline">00:10</code> hunter comment</li>
+            <li><code class="inline">06:00</code> tweet · <code class="inline">09:00</code> LinkedIn + email blast</li>
+            <li><code class="inline">17:00</code> mid-day update tweet with rank</li>
+          </ul>
+          <div class="reach">
+            <span class="reach-item"><strong>Reach:</strong> 30k–80k impressions</span>
+            <span class="reach-item"><strong>Conv:</strong> 5–8% → 25–160 signups</span>
+          </div>
+        </div>
+
+        <!-- 1.4 Show HN -->
+        <div class="card-white channel-card">
+          <span class="status-badge status-not">Not Started</span>
+          <span class="icon">🟠</span>
+          <div class="t-label" style="color: var(--c-blue); margin-bottom: 4px;">Channel 1.4 · Wed Jun 3 · 08:00 PT</div>
+          <h4 class="t-h2">Show HN</h4>
+          <p class="why">One front-page hit = 50,000+ qualified developer impressions, durable SEO backlinks, instant credibility signal.</p>
+          <div class="quote-box">Show HN: skills_library – 28 Claude Code skills for global product compliance</div>
+          <strong style="font-size: 0.85rem;">Rules of engagement:</strong>
+          <ul>
+            <li>Reply to every commenter within 1h for first 6h</li>
+            <li>Never ask for upvotes (algorithmic suicide)</li>
+            <li>No email blasts saying "go upvote my HN post"</li>
+            <li>If front-page, do NOT also post to Reddit same day</li>
+            <li>Stay calm. Cynicism is HN's love language.</li>
+          </ul>
+          <div class="reach">
+            <span class="reach-item"><strong>Reach:</strong> 5k (no FP) – 80k (top 10)</span>
+            <span class="reach-item"><strong>Conv:</strong> 3–6%</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="height: 24px;"></div>
+
+      <!-- 1.5 MCP Marketplaces -->
+      <div class="card-white channel-card reveal">
+        <span class="status-badge status-not">Not Started</span>
+        <span class="icon">🔌</span>
+        <div class="t-label" style="color: var(--c-blue); margin-bottom: 4px;">Channel 1.5</div>
+        <h4 class="t-h2">MCP Server Marketplaces (6)</h4>
+        <p class="why">MCP is the emerging protocol. Marketplaces are pre-loaded into agent frameworks (Claude Desktop, Cursor, Continue, etc.). Each listing = passive distribution.</p>
+
+        <div class="table-wrap" style="margin: 16px 0;">
+          <table>
+            <thead>
+              <tr><th>Marketplace</th><th>Method</th><th>Target Date</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Glama</strong></td><td>Auto-indexed from GitHub topic <code class="inline">mcp</code></td><td class="mono">May 29</td></tr>
+              <tr><td><strong>MCP.so</strong></td><td>PR to their repo</td><td class="mono">May 30</td></tr>
+              <tr><td><strong>Smithery</strong></td><td><code class="inline">npx @smithery/cli publish</code></td><td class="mono">May 30</td></tr>
+              <tr><td><strong>MCP Servers</strong></td><td>Form submission</td><td class="mono">May 31</td></tr>
+              <tr><td><strong>OpenTools</strong></td><td>Form submission</td><td class="mono">Jun 2</td></tr>
+              <tr><td><strong>Awesome MCP Servers</strong></td><td>GitHub PR (under 1.2)</td><td class="mono">May 29</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="reach">
+          <span class="reach-item"><strong>Reach:</strong> 5k–20k agent developers over 6 months</span>
+          <span class="reach-item"><strong>Conv:</strong> 4–7%</span>
+        </div>
+      </div>
+
+      <h4 class="subhead reveal" style="margin-top: 40px;">Pre-submission checklist</h4>
+      <div class="card-white reveal">
+        <ul class="check-list">
+          <li>README has install-in-30-seconds section at the top</li>
+          <li>Every skill has a working example in <code class="inline">EXAMPLES.md</code></li>
+          <li>LICENSE file present (MIT)</li>
+          <li>SECURITY.md present with disclosure email</li>
+          <li>CODE_OF_CONDUCT.md present</li>
+          <li>CI badge green</li>
+          <li>No dependencies on private services without graceful degradation</li>
+          <li>Demo GIF under 5MB, under 30 seconds</li>
+          <li>Screenshots: 3x (input prompt, skill running, result)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tier-divider"></div>
+
+    <!-- TIER 2 -->
+    <div class="reveal">
+      <span class="tier-meta">Tier 2 · Community · Weeks 1-4 · May 28 – Jun 24</span>
+      <h3 class="t-h1" style="margin-bottom: 16px;">Show up where builders already live.</h3>
+      <p style="color: var(--c-text-2); margin-bottom: 32px; max-width: 720px;">Reddit, Discord, Twitter, LinkedIn. One channel, one owner. Never the same post twice.</p>
+
+      <h4 class="subhead"><span class="subhead-num">1</span> Reddit · 15 subreddits</h4>
+      <p style="color: var(--c-text-2); margin-bottom: 20px;"><strong>Cadence:</strong> 2 subreddits per week max. 7 weeks of content prepared up front. Never the same post twice.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Subreddit</th>
+              <th>Members</th>
+              <th>Best time</th>
+              <th>Angle</th>
+              <th>Link policy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>r/ClaudeAI</strong></td><td class="mono">180k</td><td>Tue 10am PT</td><td>"I built 28 Claude Code skills for compliance" + GIF</td><td>Body OK</td></tr>
+            <tr><td><strong>r/LocalLLaMA</strong></td><td class="mono">350k</td><td>Wed 9am PT</td><td>"Open-source compliance skills — works locally"</td><td>OK if substantive</td></tr>
+            <tr><td><strong>r/Anthropic</strong></td><td class="mono">25k</td><td>Mon-Thu any time</td><td>Discussion / ecosystem question</td><td>Comment only</td></tr>
+            <tr><td><strong>r/MachineLearning</strong></td><td class="mono">2.9M</td><td>Tue 8am PT</td><td>Tag as <code class="inline">[P]</code> Project</td><td>Body</td></tr>
+            <tr><td><strong>r/entrepreneur</strong></td><td class="mono">3M</td><td>Mon 7am ET</td><td>"Giving away our core IP to grow our API"</td><td>Comment only</td></tr>
+            <tr><td><strong>r/smallbusiness</strong></td><td class="mono">2M</td><td>Tue 8am ET</td><td>"Free tool: compliance answers for brands"</td><td>Comment</td></tr>
+            <tr><td><strong>r/ecommerce</strong></td><td class="mono">380k</td><td>Wed 9am ET</td><td>"Free Claude tool for compliance"</td><td>Comment</td></tr>
+            <tr><td><strong>r/shopify</strong></td><td class="mono">290k</td><td>Thu 10am ET</td><td>"Compliance toolkit for Shopify sellers"</td><td>Comment</td></tr>
+            <tr><td><strong>r/d2c</strong></td><td class="mono">18k</td><td>Tue 11am ET</td><td>DTC compliance story</td><td>Body OK</td></tr>
+            <tr><td><strong>r/cosmeticchemistry</strong></td><td class="mono">45k</td><td>Wed 6pm ET</td><td>"INCI checker via AI"</td><td>Comment</td></tr>
+            <tr><td><strong>r/FoodScience</strong></td><td class="mono">90k</td><td>Tue 12pm ET</td><td>"FDA labeling helper"</td><td>Comment</td></tr>
+            <tr><td><strong>r/Etsy</strong></td><td class="mono">950k</td><td>Sat 10am ET</td><td>"Compliance for Etsy sellers selling EU"</td><td>Comment only</td></tr>
+            <tr><td><strong>r/AmazonSeller</strong></td><td class="mono">220k</td><td>Sun 11am ET</td><td>"Brand registry + compliance toolkit"</td><td>Comment</td></tr>
+            <tr><td><strong>r/freelance</strong></td><td class="mono">1.1M</td><td>Mon 10am ET</td><td>"For freelancers helping brands launch"</td><td>Comment</td></tr>
+            <tr><td><strong>r/SideProject</strong></td><td class="mono">280k</td><td>Sat 9am ET</td><td>"Just launched: skills_library"</td><td>Body OK</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="subhead"><span class="subhead-num">2</span> Discord · 8 servers</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Server</th><th>Channel</th><th>Approach</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Anthropic</strong></td><td><code class="inline">#showcase</code> <code class="inline">#plugins</code></td><td>Launch announcement + GIF</td></tr>
+            <tr><td><strong>Claude Builders</strong></td><td><code class="inline">#projects</code></td><td>Detailed walkthrough</td></tr>
+            <tr><td><strong>Indie Hackers</strong></td><td><code class="inline">#show-and-tell</code></td><td>Founder story</td></tr>
+            <tr><td><strong>Vercel</strong></td><td><code class="inline">#showcase</code></td><td>Tech angle if hosted on Vercel</td></tr>
+            <tr><td><strong>Latent Space</strong></td><td><code class="inline">#projects</code></td><td>Technical writeup</td></tr>
+            <tr><td><strong>DTC Newsletter</strong></td><td><code class="inline">#tools</code></td><td>D2C angle</td></tr>
+            <tr><td><strong>Shopify Partners</strong></td><td><code class="inline">#apps-and-tools</code></td><td>Shopify integration</td></tr>
+            <tr><td><strong>MCP Community</strong></td><td><code class="inline">#servers</code></td><td>MCP server announcement</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="subhead"><span class="subhead-num">3</span> Twitter / X · Founder thread (6 tweets)</h4>
+      <div class="grid-2">
+        <div class="card-white">
+          <div class="t-label" style="color: var(--c-blue);">1 · Hook</div>
+          <p style="margin-top: 8px; font-size: 0.95rem;">"8 months ago I started Cleo Labs. We sell a legal/regulatory API to brands. Today we are open-sourcing the 28 questions our API answers — as Claude Code skills. Free forever. Here is why ↓"</p>
+        </div>
+        <div class="card-white">
+          <div class="t-label" style="color: var(--c-blue);">2 · Problem</div>
+          <p style="margin-top: 8px; font-size: 0.95rem;">"If you sell a physical product internationally, compliance kills you. CE marking, FDA MoCRA, REACH, CPSIA, INCI checks. Each costs €5–50k via a consultant. Brands give up before launch."</p>
+        </div>
+        <div class="card-white">
+          <div class="t-label" style="color: var(--c-blue);">3 · Insight</div>
+          <p style="margin-top: 8px; font-size: 0.95rem;">"An AI agent with the right skills can answer 90% of these questions in 30 seconds. Not by hallucinating — by querying a real regulatory dataset and citing sources."</p>
+        </div>
+        <div class="card-white">
+          <div class="t-label" style="color: var(--c-blue);">4 · Demo GIF</div>
+          <p style="margin-top: 8px; font-size: 0.95rem;">"Watch Claude Code answer 'Can I sell my retinol serum in California?' with citations to MoCRA + Prop 65, in 8 seconds."</p>
+        </div>
+        <div class="card-white">
+          <div class="t-label" style="color: var(--c-blue);">5 · The catch</div>
+          <p style="margin-top: 8px; font-size: 0.95rem;">"The skills are free. They run against our public API (50 calls/day free). If you need more, the Pro tier is €349/mo. That is our business model — fully open about it."</p>
+        </div>
+        <div class="card-white">
+          <div class="t-label" style="color: var(--c-blue);">6 · CTA</div>
+          <p style="margin-top: 8px; font-size: 0.95rem;">"Install: github.com/Cleo-Labs-IA/skills_library. API: legaldata-public.cleolabs.co. Built for @AnthropicAI Claude Code. Would love feedback — what regulatory question should we add next?"</p>
+        </div>
+      </div>
+      <p style="margin-top: 16px; color: var(--c-text-2); font-size: 0.9rem;"><strong>Hashtags:</strong> <span class="pill pill-blue">#ClaudeCode</span> <span class="pill pill-blue">#compliance</span> <span class="pill pill-blue">#D2C</span> <span class="pill pill-blue">#ProductCompliance</span> <span class="pill pill-blue">#RegTech</span> <span class="pill pill-blue">#AIagents</span> <span class="pill pill-blue">#MCP</span></p>
+
+      <h4 class="subhead"><span class="subhead-num">4</span> LinkedIn · founder long-form + sponsored</h4>
+      <div class="grid-2">
+        <div class="card-white">
+          <h5 class="t-h3" style="margin-bottom: 12px;">Founder post (Naomie, 1,300 words)</h5>
+          <ul style="font-size: 0.9rem; padding-left: 18px;">
+            <li><strong>Hook:</strong> "I just gave away the core IP of my startup. Here is why."</li>
+            <li><strong>Story:</strong> building Cleo, moat = data not skills, decision to open-source</li>
+            <li><strong>Demo:</strong> embedded video</li>
+            <li><strong>CTA:</strong> "Try it. Tell me what compliance question I should solve next."</li>
+            <li><strong>Company page repost</strong> within 1 hour for algorithm boost</li>
+          </ul>
+        </div>
+        <div class="card-white">
+          <h5 class="t-h3" style="margin-bottom: 12px;">Sponsored · €1,500 launch week</h5>
+          <ul style="font-size: 0.9rem; padding-left: 18px;">
+            <li><strong>Job titles:</strong> Head of Regulatory, VP Compliance, Founder D2C</li>
+            <li><strong>Industries:</strong> Cosmetics, Food, Electronics, Toys, Apparel</li>
+            <li><strong>Geographies:</strong> EU + US + UK</li>
+            <li><strong>Expected CPM:</strong> €25–40 · <strong>CPC:</strong> €2–4</li>
+            <li><strong>Expected signups:</strong> 60–100</li>
+          </ul>
+          <p style="margin-top: 12px; font-size: 0.85rem; color: var(--c-text-2);"><strong>Groups:</strong> D2C Founders (12k), Compliance Professionals (180k), RAPS (45k), Cosmetics Industry (90k), Food Industry Execs (210k), Shopify Plus Partners.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tier-divider"></div>
+
+    <!-- TIER 3 -->
+    <div class="reveal">
+      <span class="tier-meta">Tier 3 · Content Marketing · Months 1-3 · Jun – Aug</span>
+      <h3 class="t-h1" style="margin-bottom: 16px;">Compounding assets that index for years.</h3>
+      <p style="color: var(--c-text-2); margin-bottom: 32px; max-width: 720px;">YouTube, blog, SEO, sponsorships. Every claim links to data or repo. A blog post indexed today drives traffic for 3 years.</p>
+
+      <h4 class="subhead"><span class="subhead-num">1</span> YouTube · "Compliance in 30 Seconds" — 30 videos</h4>
+      <div class="grid-3">
+        <div class="card-white">
+          <div class="t-label">Format</div>
+          <p style="margin-top: 8px; font-size: 0.9rem;">30 videos, one per skill (28 + 2 bonus: install + tour). 60–90 seconds each.</p>
+        </div>
+        <div class="card-white">
+          <div class="t-label">Structure</div>
+          <p style="margin-top: 8px; font-size: 0.9rem;">Problem (10s) → prompt typed live (5s) → skill runs (10s) → result (20s) → CTA (10s).</p>
+        </div>
+        <div class="card-white">
+          <div class="t-label">Production</div>
+          <p style="margin-top: 8px; font-size: 0.9rem;">3 videos/week, batch recorded, edited in CapCut. Face-cam first 5, then drop.</p>
+        </div>
+      </div>
+      <div class="card-white" style="margin-top: 20px;">
+        <strong style="font-size: 0.95rem;">Title formula:</strong> <code class="inline">How to [compliance task] in 8 seconds with Claude Code</code>
+        <ul style="margin-top: 12px; padding-left: 18px; font-size: 0.9rem;">
+          <li>"How to check if a cosmetic ingredient is legal in the EU in 8 seconds with Claude Code"</li>
+          <li>"How to FDA-label a supplement in 12 seconds with Claude Code"</li>
+        </ul>
+        <p style="margin-top: 12px; font-size: 0.9rem; color: var(--c-text-2);"><strong>Cross-post:</strong> YouTube Shorts + TikTok + LinkedIn video + X video.</p>
+      </div>
+
+      <h4 class="subhead"><span class="subhead-num">2</span> Blog cross-posting matrix</h4>
+      <p style="color: var(--c-text-2); margin-bottom: 16px;"><strong>Series A:</strong> "The 28 Skills" — one blog per skill, 600–900 words. <strong>Series B:</strong> "Launching [product] in [market]" — 2,000+ words.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Platform</th><th>Audience</th><th>Cadence</th><th>Canonical URL</th></tr></thead>
+          <tbody>
+            <tr><td><strong>cleolabs.co/blog</strong></td><td>Buyers / D2C founders</td><td>2/week</td><td>Always primary</td></tr>
+            <tr><td><strong>Medium @cleolabs</strong></td><td>Compliance niche</td><td>1/week</td><td>Backlink to cleolabs.co</td></tr>
+            <tr><td><strong>dev.to @cleolabs</strong></td><td>Devs</td><td>1/week</td><td>Tag: claudecode, mcp, ai</td></tr>
+            <tr><td><strong>Hashnode @cleolabs</strong></td><td>Tech builders</td><td>1/week</td><td>Same as dev.to</td></tr>
+            <tr><td><strong>Substack</strong></td><td>Newsletter subs</td><td>1/week</td><td>Standalone series</td></tr>
+            <tr><td><strong>LinkedIn Articles</strong></td><td>Industry pros</td><td>1/week</td><td>Repost from Medium</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="subhead"><span class="subhead-num">3</span> SEO · 50 long-tail articles by Aug 26</h4>
+      <div class="grid-2">
+        <div class="card-white">
+          <h5 class="t-h3" style="margin-bottom: 12px;">Target query archetypes</h5>
+          <ul style="font-size: 0.9rem; padding-left: 18px;">
+            <li>"is [substance] legal in [country]" — 5/week</li>
+            <li>"how to ce mark a [product]" — top 10 product types</li>
+            <li>"EU cosmetics responsible person cost" — top 20 cost queries</li>
+            <li>"FDA cosmetics MoCRA requirements" — every major US reg</li>
+            <li>"[regulation] checklist 2026"</li>
+          </ul>
+        </div>
+        <div class="card-white">
+          <h5 class="t-h3" style="margin-bottom: 12px;">Each article structure</h5>
+          <ol style="font-size: 0.9rem; padding-left: 18px;">
+            <li>H1 — exact match query</li>
+            <li>TL;DR answer in first 60 words</li>
+            <li>Detailed answer with citations</li>
+            <li>"Try it yourself" — copy-paste prompt</li>
+            <li>Footer CTA: "Get instant cited answers"</li>
+          </ol>
+          <p style="margin-top: 12px; font-size: 0.85rem; color: var(--c-text-2);"><strong>Schema:</strong> FAQPage + SoftwareApplication + HowTo on every article.</p>
+        </div>
+      </div>
+
+      <h4 class="subhead"><span class="subhead-num">4</span> Newsletter sponsorships · Q1 budget €15,000</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Newsletter</th><th>Audience</th><th>Subs</th><th>Cost / sponsor</th><th>Best fit</th></tr></thead>
+          <tbody>
+            <tr><td><strong>The Hustle</strong></td><td>Founders/biz</td><td class="mono">2.5M</td><td class="mono">€5,000</td><td>Brand story</td></tr>
+            <tr><td><strong>Morning Brew Retail</strong></td><td>Retail execs</td><td class="mono">600k</td><td class="mono">€3,500</td><td>D2C focus</td></tr>
+            <tr><td><strong>Lenny's Newsletter</strong></td><td>Product/startup</td><td class="mono">700k</td><td class="mono">€25,000</td><td>API/builder angle</td></tr>
+            <tr><td><strong>The Daily Carnage</strong></td><td>Marketers</td><td class="mono">35k</td><td class="mono">€800</td><td>Indie pricing</td></tr>
+            <tr><td><strong>Beauty Independent</strong></td><td>Cosmetics</td><td class="mono">80k</td><td class="mono">€2,500</td><td>Hyper-niche</td></tr>
+            <tr><td><strong>Food Navigator</strong></td><td>Food industry</td><td class="mono">150k</td><td class="mono">€4,000</td><td>Hyper-niche</td></tr>
+            <tr><td style="background: var(--c-blue-light);"><strong>DTC Newsletter</strong></td><td style="background: var(--c-blue-light);">D2C founders</td><td class="mono target" style="background: var(--c-blue-light);">50k</td><td class="mono target" style="background: var(--c-blue-light);">€1,500</td><td style="background: var(--c-blue-light);"><strong>Best ROI bet</strong></td></tr>
+            <tr><td><strong>Indie Hackers</strong></td><td>Builders</td><td class="mono">300k</td><td class="mono">€1,200</td><td>Open-source story</td></tr>
+            <tr><td><strong>MCP Weekly</strong></td><td>MCP devs</td><td class="mono">TBD</td><td class="mono">TBD</td><td>Native fit</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top: 12px; color: var(--c-text-2); font-size: 0.9rem;"><strong>Start with:</strong> DTC Newsletter + Indie Hackers + Beauty Independent (smallest, most niche, cheapest CPM). Mandatory CTA in every sponsorship: <em>"Try the API free — legaldata-public.cleolabs.co"</em>.</p>
+    </div>
+
+    <div class="tier-divider"></div>
+
+    <!-- TIER 4 -->
+    <div class="reveal">
+      <span class="tier-meta">Tier 4 · Partnerships · Months 2-6 · Jul – Nov</span>
+      <h3 class="t-h1" style="margin-bottom: 16px;">Borrow distribution from those who already have it.</h3>
+      <p style="color: var(--c-text-2); margin-bottom: 32px; max-width: 720px;">Test labs, accelerators, marketplaces, industry associations. Each one is a customer pipeline disguised as a partnership.</p>
+
+      <h4 class="subhead"><span class="subhead-num">1</span> Test Lab Partnerships</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Lab</th><th>Why</th><th>Pitch</th><th>Contact</th></tr></thead>
+          <tbody>
+            <tr><td><strong>SGS</strong></td><td>World's largest</td><td>"Pre-qualify clients before they pay you. Reduce sales cycle."</td><td><code class="inline">sales@sgs.com</code></td></tr>
+            <tr><td><strong>TÜV SÜD</strong></td><td>DACH leader</td><td>German market</td><td>LinkedIn outreach</td></tr>
+            <tr><td><strong>Intertek</strong></td><td>Toys + electronics</td><td>CPSIA + CE</td><td><code class="inline">sales@intertek.com</code></td></tr>
+            <tr><td><strong>Eurofins</strong></td><td>Cosmetics + food</td><td>Cosmetics Europe member</td><td><code class="inline">partnerships@</code></td></tr>
+            <tr><td><strong>UL</strong></td><td>US electronics</td><td>UL listing pipeline</td><td><code class="inline">partnerships@</code></td></tr>
+            <tr><td><strong>Bureau Veritas</strong></td><td>Mixed</td><td>EU + LATAM</td><td>Direct LinkedIn</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top: 12px; color: var(--c-text-2); font-size: 0.9rem;"><strong>Co-marketing assets:</strong> white-labeled checklist PDFs, co-branded webinar series, shared lead-gen forms.</p>
+
+      <h4 class="subhead"><span class="subhead-num">2</span> Incubators & Accelerators · 8 targets</h4>
+      <div class="card-white" style="margin-bottom: 16px;">
+        <strong>Pitch template:</strong>
+        <p style="margin-top: 8px; font-style: italic; color: var(--c-text-2); font-size: 0.95rem;">"We will give every portfolio company free Pro access (€349/mo × 12mo = €4,188 value/co) in exchange for: (1) intro email to all portfolio, (2) logo on our landing, (3) mention in your monthly portfolio newsletter."</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Program</th><th>Why</th><th>Pitch angle</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Y Combinator</strong></td><td>Reach</td><td>Free for portfolio, badge on landing</td></tr>
+            <tr><td><strong>Techstars</strong></td><td>DTC verticals</td><td>Verticalized (retail, food, beauty)</td></tr>
+            <tr><td><strong>Station F</strong></td><td>EU hub</td><td>Cleo is FR-based → home-field advantage</td></tr>
+            <tr><td><strong>Antler</strong></td><td>Pre-seed</td><td>Founders launching products need this</td></tr>
+            <tr><td><strong>Sequoia Arc</strong></td><td>High signal</td><td>Cleo Pro free for all Arc companies</td></tr>
+            <tr><td><strong>500 Global</strong></td><td>Reach</td><td>E-commerce vertical</td></tr>
+            <tr><td><strong>L'Oréal Big Bang</strong></td><td>Cosmetics-specific</td><td>Direct vertical fit</td></tr>
+            <tr><td><strong>Plug and Play F&amp;B</strong></td><td>Food</td><td>Direct vertical fit</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="subhead"><span class="subhead-num">3</span> Shopify App Store · target 200 installs / 30 conversions</h4>
+      <div class="card-white">
+        <ol style="font-size: 0.95rem; padding-left: 18px;">
+          <li>Integrate skills_library calls into Cleo's Shopify app (<code class="inline">cleo-shopify</code> repo)</li>
+          <li>Add "Powered by skills_library — open source" footer in app UI</li>
+          <li>Apply to Shopify Plus Technology Partner program</li>
+          <li>Get listed in Shopify App Store under "Compliance" category</li>
+        </ol>
+      </div>
+
+      <h4 class="subhead"><span class="subhead-num">4</span> Marketplace Integrations · 7 targets</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Marketplace</th><th>Integration angle</th><th>Effort</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Amazon Brand Registry</strong></td><td>Compliance pre-check for new ASINs</td><td><span class="pill" style="background: var(--c-risk-bg); color: var(--c-risk);">High</span></td></tr>
+            <tr><td><strong>Walmart Marketplace</strong></td><td>Seller onboarding compliance</td><td><span class="pill" style="background: rgba(245,200,0,0.15); color: #806800;">Medium</span></td></tr>
+            <tr><td><strong>Etsy</strong></td><td>Sellers shipping EU need GPSR compliance</td><td><span class="pill" style="background: rgba(110,201,160,0.18); color: #2A6B4A;">Low</span></td></tr>
+            <tr><td><strong>WooCommerce</strong></td><td>Plugin: cleo-woo</td><td><span class="pill" style="background: rgba(245,200,0,0.15); color: #806800;">Medium</span></td></tr>
+            <tr><td><strong>BigCommerce</strong></td><td>App</td><td><span class="pill" style="background: rgba(245,200,0,0.15); color: #806800;">Medium</span></td></tr>
+            <tr><td><strong>PrestaShop</strong></td><td>EU base, FR-friendly</td><td><span class="pill" style="background: rgba(110,201,160,0.18); color: #2A6B4A;">Low</span></td></tr>
+            <tr><td><strong>Shopify</strong></td><td>(covered above)</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="subhead"><span class="subhead-num">5</span> Industry Associations · 6 targets</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Association</th><th>Country</th><th>Angle</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Cosmetics Europe</strong></td><td>EU</td><td>Sponsor / speak</td><td>Apply Q3</td></tr>
+            <tr><td><strong>Personal Care Products Council</strong></td><td>US</td><td>Member</td><td>Apply Q3</td></tr>
+            <tr><td><strong>Cosmetic Toiletry &amp; Perfumery Association</strong></td><td>UK</td><td>Member</td><td>Apply Q3</td></tr>
+            <tr><td><strong>Toy Industries of Europe</strong></td><td>EU</td><td>Niche sponsor</td><td>Apply Q4</td></tr>
+            <tr><td><strong>American Apparel &amp; Footwear Assoc.</strong></td><td>US</td><td>Member</td><td>Apply Q4</td></tr>
+            <tr><td><strong>FEBEA</strong></td><td>FR</td><td>Cleo is FR — natural home</td><td>Apply Q3</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tier-divider"></div>
+
+    <!-- TIER 5 -->
+    <div class="reveal">
+      <span class="tier-meta">Tier 5 · Earned Media · Months 3-12 · Aug 2026 – Apr 2027</span>
+      <h3 class="t-h1" style="margin-bottom: 16px;">Have the story told by someone with reach.</h3>
+      <p style="color: var(--c-text-2); margin-bottom: 32px; max-width: 720px;">Podcasts, press, conferences. Embargo strategy: offer one outlet a 48-hour exclusive in exchange for premium placement.</p>
+
+      <h4 class="subhead"><span class="subhead-num">1</span> Podcasts · 10 targets · 2 pitches/week</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Podcast</th><th>Host</th><th>Audience</th><th>Pitch angle</th><th>Likelihood</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Indie Hackers</strong></td><td>Courtland Allen</td><td>Builders</td><td>Open-source as a moat</td><td><span class="pill" style="background: rgba(110,201,160,0.18); color: #2A6B4A;">High</span></td></tr>
+            <tr><td><strong>Lenny's Podcast</strong></td><td>Lenny Rachitsky</td><td>Product</td><td>API GTM</td><td><span class="pill" style="background: rgba(245,200,0,0.15); color: #806800;">Medium</span></td></tr>
+            <tr><td><strong>Latent Space</strong></td><td>swyx + Alessio</td><td>AI builders</td><td>MCP + agent skills</td><td><span class="pill" style="background: rgba(110,201,160,0.18); color: #2A6B4A;">High</span></td></tr>
+            <tr><td><strong>This Week in Startups</strong></td><td>Jason Calacanis</td><td>Founders</td><td>Niche RegTech</td><td><span class="pill" style="background: var(--c-risk-bg); color: var(--c-risk);">Low</span></td></tr>
+            <tr><td><strong>DTC Pod</strong></td><td>Blaine Bolus</td><td>D2C founders</td><td>Compliance pain</td><td><span class="pill" style="background: rgba(110,201,160,0.18); color: #2A6B4A;">High</span></td></tr>
+            <tr><td><strong>Beauty Independent</strong></td><td>Jamie Matusow</td><td>Beauty execs</td><td>Hyper-niche</td><td><span class="pill" style="background: rgba(110,201,160,0.18); color: #2A6B4A;">High</span></td></tr>
+            <tr><td><strong>Modern Retail Podcast</strong></td><td>Cale Weissman</td><td>Retail</td><td>D2C trend</td><td><span class="pill" style="background: rgba(245,200,0,0.15); color: #806800;">Medium</span></td></tr>
+            <tr><td><strong>Tim Ferriss Show</strong></td><td>Tim Ferriss</td><td>Mass</td><td>Founder story</td><td><span class="pill" style="background: var(--c-risk-bg); color: var(--c-risk);">Low</span></td></tr>
+            <tr><td><strong>20VC</strong></td><td>Harry Stebbings</td><td>VCs</td><td>When raising</td><td><span class="pill" style="background: var(--c-risk-bg); color: var(--c-risk);">Q4 only</span></td></tr>
+            <tr><td><strong>Acquired</strong></td><td>Ben + David</td><td>Strategy</td><td>Long shot</td><td><span class="pill" style="background: rgba(0,0,0,0.05); color: var(--c-text-2);">Skip</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="subhead"><span class="subhead-num">2</span> PR Outreach · 11 outlets</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Outlet</th><th>Beat</th><th>Angle</th><th>Reporter</th></tr></thead>
+          <tbody>
+            <tr><td><strong>TechCrunch</strong></td><td>AI / SaaS</td><td>"First open-source compliance toolkit for AI agents"</td><td>Kyle Wiggers</td></tr>
+            <tr><td><strong>The Verge</strong></td><td>AI products</td><td>Consumer-facing AI use case</td><td>Emma Roth</td></tr>
+            <tr><td><strong>Wired</strong></td><td>AI culture</td><td>Open-source vs. consultant disruption</td><td>Will Knight</td></tr>
+            <tr><td><strong>Glossy</strong></td><td>Beauty/fashion</td><td>DTC compliance pain</td><td>Sara Spruch-Feiner</td></tr>
+            <tr><td><strong>Modern Retail</strong></td><td>Retail</td><td>D2C founder tools</td><td>Cale Weissman</td></tr>
+            <tr><td><strong>DTC Newsletter</strong></td><td>D2C</td><td>Founder story</td><td>Web Smith</td></tr>
+            <tr><td><strong>RegTech Analyst</strong></td><td>Compliance</td><td>Industry shift</td><td>Editor team</td></tr>
+            <tr><td><strong>AI News</strong></td><td>AI</td><td>Skills as new app paradigm</td><td>Editor team</td></tr>
+            <tr><td><strong>Sifted</strong></td><td>EU startups</td><td>Cleo is FR-based</td><td>Eleanor Warnock</td></tr>
+            <tr><td><strong>Les Echos</strong></td><td>FR business</td><td>French scaleup angle</td><td>Tech beat</td></tr>
+            <tr><td><strong>Maddyness</strong></td><td>FR tech</td><td>French startup angle</td><td>Tech beat</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="subhead"><span class="subhead-num">3</span> Conference Talks · 9 targets</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Conference</th><th>Date</th><th>Theme</th><th>CFP deadline</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Anthropic Dev Day</strong></td><td>TBD 2026</td><td>Skills + MCP</td><td>When announced</td></tr>
+            <tr><td><strong>AWS re:Invent</strong> (Bedrock)</td><td>Dec 2026</td><td>Agent compliance</td><td class="target">Aug 1</td></tr>
+            <tr><td><strong>SaaStr Annual</strong></td><td>Sep 2026</td><td>API monetization story</td><td>Open now</td></tr>
+            <tr><td><strong>In-Cosmetics Global</strong></td><td>Apr 2027</td><td>Cosmetics compliance</td><td class="target">Nov 2026</td></tr>
+            <tr><td><strong>SupplySide West</strong></td><td>Oct 2026</td><td>Supplements compliance</td><td>Closed — sponsor</td></tr>
+            <tr><td><strong>Compliance Week</strong></td><td>May 2027</td><td>Enterprise angle</td><td>Feb 2027</td></tr>
+            <tr><td><strong>MCP Conf</strong> (if created)</td><td>TBD</td><td>Native fit</td><td>Watch</td></tr>
+            <tr><td><strong>VivaTech Paris</strong></td><td>Jun 2026</td><td>FR scene</td><td>Closed — attend</td></tr>
+            <tr><td><strong>Web Summit Lisbon</strong></td><td>Nov 2026</td><td>EU founders</td><td>Apr 2026 — late</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tier-divider"></div>
+
+    <!-- TIER 6 -->
+    <div class="reveal">
+      <span class="tier-meta">Tier 6 · Long-tail Discovery · Ongoing</span>
+      <h3 class="t-h1" style="margin-bottom: 16px;">The compounding flywheel.</h3>
+      <p style="color: var(--c-text-2); margin-bottom: 32px; max-width: 720px;">SEO, backlinks, templates. Invisible until it isn't. Then it's everywhere.</p>
+
+      <h4 class="subhead"><span class="subhead-num">1</span> Search optimization</h4>
+      <div class="grid-2">
+        <div class="card-white">
+          <h5 class="t-h3" style="margin-bottom: 12px;">Repo SEO</h5>
+          <p style="font-size: 0.9rem; color: var(--c-text-2); margin-bottom: 12px;"><strong>Description:</strong> "28 open-source Claude Code skills for product compliance — EU, US, UK, international. Powered by Cleo Legal API."</p>
+          <p style="font-size: 0.85rem;"><strong>Topics:</strong></p>
+          <div style="margin-top: 8px;">
+            <span class="pill">claude-code</span>
+            <span class="pill">compliance</span>
+            <span class="pill">regulatory</span>
+            <span class="pill">ai-skills</span>
+            <span class="pill">mcp</span>
+            <span class="pill">model-context-protocol</span>
+            <span class="pill">regtech</span>
+            <span class="pill">dtc</span>
+            <span class="pill">cosmetics</span>
+            <span class="pill">food-safety</span>
+            <span class="pill">ce-marking</span>
+            <span class="pill">fda</span>
+            <span class="pill">reach</span>
+            <span class="pill">cpsia</span>
+            <span class="pill">claude-skills</span>
+          </div>
+        </div>
+        <div class="card-white">
+          <h5 class="t-h3" style="margin-bottom: 12px;">Landing page SEO</h5>
+          <ul style="font-size: 0.9rem; padding-left: 18px;">
+            <li>Sitemap.xml at root, robots.txt allowing all</li>
+            <li><code class="inline">&lt;meta name="description"&gt;</code> under 160 chars</li>
+            <li>OpenGraph + Twitter Card tags</li>
+            <li>Schema.org <code class="inline">SoftwareApplication</code> + <code class="inline">Organization</code></li>
+            <li>Lighthouse ≥95 on all four axes</li>
+            <li>One H1, structured Hs</li>
+            <li>Internal links to /skills/[name] = 28 indexable pages</li>
+          </ul>
+        </div>
+      </div>
+
+      <h4 class="subhead"><span class="subhead-num">2</span> Backlink sources</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Source</th><th>Type</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td><strong>insight.cleolabs.co</strong></td><td>Owned</td><td>Footer link</td></tr>
+            <tr><td><strong>legaldata-public.cleolabs.co</strong></td><td>Owned</td><td>"Powered by" + docs</td></tr>
+            <tr><td><strong>cleolabs.co</strong></td><td>Owned</td><td>Top nav</td></tr>
+            <tr><td><strong>Cleo blog</strong></td><td>Owned</td><td>Every article</td></tr>
+            <tr><td><strong>Wikipedia</strong></td><td>Earned</td><td>External link on regulatory compliance / MoCRA / REACH / CE marking — example tool, no spam</td></tr>
+            <tr><td><strong>Stack Overflow</strong></td><td>Earned</td><td>Genuine answers, mention as tool when relevant</td></tr>
+            <tr><td><strong>GitHub Gists</strong></td><td>Owned</td><td>20 gists with code examples</td></tr>
+            <tr><td><strong>dev.to articles</strong></td><td>Owned</td><td>Auto-linked</td></tr>
+            <tr><td><strong>Reddit comments</strong></td><td>Earned</td><td>Long term — answers stay indexed</td></tr>
+            <tr><td><strong>YouTube descriptions</strong></td><td>Owned</td><td>Every video</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="subhead"><span class="subhead-num">3</span> Templates &amp; Boilerplates</h4>
+      <p style="color: var(--c-text-2); margin-bottom: 16px;">Each template's footer: <em>"Powered by skills_library — install in 30 seconds and let Claude Code fill this for you. github.com/Cleo-Labs-IA/skills_library"</em></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Template</th><th>Platform</th><th>Topic</th></tr></thead>
+          <tbody>
+            <tr><td>"Cosmetics launch compliance checklist"</td><td>Notion</td><td>EU + US</td></tr>
+            <tr><td>"Food product labeling checklist"</td><td>Notion</td><td>FDA + EU</td></tr>
+            <tr><td>"Toy safety pre-launch"</td><td>Notion</td><td>EN71 + CPSIA</td></tr>
+            <tr><td>"EU REACH SVHC tracker"</td><td>Airtable</td><td>Substance tracker</td></tr>
+            <tr><td>"Multi-country product launch tracker"</td><td>Google Sheets</td><td>All verticals</td></tr>
+            <tr><td>"GPSR checklist 2026"</td><td>Notion</td><td>EU GPSR — hot topic</td></tr>
+            <tr><td>"California Prop 65 tracker"</td><td>Airtable</td><td>US</td></tr>
+            <tr><td>"INCI ingredients checker"</td><td>Google Sheets</td><td>Cosmetics</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top: 12px; color: var(--c-text-2); font-size: 0.9rem;">Promote each template in its native discovery (Notion gallery, Etsy templates, Gumroad).</p>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDAR -->
+<section id="calendar" class="gc-mint">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="t-label">03 · Execution</div>
+      <h2 class="t-h1">90-day launch calendar.</h2>
+      <p>Week-by-week from May 28 to August 26. Weekly review every Monday 9am — 30 minutes, update metrics, decide pivots.</p>
+    </div>
+
+    <div class="calendar-grid">
+      <div class="week-card reveal">
+        <span class="week-num">WEEK 1</span>
+        <div class="week-dates">May 28 – Jun 3 · Foundation week</div>
+        <div class="week-theme">Polish + foundation</div>
+        <ul class="week-actions">
+          <li>Mon May 28 — Repo polish: README, LICENSE, SECURITY, CODE_OF_CONDUCT, screenshots</li>
+          <li>Tue May 29 — Submit to MCP marketplaces (Glama, Smithery)</li>
+          <li>Wed May 30 — Open PR to Anthropic claude-code registry</li>
+          <li>Wed May 30 — Open PRs to top 3 awesome lists</li>
+          <li>Thu May 31 — Submit to MCP.so, MCP Servers, OpenTools</li>
+          <li>Fri Jun 1 — Open PRs to remaining 7 awesome lists</li>
+          <li>Tue Jun 3 8AM PT — Show HN</li>
+        </ul>
+      </div>
+
+      <div class="week-card reveal">
+        <span class="week-num">WEEK 2</span>
+        <div class="week-dates">Jun 4 – Jun 10 · High-leverage burst</div>
+        <div class="week-theme">Product Hunt + Reddit + LinkedIn</div>
+        <ul class="week-actions">
+          <li>Mon Jun 8 — Pre-launch PH page live, hunter confirmed</li>
+          <li>Tue Jun 9 00:01 PT — Product Hunt launch</li>
+          <li>Wed Jun 10 — Reddit r/ClaudeAI + r/LocalLLaMA</li>
+          <li>Thu Jun 11 — Reddit r/SideProject + r/entrepreneur (comments only)</li>
+          <li>Fri Jun 12 — Founder LinkedIn long-form + company repost</li>
+        </ul>
+      </div>
+
+      <div class="week-card reveal">
+        <span class="week-num">WEEK 3</span>
+        <div class="week-dates">Jun 11 – Jun 17 · Content kickoff</div>
+        <div class="week-theme">YouTube + Reddit + Substack</div>
+        <ul class="week-actions">
+          <li>Record + publish YouTube videos 1–7</li>
+          <li>Reddit r/d2c + r/shopify + r/ecommerce</li>
+          <li>Twitter founder thread + @Cleo_Labs cadence begins</li>
+          <li>First Substack issue</li>
+        </ul>
+      </div>
+
+      <div class="week-card reveal">
+        <span class="week-num">WEEK 4</span>
+        <div class="week-dates">Jun 18 – Jun 24 · Content depth</div>
+        <div class="week-theme">Long-form + first sponsorships</div>
+        <ul class="week-actions">
+          <li>Long-form blog post #1: "How we open-sourced our core IP" (Medium + Hashnode + dev.to)</li>
+          <li>First niche newsletter pitch (DTC Newsletter + Beauty Independent)</li>
+          <li>Reddit r/cosmeticchemistry + r/FoodScience</li>
+          <li>First Notion template published + Gumroad listing</li>
+        </ul>
+      </div>
+
+      <div class="week-card reveal">
+        <span class="week-num">WEEKS 5–8</span>
+        <div class="week-dates">Jun 25 – Jul 22 · Content cadence + partnerships</div>
+        <div class="week-theme">Steady drumbeat</div>
+        <ul class="week-actions">
+          <li>3 YouTube videos/week</li>
+          <li>2 blog posts/week</li>
+          <li>1 podcast pitch/week (DTC Pod, Indie Hackers, Latent Space)</li>
+          <li>1 partnership conversation/week (SGS, Eurofins, Techstars, YC)</li>
+          <li>1 Reddit post/week · continue Twitter cadence</li>
+        </ul>
+      </div>
+
+      <div class="week-card reveal">
+        <span class="week-num">WEEKS 9–12</span>
+        <div class="week-dates">Jul 23 – Aug 26 · Earned media + conferences</div>
+        <div class="week-theme">Press push + CFPs</div>
+        <ul class="week-actions">
+          <li>Pitch TechCrunch, Sifted, Glossy</li>
+          <li>Submit CFPs to AWS re:Invent, In-Cosmetics, Compliance Week</li>
+          <li>First sponsored podcast episode goes live</li>
+          <li>LinkedIn sponsored campaign launches (€1,500)</li>
+          <li>Q1 retro blog post Aug 26 · 90-day review: are we hitting metrics?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section id="metrics">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="t-label">04 · KPIs</div>
+      <h2 class="t-h1">Metrics dashboard.</h2>
+      <p>Weekly review cadence: every Monday 9am, 30 minutes. If a Tier is underperforming by Day 30 (&lt;50% of target), reallocate budget. Attribution via UTM (<code class="inline">utm_source=tier_channel</code>, <code class="inline">utm_medium=type</code>, <code class="inline">utm_campaign=launch90</code>).</p>
+    </div>
+
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Source</th>
+            <th class="mono">Day 7</th>
+            <th class="mono">Day 30</th>
+            <th class="mono">Day 60</th>
+            <th class="mono">Day 90</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>GitHub stars</strong></td><td>GH API</td><td class="mono">50</td><td class="mono">200</td><td class="mono">500</td><td class="mono target">1,000</td></tr>
+          <tr><td><strong>Forks</strong></td><td>GH API</td><td class="mono">5</td><td class="mono">30</td><td class="mono">100</td><td class="mono target">300</td></tr>
+          <tr><td><strong>Installs</strong> (clones + plugin)</td><td>Referrer logs + plugin telemetry</td><td class="mono">100</td><td class="mono">500</td><td class="mono">2,000</td><td class="mono target">5,000</td></tr>
+          <tr><td><strong>MCP server adds</strong></td><td>Cleo Insight API logs</td><td class="mono">10</td><td class="mono">50</td><td class="mono">200</td><td class="mono target">500</td></tr>
+          <tr><td><strong>Free API signups</strong></td><td>legaldata-public Stripe</td><td class="mono">30</td><td class="mono">100</td><td class="mono">400</td><td class="mono target">1,000</td></tr>
+          <tr><td><strong>Paid Pro signups</strong></td><td>Stripe</td><td class="mono">1</td><td class="mono">5</td><td class="mono">25</td><td class="mono target">100</td></tr>
+          <tr style="background: var(--c-blue-light);"><td><strong>MRR attributable</strong></td><td>Stripe + UTM</td><td class="mono">€349</td><td class="mono">€1,745</td><td class="mono">€8,725</td><td class="mono target" style="font-size: 1rem;">€34,900</td></tr>
+          <tr><td><strong>Blog organic visits</strong></td><td>GA4</td><td class="mono">200</td><td class="mono">2,000</td><td class="mono">8,000</td><td class="mono target">25,000</td></tr>
+          <tr><td><strong>YouTube views</strong></td><td>YT API</td><td class="mono">500</td><td class="mono">5,000</td><td class="mono">25,000</td><td class="mono target">100,000</td></tr>
+          <tr><td><strong>Twitter impressions</strong></td><td>X analytics</td><td class="mono">5k</td><td class="mono">50k</td><td class="mono">200k</td><td class="mono target">500k</td></tr>
+          <tr><td><strong>LinkedIn impressions</strong></td><td>LI analytics</td><td class="mono">5k</td><td class="mono">30k</td><td class="mono">100k</td><td class="mono target">250k</td></tr>
+          <tr><td><strong>Press mentions</strong></td><td>manual</td><td class="mono">0</td><td class="mono">1</td><td class="mono">3</td><td class="mono target">8</td></tr>
+          <tr><td><strong>Podcast appearances</strong></td><td>manual</td><td class="mono">0</td><td class="mono">0</td><td class="mono">1</td><td class="mono target">3</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- TAGLINES -->
+<section id="taglines" class="gc-peach">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="t-label">05 · Positioning</div>
+      <h2 class="t-h1">Five candidate one-liners.</h2>
+      <p>Pick one as primary. A/B test where possible. Recommended primary: #2. Developer-channel variant: #3. HN/PH tagline: #5.</p>
+    </div>
+
+    <div class="tagline-grid">
+      <div class="tagline-card reveal">
+        <span class="tagline-num">01</span>
+        <div class="tagline-angle">Developer angle</div>
+        <p class="tagline-quote">"The Stripe of compliance for AI agents."</p>
+      </div>
+
+      <div class="tagline-card featured reveal">
+        <span class="tagline-num">02</span>
+        <div class="tagline-angle">D2C angle</div>
+        <p class="tagline-quote">"Compliance answers in 30 seconds, not 6 weeks."</p>
+        <span class="recommended-badge">★ Recommended primary</span>
+      </div>
+
+      <div class="tagline-card reveal">
+        <span class="tagline-num">03</span>
+        <div class="tagline-angle">AI angle</div>
+        <p class="tagline-quote">"We taught Claude Code to handle global product compliance."</p>
+      </div>
+
+      <div class="tagline-card reveal">
+        <span class="tagline-num">04</span>
+        <div class="tagline-angle">Cost angle</div>
+        <p class="tagline-quote">"Replace your compliance consultant with 28 AI skills."</p>
+      </div>
+
+      <div class="tagline-card reveal" style="grid-column: 1 / -1;">
+        <span class="tagline-num">05</span>
+        <div class="tagline-angle">Open-source angle</div>
+        <p class="tagline-quote">"Built in the open. Free forever. Powered by Cleo Legal API."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANTI-PATTERNS -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="t-label">06 · Red lines</div>
+      <h2 class="t-h1">Anti-patterns — what NOT to do.</h2>
+      <p>The reputation cost of any of these is permanent. None of them are worth the short-term spike.</p>
+    </div>
+
+    <div class="anti-card reveal">
+      <ul class="anti-list">
+        <li>No spammy posts in unrelated subreddits. Compliance + DTC + AI subs only. No drive-by self-promotion.</li>
+        <li>No paid GitHub stars. The algorithm + community detects this; reputation cost is permanent.</li>
+        <li>No fake reviews on Product Hunt. PH bans accounts and the founder forever.</li>
+        <li>No buying lookalike domains. "claude-compliance.com" = trademark issues + bad faith.</li>
+        <li>No misleading claims. The skills don't give legal advice; they query a dataset and cite sources. Say that everywhere.</li>
+        <li>No bait-and-switch. The free tier (50 calls/day) must remain genuinely useful. Reducing after launch = trust death.</li>
+        <li>No DM spam asking for upvotes (HN, PH, Reddit all penalize).</li>
+        <li>No fake hunters on PH. Use real ones who actually like the product.</li>
+        <li>No cross-posting within 48h to overlapping subreddits — Reddit's spam filter catches it.</li>
+        <li>No undisclosed sponsored content. Always tag #ad or #sponsored.</li>
+        <li>No telemetry without explicit opt-in. Privacy-first or the open-source crowd will eat us alive.</li>
+        <li>No removing the open-source license retroactively. MIT today is MIT forever.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- API INTEGRATION MAP -->
+<section id="api" class="gc-blue">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="t-label">07 · Funnel mechanics</div>
+      <h2 class="t-h1">Cleo Legal API integration map.</h2>
+      <p>Every channel funnels back to <code class="inline">legaldata-public.cleolabs.co</code>. CTA placement matters — most subreddits ban links in body, so we earn the click in comments.</p>
+    </div>
+
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th>Channel</th><th>How the funnel works</th><th>CTA placement</th></tr></thead>
+        <tbody>
+          <tr><td><strong>GitHub repo</strong></td><td>README "Quick start" links to legaldata-public.cleolabs.co/signup for free API key</td><td>Top of README + every skill's docs</td></tr>
+          <tr><td><strong>Awesome list entries</strong></td><td>Description includes "powered by Cleo Legal API"</td><td>Single-line description</td></tr>
+          <tr><td><strong>Product Hunt</strong></td><td>Gallery features API live; one screenshot is the API dashboard</td><td>First comment links API</td></tr>
+          <tr><td><strong>HN Show HN</strong></td><td>Founder first comment openly states business model</td><td>Comment only, not body</td></tr>
+          <tr><td><strong>Reddit</strong></td><td>CTAs in comments only (most subs ban links in body)</td><td>Pinned founder comment</td></tr>
+          <tr><td><strong>YouTube videos</strong></td><td>Each video shows the API call live; description has UTM link</td><td>Description + on-screen at 0:50</td></tr>
+          <tr><td><strong>Blog posts</strong></td><td>Contextual mentions in body + footer "Try the API free" CTA</td><td>Footer always</td></tr>
+          <tr><td><strong>Twitter</strong></td><td>Bio link + every thread ends with API link</td><td>Bio + thread tail</td></tr>
+          <tr><td><strong>LinkedIn</strong></td><td>Founder posts include API link; sponsored ads CTA = signup</td><td>In-post + ad CTA</td></tr>
+          <tr><td><strong>Newsletter sponsorships</strong></td><td>Mandatory "Try the API" CTA + free-tier mention</td><td>Required in contract</td></tr>
+          <tr><td><strong>Conference talks</strong></td><td>Live demo hits the API on stage; slide deck QR to signup</td><td>Demo + closing slide</td></tr>
+          <tr><td><strong>Podcasts</strong></td><td>Naomie talks about API as business model openly; host gets unique discount code</td><td>In-show + show notes</td></tr>
+          <tr><td><strong>MCP marketplaces</strong></td><td>Listing IS the Cleo Legal API MCP; skills_library is companion link</td><td>Listing description</td></tr>
+          <tr><td><strong>Notion/Airtable templates</strong></td><td>Footer of every template</td><td>Footer always</td></tr>
+          <tr><td><strong>SEO articles</strong></td><td>Footer CTA + 1 contextual mention per 1,000 words</td><td>Footer + body</td></tr>
+          <tr><td><strong>Partnerships</strong></td><td>Discount code unique per partner = clean attribution</td><td>Partner page</td></tr>
+          <tr><td><strong>Shopify app</strong></td><td>Embedded API key entry + free-tier nudge</td><td>App settings UI</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- OPERATING PRINCIPLES -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="t-label">08 · Operating principles</div>
+      <h2 class="t-h1">Seven rules to ship by.</h2>
+    </div>
+
+    <div class="principles">
+      <div class="principle reveal">
+        <strong>Compounding > spikes.</strong>
+        <p>A blog post indexed today drives traffic for 3 years. A tweet drives traffic for 3 days. Invest 70% in compounding assets, 30% in spikes.</p>
+      </div>
+      <div class="principle reveal">
+        <strong>Show the source.</strong>
+        <p>Every claim links to data or repo. "AI" + "compliance" + closed source = nobody trusts it.</p>
+      </div>
+      <div class="principle reveal">
+        <strong>Talk about money openly.</strong>
+        <p>Founders trust founders who admit the business model. Hide it = look sketchy.</p>
+      </div>
+      <div class="principle reveal">
+        <strong>Niche first.</strong>
+        <p>Cosmetics > beauty > consumer goods > e-commerce > business. Win one vertical, expand.</p>
+      </div>
+      <div class="principle reveal">
+        <strong>Reply to everyone for 90 days.</strong>
+        <p>Naomie personally answers every comment, issue, DM. Compounds trust at a rate nothing else does.</p>
+      </div>
+      <div class="principle reveal">
+        <strong>One channel, one owner.</strong>
+        <p>If nobody owns a channel by name, it dies. Hire/assign before launching.</p>
+      </div>
+      <div class="principle reveal" style="grid-column: 1 / -1;">
+        <strong>Kill what doesn't work by Day 30.</strong>
+        <p>If a Tier 1 channel is under 50% of target by Day 30, cut budget and reallocate. No sunk-cost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Cleo<span>·</span>Labs</div>
+        <p class="footer-desc">Compliance Product Guidance — the all-in-one compliance toolkit for physical product companies. Built in Paris.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Links</h4>
+        <a href="https://github.com/Cleo-Labs-IA/skills_library" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://cleolabs.co" target="_blank" rel="noopener">cleolabs.co</a>
+        <a href="https://legaldata-public.cleolabs.co" target="_blank" rel="noopener">Cleo Legal API</a>
+        <a href="https://cleo-labs-ia.github.io/skills_library/" target="_blank" rel="noopener">Landing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Document</h4>
+        <a href="#north-star">North Star</a>
+        <a href="#tiers">The 6 tiers</a>
+        <a href="#calendar">Calendar</a>
+        <a href="#metrics">Metrics</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>Cleo Labs · Paris · 2026</div>
+      <div>Compliance Product Guidance — Distribution Strategy v1.0</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // IntersectionObserver fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+  // Update URL hash on click (smooth)
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+      const id = this.getAttribute('href');
+      if (id.length > 1) {
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          history.pushState(null, '', id);
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
