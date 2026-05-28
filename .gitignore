@@ -37,3 +37,6 @@ build/
 
 # OS
 Thumbs.db
+
+# Internal-only files (strategy, submissions, personal dashboards)
+_internal/
