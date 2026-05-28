@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Week One Playbook · Cleo Labs</title>
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --c-blue: #0008CF;
+  --c-blue-hover: #0006A8;
+  --c-blue-light: rgba(0, 8, 207, 0.06);
+  --c-ink: #1A1A1A;
+  --c-white: #FFFFFF;
+  --c-surface: #F9F8F6;
+  --c-card: #F0EFEC;
+  --c-border: rgba(0, 0, 0, 0.08);
+  --c-text: rgba(0, 0, 0, 0.87);
+  --c-text-2: rgba(0, 0, 0, 0.62);
+  --c-text-3: rgba(0, 0, 0, 0.45);
+  --c-mint: #6EC9A0;
+  --c-mint-light: rgba(110, 201, 160, 0.08);
+  --c-coral: #F07060;
+  --c-jaune: #F5C800;
+  --c-violet: #7B3FA0;
+  --r-sm: 8px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-pill: 9999px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-blur: saturate(180%) blur(28px);
+  --ease-luxury: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--c-surface);
+  color: var(--c-text);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 1100px 600px at 10% -10%, rgba(0, 8, 207, 0.05), transparent 60%),
+    radial-gradient(ellipse 900px 500px at 90% 110%, rgba(110, 201, 160, 0.06), transparent 60%),
+    var(--c-surface);
+}
+
+::selection {
+  background: var(--c-blue);
+  color: var(--c-white);
+}
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+a { color: var(--c-blue); text-decoration: none; }
+a:hover { color: var(--c-blue-hover); }
+
+/* ============================================
+   HEADER (sticky glass)
+   ============================================ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.brand svg { display: block; }
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--c-ink);
+  letter-spacing: -0.01em;
+}
+
+.brand-sub {
+  font-size: 11px;
+  color: var(--c-text-2);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.header-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.header-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--c-ink);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.progress-wrap {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-blue), var(--c-mint));
+  width: 0%;
+  transition: width 0.6s var(--ease-luxury);
+  border-radius: var(--r-pill);
+}
+
+.progress-pct {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--c-text);
+  font-variant-numeric: tabular-nums;
+  min-width: 40px;
+  text-align: right;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.day-counter {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--c-blue);
+  background: var(--c-blue-light);
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.reset-btn {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--c-text-2);
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--c-border);
+  transition: all 0.2s var(--ease-luxury);
+  white-space: nowrap;
+}
+
+.reset-btn:hover {
+  background: var(--c-white);
+  color: var(--c-ink);
+  border-color: rgba(0, 0, 0, 0.16);
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+}
+
+.section {
+  margin-bottom: 56px;
+}
+
+.hero-headline {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.hero-headline h1 {
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  color: var(--c-ink);
+  margin-bottom: 16px;
+}
+
+.hero-headline h1 .accent {
+  background: linear-gradient(90deg, var(--c-blue), var(--c-mint));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-headline p {
+  font-size: 18px;
+  color: var(--c-text-2);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ============================================
+   HERO STATS (glass card grid)
+   ============================================ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 56px;
+}
+
+.stat-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s var(--ease-luxury);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--c-blue);
+  opacity: 0.8;
+}
+
+.stat-card:nth-child(2)::before { background: var(--c-mint); }
+.stat-card:nth-child(3)::before { background: var(--c-jaune); }
+.stat-card:nth-child(4)::before { background: var(--c-coral); }
+
+.stat-value {
+  font-size: 38px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--c-ink);
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--c-text-2);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+/* ============================================
+   SPLIT EXPLAINER
+   ============================================ */
+.split-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 56px;
+}
+
+.split-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.split-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--c-ink);
+  margin-bottom: 10px;
+}
+
+.split-header p {
+  font-size: 14px;
+  color: var(--c-text-2);
+}
+
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.split-col {
+  padding: 28px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--c-border);
+}
+
+.split-col-claude {
+  background: var(--c-blue-light);
+  border-left: 4px solid var(--c-blue);
+}
+
+.split-col-you {
+  background: var(--c-mint-light);
+  border-left: 4px solid var(--c-mint);
+}
+
+.split-col-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--c-ink);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.split-col-emoji { font-size: 22px; }
+
+.split-col-sub {
+  font-size: 12px;
+  color: var(--c-text-2);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  margin-bottom: 18px;
+}
+
+.split-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.split-list li {
+  font-size: 14px;
+  color: var(--c-text);
+  line-height: 1.45;
+  padding-left: 22px;
+  position: relative;
+}
+
+.split-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-blue);
+}
+
+.split-col-you .split-list li::before {
+  background: var(--c-mint);
+}
+
+.split-tagline {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 15px;
+  color: var(--c-text);
+  padding: 18px 24px;
+  background: var(--c-card);
+  border-radius: var(--r-md);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.split-tagline strong { color: var(--c-blue); font-weight: 700; }
+
+/* ============================================
+   DAY CARDS
+   ============================================ */
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.day-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  margin-bottom: 24px;
+  overflow: hidden;
+  transition: all 0.4s var(--ease-luxury);
+  position: relative;
+}
+
+.day-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.day-card.is-today {
+  border-color: var(--c-blue);
+  box-shadow: 0 0 0 4px var(--c-blue-light), var(--shadow-md);
+}
+
+.day-card.is-past {
+  opacity: 0.78;
+}
+
+.day-card.is-complete {
+  border-color: var(--c-mint);
+  box-shadow: 0 0 0 3px rgba(110, 201, 160, 0.18), var(--shadow-sm);
+}
+
+.day-header {
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-surface);
+}
+
+.day-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.day-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--c-text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--c-white);
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--c-border);
+  font-variant-numeric: tabular-nums;
+}
+
+.day-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--c-ink);
+  letter-spacing: -0.02em;
+}
+
+.day-title .weekday {
+  color: var(--c-text-2);
+  font-weight: 500;
+  font-size: 14px;
+  margin-left: 8px;
+  letter-spacing: 0;
+}
+
+.today-badge {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--c-white);
+  background: var(--c-blue);
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.complete-badge {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--c-white);
+  background: var(--c-mint);
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: none;
+}
+
+.day-card.is-complete .complete-badge { display: inline-block; }
+.day-card.is-complete .today-badge { display: none; }
+
+.day-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.day-task-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--c-text);
+  font-variant-numeric: tabular-nums;
+  background: var(--c-white);
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--c-border);
+}
+
+.day-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.day-col {
+  padding: 28px 32px;
+  position: relative;
+}
+
+.day-col-claude {
+  background: linear-gradient(180deg, rgba(0, 8, 207, 0.02), transparent);
+  border-left: 4px solid var(--c-blue);
+}
+
+.day-col-you {
+  background: linear-gradient(180deg, rgba(110, 201, 160, 0.04), transparent);
+  border-left: 4px solid var(--c-mint);
+  border-top: none;
+}
+
+.day-col-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.day-col-emoji { font-size: 18px; }
+
+.day-col-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-ink);
+  letter-spacing: -0.01em;
+}
+
+.day-col-sub {
+  font-size: 11px;
+  color: var(--c-text-2);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  margin-bottom: 18px;
+}
+
+.day-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.day-list-claude li {
+  font-size: 13.5px;
+  color: var(--c-text);
+  line-height: 1.45;
+  padding-left: 20px;
+  position: relative;
+}
+
+.day-list-claude li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--c-blue);
+}
+
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 4px 0;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s var(--ease-luxury);
+}
+
+.task-checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(0, 0, 0, 0.2);
+  background: var(--c-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: all 0.2s var(--ease-luxury);
+}
+
+.task-checkbox svg {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.2s var(--ease-luxury);
+}
+
+.task-item.is-done .task-checkbox {
+  background: var(--c-ink);
+  border-color: var(--c-ink);
+}
+
+.task-item.is-done .task-checkbox svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.task-item:hover .task-checkbox {
+  border-color: var(--c-ink);
+}
+
+.task-body {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+
+.task-text {
+  font-size: 13.5px;
+  color: var(--c-text);
+  line-height: 1.4;
+  flex: 1;
+  min-width: 0;
+}
+
+.task-item.is-done .task-text {
+  text-decoration: line-through;
+  color: var(--c-text-3);
+}
+
+.task-time {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--c-text-2);
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.day-footer {
+  padding: 20px 32px 24px;
+  border-top: 1px solid var(--c-border);
+  background: var(--c-surface);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.day-target {
+  font-size: 13px;
+  color: var(--c-text);
+  line-height: 1.4;
+  flex: 1;
+  min-width: 240px;
+}
+
+.day-target-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--c-text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.day-target-text { font-weight: 500; }
+.day-target-text strong { color: var(--c-blue); font-weight: 700; }
+
+.day-time-vis {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  min-width: 180px;
+}
+
+.day-time-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--c-text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.day-time-bar {
+  width: 180px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.day-time-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-blue), #5BC0E8);
+  border-radius: var(--r-pill);
+  transition: width 0.6s var(--ease-luxury);
+}
+
+.day-time-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-ink);
+  font-variant-numeric: tabular-nums;
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+/* ============================================
+   METRICS TABLE
+   ============================================ */
+.metrics-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.metrics-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.metrics-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--c-ink);
+}
+
+.metrics-sub {
+  font-size: 12px;
+  color: var(--c-text-2);
+}
+
+.metrics-table-wrap {
+  overflow-x: auto;
+  margin: 0 -8px;
+}
+
+.metrics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  min-width: 540px;
+}
+
+.metrics-table th {
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--c-text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.metrics-table th:not(:first-child) { text-align: center; }
+
+.metrics-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--c-border);
+  color: var(--c-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.metrics-table td:first-child {
+  font-weight: 700;
+  color: var(--c-ink);
+}
+
+.metrics-table td:not(:first-child) {
+  text-align: center;
+  font-weight: 500;
+}
+
+.metrics-table tr:last-child td { border-bottom: none; }
+
+.metrics-table tr.today-row td {
+  background: var(--c-blue-light);
+  color: var(--c-blue);
+  font-weight: 700;
+}
+
+.metrics-table tr.today-row td:first-child::after {
+  content: ' · TODAY';
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--c-blue);
+  font-weight: 800;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  margin-top: 80px;
+  padding: 48px 32px 32px;
+  border-top: 1px solid var(--c-border);
+  text-align: center;
+}
+
+.footer-line {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--c-ink);
+  margin-bottom: 8px;
+}
+
+.footer-line .accent {
+  background: linear-gradient(90deg, var(--c-blue), var(--c-mint));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.footer-meta {
+  font-size: 12px;
+  color: var(--c-text-3);
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.footer-links a {
+  color: var(--c-text-2);
+  font-weight: 500;
+  transition: color 0.2s var(--ease-luxury);
+}
+
+.footer-links a:hover { color: var(--c-blue); }
+
+/* ============================================
+   CONFETTI
+   ============================================ */
+.confetti-piece {
+  position: fixed;
+  width: 10px;
+  height: 14px;
+  z-index: 9999;
+  pointer-events: none;
+  border-radius: 2px;
+  will-change: transform, opacity;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .split-grid { grid-template-columns: 1fr; }
+  .day-body { grid-template-columns: 1fr; }
+  .day-col-claude { border-left: 4px solid var(--c-blue); border-bottom: 1px solid var(--c-border); }
+  .day-col-you { border-left: 4px solid var(--c-mint); }
+  .header-inner { flex-wrap: wrap; }
+  .header-center { order: 3; width: 100%; }
+  .container { padding: 40px 20px 60px; }
+  .day-header { padding: 20px 24px; flex-wrap: wrap; }
+  .day-title { font-size: 19px; }
+  .day-title .weekday { display: block; margin-left: 0; margin-top: 2px; }
+  .day-col { padding: 24px; }
+  .day-footer { padding: 18px 24px; }
+  .split-card { padding: 28px 20px; }
+}
+
+@media (max-width: 540px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .stat-value { font-size: 30px; }
+  .hero-headline h1 { font-size: 38px; }
+  .header-title { font-size: 13px; }
+  .brand-title { font-size: 13px; }
+  .day-time-vis { width: 100%; align-items: flex-start; }
+  .day-time-bar { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     HEADER
+     ============================================ -->
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="8" fill="#0008CF"/>
+        <path d="M9 11.5C9 10.1 10.1 9 11.5 9h9C21.9 9 23 10.1 23 11.5v9c0 1.4-1.1 2.5-2.5 2.5h-9C10.1 23 9 21.9 9 20.5v-9z" stroke="white" stroke-width="2" fill="none"/>
+        <circle cx="16" cy="16" r="2.5" fill="white"/>
+      </svg>
+      <div class="brand-text">
+        <span class="brand-title">Cleo LABS</span>
+        <span class="brand-sub">Week 1 Playbook</span>
+      </div>
+    </div>
+    <div class="header-center">
+      <div class="header-title">What Claude does · What you do</div>
+      <div class="progress-wrap">
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-pct" id="progressPct">0%</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="day-counter" id="dayCounter">Day 1 of 7</span>
+      <button class="reset-btn" id="resetBtn" type="button">Reset</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ============================================
+       HERO HEADLINE
+       ============================================ -->
+  <section class="section hero-headline">
+    <h1>7 days. <span class="accent">One launch.</span><br/>Two execution lanes.</h1>
+    <p>Claude works in parallel while you sleep. You handle the moments that need a human. Here is exactly who does what, hour by hour.</p>
+  </section>
+
+  <!-- ============================================
+       HERO STATS
+       ============================================ -->
+  <section class="section">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value" id="statTasksDone">0/30</div>
+        <div class="stat-label">Your tasks done</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">~13h</div>
+        <div class="stat-label">Total time required (7 days)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">750-1k</div>
+        <div class="stat-label">GitHub stars · Week 1 target</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">€349</div>
+        <div class="stat-label">Revenue per Pro signup / month</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SPLIT EXPLAINER
+       ============================================ -->
+  <section class="section">
+    <div class="split-card">
+      <div class="split-header">
+        <h2>The split, in one screen</h2>
+        <p>Two lanes running in parallel. Yours is small. Mine is big. By design.</p>
+      </div>
+      <div class="split-grid">
+        <div class="split-col split-col-claude">
+          <div class="split-col-title"><span class="split-col-emoji">&#129302;</span>What Claude does automatically</div>
+          <div class="split-col-sub">No input required · Runs while you sleep</div>
+          <ul class="split-list">
+            <li><strong>Content generation</strong> — reply templates, cross-posts, blog articles, deep-dives, scripts</li>
+            <li><strong>Templates &amp; copy</strong> — Discord intros, cold emails, PH comments, launch variants, follow-ups</li>
+            <li><strong>Analysis</strong> — comment sentiment, what's trending, Week 1 metrics report, traffic sources</li>
+            <li><strong>Pages &amp; assets</strong> — press kit, examples, case studies, partners, retargeting landing</li>
+            <li><strong>Scripts &amp; refreshes</strong> — analytics dashboard, README updates, CHANGELOG, Week 2 plan</li>
+          </ul>
+        </div>
+        <div class="split-col split-col-you">
+          <div class="split-col-title"><span class="split-col-emoji">&#128100;</span>What you do</div>
+          <div class="split-col-sub">~2h/day · Real humans, real submissions</div>
+          <ul class="split-list">
+            <li><strong>Submissions</strong> — open PRs, file Anthropic registry, ship to HN, submit to directories</li>
+            <li><strong>Conversations</strong> — Discord intros, DMs to hunters, cold outreach to labs and podcasts</li>
+            <li><strong>Replies</strong> — answer every comment with your voice (templates ready, tone is yours)</li>
+            <li><strong>Capture</strong> — record demos, take screenshots, your face on camera when it matters</li>
+            <li><strong>Decisions</strong> — review what I deliver, pick the variants that win, call the next move</li>
+          </ul>
+        </div>
+      </div>
+      <div class="split-tagline">
+        Total of <strong>YOUR time</strong> over 7 days: <strong>~13h15</strong> (~2h/day). I work in parallel while you sleep.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       DAY CARDS
+       ============================================ -->
+  <section class="section">
+    <h2 class="section-title">The 7-day playbook</h2>
+    <div id="daysWrap"></div>
+  </section>
+
+  <!-- ============================================
+       METRICS TABLE
+       ============================================ -->
+  <section class="section">
+    <div class="metrics-card">
+      <div class="metrics-header">
+        <h2>Week 1 metrics dashboard</h2>
+        <div class="metrics-sub">Daily targets · Cumulative</div>
+      </div>
+      <div class="metrics-table-wrap">
+        <table class="metrics-table" id="metricsTable">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Stars target</th>
+              <th>Conversations</th>
+              <th>Action count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-day="1"><td>Day 1</td><td>50+</td><td>0</td><td>6</td></tr>
+            <tr data-day="2"><td>Day 2</td><td>150+</td><td>1-2</td><td>4</td></tr>
+            <tr data-day="3"><td>Day 3</td><td>250+</td><td>5</td><td>3</td></tr>
+            <tr data-day="4"><td>Day 4</td><td>350+</td><td>2 hunters</td><td>3</td></tr>
+            <tr data-day="5"><td>Day 5</td><td>400+</td><td>PH ready</td><td>2</td></tr>
+            <tr data-day="6"><td>Day 6</td><td>500+</td><td>1 podcast</td><td>3</td></tr>
+            <tr data-day="7"><td>Day 7</td><td>750-1,000</td><td>Decision day</td><td>3</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+  <div class="footer-line">This is Week 1. <span class="accent">Then we ride.</span></div>
+  <div class="footer-meta">Cleo Labs &middot; Paris &middot; 2026</div>
+  <div class="footer-links">
+    <a href="./launch.html">Full 90-day launch plan</a>
+    <a href="https://github.com/Cleo-Labs-IA/comply">GitHub repo</a>
+    <a href="./distribution.html">Distribution playbook</a>
+  </div>
+</footer>
+
+<script>
+'use strict';
+
+// ============================================
+// DATA
+// ============================================
+const START_DATE = new Date(2026, 4, 28); // May 28, 2026 (month is 0-indexed)
+const STORAGE_KEY = 'cpg-week-one';
+
+const DAYS = [
+  {
+    n: 1,
+    weekday: 'Wednesday',
+    dateLabel: 'May 28',
+    claude: [
+      'Generate 50 reply templates for HN, Reddit and PH comments (anti-troll, technical, hostile)',
+      'Write 3 cross-posts (dev.to, Medium, Hashnode)',
+      'Build /press-kit/ with logos, screenshots, one-liner, founder bio',
+      'Add 5 missing skills (firearms, optics, baby formula, herbal medicines, professional cosmetics)'
+    ],
+    you: [
+      { id: 'd1t1', text: 'Submit Anthropic Plugin Registry PR', time: '15 min', mins: 15 },
+      { id: 'd1t2', text: 'Open 5 awesome-list PRs', time: '45 min', mins: 45 },
+      { id: 'd1t3', text: 'Submit to glama.ai, mcp.so, smithery.ai', time: '30 min', mins: 30 },
+      { id: 'd1t4', text: 'Post Twitter thread + retweet @CleoLabs', time: '15 min', mins: 15 },
+      { id: 'd1t5', text: 'Publish LinkedIn long-form', time: '15 min', mins: 15 },
+      { id: 'd1t6', text: 'Screenshot og-image.html, commit og-image.png', time: '15 min', mins: 15 }
+    ],
+    target: '<strong>50+</strong> GitHub stars · 200 Twitter impressions · 1 Anthropic PR in review'
+  },
+  {
+    n: 2,
+    weekday: 'Thursday',
+    dateLabel: 'May 29',
+    claude: [
+      'Analyze Day 1 comments, identify response patterns',
+      'Generate 3 deep-dive articles on top trending regulations',
+      'Pre-write responses to 20 most likely HN questions',
+      'Refresh launch.html with real progress'
+    ],
+    you: [
+      { id: 'd2t1', text: 'Submit HN Show HN at 8-10 AM PT', time: '15 min', mins: 15 },
+      { id: 'd2t2', text: 'Open 5 remaining awesome-list PRs', time: '45 min', mins: 45 },
+      { id: 'd2t3', text: 'Submit mcpservers.org, pulsemcp.com, mcp.run', time: '30 min', mins: 30 },
+      { id: 'd2t4', text: 'Reply to ALL comments (block 1h mid-day)', time: '60 min', mins: 60 }
+    ],
+    target: '<strong>150+</strong> stars cumulative · HN front page (stretch) · 3 Anthropic PRs accepted or discussed'
+  },
+  {
+    n: 3,
+    weekday: 'Friday',
+    dateLabel: 'May 30',
+    claude: [
+      'Build /examples/ — 20 real cases (prompt + Claude output) by vertical',
+      'Generate 8 Discord intros customized per server culture',
+      'Create comparison table: skills_library vs alternatives',
+      'Pre-write personalized outbound emails for each lab (SGS, TUV, Intertek, Eurofins, UL, BVCert)'
+    ],
+    you: [
+      { id: 'd3t1', text: 'Discord intros: 2 servers (Anthropic + Claude Builders)', time: '30 min', mins: 30 },
+      { id: 'd3t2', text: 'Cold email 5 test labs (pre-written)', time: '45 min', mins: 45 },
+      { id: 'd3t3', text: 'Reply / monitoring', time: '60 min', mins: 60 }
+    ],
+    target: '<strong>250+</strong> stars · 1 positive lab response · 5 conversations active'
+  },
+  {
+    n: 4,
+    weekday: 'Saturday',
+    dateLabel: 'May 31',
+    claude: [
+      'Generate 10 more YouTube scripts with precise storyboards',
+      "Write blog post #6 based on what's resonating (data-driven)",
+      'Create retargeting landing page for non-converting visitors',
+      'Build analytics tracking dashboard (UTM, Plausible/Umami compatible)'
+    ],
+    you: [
+      { id: 'd4t1', text: 'Discord intros: 2 servers (Indie Hackers + Vercel)', time: '30 min', mins: 30 },
+      { id: 'd4t2', text: 'DM ProductHunt hunters (Sahil, Pieter, Jason, Lenny)', time: '30 min', mins: 30 },
+      { id: 'd4t3', text: 'Light monitoring', time: '30 min', mins: 30 }
+    ],
+    target: '<strong>350+</strong> stars · 2 hunters confirmed'
+  },
+  {
+    n: 5,
+    weekday: 'Sunday',
+    dateLabel: 'June 1',
+    claude: [
+      'Build official press release (for outlets Day 30+)',
+      'Generate 30 pre-written ProductHunt comment responses',
+      'Create /case-studies/ — 3 credible fictional stories with data',
+      'Refresh CHANGELOG.md with Week 1 wins'
+    ],
+    you: [
+      { id: 'd5t1', text: 'Discord intros: 2 servers (Latent Space + DTC Newsletter)', time: '30 min', mins: 30 },
+      { id: 'd5t2', text: 'Record 3 terminal screenshots + 1 demo GIF for PH', time: '60 min', mins: 60 }
+    ],
+    target: '<strong>400+</strong> stars · PH assets ready'
+  },
+  {
+    n: 6,
+    weekday: 'Monday',
+    dateLabel: 'June 2',
+    claude: [
+      'Generate launch-day copy variants (3 hero versions, 3 taglines for A/B)',
+      'Create "if it goes viral" response templates (1000+ comments/day)',
+      'Pre-write 5 follow-ups for non-responding conversations',
+      'Build /partners/ page with empty slots for labs and accelerators that sign'
+    ],
+    you: [
+      { id: 'd6t1', text: 'Discord intros: 2 last servers (MCP + OpenAI Dev)', time: '30 min', mins: 30 },
+      { id: 'd6t2', text: 'Cold email 5 podcasts', time: '45 min', mins: 45 },
+      { id: 'd6t3', text: 'Reply / follow-ups Day 1-5', time: '45 min', mins: 45 }
+    ],
+    target: '<strong>500+</strong> stars · 8 Discord servers reached · 1 podcast confirmed'
+  },
+  {
+    n: 7,
+    weekday: 'Tuesday',
+    dateLabel: 'June 3',
+    claude: [
+      'Week 1 summary report: stars, installs, mentions, top traffic sources',
+      'Identify top 3 downloaded skills, propose 3 sub-specialization follow-ups',
+      'Generate Week 2 plan adjusted on real data',
+      'Refresh README with social proof (top mentions, milestones)'
+    ],
+    you: [
+      { id: 'd7t1', text: 'Cold email 5 accelerators', time: '45 min', mins: 45 },
+      { id: 'd7t2', text: 'Review the Week 1 report I deliver', time: '30 min', mins: 30 },
+      { id: 'd7t3', text: 'Decision: push harder this lane / pivot?', time: '15 min', mins: 15 }
+    ],
+    target: 'End of Week 1: <strong>750-1,000</strong> stars · 50+ free API signups · 5+ active partnership conversations'
+  }
+];
+
+const MAX_DAY_MINUTES = Math.max(...DAYS.map(d => d.you.reduce((s, t) => s + t.mins, 0)));
+
+// ============================================
+// STATE
+// ============================================
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return {};
+    return JSON.parse(raw) || {};
+  } catch (e) { return {}; }
+}
+
+function saveState(state) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+}
+
+let state = loadState();
+
+// ============================================
+// HELPERS
+// ============================================
+function getCurrentDay() {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const start = new Date(START_DATE.getFullYear(), START_DATE.getMonth(), START_DATE.getDate());
+  const diffDays = Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1;
+  return diffDays;
+}
+
+function formatMinutes(mins) {
+  if (mins < 60) return mins + ' min';
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  if (m === 0) return h + 'h';
+  return h + 'h' + (m < 10 ? '0' + m : m);
+}
+
+function totalYouTasks() {
+  return DAYS.reduce((s, d) => s + d.you.length, 0);
+}
+
+function totalDoneTasks() {
+  let n = 0;
+  for (const d of DAYS) for (const t of d.you) if (state[t.id]) n++;
+  return n;
+}
+
+function dayCompleted(day) {
+  return day.you.every(t => state[t.id]);
+}
+
+// ============================================
+// RENDER
+// ============================================
+function escape(str) {
+  return String(str).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+}
+
+function buildDayCard(day, currentDay) {
+  const totalMins = day.you.reduce((s, t) => s + t.mins, 0);
+  const doneCount = day.you.filter(t => state[t.id]).length;
+  const totalCount = day.you.length;
+  const isToday = day.n === currentDay;
+  const isPast = currentDay > 0 && day.n < currentDay;
+  const isComplete = dayCompleted(day);
+  const timeBarPct = Math.round((totalMins / MAX_DAY_MINUTES) * 100);
+
+  let classes = 'day-card';
+  if (isToday) classes += ' is-today';
+  if (isPast && !isComplete) classes += ' is-past';
+  if (isComplete) classes += ' is-complete';
+
+  const claudeItems = day.claude.map(t => '<li>' + escape(t) + '</li>').join('');
+  const youItems = day.you.map(t => {
+    const checked = state[t.id] ? ' is-done' : '';
+    return (
+      '<div class="task-item' + checked + '" data-task="' + t.id + '" data-day="' + day.n + '">' +
+        '<div class="task-checkbox">' +
+          '<svg width="14" height="14" viewBox="0 0 14 14" fill="none">' +
+            '<path d="M3 7.5L5.5 10L11 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+          '</svg>' +
+        '</div>' +
+        '<div class="task-body">' +
+          '<span class="task-text">' + escape(t.text) + '</span>' +
+          '<span class="task-time">' + escape(t.time) + '</span>' +
+        '</div>' +
+      '</div>'
+    );
+  }).join('');
+
+  return (
+    '<div class="' + classes + '" id="day-' + day.n + '" data-day="' + day.n + '">' +
+      '<div class="day-header">' +
+        '<div class="day-header-left">' +
+          '<span class="day-num">Day ' + day.n + '</span>' +
+          '<div class="day-title">' + escape(day.dateLabel) + '<span class="weekday">' + escape(day.weekday) + '</span></div>' +
+        '</div>' +
+        '<div class="day-header-right">' +
+          '<span class="today-badge">Today</span>' +
+          '<span class="complete-badge">Done</span>' +
+          '<span class="day-task-count" data-count-for="' + day.n + '">' + doneCount + '/' + totalCount + ' done</span>' +
+        '</div>' +
+      '</div>' +
+      '<div class="day-body">' +
+        '<div class="day-col day-col-claude">' +
+          '<div class="day-col-header"><span class="day-col-emoji">&#129302;</span><span class="day-col-title">Claude (auto)</span></div>' +
+          '<div class="day-col-sub">Runs automatically · No input required</div>' +
+          '<ul class="day-list day-list-claude">' + claudeItems + '</ul>' +
+        '</div>' +
+        '<div class="day-col day-col-you">' +
+          '<div class="day-col-header"><span class="day-col-emoji">&#128100;</span><span class="day-col-title">You</span></div>' +
+          '<div class="day-col-sub">Total ~' + formatMinutes(totalMins) + ' · Tap to check off</div>' +
+          '<div class="day-list">' + youItems + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="day-footer">' +
+        '<div class="day-target">' +
+          '<span class="day-target-label">End-of-day target</span>' +
+          '<span class="day-target-text">' + day.target + '</span>' +
+        '</div>' +
+        '<div class="day-time-vis">' +
+          '<span class="day-time-label">Your time today</span>' +
+          '<div class="day-time-bar"><div class="day-time-fill" style="width:' + timeBarPct + '%"></div></div>' +
+          '<span class="day-time-text">' + formatMinutes(totalMins) + '</span>' +
+        '</div>' +
+      '</div>' +
+    '</div>'
+  );
+}
+
+function render() {
+  const currentDay = getCurrentDay();
+  const wrap = document.getElementById('daysWrap');
+  wrap.innerHTML = DAYS.map(d => buildDayCard(d, currentDay)).join('');
+  updateProgress();
+  updateDayCounter(currentDay);
+  highlightMetricsRow(currentDay);
+  bindCheckboxes();
+}
+
+function updateProgress() {
+  const done = totalDoneTasks();
+  const total = totalYouTasks();
+  const pct = total ? Math.round((done / total) * 100) : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+  document.getElementById('statTasksDone').textContent = done + '/' + total;
+}
+
+function updateDayCounter(currentDay) {
+  const el = document.getElementById('dayCounter');
+  if (currentDay < 1) {
+    el.textContent = 'Starts May 28';
+  } else if (currentDay > 7) {
+    el.textContent = 'Week 1 over';
+  } else {
+    el.textContent = 'Day ' + currentDay + ' of 7';
+  }
+}
+
+function highlightMetricsRow(currentDay) {
+  const rows = document.querySelectorAll('#metricsTable tbody tr');
+  rows.forEach(r => {
+    r.classList.toggle('today-row', Number(r.getAttribute('data-day')) === currentDay);
+  });
+}
+
+function updateDayCard(dayNum) {
+  const day = DAYS.find(d => d.n === dayNum);
+  if (!day) return;
+  const card = document.getElementById('day-' + dayNum);
+  const doneCount = day.you.filter(t => state[t.id]).length;
+  const totalCount = day.you.length;
+  const countEl = card.querySelector('[data-count-for="' + dayNum + '"]');
+  if (countEl) countEl.textContent = doneCount + '/' + totalCount + ' done';
+  const isComplete = dayCompleted(day);
+  const wasComplete = card.classList.contains('is-complete');
+  card.classList.toggle('is-complete', isComplete);
+  if (isComplete && !wasComplete) fireConfetti(card);
+}
+
+// ============================================
+// CHECKBOX BINDING
+// ============================================
+function bindCheckboxes() {
+  document.querySelectorAll('.task-item').forEach(el => {
+    el.addEventListener('click', () => {
+      const id = el.getAttribute('data-task');
+      const dayNum = Number(el.getAttribute('data-day'));
+      state[id] = !state[id];
+      saveState(state);
+      el.classList.toggle('is-done', !!state[id]);
+      updateProgress();
+      updateDayCard(dayNum);
+    });
+  });
+}
+
+// ============================================
+// RESET
+// ============================================
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (!confirm('Reset all your task progress for Week 1?')) return;
+  state = {};
+  saveState(state);
+  render();
+});
+
+// ============================================
+// CONFETTI
+// ============================================
+const CONFETTI_COLORS = ['#0008CF', '#6EC9A0', '#F5C800', '#F07060', '#7B3FA0'];
+
+function fireConfetti(originEl) {
+  const rect = originEl.getBoundingClientRect();
+  const originX = rect.left + rect.width / 2;
+  const originY = rect.top + rect.height / 3;
+  const count = 32;
+  for (let i = 0; i < count; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.background = CONFETTI_COLORS[i % CONFETTI_COLORS.length];
+    piece.style.left = originX + 'px';
+    piece.style.top = originY + 'px';
+    document.body.appendChild(piece);
+
+    const angle = Math.random() * Math.PI * 2;
+    const velocity = 120 + Math.random() * 220;
+    const dx = Math.cos(angle) * velocity;
+    const dy = Math.sin(angle) * velocity - 80;
+    const rotate = (Math.random() - 0.5) * 720;
+    const duration = 1100 + Math.random() * 800;
+
+    piece.animate([
+      { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+      { transform: 'translate(' + dx + 'px, ' + (dy + 280) + 'px) rotate(' + rotate + 'deg)', opacity: 0 }
+    ], { duration: duration, easing: 'cubic-bezier(0.19, 1, 0.22, 1)' }).onfinish = () => piece.remove();
+  }
+}
+
+// ============================================
+// INIT
+// ============================================
+render();
+
+// Smooth scroll to today's card on load
+window.addEventListener('load', () => {
+  const currentDay = getCurrentDay();
+  if (currentDay >= 1 && currentDay <= 7) {
+    setTimeout(() => {
+      const target = document.getElementById('day-' + currentDay);
+      if (target) {
+        const headerOffset = 100;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    }, 400);
+  }
+});
+</script>
+
+</body>
+</html>
