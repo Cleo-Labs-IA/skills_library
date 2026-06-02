@@ -72,7 +72,7 @@
     "@types/node": "^20.17.0",
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "@typescript-eslint/parser": "^8.18.0",
-    "eslint": "^9.17.0",
+    "eslint": "^10.4.1",
     "prettier": "^3.4.2",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
