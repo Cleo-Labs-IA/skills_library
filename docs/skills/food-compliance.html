@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDA Food Labeling Compliance — Open-source AI Skill | Cleo Comply</title>
+<meta name="description" content="FDA food labeling compliance for indie food and beverage brands: Nutrition Facts, allergens (FALCPA + 9th sesame), FSMA, Prop 65 + EU FIC, novel foods, HACCP. Free AI skill.">
+<link rel="canonical" href="https://cleo-labs-ia.github.io/skills_library/docs/skills/food-compliance.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FDA Food Labeling Compliance — Cleo Comply">
+<meta property="og:description" content="Open-source AI skill covering FDA FSMA + FALCPA allergens + Nutrition Facts panel + EU FIC + Japan FFC + Korea HFF.">
+<meta property="og:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<meta property="og:url" content="https://cleo-labs-ia.github.io/skills_library/docs/skills/food-compliance.html">
+<meta property="og:site_name" content="Cleo Labs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FDA Food Labeling Compliance">
+<meta name="twitter:description" content="The open-source FDA food labeling skill for indie food and beverage brands.">
+<meta name="twitter:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to make a food product FDA-label compliant","description":"Step-by-step path from recipe to compliant US food label.","totalTime":"P14D","step":[
+ {"@type":"HowToStep","name":"Classify the product","text":"Conventional food, dietary supplement, medical food, or infant formula? Each has a different label format and a different regulatory section (21 CFR 101 vs 111 vs 106-107)."},
+ {"@type":"HowToStep","name":"Build the Nutrition Facts panel","text":"Use 21 CFR 101.9. Mandatory nutrients post-2016 update: added sugars, vitamin D, potassium. Calculate serving size by RACC table."},
+ {"@type":"HowToStep","name":"Declare allergens (FALCPA)","text":"List the 9 major allergens in plain English (milk, eggs, fish, crustacean, tree nuts, peanuts, wheat, soy, sesame). Sesame mandatory since Jan 2023."},
+ {"@type":"HowToStep","name":"Add California Prop 65 warning if applicable","text":"~900 listed substances. Most relevant: lead, acrylamide, BPA. Threshold-based warning text, online + on-pack."},
+ {"@type":"HowToStep","name":"Register the facility (FSMA)","text":"FDA facility registration biennial. Required for any facility manufacturing, processing, packing or holding food for US consumption."},
+ {"@type":"HowToStep","name":"Apply HACCP / preventive controls","text":"21 CFR 117 Subpart C requires a written food safety plan with hazard analysis, preventive controls, monitoring, verification, and records."}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"What is FDA food labeling compliance?","acceptedAnswer":{"@type":"Answer","text":"FDA food labeling compliance is the set of labeling rules under 21 CFR 101 (and FDA FSMA for facility-level food safety) that any food sold in the US must follow: Statement of Identity, net quantity, Nutrition Facts panel, ingredient list, allergen statement, manufacturer information, and any required Prop 65 warning."}},
+ {"@type":"Question","name":"Is sesame now a mandatory allergen?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sesame became the 9th major allergen under FASTER Act starting January 1, 2023. It must be declared in plain English under FALCPA either in the ingredient list or via a contains statement."}},
+ {"@type":"Question","name":"Do I need a Nutrition Facts panel for a single-ingredient product?","acceptedAnswer":{"@type":"Answer","text":"Most foods sold at retail require a Nutrition Facts panel. Exemptions: very small businesses (under USD 500k/yr food sales OR under USD 50k food sales), foods served for immediate consumption, raw produce and fish. Single-ingredient sugars must use the new added-sugar declaration."}},
+ {"@type":"Question","name":"What is the difference between FDA FSMA and HACCP?","acceptedAnswer":{"@type":"Answer","text":"HACCP is the international risk-based food safety methodology (Codex). FSMA is the US implementation framework — 21 CFR 117 Subpart C requires a Preventive Controls plan that is HACCP-aligned but adds supply-chain controls, recall plans, and FDA inspection rights."}},
+ {"@type":"Question","name":"Does the skill cover EU food labeling too?","acceptedAnswer":{"@type":"Answer","text":"Yes. EU FIC Regulation 1169/2011 (mandatory information, allergen highlighting, country-of-origin), EU 1924/2006 health claims, and EU 2015/2283 novel foods are all covered alongside FDA. Same skill for both regimes."}}]}
+</script>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --c-blue: #0008CF; --c-blue-light: rgba(0,8,207,0.06); --c-ink: #1A1A1A; --c-white: #FFFFFF; --c-surface: #F9F8F6; --c-card: #F0EFEC; --c-border: rgba(0,0,0,0.08); --c-text: rgba(0,0,0,0.87); --c-text-2: rgba(0,0,0,0.62); --r-md: 16px; --r-pill: 9999px; --font: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif; --font-mono: ui-monospace, 'SF Mono', 'Fira Code', monospace; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); background: var(--c-surface); color: var(--c-text); line-height: 1.6; font-size: 17px; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+nav.top { display:flex; justify-content:space-between; align-items:center; padding-bottom:24px; border-bottom:1px solid var(--c-border); margin-bottom:48px; }
+nav.top .brand { font-weight:700; color:var(--c-ink); text-decoration:none; font-size:17px; }
+nav.top .links a { margin-left:24px; color:var(--c-text-2); text-decoration:none; font-size:15px; }
+nav.top .links a:hover { color:var(--c-blue); }
+.eyebrow { color:var(--c-blue); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px; }
+h1 { font-size: 44px; line-height: 1.15; font-weight: 700; color: var(--c-ink); letter-spacing: -0.02em; margin-bottom: 24px; }
+h2 { font-size: 28px; line-height: 1.25; font-weight: 700; color: var(--c-ink); margin: 64px 0 20px; letter-spacing: -0.01em; }
+p { margin-bottom: 16px; color: var(--c-text); }
+ul, ol { margin: 16px 0 16px 24px; } li { margin-bottom: 8px; }
+a { color: var(--c-blue); text-decoration: none; } a:hover { text-decoration: underline; }
+.lede { font-size: 19px; color: var(--c-text-2); margin-bottom: 32px; }
+.cta-row { display:flex; gap:12px; flex-wrap:wrap; margin: 32px 0; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding: 12px 20px; border-radius: var(--r-pill); font-weight: 600; font-size: 15px; transition: all 0.2s; }
+.btn-primary { background: var(--c-ink); color: var(--c-white); } .btn-primary:hover { background: var(--c-blue); text-decoration: none; }
+.btn-secondary { background: var(--c-white); color: var(--c-ink); border: 1px solid var(--c-border); } .btn-secondary:hover { border-color: var(--c-ink); text-decoration: none; }
+.install-box { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; font-family: var(--font-mono); font-size: 14px; overflow-x: auto; margin: 24px 0; border:1px solid var(--c-border); }
+table { width:100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+th, td { text-align:left; padding: 12px 16px; border-bottom: 1px solid var(--c-border); vertical-align: top; }
+th { font-weight: 600; color: var(--c-ink); background: var(--c-card); }
+pre { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.6; margin: 24px 0; border:1px solid var(--c-border); }
+.faq-item { border-bottom: 1px solid var(--c-border); padding: 20px 0; } .faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; color: var(--c-ink); margin-bottom: 8px; font-size: 17px; }
+.related { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 32px 0; }
+.related a { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 16px 20px; color: var(--c-ink); transition: all 0.2s; display:block; }
+.related a:hover { border-color: var(--c-blue); transform: translateY(-2px); text-decoration: none; }
+.related a strong { display:block; color: var(--c-blue); margin-bottom: 4px; font-size:14px; font-weight:600; }
+.related a span { color: var(--c-text-2); font-size:14px; }
+.callout { background: var(--c-blue-light); border-left: 3px solid var(--c-blue); border-radius: var(--r-md); padding: 20px 24px; margin: 32px 0; }
+footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--c-border); font-size: 14px; color: var(--c-text-2); }
+footer .install { font-family: var(--font-mono); background: var(--c-card); padding: 8px 14px; border-radius: var(--r-pill); display:inline-block; margin: 8px 0; }
+@media (max-width: 600px) { h1 { font-size: 32px; } h2 { font-size: 24px; } .container { padding: 24px 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="top">
+  <a href="https://cleo-labs-ia.github.io/skills_library/" class="brand">Cleo Comply</a>
+  <div class="links">
+    <a href="https://github.com/Cleo-Labs-IA/skills_library">GitHub</a>
+    <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp">npm</a>
+    <a href="https://cleolabs.co">Cleo Labs</a>
+  </div>
+</nav>
+
+<div class="eyebrow">Skill: Food Compliance</div>
+<h1>FDA food labeling compliance for indie food and beverage brands</h1>
+<p class="lede">From Nutrition Facts panel to FSMA preventive controls to the 9th major allergen (sesame), this open-source AI skill walks through every label and food-safety obligation a US-launching brand needs — plus EU FIC, Japan FFC, Korea HFF and Canada CFIA.</p>
+
+<div class="cta-row">
+  <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp" class="btn btn-primary">Install via npm</a>
+  <a href="https://github.com/Cleo-Labs-IA/skills_library/tree/main/skills/food-compliance" class="btn btn-secondary">View on GitHub</a>
+  <a href="https://legaldata-public.cleolabs.co" class="btn btn-secondary">Get API key</a>
+</div>
+
+<div class="install-box"><code>npx -y @cleo-labs/skills-mcp@latest</code></div>
+
+<p>FDA food labeling compliance is one of the most documented compliance regimes anywhere — 21 CFR 101 runs to several hundred pages, the Food Labeling Guide is a 132-page PDF, and the FSMA preventive controls rules add another 80,000 words on top. And yet small brands routinely launch with a non-compliant Nutrition Facts panel, miss the sesame allergen rule that took effect in January 2023, or skip the FDA biennial facility registration that triggers FSMA enforcement.</p>
+
+<p>The <code>food-compliance</code> skill is built for the brand that has a great recipe, a co-packer, and a launch date — and now needs to produce a label and a food safety plan that survives FDA inspection and an Amazon Brand Registry challenge. It covers the US label panel, FALCPA + FASTER Act allergens, FDA facility registration, the Preventive Controls (HACCP-aligned) food safety plan, EU FIC labeling, Japan FFC functional foods, Korea HFF, and Canada CFIA.</p>
+
+<h2>Why it matters</h2>
+<p>A non-compliant Nutrition Facts panel is the single most common reason an indie food brand gets a Warning Letter from FDA — not adulteration, not allergen contamination, but a wrong serving size, a missing added-sugar line, or a Class II nutrient declared inaccurately. The 2016 panel update added mandatory disclosure for added sugars, vitamin D and potassium, and updated DV reference values. Brands still using pre-2016 panels are out of compliance.</p>
+<p>The 9th allergen is the second most common gap. The FASTER Act added sesame as a mandatory allergen on January 1, 2023. Any product sold in the US that contains sesame and does not declare it in plain English under FALCPA is non-compliant and a recall candidate. The skill flags sesame in 30+ trade names (tahini, sesamol, gingelly oil, til, benne) where it hides.</p>
+<p>FSMA preventive controls is the third. Almost every facility manufacturing, processing, packing or holding food for US consumption must have a written food safety plan with hazard analysis, preventive controls, monitoring, verification, recall plan, and records. Co-packers usually have this — but brand-owners are responsible for ensuring the co-packer is compliant.</p>
+
+<h2>How the food-compliance skill works</h2>
+<ol>
+  <li><strong>Classify the product.</strong> Conventional food, dietary supplement, medical food, or infant formula? Each has a different label format and a different regulatory section. The skill checks structure-function claims that may push a food into the supplement category.</li>
+  <li><strong>Build the Nutrition Facts panel.</strong> Use 21 CFR 101.9. Mandatory nutrients post-2016: total sugars, added sugars, vitamin D, calcium, iron, potassium. Calculate serving size by RACC reference amount.</li>
+  <li><strong>Declare allergens (FALCPA + FASTER).</strong> 9 majors: milk, eggs, fish, crustacean shellfish, tree nuts, peanuts, wheat, soy, sesame. Plain English in ingredient list or via a contains statement.</li>
+  <li><strong>Check Prop 65 (California).</strong> ~900 listed substances. Most relevant for food: lead, acrylamide, BPA, furfuryl alcohol. Online warning + on-pack warning if threshold exceeded.</li>
+  <li><strong>Register the facility (FSMA).</strong> FDA facility registration is biennial. Required for any facility manufacturing, processing, packing or holding food for US consumption — including foreign facilities.</li>
+  <li><strong>Apply preventive controls.</strong> 21 CFR 117 Subpart C: hazard analysis, preventive controls, monitoring, verification, supply-chain controls, recall plan, records.</li>
+  <li><strong>Country-of-origin marking.</strong> 19 CFR 134 + USDA COOL for covered commodities. EU mandates origin for beef, pork, poultry, sheep, goat, honey, olive oil, plus voluntary for other categories.</li>
+</ol>
+
+<h2>Regulations covered</h2>
+<table>
+  <thead><tr><th>Market</th><th>Regulation</th><th>What it requires</th></tr></thead>
+  <tbody>
+    <tr><td>US</td><td>21 CFR 101 + FALCPA + FASTER Act</td><td>Nutrition Facts, ingredient list, 9 allergens, COOL</td></tr>
+    <tr><td>US</td><td>FDA FSMA + 21 CFR 117</td><td>Facility registration, preventive controls, recall plan</td></tr>
+    <tr><td>US-CA</td><td>California Prop 65</td><td>~900 substance warnings, online + on-pack</td></tr>
+    <tr><td>EU</td><td>EU FIC Reg 1169/2011</td><td>Mandatory info, 14 allergens highlighted, country of origin</td></tr>
+    <tr><td>EU</td><td>EU 1924/2006</td><td>Nutrition and health claims</td></tr>
+    <tr><td>EU</td><td>EU 2015/2283</td><td>Novel foods authorisation</td></tr>
+    <tr><td>EU</td><td>EU 178/2002 + HACCP</td><td>General Food Law, traceability one step up / one step down</td></tr>
+    <tr><td>Japan</td><td>Food Labeling Standards (MHLW)</td><td>Allergen 8, FFC/FOSHU claims, additives</td></tr>
+    <tr><td>Korea</td><td>MFDS Food Sanitation Act</td><td>HFF functional foods filing, allergen labeling</td></tr>
+    <tr><td>Canada</td><td>CFIA FDR + SFCR</td><td>Bilingual labeling, nutrition table, allergen statement</td></tr>
+  </tbody>
+</table>
+
+<h2>Example output</h2>
+<pre>Product: Tahini-honey energy bar, 40 g
+Target markets: US, EU, UK, CA
+
+US (21 CFR 101 + FALCPA + FASTER Act):
+  Ingredients: tahini (sesame), honey, oats, dates, almonds, salt
+  Allergens: sesame ✓, tree nuts (almonds) ✓ — both must appear in plain English
+  Statement: "Contains: Sesame, Tree Nuts (Almonds)"
+  Serving size: 40 g (one bar) — RACC for bars = 40 g
+  Nutrition Facts: 2016 format mandatory; declare added sugars (honey + date paste)
+  Required allergen warning: yes — sesame post Jan 2023, mandatory
+
+EU (FIC 1169/2011):
+  14 allergens to check: sesame ✓ HIGHLIGHTED, nuts ✓ HIGHLIGHTED
+  Allergens must be visually distinguished in ingredient list (bold/italics/contrast)
+  Quantitative declaration if pictured (e.g. "with almonds 12%")
+  Country of origin: not mandatory for cereal bars (voluntary)
+
+UK: same as EU under retained law; PrecisionPick: PPDS / Natasha's Law (sesame in pre-packed-for-direct-sale)
+CA: SFCR — bilingual EN/FR, sesame priority allergen since 2022 update
+
+Verdict: SHIPPABLE in all 4 markets if allergens highlighted correctly.
+Required fix before launch: switch ingredient list to bold-allergen format for EU/UK.
+Time to remediate: 0–3 days (label only).</pre>
+
+<h2>FAQ</h2>
+<div class="faq-item"><div class="faq-q">What is FDA food labeling compliance?</div><p>FDA food labeling compliance is the set of labeling rules under 21 CFR 101 (and FDA FSMA for facility-level food safety) that any food sold in the US must follow: Statement of Identity, net quantity, Nutrition Facts panel, ingredient list, allergen statement, manufacturer information, and any required Prop 65 warning.</p></div>
+<div class="faq-item"><div class="faq-q">Is sesame now a mandatory allergen?</div><p>Yes. Sesame became the 9th major allergen under the FASTER Act starting January 1, 2023. It must be declared in plain English under FALCPA either in the ingredient list or via a contains statement.</p></div>
+<div class="faq-item"><div class="faq-q">Do I need a Nutrition Facts panel for a single-ingredient product?</div><p>Most foods sold at retail require a Nutrition Facts panel. Exemptions: very small businesses (under USD 500k/yr food sales OR under USD 50k food sales), foods served for immediate consumption, raw produce and fish. Single-ingredient sugars must use the added-sugar declaration.</p></div>
+<div class="faq-item"><div class="faq-q">What is the difference between FDA FSMA and HACCP?</div><p>HACCP is the international risk-based food safety methodology (Codex). FSMA is the US implementation framework — 21 CFR 117 Subpart C requires a Preventive Controls plan that is HACCP-aligned but adds supply-chain controls, recall plans, and FDA inspection rights.</p></div>
+<div class="faq-item"><div class="faq-q">Does the skill cover EU food labeling too?</div><p>Yes. EU FIC Regulation 1169/2011 (mandatory information, allergen highlighting, country-of-origin), EU 1924/2006 health claims, and EU 2015/2283 novel foods are all covered alongside FDA. The same skill handles both regimes side by side.</p></div>
+<div class="faq-item"><div class="faq-q">What about UK Natasha's Law (PPDS)?</div><p>UK Natasha's Law (PPDS — pre-packed for direct sale) requires the 14 priority allergens to appear on any food packed on the same premises from which it is sold. The skill flags products falling under PPDS and applies the corresponding label format.</p></div>
+
+<h2>Related skills</h2>
+<div class="related">
+  <a href="./product-compliance.html"><strong>product-compliance</strong><span>Full substance check across 13 databases, verdict per market.</span></a>
+  <a href="./labeling-compliance.html"><strong>labeling-compliance</strong><span>Country-specific labels, allergens, multi-language rules.</span></a>
+  <a href="./marketplace-compliance.html"><strong>marketplace-compliance</strong><span>Amazon US + EU food category requirements.</span></a>
+  <a href="./customs-and-trade.html"><strong>customs-and-trade</strong><span>HS code, duty, FDA Prior Notice, USDA permits.</span></a>
+  <a href="./multi-jurisdiction-scan.html"><strong>multi-jurisdiction-scan</strong><span>Parallel scan across all target markets.</span></a>
+</div>
+
+<div class="callout">
+  <strong>Try it in 30 seconds.</strong>
+  <p style="margin-top:8px;margin-bottom:0;">Ask your agent: <em>"Run food-compliance on this recipe for US and EU."</em> The skill triggers automatically.</p>
+</div>
+
+<footer>
+  <p>Install: <span class="install">npx -y @cleo-labs/skills-mcp@latest</span></p>
+  <p>Open source. MIT-licensed. Built by <a href="https://cleolabs.co">Cleo Labs</a>. Powered by the MARIA engine — 25,000 regulations, 49 countries, live.</p>
+  <p style="margin-top:16px;font-size:13px;">This is compliance guidance, not legal advice. Always verify against official sources (EUR-Lex, FDA, gov.uk, MHLW) before a business decision.</p>
+</footer>
+
+</div>
+</body>
+</html>

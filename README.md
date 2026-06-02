@@ -10,6 +10,8 @@
 [![Powered by Cleo Legal API](https://img.shields.io/badge/powered%20by-Cleo%20Legal%20API-0008CF)](https://legaldata-public.cleolabs.co)
 [![CI](https://github.com/Cleo-Labs-IA/skills_library/actions/workflows/mcp-server.yml/badge.svg)](https://github.com/Cleo-Labs-IA/skills_library/actions)
 
+**Read in your language:** [English](./README.md) · [Français](./README.fr.md) · [Español](./README.es.md) · [Deutsch](./README.de.md) · [日本語](./README.ja.md) · [简体中文](./README.zh.md)
+
 AI compliance copilot for physical products — REACH, FDA, CE, customs, and 24 more regulations, inside your Claude Code / Cursor / Codex.
 
 ## What is this?

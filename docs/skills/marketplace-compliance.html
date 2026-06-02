@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon EU GPSR — Open-source AI Skill | Cleo Comply</title>
+<meta name="description" content="Amazon EU GPSR compliance: Responsible Person, traceability, accident reporting, EPR registration. Open-source AI skill walking through every platform requirement.">
+<link rel="canonical" href="https://cleo-labs-ia.github.io/skills_library/docs/skills/marketplace-compliance.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Amazon EU GPSR — Cleo Comply">
+<meta property="og:description" content="Open-source AI skill for Amazon EU GPSR, EPR, MoCRA, Walmart UL, Shopify, Etsy, TikTok Shop marketplace compliance.">
+<meta property="og:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<meta property="og:url" content="https://cleo-labs-ia.github.io/skills_library/docs/skills/marketplace-compliance.html">
+<meta property="og:site_name" content="Cleo Labs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Amazon EU GPSR — Cleo Comply">
+<meta name="twitter:description" content="Open-source AI skill for Amazon EU GPSR, EPR, MoCRA, Walmart UL, Shopify, Etsy, TikTok Shop marketplace compliance.">
+<meta name="twitter:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"Amazon EU GPSR — Cleo Comply","description":"Open-source AI skill for Amazon EU GPSR, EPR, MoCRA, Walmart UL, Shopify, Etsy, TikTok Shop marketplace compliance.","totalTime":"P14D","step":[{"@type": "HowToStep", "name": "Identify which platforms you sell on", "text": "Amazon (per region: EU, UK, US, JP, CA, AU, AE), Walmart, Shopify, Etsy, TikTok Shop, Faire, Cdiscount, Allegro. Each has different enforcement."}, {"@type": "HowToStep", "name": "Map GPSR/RP obligations per platform", "text": "Amazon EU enforces GPSR with Responsible Person upload via Seller Central + on-listing display. Walmart focuses on UL listing for electronics. Shopify is least centralized but app-level compliance tools available."}, {"@type": "HowToStep", "name": "Register the RP per region", "text": "EU RP via service provider or own EU subsidiary. UK RP separate. Cost \u20ac100\u2013600/month combined. The RP must be uploaded to Seller Central and visible on listing."}, {"@type": "HowToStep", "name": "Register for EPR per member state", "text": "FR: PRO via Citeo / Refashion / Ecologic depending on category. DE: ZSVR + EAR for packaging + EEE. IT: CONAI. ES: Ecoembes. NL: Afvalfonds. EPR registration number must be uploaded to Amazon Seller Central."}, {"@type": "HowToStep", "name": "Set up accident reporting", "text": "GPSR Article 20 requires reporting within 2 working days of becoming aware of a serious accident. Amazon flags this \u2014 set up a process via Safety Gate / OPSS / CPSC equivalent before launch."}, {"@type": "HowToStep", "name": "Confirm category-specific requirements", "text": "Cosmetics: MoCRA in US, CPNP notification proof for EU. Electronics: CE + RoHS DoC. Toys: EN 71 test reports retrievable on request. Food: FDA registration + allergen labeling. Supplements: NDI notification."}, {"@type": "HowToStep", "name": "Monitor for changes", "text": "Amazon EU listing requirements update quarterly. Use the regulatory-calendar skill to flag upcoming changes. EU GPSR enforcement intensifying through 2025\u20132026."}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "What is Amazon EU GPSR?", "acceptedAnswer": {"@type": "Answer", "text": "Amazon EU GPSR is the marketplace-level enforcement of EU Regulation 2023/988 (General Product Safety Regulation). Since December 2024, Amazon EU requires every listing to identify an EU-established Responsible Person, display traceability information, and have an accident reporting commitment in place. Listings without these are removed."}}, {"@type": "Question", "name": "Do I need an EU Responsible Person if I am based outside the EU?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. GPSR requires every product placed on the EU market to have a responsible economic operator established in the EU. For non-EU manufacturers, this is typically an authorised representative or fulfilment service provider acting as the responsible person. For cosmetics, the Responsible Person role exists under Reg 1223/2009 separately and is more stringent."}}, {"@type": "Question", "name": "Is EPR enforced via marketplaces now?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. France, Germany, Italy, Spain, the Netherlands and an increasing number of EU member states require marketplaces to verify seller EPR registration. Amazon Seller Central has dedicated EPR upload fields and removes listings if not provided. The marketplace itself can be jointly liable for non-compliant listings."}}, {"@type": "Question", "name": "What about Walmart US?", "acceptedAnswer": {"@type": "Answer", "text": "Walmart US enforces UL listing for hardline electronics, CPSIA for children's products, and FDA facility/product compliance for food, cosmetics and supplements. Less centralized than Amazon's automated checks but documentation requests come up during onboarding and during reverse logistics events."}}, {"@type": "Question", "name": "Does this cover TikTok Shop?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. TikTok Shop EU launched a fast-evolving compliance regime in 2024 modeled on Amazon's, with similar RP, traceability, and accident reporting requirements. TikTok Shop US has additional restrictions on supplement and beauty claims. The skill flags TikTok-specific differences."}}, {"@type": "Question", "name": "How often does this change?", "acceptedAnswer": {"@type": "Answer", "text": "Frequently. Use the <code>regulatory-calendar</code> skill to track marketplace policy updates. Major changes incoming 2025\u20132026: UK packaging EPR full enforcement April 2025; EU Digital Product Passport pilot 2026+; CRA digital products Dec 2027."}}]}
+</script>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --c-blue: #0008CF; --c-blue-light: rgba(0,8,207,0.06); --c-ink: #1A1A1A; --c-white: #FFFFFF; --c-surface: #F9F8F6; --c-card: #F0EFEC; --c-border: rgba(0,0,0,0.08); --c-text: rgba(0,0,0,0.87); --c-text-2: rgba(0,0,0,0.62); --r-md: 16px; --r-pill: 9999px; --font: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif; --font-mono: ui-monospace, 'SF Mono', 'Fira Code', monospace; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); background: var(--c-surface); color: var(--c-text); line-height: 1.6; font-size: 17px; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+nav.top { display:flex; justify-content:space-between; align-items:center; padding-bottom:24px; border-bottom:1px solid var(--c-border); margin-bottom:48px; }
+nav.top .brand { font-weight:700; color:var(--c-ink); text-decoration:none; font-size:17px; }
+nav.top .links a { margin-left:24px; color:var(--c-text-2); text-decoration:none; font-size:15px; }
+nav.top .links a:hover { color:var(--c-blue); }
+.eyebrow { color:var(--c-blue); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px; }
+h1 { font-size: 44px; line-height: 1.15; font-weight: 700; color: var(--c-ink); letter-spacing: -0.02em; margin-bottom: 24px; }
+h2 { font-size: 28px; line-height: 1.25; font-weight: 700; color: var(--c-ink); margin: 64px 0 20px; letter-spacing: -0.01em; }
+p { margin-bottom: 16px; color: var(--c-text); }
+ul, ol { margin: 16px 0 16px 24px; } li { margin-bottom: 8px; }
+a { color: var(--c-blue); text-decoration: none; } a:hover { text-decoration: underline; }
+.lede { font-size: 19px; color: var(--c-text-2); margin-bottom: 32px; }
+.cta-row { display:flex; gap:12px; flex-wrap:wrap; margin: 32px 0; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding: 12px 20px; border-radius: var(--r-pill); font-weight: 600; font-size: 15px; transition: all 0.2s; }
+.btn-primary { background: var(--c-ink); color: var(--c-white); } .btn-primary:hover { background: var(--c-blue); text-decoration: none; }
+.btn-secondary { background: var(--c-white); color: var(--c-ink); border: 1px solid var(--c-border); } .btn-secondary:hover { border-color: var(--c-ink); text-decoration: none; }
+.install-box { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; font-family: var(--font-mono); font-size: 14px; overflow-x: auto; margin: 24px 0; border:1px solid var(--c-border); }
+table { width:100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+th, td { text-align:left; padding: 12px 16px; border-bottom: 1px solid var(--c-border); vertical-align: top; }
+th { font-weight: 600; color: var(--c-ink); background: var(--c-card); }
+pre { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.6; margin: 24px 0; border:1px solid var(--c-border); }
+.faq-item { border-bottom: 1px solid var(--c-border); padding: 20px 0; } .faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; color: var(--c-ink); margin-bottom: 8px; font-size: 17px; }
+.related { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 32px 0; }
+.related a { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 16px 20px; color: var(--c-ink); transition: all 0.2s; display:block; }
+.related a:hover { border-color: var(--c-blue); transform: translateY(-2px); text-decoration: none; }
+.related a strong { display:block; color: var(--c-blue); margin-bottom: 4px; font-size:14px; font-weight:600; }
+.related a span { color: var(--c-text-2); font-size:14px; }
+.callout { background: var(--c-blue-light); border-left: 3px solid var(--c-blue); border-radius: var(--r-md); padding: 20px 24px; margin: 32px 0; }
+footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--c-border); font-size: 14px; color: var(--c-text-2); }
+footer .install { font-family: var(--font-mono); background: var(--c-card); padding: 8px 14px; border-radius: var(--r-pill); display:inline-block; margin: 8px 0; }
+@media (max-width: 600px) { h1 { font-size: 32px; } h2 { font-size: 24px; } .container { padding: 24px 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="top">
+  <a href="https://cleo-labs-ia.github.io/skills_library/" class="brand">Cleo Comply</a>
+  <div class="links">
+    <a href="https://github.com/Cleo-Labs-IA/skills_library">GitHub</a>
+    <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp">npm</a>
+    <a href="https://cleolabs.co">Cleo Labs</a>
+  </div>
+</nav>
+
+<div class="eyebrow">Skill: Marketplace Compliance</div>
+<h1>Amazon EU GPSR compliance, decoded for marketplace sellers</h1>
+<p class="lede">From Responsible Person upload to accident reporting to EPR registration per member state, this open-source AI skill walks through every requirement Amazon, Walmart, Shopify, Etsy and TikTok Shop now ask for — with the regulation cited and the exact form to upload.</p>
+
+<div class="cta-row">
+  <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp" class="btn btn-primary">Install via npm</a>
+  <a href="https://github.com/Cleo-Labs-IA/skills_library/tree/main/skills/marketplace-compliance" class="btn btn-secondary">View on GitHub</a>
+  <a href="https://legaldata-public.cleolabs.co" class="btn btn-secondary">Get API key</a>
+</div>
+
+<div class="install-box"><code>npx -y @cleo-labs/skills-mcp@latest</code></div>
+
+<p>Amazon EU GPSR (General Product Safety Regulation 2023/988) enforcement started in December 2024 and now affects every product listing in the EU on Amazon, including cross-border listings from non-EU sellers. The regulation requires every product to have an EU-established Responsible Person identified on the listing, full traceability information visible to consumers, accident reporting within 2 working days of becoming aware, and online interface compliance.</p>
+<p>The <code>marketplace-compliance</code> skill maps the full set of obligations Amazon EU specifically demands (RP details, GS1 barcode, manufacturer + importer name, accident reporting commitment) and the equivalent obligations on Walmart US, Shopify (less centralized), Etsy (handmade exceptions), and TikTok Shop. It also handles EPR registration which is enforced at the marketplace level: France LUCID-equivalents, Germany ZSVR, Spain Ecoembes, Italy CONAI, etc.</p>
+
+<h2>Why it matters</h2>
+<p>Marketplace compliance is enforced by listing removal. There is no warning letter, no chance to appeal — the listing disappears, the inventory turns into stranded Amazon stock, and the seller learns about the issue from a Seller Central notification a few hours after the fact. For a brand whose top SKU produces 30 percent of revenue, this is an extinction event.</p>
+<p>GPSR is the most visible new obligation but EPR is the bigger one financially. Every EU member state has its own EPR scheme, its own registration fee, its own ECO contribution rate. France EPR alone now includes packaging, textiles, furniture, batteries, electronic equipment, tires, and starting 2025, chewing gum and disposable wipes. A small brand expanding to FR/DE/IT/ES can face €3–8k in first-year EPR registration plus per-ton ECO contributions.</p>
+<p>MoCRA US started enforcing facility registration and product listing in July 2024 (delayed by 6 months from original deadline). Amazon US started requiring proof of MoCRA compliance for cosmetic listings in Q1 2025 — listings without it are subject to removal.</p>
+
+<h2>How the marketplace-compliance skill works</h2>
+<ol>
+  <li><strong>Identify which platforms you sell on.</strong> Amazon (per region: EU, UK, US, JP, CA, AU, AE), Walmart, Shopify, Etsy, TikTok Shop, Faire, Cdiscount, Allegro. Each has different enforcement.</li>
+  <li><strong>Map GPSR/RP obligations per platform.</strong> Amazon EU enforces GPSR with Responsible Person upload via Seller Central + on-listing display. Walmart focuses on UL listing for electronics. Shopify is least centralized but app-level compliance tools available.</li>
+  <li><strong>Register the RP per region.</strong> EU RP via service provider or own EU subsidiary. UK RP separate. Cost €100–600/month combined. The RP must be uploaded to Seller Central and visible on listing.</li>
+  <li><strong>Register for EPR per member state.</strong> FR: PRO via Citeo / Refashion / Ecologic depending on category. DE: ZSVR + EAR for packaging + EEE. IT: CONAI. ES: Ecoembes. NL: Afvalfonds. EPR registration number must be uploaded to Amazon Seller Central.</li>
+  <li><strong>Set up accident reporting.</strong> GPSR Article 20 requires reporting within 2 working days of becoming aware of a serious accident. Amazon flags this — set up a process via Safety Gate / OPSS / CPSC equivalent before launch.</li>
+  <li><strong>Confirm category-specific requirements.</strong> Cosmetics: MoCRA in US, CPNP notification proof for EU. Electronics: CE + RoHS DoC. Toys: EN 71 test reports retrievable on request. Food: FDA registration + allergen labeling. Supplements: NDI notification.</li>
+  <li><strong>Monitor for changes.</strong> Amazon EU listing requirements update quarterly. Use the regulatory-calendar skill to flag upcoming changes. EU GPSR enforcement intensifying through 2025–2026.</li>
+</ol>
+
+<h2>Regulations covered</h2>
+<table>
+  <thead><tr><th>Market / scope</th><th>Regulation</th><th>What it requires</th></tr></thead>
+  <tbody>
+    <tr><td>EU 27</td><td>Reg 2023/988 GPSR</td><td>Universal product safety + traceability + accident reporting + online interface</td></tr>
+    <tr><td>EU 27</td><td>Reg 1907/2006 REACH + Annex XVII</td><td>Substance restrictions for all consumer products</td></tr>
+    <tr><td>FR</td><td>AGEC Act + REP</td><td>Anti-waste law; PRO membership for packaging, textile, EEE, furniture, etc.</td></tr>
+    <tr><td>DE</td><td>VerpackG + ElektroG + BattG</td><td>Packaging, EEE, batteries registration via ZSVR + EAR</td></tr>
+    <tr><td>IT</td><td>CONAI scheme</td><td>Packaging EPR per category fee</td></tr>
+    <tr><td>ES</td><td>Ley 7/2022 + Ecoembes</td><td>Packaging EPR + new SUP plastic tax</td></tr>
+    <tr><td>UK</td><td>GPSR retained + PPDS + UKCA</td><td>UK RP, retained GPSR via Gov GB framework</td></tr>
+    <tr><td>US</td><td>MoCRA + CPSC + state law</td><td>FDA cosmetic facility, CPSC product safety, CA Prop 65</td></tr>
+    <tr><td>US</td><td>Amazon CPSIA + UL + Reese's Law</td><td>Marketplace-enforced US safety doc requirements</td></tr>
+    <tr><td>JP</td><td>PSE + ST Mark</td><td>Electronics + toys safety marks required by retailer</td></tr>
+    <tr><td>CN</td><td>China platforms (Tmall etc.)</td><td>GB standards proof + NMPA filing for cosmetics</td></tr>
+  </tbody>
+</table>
+
+<h2>Example output</h2>
+<pre>Brand: 3-SKU organic body care brand, EU + UK + US Amazon
+Question: What do I need to upload to Amazon for GPSR + EPR + MoCRA compliance?
+
+Amazon EU (FR/DE/IT/ES via Pan-EU FBA):
+  GPSR-required uploads:
+    Responsible Person: contact details, EU address, must appear on listing
+    Manufacturer details: full name + address
+    Traceability batch code: per product, scannable
+    Safety warnings: in language(s) of destination
+    Image of compliance information on product/packaging
+
+  EPR registration per country (mandatory upload):
+    FR (Citeo, packaging): registration ID
+    DE (ZSVR LUCID, packaging): registration ID
+    IT (CONAI): registration ID
+    ES (Ecoembes): registration ID
+
+  Cosmetics-specific: CPNP notification ID per product (Amazon spot-checks)
+
+  Estimated total marketplace compliance cost year 1:
+    RP service (Pan-EU): ~€300/month = €3,600/yr
+    EPR FR/DE/IT/ES registrations: ~€2,000–3,500 one-off + ECO contributions
+    CPNP notifications: free (via RP)
+    PIF/CPSR per SKU: €1,500/SKU x 3 = €4,500 (one-off, multi-year)
+
+Amazon UK:
+  GPSR retained equivalent obligations
+  UK Responsible Person (separate from EU RP)
+  UK packaging EPR registration (live April 2025)
+  Estimated: ~€100/month UK RP + £1,000 EPR base fee year 1
+
+Amazon US:
+  MoCRA: facility registration + product listing (live July 2024)
+  21 CFR 701 labeling
+  CA Prop 65 if applicable
+  Free to register; takes 2-3 weeks
+
+Total estimated marketplace compliance year 1 across EU+UK+US:
+  ~€10–15k (excluding the formulation + CPSR work).
+
+Action: priority order = EU RP appointment → CPNP → EPR FR/DE/IT/ES → MoCRA US → UK RP/EPR
+Critical path: EU RP must be in place BEFORE first EU sale (currently enforced).</pre>
+
+<h2>FAQ</h2>
+<div class="faq-item"><div class="faq-q">What is Amazon EU GPSR?</div><p>Amazon EU GPSR is the marketplace-level enforcement of EU Regulation 2023/988 (General Product Safety Regulation). Since December 2024, Amazon EU requires every listing to identify an EU-established Responsible Person, display traceability information, and have an accident reporting commitment in place. Listings without these are removed.</p></div>
+<div class="faq-item"><div class="faq-q">Do I need an EU Responsible Person if I am based outside the EU?</div><p>Yes. GPSR requires every product placed on the EU market to have a responsible economic operator established in the EU. For non-EU manufacturers, this is typically an authorised representative or fulfilment service provider acting as the responsible person. For cosmetics, the Responsible Person role exists under Reg 1223/2009 separately and is more stringent.</p></div>
+<div class="faq-item"><div class="faq-q">Is EPR enforced via marketplaces now?</div><p>Yes. France, Germany, Italy, Spain, the Netherlands and an increasing number of EU member states require marketplaces to verify seller EPR registration. Amazon Seller Central has dedicated EPR upload fields and removes listings if not provided. The marketplace itself can be jointly liable for non-compliant listings.</p></div>
+<div class="faq-item"><div class="faq-q">What about Walmart US?</div><p>Walmart US enforces UL listing for hardline electronics, CPSIA for children's products, and FDA facility/product compliance for food, cosmetics and supplements. Less centralized than Amazon's automated checks but documentation requests come up during onboarding and during reverse logistics events.</p></div>
+<div class="faq-item"><div class="faq-q">Does this cover TikTok Shop?</div><p>Yes. TikTok Shop EU launched a fast-evolving compliance regime in 2024 modeled on Amazon's, with similar RP, traceability, and accident reporting requirements. TikTok Shop US has additional restrictions on supplement and beauty claims. The skill flags TikTok-specific differences.</p></div>
+<div class="faq-item"><div class="faq-q">How often does this change?</div><p>Frequently. Use the <code>regulatory-calendar</code> skill to track marketplace policy updates. Major changes incoming 2025–2026: UK packaging EPR full enforcement April 2025; EU Digital Product Passport pilot 2026+; CRA digital products Dec 2027.</p></div>
+
+<h2>Related skills</h2>
+<div class="related">
+  <a href="./product-compliance.html"><strong>product-compliance</strong><span>Full substance check across 13 databases.</span></a>
+  <a href="./responsible-person.html"><strong>responsible-person</strong><span>Set up EU RP, UK RP, US Agent, China NMPA holder.</span></a>
+  <a href="./packaging-compliance.html"><strong>packaging-compliance</strong><span>EPR per EU member state, PPWR, SUP, plastic tax.</span></a>
+  <a href="./labeling-compliance.html"><strong>labeling-compliance</strong><span>Country-specific labels, allergens, multi-language.</span></a>
+  <a href="./regulatory-calendar.html"><strong>regulatory-calendar</strong><span>Marketplace policy updates and enforcement dates.</span></a>
+</div>
+
+<div class="callout">
+  <strong>Try it in 30 seconds.</strong>
+  <p style="margin-top:8px;margin-bottom:0;">Drop the install one-liner into your Claude Desktop, Cursor or Continue config and ask your agent for a marketplace compliance check. The skill triggers automatically.</p>
+</div>
+
+<footer>
+  <p>Install: <span class="install">npx -y @cleo-labs/skills-mcp@latest</span></p>
+  <p>Open source. MIT-licensed. Built by <a href="https://cleolabs.co">Cleo Labs</a>. Powered by the MARIA engine — 25,000 regulations, 49 countries, live.</p>
+  <p style="margin-top:16px;font-size:13px;">This is compliance guidance, not legal advice. Always verify against official sources (EUR-Lex, FDA, gov.uk, MHLW) before a business decision.</p>
+</footer>
+
+</div>
+</body>
+</html>

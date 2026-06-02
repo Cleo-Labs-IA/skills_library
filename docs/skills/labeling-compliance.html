@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INCI Labeling Cosmetics — Open-source AI Skill | Cleo Comply</title>
+<meta name="description" content="INCI labeling for cosmetics: descending-order rules, allergen thresholds (Reg 2023/1545 80-list), CE/UKCA marks, multi-language requirements. Free AI skill.">
+<link rel="canonical" href="https://cleo-labs-ia.github.io/skills_library/docs/skills/labeling-compliance.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="INCI Labeling Cosmetics — Cleo Comply">
+<meta property="og:description" content="Open-source AI skill for INCI cosmetic labeling: EU 1223/2009 Article 19, US INCI/MoCRA, JP MHLW, multi-language rules.">
+<meta property="og:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<meta property="og:url" content="https://cleo-labs-ia.github.io/skills_library/docs/skills/labeling-compliance.html">
+<meta property="og:site_name" content="Cleo Labs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="INCI Labeling Cosmetics — Cleo Comply">
+<meta name="twitter:description" content="Open-source AI skill for INCI cosmetic labeling: EU 1223/2009 Article 19, US INCI/MoCRA, JP MHLW, multi-language rules.">
+<meta name="twitter:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"INCI Labeling Cosmetics — Cleo Comply","description":"Open-source AI skill for INCI cosmetic labeling: EU 1223/2009 Article 19, US INCI/MoCRA, JP MHLW, multi-language rules.","totalTime":"P14D","step":[{"@type": "HowToStep", "name": "Resolve trade names to INCI", "text": "Every ingredient on the spec sheet must appear as its INCI name. The skill resolves trade names (Sepiplus 400, Olivem 1000) to their INCI components in descending concentration."}, {"@type": "HowToStep", "name": "Apply the descending-order rule", "text": "Ingredients above 1% in descending concentration. Below 1% in any order. Colorants at the end prefixed by + or in a sub-list."}, {"@type": "HowToStep", "name": "Identify allergens above threshold", "text": "Old 26-list: must appear in INCI if >0.001% leave-on or >0.01% rinse-off. New 80-list (Reg 2023/1545) applies from July 2026 / 2028."}, {"@type": "HowToStep", "name": "Add mandatory information", "text": "RP/PIF address, batch number position, function, country of origin if outside EU, nominal content, PAO or expiry, warnings."}, {"@type": "HowToStep", "name": "Translate to all required languages", "text": "EU Member State language(s) for the warnings + INCI common (cosmetic-specific exemption: INCI list is in INCI English/Latin only)."}, {"@type": "HowToStep", "name": "Position the label correctly", "text": "Some info on the container (RP, batch, PAO), some on the box (full INCI if container too small via the leaflet/joined symbol)."}, {"@type": "HowToStep", "name": "Validate against destination", "text": "EU 1223/2009 Art. 19, UK Cosmetics Reg Schedule 1 (mirrors EU + post-Brexit RP), US MoCRA 2024 (fragrance allergens by 2025), JP MHLW (full Japanese), KR MFDS, CN NMPA (Chinese), CA bilingual."}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "What is INCI labeling?", "acceptedAnswer": {"@type": "Answer", "text": "INCI = International Nomenclature of Cosmetic Ingredients. It is the standardised name list (English / Latin) used on cosmetic labels worldwide, defined in CosIng (EU) and by the Personal Care Products Council (US). EU Reg 1223/2009 Article 19 mandates INCI on the EU market."}}, {"@type": "Question", "name": "What is the new 80-allergen list?", "acceptedAnswer": {"@type": "Answer", "text": "Reg 2023/1545 expanded the EU mandatory fragrance allergen labeling list from 26 to approximately 80 substances. Transition: new products placed on market from 31 July 2026; existing stock from 31 July 2028. The same expansion is being mirrored by UK SCPN and by FDA under MoCRA fragrance disclosure."}}, {"@type": "Question", "name": "Do small containers need full INCI?", "acceptedAnswer": {"@type": "Answer", "text": "If the container is too small for full INCI, the full list can appear on a leaflet attached to the product (the open-book symbol must appear on the container). Common for 5-15 ml lipsticks, mascaras and sample sizes."}}, {"@type": "Question", "name": "What is the order rule below 1%?", "acceptedAnswer": {"@type": "Answer", "text": "Above 1% concentration: descending order. Below 1%: any order. Colorants must be listed at the end of the ingredient list (prefixed by + or in a separate group)."}}, {"@type": "Question", "name": "Does my US label need INCI?", "acceptedAnswer": {"@type": "Answer", "text": "Yes for cosmetics \u2014 FDA 21 CFR 701.3 mandates ingredient declaration in descending order of predominance, using the INCI common name. MoCRA from 2025 will additionally require fragrance allergen disclosure on US labels."}}, {"@type": "Question", "name": "Does it cover supplements and food labels too?", "acceptedAnswer": {"@type": "Answer", "text": "Use the dedicated <code>food-compliance</code> and <code>supplement-compliance</code> skills for those \u2014 they apply different rules (Nutrition Facts panel, FALCPA allergens, DSHEA disclaimers). This skill is cosmetic-focused."}}]}
+</script>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --c-blue: #0008CF; --c-blue-light: rgba(0,8,207,0.06); --c-ink: #1A1A1A; --c-white: #FFFFFF; --c-surface: #F9F8F6; --c-card: #F0EFEC; --c-border: rgba(0,0,0,0.08); --c-text: rgba(0,0,0,0.87); --c-text-2: rgba(0,0,0,0.62); --r-md: 16px; --r-pill: 9999px; --font: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif; --font-mono: ui-monospace, 'SF Mono', 'Fira Code', monospace; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); background: var(--c-surface); color: var(--c-text); line-height: 1.6; font-size: 17px; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+nav.top { display:flex; justify-content:space-between; align-items:center; padding-bottom:24px; border-bottom:1px solid var(--c-border); margin-bottom:48px; }
+nav.top .brand { font-weight:700; color:var(--c-ink); text-decoration:none; font-size:17px; }
+nav.top .links a { margin-left:24px; color:var(--c-text-2); text-decoration:none; font-size:15px; }
+nav.top .links a:hover { color:var(--c-blue); }
+.eyebrow { color:var(--c-blue); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px; }
+h1 { font-size: 44px; line-height: 1.15; font-weight: 700; color: var(--c-ink); letter-spacing: -0.02em; margin-bottom: 24px; }
+h2 { font-size: 28px; line-height: 1.25; font-weight: 700; color: var(--c-ink); margin: 64px 0 20px; letter-spacing: -0.01em; }
+p { margin-bottom: 16px; color: var(--c-text); }
+ul, ol { margin: 16px 0 16px 24px; } li { margin-bottom: 8px; }
+a { color: var(--c-blue); text-decoration: none; } a:hover { text-decoration: underline; }
+.lede { font-size: 19px; color: var(--c-text-2); margin-bottom: 32px; }
+.cta-row { display:flex; gap:12px; flex-wrap:wrap; margin: 32px 0; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding: 12px 20px; border-radius: var(--r-pill); font-weight: 600; font-size: 15px; transition: all 0.2s; }
+.btn-primary { background: var(--c-ink); color: var(--c-white); } .btn-primary:hover { background: var(--c-blue); text-decoration: none; }
+.btn-secondary { background: var(--c-white); color: var(--c-ink); border: 1px solid var(--c-border); } .btn-secondary:hover { border-color: var(--c-ink); text-decoration: none; }
+.install-box { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; font-family: var(--font-mono); font-size: 14px; overflow-x: auto; margin: 24px 0; border:1px solid var(--c-border); }
+table { width:100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+th, td { text-align:left; padding: 12px 16px; border-bottom: 1px solid var(--c-border); vertical-align: top; }
+th { font-weight: 600; color: var(--c-ink); background: var(--c-card); }
+pre { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.6; margin: 24px 0; border:1px solid var(--c-border); }
+.faq-item { border-bottom: 1px solid var(--c-border); padding: 20px 0; } .faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; color: var(--c-ink); margin-bottom: 8px; font-size: 17px; }
+.related { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 32px 0; }
+.related a { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 16px 20px; color: var(--c-ink); transition: all 0.2s; display:block; }
+.related a:hover { border-color: var(--c-blue); transform: translateY(-2px); text-decoration: none; }
+.related a strong { display:block; color: var(--c-blue); margin-bottom: 4px; font-size:14px; font-weight:600; }
+.related a span { color: var(--c-text-2); font-size:14px; }
+.callout { background: var(--c-blue-light); border-left: 3px solid var(--c-blue); border-radius: var(--r-md); padding: 20px 24px; margin: 32px 0; }
+footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--c-border); font-size: 14px; color: var(--c-text-2); }
+footer .install { font-family: var(--font-mono); background: var(--c-card); padding: 8px 14px; border-radius: var(--r-pill); display:inline-block; margin: 8px 0; }
+@media (max-width: 600px) { h1 { font-size: 32px; } h2 { font-size: 24px; } .container { padding: 24px 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="top">
+  <a href="https://cleo-labs-ia.github.io/skills_library/" class="brand">Cleo Comply</a>
+  <div class="links">
+    <a href="https://github.com/Cleo-Labs-IA/skills_library">GitHub</a>
+    <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp">npm</a>
+    <a href="https://cleolabs.co">Cleo Labs</a>
+  </div>
+</nav>
+
+<div class="eyebrow">Skill: Labeling Compliance</div>
+<h1>INCI labeling for cosmetics, from allergen thresholds to multi-language rules</h1>
+<p class="lede">The open-source AI skill that turns your formula into a fully compliant cosmetic label: INCI descending-order math, the new 80-allergen list, EU + UK + US + JP + KR rules, and the multi-language constraints for Belgium, Switzerland, Canada and ASEAN.</p>
+
+<div class="cta-row">
+  <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp" class="btn btn-primary">Install via npm</a>
+  <a href="https://github.com/Cleo-Labs-IA/skills_library/tree/main/skills/labeling-compliance" class="btn btn-secondary">View on GitHub</a>
+  <a href="https://legaldata-public.cleolabs.co" class="btn btn-secondary">Get API key</a>
+</div>
+
+<div class="install-box"><code>npx -y @cleo-labs/skills-mcp@latest</code></div>
+
+<p>INCI labeling looks deceptively simple — list ingredients in descending order of concentration, declare allergens, add warnings, you are done. In practice, the order math is wrong for at least one ingredient in roughly half the labels we audit, the allergen list is missing entries that should appear, and the multi-language rules for Belgium, Switzerland, Canada and ASEAN are routinely ignored.</p>
+<p>The <code>labeling-compliance</code> skill takes your formula and target markets and outputs a compliant label per market: INCI descending order with the right threshold for the <em>and other ingredients</em> break point at 1%, the allergens above 0.001% leave-on / 0.01% rinse-off in the right language(s), the RP/PIF holder address, the batch code position, the PAO symbol, country of origin, and the required warnings (sunscreens, hair dyes, AHA, etc.).</p>
+
+<h2>Why it matters</h2>
+<p>A non-compliant INCI label is the single most common reason a cosmetic product gets a market surveillance challenge in the EU. Most challenges are not about the formula — they are about wrong INCI order, missing allergens, untranslated warnings, or an unreadable batch code.</p>
+<p>Reg 2023/1545 expanded the EU fragrance allergen list from 26 to roughly 80 substances. The transition is staged: new products from July 2026, existing products from July 2028. Every brand that touches fragrance needs to re-audit their labels.</p>
+<p>Multi-language rules are easy to miss. Belgium requires French, Dutch, and German on every cosmetic label. Switzerland requires French, German, and Italian. Canada requires English and French. ASEAN harmonization allows the local language plus English for most member states.</p>
+
+<h2>How the labeling-compliance skill works</h2>
+<ol>
+  <li><strong>Resolve trade names to INCI.</strong> Every ingredient on the spec sheet must appear as its INCI name. The skill resolves trade names (Sepiplus 400, Olivem 1000) to their INCI components in descending concentration.</li>
+  <li><strong>Apply the descending-order rule.</strong> Ingredients above 1% in descending concentration. Below 1% in any order. Colorants at the end prefixed by + or in a sub-list.</li>
+  <li><strong>Identify allergens above threshold.</strong> Old 26-list: must appear in INCI if >0.001% leave-on or >0.01% rinse-off. New 80-list (Reg 2023/1545) applies from July 2026 / 2028.</li>
+  <li><strong>Add mandatory information.</strong> RP/PIF address, batch number position, function, country of origin if outside EU, nominal content, PAO or expiry, warnings.</li>
+  <li><strong>Translate to all required languages.</strong> EU Member State language(s) for the warnings + INCI common (cosmetic-specific exemption: INCI list is in INCI English/Latin only).</li>
+  <li><strong>Position the label correctly.</strong> Some info on the container (RP, batch, PAO), some on the box (full INCI if container too small via the leaflet/joined symbol).</li>
+  <li><strong>Validate against destination.</strong> EU 1223/2009 Art. 19, UK Cosmetics Reg Schedule 1 (mirrors EU + post-Brexit RP), US MoCRA 2024 (fragrance allergens by 2025), JP MHLW (full Japanese), KR MFDS, CN NMPA (Chinese), CA bilingual.</li>
+</ol>
+
+<h2>Regulations covered</h2>
+<table>
+  <thead><tr><th>Market / scope</th><th>Regulation</th><th>What it requires</th></tr></thead>
+  <tbody>
+    <tr><td>EU 27</td><td>Reg 1223/2009 Article 19</td><td>RP address, batch, function, INCI desc order, allergens, warnings</td></tr>
+    <tr><td>EU 27</td><td>Reg 2023/1545</td><td>80-allergen list transition 2026–2028</td></tr>
+    <tr><td>UK</td><td>UK Cosmetics Reg Schedule 1</td><td>Mirrors EU + UK RP, FU only addresses</td></tr>
+    <tr><td>US</td><td>FDA 21 CFR 701 + MoCRA</td><td>FPL act, fragrance allergens 2025+, contact info</td></tr>
+    <tr><td>US-CA</td><td>CSCA + Prop 65</td><td>Intentionally added ingredient disclosure, warnings</td></tr>
+    <tr><td>JP</td><td>MHLW Cosmetics PMDL</td><td>All required text in Japanese, INCI per JCIA</td></tr>
+    <tr><td>KR</td><td>MFDS Cosmetics Act</td><td>Korean language, allergens, RP</td></tr>
+    <tr><td>CN</td><td>NMPA CSAR</td><td>Chinese language, RP in China, claim restrictions</td></tr>
+    <tr><td>CA</td><td>Health Canada CCPSA</td><td>Bilingual EN/FR, hotlist ingredients</td></tr>
+    <tr><td>BE/CH</td><td>National + retail</td><td>Trilingual labels (FR/NL/DE or FR/DE/IT)</td></tr>
+    <tr><td>ASEAN</td><td>ACD scheme</td><td>Member state language + English, ACD annexes</td></tr>
+  </tbody>
+</table>
+
+<h2>Example output</h2>
+<pre>Product: Lavender body lotion 200 ml
+Target markets: EU (FR, DE, BE), UK, US
+
+INCI desc order audit:
+  Aqua &gt; Glycerin &gt; Helianthus Annuus Seed Oil &gt; Cetearyl Alcohol &gt;
+  Glyceryl Stearate SE &gt; Lavandula Angustifolia Flower Oil (1.2%) &gt;
+  [below 1%, any order:] Tocopherol, Phenoxyethanol, Sodium Hydroxide,
+  Citric Acid, Linalool, Limonene, Geraniol, Coumarin, Citral
+
+Allergen audit (EU 1223/2009 Annex III, 26-list):
+  Linalool 0.12% leave-on → MUST APPEAR in INCI (&gt;0.001%)
+  Limonene 0.04% → MUST APPEAR
+  Geraniol 0.02% → MUST APPEAR
+  Coumarin 0.015% → MUST APPEAR
+  Citral 0.008% → MUST APPEAR
+
+New 80-list preview (Reg 2023/1545, effective July 2026):
+  6 additional allergens detected: methyleugenol traces (must check),
+  isoeugenol, citronellol, alpha-isomethyl ionone, hydroxycitronellal,
+  benzyl alcohol — verify levels for July 2026 transition.
+
+Mandatory info:
+  RP address (EU): &quot;Distribué par [RP Brand SAS], 12 rue X, 75001 Paris, France&quot;
+  Batch: lot xxxx (any visible position)
+  PAO: 12M symbol (less than 30 months shelf life)
+  Function: &quot;Lotion corporelle / Body lotion / Körperlotion&quot; (FR/EN/DE for BE)
+  Country of origin: required if outside EU; &quot;Made in France&quot; OK
+
+Language rules:
+  FR: warnings in French
+  DE: warnings in German
+  BE: warnings in FR + NL + DE (trilingual)
+  Switzerland (if added): FR + DE + IT
+
+Verdict: Compliant after adding the 5 allergens to INCI.
+Estimated label re-print cost: &lt;€0.05/unit if at re-order; €0.30/unit if relabel-in-warehouse.</pre>
+
+<h2>FAQ</h2>
+<div class="faq-item"><div class="faq-q">What is INCI labeling?</div><p>INCI = International Nomenclature of Cosmetic Ingredients. It is the standardised name list (English / Latin) used on cosmetic labels worldwide, defined in CosIng (EU) and by the Personal Care Products Council (US). EU Reg 1223/2009 Article 19 mandates INCI on the EU market.</p></div>
+<div class="faq-item"><div class="faq-q">What is the new 80-allergen list?</div><p>Reg 2023/1545 expanded the EU mandatory fragrance allergen labeling list from 26 to approximately 80 substances. Transition: new products placed on market from 31 July 2026; existing stock from 31 July 2028. The same expansion is being mirrored by UK SCPN and by FDA under MoCRA fragrance disclosure.</p></div>
+<div class="faq-item"><div class="faq-q">Do small containers need full INCI?</div><p>If the container is too small for full INCI, the full list can appear on a leaflet attached to the product (the open-book symbol must appear on the container). Common for 5-15 ml lipsticks, mascaras and sample sizes.</p></div>
+<div class="faq-item"><div class="faq-q">What is the order rule below 1%?</div><p>Above 1% concentration: descending order. Below 1%: any order. Colorants must be listed at the end of the ingredient list (prefixed by + or in a separate group).</p></div>
+<div class="faq-item"><div class="faq-q">Does my US label need INCI?</div><p>Yes for cosmetics — FDA 21 CFR 701.3 mandates ingredient declaration in descending order of predominance, using the INCI common name. MoCRA from 2025 will additionally require fragrance allergen disclosure on US labels.</p></div>
+<div class="faq-item"><div class="faq-q">Does it cover supplements and food labels too?</div><p>Use the dedicated <code>food-compliance</code> and <code>supplement-compliance</code> skills for those — they apply different rules (Nutrition Facts panel, FALCPA allergens, DSHEA disclaimers). This skill is cosmetic-focused.</p></div>
+
+<h2>Related skills</h2>
+<div class="related">
+  <a href="./cosmetics-compliance.html"><strong>cosmetics-compliance</strong><span>EU 1223/2009 CPNP/PIF/CPSR, US MoCRA, full vertical playbook.</span></a>
+  <a href="./product-compliance.html"><strong>product-compliance</strong><span>Full substance check across 13 databases.</span></a>
+  <a href="./claims-substantiation.html"><strong>claims-substantiation</strong><span>EU 655/2013 six criteria, FDA drug/cosmetic line.</span></a>
+  <a href="./multi-jurisdiction-scan.html"><strong>multi-jurisdiction-scan</strong><span>RED/ORANGE/YELLOW/GREEN per market.</span></a>
+  <a href="./marketplace-compliance.html"><strong>marketplace-compliance</strong><span>Amazon EU GPSR + MoCRA + EPR requirements.</span></a>
+</div>
+
+<div class="callout">
+  <strong>Try it in 30 seconds.</strong>
+  <p style="margin-top:8px;margin-bottom:0;">Drop the install one-liner into your Claude Desktop, Cursor or Continue config and ask your agent for a labeling compliance check. The skill triggers automatically.</p>
+</div>
+
+<footer>
+  <p>Install: <span class="install">npx -y @cleo-labs/skills-mcp@latest</span></p>
+  <p>Open source. MIT-licensed. Built by <a href="https://cleolabs.co">Cleo Labs</a>. Powered by the MARIA engine — 25,000 regulations, 49 countries, live.</p>
+  <p style="margin-top:16px;font-size:13px;">This is compliance guidance, not legal advice. Always verify against official sources (EUR-Lex, FDA, gov.uk, MHLW) before a business decision.</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-Country Product Launch — Open-source AI Skill | Cleo Comply</title>
+<meta name="description" content="Multi-country product launch compliance scan: RED/ORANGE/YELLOW/GREEN per market across EU 27, US, UK, JP, KR, CN, CA, AU. Open-source AI skill running parallel agents.">
+<link rel="canonical" href="https://cleo-labs-ia.github.io/skills_library/docs/skills/multi-jurisdiction-scan.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Multi-Country Product Launch — Cleo Comply">
+<meta property="og:description" content="Open-source AI skill running parallel compliance agents across all target markets — a multi-jurisdiction scan in one command.">
+<meta property="og:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<meta property="og:url" content="https://cleo-labs-ia.github.io/skills_library/docs/skills/multi-jurisdiction-scan.html">
+<meta property="og:site_name" content="Cleo Labs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Multi-Country Product Launch — Cleo Comply">
+<meta name="twitter:description" content="Open-source AI skill running parallel compliance agents across all target markets — a multi-jurisdiction scan in one command.">
+<meta name="twitter:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"Multi-Country Product Launch — Cleo Comply","description":"Open-source AI skill running parallel compliance agents across all target markets — a multi-jurisdiction scan in one command.","totalTime":"P14D","step":[{"@type": "HowToStep", "name": "Define product and candidate markets", "text": "Product spec + ingredient list / BOM + candidate market list. Common combos: EU+UK+US, EU+US+JP+KR, full G7, EU+US+JP+CN+ASEAN."}, {"@type": "HowToStep", "name": "Dispatch one agent per jurisdiction cluster", "text": "Skill spawns parallel agents via superpowers:dispatching-parallel-agents. One agent per market or cluster (e.g. ASEAN as one, Nordic as one)."}, {"@type": "HowToStep", "name": "Each agent runs full product-compliance + market-entry-checklist", "text": "Substance screen, label compliance, RP requirements, testing/certification, customs path, marketplace gates."}, {"@type": "HowToStep", "name": "Aggregate to RED/ORANGE/YELLOW/GREEN per market", "text": "RED = legally blocked, requires reformulation. ORANGE = blocked without specific action (CPSR, registration). YELLOW = additional documentation needed. GREEN = ship as is."}, {"@type": "HowToStep", "name": "Calculate Revenue-at-Risk per market", "text": "Forecast revenue share per market \u00d7 probability of issue \u00d7 time-to-fix = revenue at risk."}, {"@type": "HowToStep", "name": "Surface the critical path", "text": "Identify the market that drives the latest launch date and the action that resolves it. Output: ranked sequencing plan."}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "What is a multi-jurisdiction scan?", "acceptedAnswer": {"@type": "Answer", "text": "It is a parallel compliance check across all your target markets simultaneously, returning a RED / ORANGE / YELLOW / GREEN verdict per market with the specific blockers cited. The skill dispatches one agent per market via Claude's parallel-agents primitive."}}, {"@type": "Question", "name": "How long does it take?", "acceptedAnswer": {"@type": "Answer", "text": "Wall-clock is dominated by the slowest market check, not the sum. Typical 6\u201310 markets run in 10\u201315 minutes. The equivalent sequential check would take 90\u2013180 minutes."}}, {"@type": "Question", "name": "How many markets does it cover?", "acceptedAnswer": {"@type": "Answer", "text": "Full coverage for EU 27, UK, US (federal + key states), Japan, Korea, China, Canada, Australia, New Zealand, ASEAN 10, GCC countries, Brazil. Coverage extending to Mexico, India, South Africa in 2025."}}, {"@type": "Question", "name": "Does it pick the right launch sequence?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The output includes a critical-path analysis: which market drives the longest launch lead time and which markets can be deferred without losing forecast revenue. The skill optimises for both time-to-market and revenue capture."}}, {"@type": "Question", "name": "How does it interact with the product-compliance skill?", "acceptedAnswer": {"@type": "Answer", "text": "The product-compliance skill is the per-product engine; the multi-jurisdiction-scan is the per-market dispatcher. The dispatcher invokes product-compliance + market-entry-checklist + customs-and-trade + responsible-person inside each market agent."}}, {"@type": "Question", "name": "Can it identify which markets to deprioritise?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The Revenue-at-Risk \u00d7 Time-to-Compliance matrix highlights markets where forecast revenue does not justify the compliance investment, so the founder can rationally drop a market and reallocate budget."}}]}
+</script>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --c-blue: #0008CF; --c-blue-light: rgba(0,8,207,0.06); --c-ink: #1A1A1A; --c-white: #FFFFFF; --c-surface: #F9F8F6; --c-card: #F0EFEC; --c-border: rgba(0,0,0,0.08); --c-text: rgba(0,0,0,0.87); --c-text-2: rgba(0,0,0,0.62); --r-md: 16px; --r-pill: 9999px; --font: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif; --font-mono: ui-monospace, 'SF Mono', 'Fira Code', monospace; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); background: var(--c-surface); color: var(--c-text); line-height: 1.6; font-size: 17px; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+nav.top { display:flex; justify-content:space-between; align-items:center; padding-bottom:24px; border-bottom:1px solid var(--c-border); margin-bottom:48px; }
+nav.top .brand { font-weight:700; color:var(--c-ink); text-decoration:none; font-size:17px; }
+nav.top .links a { margin-left:24px; color:var(--c-text-2); text-decoration:none; font-size:15px; }
+nav.top .links a:hover { color:var(--c-blue); }
+.eyebrow { color:var(--c-blue); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px; }
+h1 { font-size: 44px; line-height: 1.15; font-weight: 700; color: var(--c-ink); letter-spacing: -0.02em; margin-bottom: 24px; }
+h2 { font-size: 28px; line-height: 1.25; font-weight: 700; color: var(--c-ink); margin: 64px 0 20px; letter-spacing: -0.01em; }
+p { margin-bottom: 16px; color: var(--c-text); }
+ul, ol { margin: 16px 0 16px 24px; } li { margin-bottom: 8px; }
+a { color: var(--c-blue); text-decoration: none; } a:hover { text-decoration: underline; }
+.lede { font-size: 19px; color: var(--c-text-2); margin-bottom: 32px; }
+.cta-row { display:flex; gap:12px; flex-wrap:wrap; margin: 32px 0; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding: 12px 20px; border-radius: var(--r-pill); font-weight: 600; font-size: 15px; transition: all 0.2s; }
+.btn-primary { background: var(--c-ink); color: var(--c-white); } .btn-primary:hover { background: var(--c-blue); text-decoration: none; }
+.btn-secondary { background: var(--c-white); color: var(--c-ink); border: 1px solid var(--c-border); } .btn-secondary:hover { border-color: var(--c-ink); text-decoration: none; }
+.install-box { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; font-family: var(--font-mono); font-size: 14px; overflow-x: auto; margin: 24px 0; border:1px solid var(--c-border); }
+table { width:100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+th, td { text-align:left; padding: 12px 16px; border-bottom: 1px solid var(--c-border); vertical-align: top; }
+th { font-weight: 600; color: var(--c-ink); background: var(--c-card); }
+pre { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.6; margin: 24px 0; border:1px solid var(--c-border); }
+.faq-item { border-bottom: 1px solid var(--c-border); padding: 20px 0; } .faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; color: var(--c-ink); margin-bottom: 8px; font-size: 17px; }
+.related { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 32px 0; }
+.related a { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 16px 20px; color: var(--c-ink); transition: all 0.2s; display:block; }
+.related a:hover { border-color: var(--c-blue); transform: translateY(-2px); text-decoration: none; }
+.related a strong { display:block; color: var(--c-blue); margin-bottom: 4px; font-size:14px; font-weight:600; }
+.related a span { color: var(--c-text-2); font-size:14px; }
+.callout { background: var(--c-blue-light); border-left: 3px solid var(--c-blue); border-radius: var(--r-md); padding: 20px 24px; margin: 32px 0; }
+footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--c-border); font-size: 14px; color: var(--c-text-2); }
+footer .install { font-family: var(--font-mono); background: var(--c-card); padding: 8px 14px; border-radius: var(--r-pill); display:inline-block; margin: 8px 0; }
+@media (max-width: 600px) { h1 { font-size: 32px; } h2 { font-size: 24px; } .container { padding: 24px 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="top">
+  <a href="https://cleo-labs-ia.github.io/skills_library/" class="brand">Cleo Comply</a>
+  <div class="links">
+    <a href="https://github.com/Cleo-Labs-IA/skills_library">GitHub</a>
+    <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp">npm</a>
+    <a href="https://cleolabs.co">Cleo Labs</a>
+  </div>
+</nav>
+
+<div class="eyebrow">Skill: Multi-Jurisdiction Scan</div>
+<h1>Multi-country product launch: parallel compliance scan in 12 minutes</h1>
+<p class="lede">An open-source AI skill that dispatches one agent per target market in parallel, returning a RED / ORANGE / YELLOW / GREEN verdict for every jurisdiction, with the specific blockers cited and the remediation path estimated.</p>
+
+<div class="cta-row">
+  <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp" class="btn btn-primary">Install via npm</a>
+  <a href="https://github.com/Cleo-Labs-IA/skills_library/tree/main/skills/multi-jurisdiction-scan" class="btn btn-secondary">View on GitHub</a>
+  <a href="https://legaldata-public.cleolabs.co" class="btn btn-secondary">Get API key</a>
+</div>
+
+<div class="install-box"><code>npx -y @cleo-labs/skills-mcp@latest</code></div>
+
+<p>Multi-country product launches break in predictable ways. A face cream sells beautifully in France, gets traction in Germany, the founder decides to go to the US — and discovers MoCRA needs a six-week facility registration window. The launch slips. The marketing budget shifts. The momentum disappears. The same problem repeats in reverse: a US brand opens EU sales without a Responsible Person and Amazon EU removes the listing within 4 weeks of go-live.</p>
+<p>The <code>multi-jurisdiction-scan</code> skill runs each market check in parallel via <code>superpowers:dispatching-parallel-agents</code>. You give it the product spec and the candidate market list, and one agent per jurisdiction (or jurisdiction cluster) runs in parallel. The total wall-clock is dominated by the slowest market check, not the sum — so 8 markets run in about 12 minutes versus 90 minutes sequential.</p>
+
+<h2>Why it matters</h2>
+<p>The expensive multi-market mistake is not missing a regulation. It is sequencing the launches wrong. A founder who knows in week 1 that the EU+UK+US launch needs an EU RP, a UK RP, a US FDA facility registration, and 3 separate CPNP/SCPN/MoCRA notifications can sequence the work in parallel and ship in 8 weeks. A founder who learns these requirements one at a time as customs and Amazon flag them takes 6–9 months and burns the launch.</p>
+<p>Parallel scanning surfaces the critical-path market. For most consumer brands, the critical path is either the EU CPSR (cosmetics, 4–6 weeks) or the FDA Notified Body equivalent (medical, 9–14 months Notified Body for IIa+). The skill identifies the critical path explicitly so the operator can resource it first.</p>
+<p>Markets can be deprioritised cleanly. A Korea launch that requires functional cosmetic review for a single SKU may not be worth the effort if Korea is 8 percent of forecast revenue. The skill returns a Revenue-at-Risk and Time-to-Compliance estimate per market so the founder can make that call with numbers.</p>
+
+<h2>How the multi-jurisdiction-scan skill works</h2>
+<ol>
+  <li><strong>Define product and candidate markets.</strong> Product spec + ingredient list / BOM + candidate market list. Common combos: EU+UK+US, EU+US+JP+KR, full G7, EU+US+JP+CN+ASEAN.</li>
+  <li><strong>Dispatch one agent per jurisdiction cluster.</strong> Skill spawns parallel agents via superpowers:dispatching-parallel-agents. One agent per market or cluster (e.g. ASEAN as one, Nordic as one).</li>
+  <li><strong>Each agent runs full product-compliance + market-entry-checklist.</strong> Substance screen, label compliance, RP requirements, testing/certification, customs path, marketplace gates.</li>
+  <li><strong>Aggregate to RED/ORANGE/YELLOW/GREEN per market.</strong> RED = legally blocked, requires reformulation. ORANGE = blocked without specific action (CPSR, registration). YELLOW = additional documentation needed. GREEN = ship as is.</li>
+  <li><strong>Calculate Revenue-at-Risk per market.</strong> Forecast revenue share per market × probability of issue × time-to-fix = revenue at risk.</li>
+  <li><strong>Surface the critical path.</strong> Identify the market that drives the latest launch date and the action that resolves it. Output: ranked sequencing plan.</li>
+</ol>
+
+<h2>Regulations covered</h2>
+<table>
+  <thead><tr><th>Market / scope</th><th>Regulation</th><th>What it requires</th></tr></thead>
+  <tbody>
+    <tr><td>EU 27</td><td>1223/2009 / FSMA / MDR / 2009/48 / GPSR / REACH / CLP / RoHS / RED</td><td>All applicable per category</td></tr>
+    <tr><td>UK</td><td>UK Cosmetics Reg / UK MDR / UKCA / UK GPSR retained</td><td>Post-Brexit mirror with divergence</td></tr>
+    <tr><td>US</td><td>FDA / FTC / CPSC / EPA / state law</td><td>Federal + 50 state patchwork (CA Prop 65, NY, etc.)</td></tr>
+    <tr><td>JP</td><td>MHLW / METI / PMDA / PSE / ST Mark</td><td>PMD Act for cosmetics + medical; PSE for electronics</td></tr>
+    <tr><td>KR</td><td>MFDS / MOTIE / KC mark / RoHS-equivalent</td><td>KC mark for electronics; functional cosmetic review</td></tr>
+    <tr><td>CN</td><td>NMPA / SAMR / GACC / CCC</td><td>NMPA cosmetics + CCC electronics + GB national standards</td></tr>
+    <tr><td>CA</td><td>Health Canada CCPSA / IC / CSA</td><td>Cosmetics notification + bilingual labels + CSA mark for retail</td></tr>
+    <tr><td>AU</td><td>TGA / ACCC</td><td>Therapeutic goods + product safety standards</td></tr>
+    <tr><td>ASEAN</td><td>ACD harmonised + national</td><td>Member state local notification atop ACD</td></tr>
+    <tr><td>BR</td><td>ANVISA / INMETRO</td><td>Cosmetics + product safety in Mercosur</td></tr>
+    <tr><td>AE/SA/GCC</td><td>ECAS / SASO</td><td>Conformity assessment for GCC market</td></tr>
+    <tr><td>ME/AF</td><td>Variable</td><td>Country-by-country mapping</td></tr>
+  </tbody>
+</table>
+
+<h2>Example output</h2>
+<pre>Product: Vitamin C 15% face serum, glass bottle 30ml + droppper
+Target markets: EU (DE+FR+IT+ES), UK, US, JP, KR, CN
+
+Parallel scan dispatched: 6 agents in parallel.
+Total elapsed: 11 min 40 sec.
+
+Per-market verdict:
+  EU 27       GREEN    Shippable. CPSR + CPNP required. Lead time 4-6 weeks. Cost €1,500-2,500/SKU.
+              Notes: ascorbic acid 15% within bounds. RP appointment required.
+
+  UK          GREEN    Shippable. UK SCPN + UK RP required. Mirrors EU. Cost €100-200/month UK RP.
+              Notes: post-Brexit divergence does not affect this formula.
+
+  US          GREEN    Shippable. MoCRA facility + product listing. Free, 2-3 week processing.
+              Notes: California Prop 65: no required warning at this formula.
+
+  JP          YELLOW   Quasi-drug threshold check. Ascorbic acid 15% likely OK as cosmetic;
+              vitamin C in Japan can cross to medicated cosmetic if claim implies efficacy.
+              Action: rewrite claims to general moisturising. €0 fix.
+
+  KR          ORANGE   Functional cosmetic review required if any &quot;whitening&quot; claim.
+              Vitamin C at 15% with &quot;brightening&quot; or &quot;whitening&quot; = functional cosmetic.
+              MFDS review fee: ~$2,000, 4-6 month timeline.
+              Action: either drop whitening claim (general cosmetic, fast) or commit to FCN review.
+
+  CN          ORANGE   NMPA registration required.
+              Vitamin C concentrations &gt;5% may trigger NMPA new ingredient questions for the carrier.
+              Lead time: 4-6 months for general use cosmetics registration.
+              Animal testing: exempt for general-use post-2021 if GMP certificate from origin.
+
+CRITICAL PATH: China NMPA registration (4-6 months).
+If China is required for launch: start NMPA work week 1.
+If China can wait 6 months: launch EU+UK+US+JP in 6 weeks, defer CN+KR.
+
+Revenue-at-Risk if launched without China:
+  CN forecast share: 12%
+  Time-to-Compliance: 5 months
+  €/yr at risk: ~€180k (against €1.5M total target revenue year 1)</pre>
+
+<h2>FAQ</h2>
+<div class="faq-item"><div class="faq-q">What is a multi-jurisdiction scan?</div><p>It is a parallel compliance check across all your target markets simultaneously, returning a RED / ORANGE / YELLOW / GREEN verdict per market with the specific blockers cited. The skill dispatches one agent per market via Claude's parallel-agents primitive.</p></div>
+<div class="faq-item"><div class="faq-q">How long does it take?</div><p>Wall-clock is dominated by the slowest market check, not the sum. Typical 6–10 markets run in 10–15 minutes. The equivalent sequential check would take 90–180 minutes.</p></div>
+<div class="faq-item"><div class="faq-q">How many markets does it cover?</div><p>Full coverage for EU 27, UK, US (federal + key states), Japan, Korea, China, Canada, Australia, New Zealand, ASEAN 10, GCC countries, Brazil. Coverage extending to Mexico, India, South Africa in 2025.</p></div>
+<div class="faq-item"><div class="faq-q">Does it pick the right launch sequence?</div><p>Yes. The output includes a critical-path analysis: which market drives the longest launch lead time and which markets can be deferred without losing forecast revenue. The skill optimises for both time-to-market and revenue capture.</p></div>
+<div class="faq-item"><div class="faq-q">How does it interact with the product-compliance skill?</div><p>The product-compliance skill is the per-product engine; the multi-jurisdiction-scan is the per-market dispatcher. The dispatcher invokes product-compliance + market-entry-checklist + customs-and-trade + responsible-person inside each market agent.</p></div>
+<div class="faq-item"><div class="faq-q">Can it identify which markets to deprioritise?</div><p>Yes. The Revenue-at-Risk × Time-to-Compliance matrix highlights markets where forecast revenue does not justify the compliance investment, so the founder can rationally drop a market and reallocate budget.</p></div>
+
+<h2>Related skills</h2>
+<div class="related">
+  <a href="./product-compliance.html"><strong>product-compliance</strong><span>Full substance check across 13 databases.</span></a>
+  <a href="./market-entry-checklist.html"><strong>market-entry-checklist</strong><span>Step-by-step per market: classify → regulations → certs → notification.</span></a>
+  <a href="./compliance-audit-sprint.html"><strong>compliance-audit-sprint</strong><span>Pre-launch sprint: identify → map → check → verify → cost.</span></a>
+  <a href="./customs-and-trade.html"><strong>customs-and-trade</strong><span>HS code, duty, landed cost, dual-use, sanctions.</span></a>
+  <a href="./marketplace-compliance.html"><strong>marketplace-compliance</strong><span>Required docs per platform per category per market.</span></a>
+</div>
+
+<div class="callout">
+  <strong>Try it in 30 seconds.</strong>
+  <p style="margin-top:8px;margin-bottom:0;">Drop the install one-liner into your Claude Desktop, Cursor or Continue config and ask your agent for a multi-jurisdiction scan check. The skill triggers automatically.</p>
+</div>
+
+<footer>
+  <p>Install: <span class="install">npx -y @cleo-labs/skills-mcp@latest</span></p>
+  <p>Open source. MIT-licensed. Built by <a href="https://cleolabs.co">Cleo Labs</a>. Powered by the MARIA engine — 25,000 regulations, 49 countries, live.</p>
+  <p style="margin-top:16px;font-size:13px;">This is compliance guidance, not legal advice. Always verify against official sources (EUR-Lex, FDA, gov.uk, MHLW) before a business decision.</p>
+</footer>
+
+</div>
+</body>
+</html>

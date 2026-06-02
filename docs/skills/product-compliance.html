@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Compliance Checker — Open-source AI Skill | Cleo Comply</title>
+<meta name="description" content="A product compliance checker that turns an ingredient list or BOM into a per-market verdict across REACH, FDA, CE, GPSR and 24 more regulations. Free, open source, runs in Claude Code.">
+<link rel="canonical" href="https://cleo-labs-ia.github.io/skills_library/docs/skills/product-compliance.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Product Compliance Checker — Cleo Comply">
+<meta property="og:description" content="Turn an ingredient list or BOM into a per-market verdict across REACH, FDA, CE, GPSR and 24 more regulations.">
+<meta property="og:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<meta property="og:url" content="https://cleo-labs-ia.github.io/skills_library/docs/skills/product-compliance.html">
+<meta property="og:site_name" content="Cleo Labs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Product Compliance Checker">
+<meta name="twitter:description" content="Open-source AI skill that runs your product across 13 regulatory databases and 49 markets.">
+<meta name="twitter:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to run a product compliance check","description":"Run a substance-by-substance compliance check across multiple markets using the product-compliance skill.","totalTime":"PT12M","step":[
+ {"@type":"HowToStep","name":"Install the MCP server","text":"Run npx -y @cleo-labs/skills-mcp@latest in your terminal or add it to your Claude Desktop / Cursor / Continue config."},
+ {"@type":"HowToStep","name":"Paste your ingredient list or BOM","text":"Give the agent your full INCI list, formulation, or BOM. The skill auto-resolves trade names to CAS numbers."},
+ {"@type":"HowToStep","name":"Pick target markets","text":"List the markets you want to sell in. Common combos: EU+UK+US, EU+US+JP, EU+US+CA, all of ASEAN."},
+ {"@type":"HowToStep","name":"Read the verdict","text":"The skill returns a per-substance per-market verdict (OK, BLOCKED, REVIEW) with the specific regulation cited and the Revenue-at-Risk calculation."},
+ {"@type":"HowToStep","name":"Act on the gaps","text":"For BLOCKED items, the agent suggests a substitution or a concentration reduction. For REVIEW items, it lists the dossier required."}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"What is a product compliance checker?","acceptedAnswer":{"@type":"Answer","text":"A product compliance checker takes a product specification — usually an ingredient list, formula, or bill of materials — and returns whether each component is allowed in each target market under the applicable regulations (REACH, FDA, CE, GPSR, etc.). The Cleo Comply product-compliance skill does this across 13 regulatory databases and 49 countries."}},
+ {"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The skill is MIT-licensed and installs via a single npx command. The Cleo Legal API for live regulatory data is also free for non-commercial use; commercial tiers start at €0 for the public dataset."}},
+ {"@type":"Question","name":"Which regulations does it cover?","acceptedAnswer":{"@type":"Answer","text":"REACH, CLP, EU Cosmetics 1223/2009, FDA FSMA, FDA MoCRA, California Prop 65, EU GPSR, CE/UKCA, EU RoHS, EU Battery Regulation, EU CRA, EUDR, ESPR, EU MDR, TPD, FCC Part 15, EN 71, US CPSIA, AAFCO, NMPA, MHLW, MFDS, ANVISA, and others."}},
+ {"@type":"Question","name":"Does it replace a regulatory consultant?","acceptedAnswer":{"@type":"Answer","text":"No. It gets you 80 percent of the way there so a qualified consultant, Notified Body or safety assessor can focus on the hard 20 percent. It does not replace a CPSR signature, a CE technical file audit, or a customs broker."}},
+ {"@type":"Question","name":"How current is the data?","acceptedAnswer":{"@type":"Answer","text":"With the Cleo Insight MCP server enabled, the underlying regulatory dataset is refreshed daily. Without MCP, the skill falls back to web search with the same prompt structure."}}]}
+</script>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --c-blue: #0008CF; --c-blue-light: rgba(0,8,207,0.06); --c-ink: #1A1A1A; --c-white: #FFFFFF; --c-surface: #F9F8F6; --c-card: #F0EFEC; --c-border: rgba(0,0,0,0.08); --c-text: rgba(0,0,0,0.87); --c-text-2: rgba(0,0,0,0.62); --r-md: 16px; --r-pill: 9999px; --font: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif; --font-mono: ui-monospace, 'SF Mono', 'Fira Code', monospace; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); background: var(--c-surface); color: var(--c-text); line-height: 1.6; font-size: 17px; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+nav.top { display:flex; justify-content:space-between; align-items:center; padding-bottom:24px; border-bottom:1px solid var(--c-border); margin-bottom:48px; }
+nav.top .brand { font-weight:700; color:var(--c-ink); text-decoration:none; font-size:17px; }
+nav.top .links a { margin-left:24px; color:var(--c-text-2); text-decoration:none; font-size:15px; }
+nav.top .links a:hover { color:var(--c-blue); }
+.eyebrow { color:var(--c-blue); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px; }
+h1 { font-size: 44px; line-height: 1.15; font-weight: 700; color: var(--c-ink); letter-spacing: -0.02em; margin-bottom: 24px; }
+h2 { font-size: 28px; line-height: 1.25; font-weight: 700; color: var(--c-ink); margin: 64px 0 20px; letter-spacing: -0.01em; }
+h3 { font-size: 20px; font-weight: 600; color: var(--c-ink); margin: 32px 0 12px; }
+p { margin-bottom: 16px; color: var(--c-text); }
+ul, ol { margin: 16px 0 16px 24px; } li { margin-bottom: 8px; }
+a { color: var(--c-blue); text-decoration: none; } a:hover { text-decoration: underline; }
+.lede { font-size: 19px; color: var(--c-text-2); margin-bottom: 32px; }
+.cta-row { display:flex; gap:12px; flex-wrap:wrap; margin: 32px 0; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding: 12px 20px; border-radius: var(--r-pill); font-weight: 600; font-size: 15px; transition: all 0.2s; }
+.btn-primary { background: var(--c-ink); color: var(--c-white); }
+.btn-primary:hover { background: var(--c-blue); text-decoration: none; }
+.btn-secondary { background: var(--c-white); color: var(--c-ink); border: 1px solid var(--c-border); }
+.btn-secondary:hover { border-color: var(--c-ink); text-decoration: none; }
+.install-box { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; font-family: var(--font-mono); font-size: 14px; overflow-x: auto; margin: 24px 0; border:1px solid var(--c-border); }
+table { width:100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+th, td { text-align:left; padding: 12px 16px; border-bottom: 1px solid var(--c-border); vertical-align: top; }
+th { font-weight: 600; color: var(--c-ink); background: var(--c-card); }
+pre { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.6; margin: 24px 0; border:1px solid var(--c-border); }
+.faq-item { border-bottom: 1px solid var(--c-border); padding: 20px 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; color: var(--c-ink); margin-bottom: 8px; font-size: 17px; }
+.related { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 32px 0; }
+.related a { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 16px 20px; color: var(--c-ink); transition: all 0.2s; display:block; }
+.related a:hover { border-color: var(--c-blue); transform: translateY(-2px); text-decoration: none; }
+.related a strong { display:block; color: var(--c-blue); margin-bottom: 4px; font-size:14px; font-weight:600; }
+.related a span { color: var(--c-text-2); font-size:14px; }
+.callout { background: var(--c-blue-light); border-left: 3px solid var(--c-blue); border-radius: var(--r-md); padding: 20px 24px; margin: 32px 0; }
+footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--c-border); font-size: 14px; color: var(--c-text-2); }
+footer .install { font-family: var(--font-mono); background: var(--c-card); padding: 8px 14px; border-radius: var(--r-pill); display:inline-block; margin: 8px 0; }
+@media (max-width: 600px) { h1 { font-size: 32px; } h2 { font-size: 24px; } .container { padding: 24px 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="top">
+  <a href="https://cleo-labs-ia.github.io/skills_library/" class="brand">Cleo Comply</a>
+  <div class="links">
+    <a href="https://github.com/Cleo-Labs-IA/skills_library">GitHub</a>
+    <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp">npm</a>
+    <a href="https://cleolabs.co">Cleo Labs</a>
+  </div>
+</nav>
+
+<div class="eyebrow">Skill: Product Compliance</div>
+<h1>The open-source product compliance checker for cross-border brands</h1>
+<p class="lede">An AI-native product compliance checker that turns your ingredient list, formula or BOM into a per-substance, per-market verdict across REACH, FDA, CE, GPSR and 24 more regulations. Free, MIT-licensed, runs inside Claude Code, Cursor, Continue or any MCP-compatible client.</p>
+
+<div class="cta-row">
+  <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp" class="btn btn-primary">Install via npm</a>
+  <a href="https://github.com/Cleo-Labs-IA/skills_library/tree/main/skills/product-compliance" class="btn btn-secondary">View on GitHub</a>
+  <a href="https://legaldata-public.cleolabs.co" class="btn btn-secondary">Get API key</a>
+</div>
+
+<div class="install-box"><code>npx -y @cleo-labs/skills-mcp@latest</code></div>
+
+<p>Most "product compliance checker" tools on the market today fall into two camps. The first is a static checklist somewhere on a consultancy website — useful once, never updated. The second is an enterprise SaaS priced at €30,000 a year that requires onboarding, configuration, and a sales call. Neither works for the team of two who just need to know whether their face cream can ship to Germany next month.</p>
+
+<p>The <code>product-compliance</code> skill is a third option. It lives inside the AI agent you already use to draft your supplier emails. You paste an ingredient list, formula or bill of materials, name your target markets, and the agent returns a per-substance, per-market verdict with the specific regulation cited and a Revenue-at-Risk estimate for every issue.</p>
+
+<h2>Why it matters</h2>
+<p>A 40-foot container blocked at the EU border costs €15,000 to €40,000 in storage, demurrage and rework before anyone touches the product itself. The two most common reasons containers get held are a missing REACH dossier and a substance whose Annex III concentration cap was lowered the previous quarter. Both are preventable with a 12-minute check before the shipment leaves the factory.</p>
+<p>What makes pre-shipment screening hard is not the regulations themselves. It is that the knowledge sits across 25,000 individual regulations spread over 49 jurisdictions, each with its own update cadence, its own concentration table, and its own enforcement quirk. A face cream that passes EU 1223/2009 may fail UK SCPN because the UK post-Brexit list diverged on three specific dyes. A baby bottle that passes US 21 CFR 175 may fail EU 10/2011 plastic food contact because of a BPS migration limit. No single human consultant tracks all of this in real time. A correctly-prompted agent backed by a live regulatory dataset can.</p>
+<p>That is what this skill provides. It does not replace your safety assessor or your Notified Body. It catches the 80 percent of issues that block 80 percent of launches — the cosmetic dye that lost its grandfather status, the textile finish that just got added to REACH Annex XVII, the toy magnet rule that tightened in May — and surfaces them while you still have time to reformulate, relabel or pick a different market.</p>
+
+<h2>How the product-compliance skill works</h2>
+<ol>
+  <li><strong>Install the MCP server.</strong> Run <code>npx -y @cleo-labs/skills-mcp@latest</code> in your terminal or add it to your Claude Desktop / Cursor / Continue config. The skill registers itself as a native MCP resource.</li>
+  <li><strong>Paste your ingredient list or BOM.</strong> Give the agent your full INCI list, formulation, or bill of materials. The skill auto-resolves trade names to CAS numbers using the Cleo Legal API.</li>
+  <li><strong>Pick target markets.</strong> List the markets you want to sell in. Common combos: EU+UK+US, EU+US+JP, EU+US+CA, all of ASEAN, full G7.</li>
+  <li><strong>Read the verdict.</strong> The skill returns a per-substance, per-market verdict (OK, BLOCKED, REVIEW) with the specific regulation cited (e.g. "EU 1223/2009 Annex III #259") and the Revenue-at-Risk calculation based on the per-market revenue share you provide.</li>
+  <li><strong>Act on the gaps.</strong> For BLOCKED items, the agent suggests a substitution or a concentration reduction. For REVIEW items, it lists the dossier required (CPSR, notification, technical file) and the typical timeline and cost.</li>
+</ol>
+
+<h2>Regulations covered</h2>
+<table>
+  <thead><tr><th>Regulation</th><th>Scope</th><th>What it checks</th></tr></thead>
+  <tbody>
+    <tr><td>EU 1223/2009 + Annexes II–VI</td><td>Cosmetics in EU 27</td><td>Banned and restricted substances, concentration caps, labeling allergens</td></tr>
+    <tr><td>REACH + Annex XVII</td><td>All chemical-containing goods in EU/EEA</td><td>Restricted substances, SVHC, registration thresholds</td></tr>
+    <tr><td>CLP 1272/2008</td><td>EU classification & labeling</td><td>Hazard pictograms, P/H statements, UFI codes</td></tr>
+    <tr><td>FDA MoCRA + 21 CFR 700</td><td>US cosmetics</td><td>Facility registration, product listing, fragrance allergens</td></tr>
+    <tr><td>California Prop 65</td><td>US California</td><td>Warning labels for ~900 listed substances</td></tr>
+    <tr><td>EU GPSR 2023/988</td><td>All consumer products in EU</td><td>Traceability, RP, accident reporting, online listing</td></tr>
+    <tr><td>EU RoHS 2011/65</td><td>Electronics in EU/EEA</td><td>10 restricted substances incl. Pb, Cd, Hg, phthalates</td></tr>
+    <tr><td>FCC Part 15</td><td>US radio/electronic equipment</td><td>EMC emission limits, intentional radiator certification</td></tr>
+    <tr><td>EN 71-1/2/3</td><td>EU toy safety</td><td>Mechanical, flammability, chemical migration</td></tr>
+    <tr><td>US CPSIA</td><td>US children's products</td><td>Lead 100 ppm, 8 phthalates 0.1%, tracking labels</td></tr>
+    <tr><td>EU MDR 2017/745</td><td>EU medical devices</td><td>Classification, Notified Body, UDI, EUDAMED</td></tr>
+    <tr><td>Japan MHLW Quasi-Drug list</td><td>Japan cosmetics/quasi-drugs</td><td>Active concentration thresholds, function claims</td></tr>
+    <tr><td>China NMPA</td><td>China cosmetics</td><td>New ingredient filing, RP, animal testing exemption</td></tr>
+  </tbody>
+</table>
+
+<h2>Example output</h2>
+<pre>Product: Vitamin C 20% serum, 30 ml
+Target markets: EU, UK, US, JP, KR
+
+Ascorbic Acid 20%        EU: OK     UK: OK     US: OK     JP: OK     KR: OK
+Tocopherol 0.5%          EU: OK     UK: OK     US: OK     JP: OK     KR: OK
+Sodium Hyaluronate 1%    EU: OK     UK: OK     US: OK     JP: OK     KR: OK
+Methylparaben 0.4%       EU: OK     UK: OK     US: OK     JP: OK     KR: REVIEW
+                         (KR limits to 0.4% individual / 0.8% total; check formula)
+Linalool 0.3%            EU: LABEL  UK: LABEL  US: OK     JP: OK     KR: LABEL
+                         (EU 1223/2009 Annex III #61: must appear on INCI if >0.001%)
+
+Verdict: SHIPPABLE in EU, UK, US, JP. KR requires paraben review.
+Revenue at risk: €0 in EU/UK/US/JP. €18k/yr in KR (at 4% of total revenue share).
+Action: Verify total paraben content under 0.8% per KR MFDS notification 2024-46.
+Time to remediate: 0 days (label-only).</pre>
+
+<h2>FAQ</h2>
+<div class="faq-item"><div class="faq-q">What is a product compliance checker?</div><p>A product compliance checker takes a product specification — usually an ingredient list, formula, or bill of materials — and returns whether each component is allowed in each target market under the applicable regulations (REACH, FDA, CE, GPSR, etc.). The Cleo Comply <code>product-compliance</code> skill does this across 13 regulatory databases and 49 countries, returning a structured verdict with the specific articles cited.</p></div>
+<div class="faq-item"><div class="faq-q">Is it free?</div><p>Yes. The skill is MIT-licensed and installs via a single <code>npx</code> command. The Cleo Legal API for live regulatory data is free for non-commercial use; commercial tiers start at €0 for the public dataset and scale based on call volume.</p></div>
+<div class="faq-item"><div class="faq-q">Which regulations does it cover?</div><p>REACH, CLP, EU Cosmetics 1223/2009, FDA FSMA, FDA MoCRA, California Prop 65, EU GPSR, CE/UKCA, EU RoHS, EU Battery Regulation, EU CRA, EUDR, ESPR, EU MDR, TPD, FCC Part 15, EN 71, US CPSIA, AAFCO, NMPA, MHLW, MFDS, ANVISA, and 13 more — see the full list in the skill source.</p></div>
+<div class="faq-item"><div class="faq-q">Does it replace a regulatory consultant?</div><p>No. It gets you 80 percent of the way there so a qualified consultant, Notified Body or Cosmetic Product Safety Assessor can focus on the hard 20 percent. It does not replace a CPSR signature, a CE technical file audit, or a licensed customs broker.</p></div>
+<div class="faq-item"><div class="faq-q">How current is the data?</div><p>With the Cleo Insight MCP server enabled, the underlying regulatory dataset is refreshed daily — including new SVHC additions, Annex updates, and enforcement dates. Without MCP, the skill falls back to web search with the same prompt structure, but you should treat the result as a starting point and verify against EUR-Lex or the relevant authority before shipping.</p></div>
+<div class="faq-item"><div class="faq-q">Does it work for non-cosmetic products?</div><p>Yes. The same skill handles cosmetics, food and beverage, supplements, electronics, toys, textiles, jewelry, candles, household chemicals, pet products, agricultural products and 8 more verticals. Each vertical also has a deep-dive skill (e.g. <code>cosmetics-compliance</code>) for category-specific edge cases.</p></div>
+
+<h2>Related skills</h2>
+<div class="related">
+  <a href="./substance-screening.html"><strong>substance-screening</strong><span>Deep INCI→CAS resolution and per-jurisdiction substance verdicts.</span></a>
+  <a href="./labeling-compliance.html"><strong>labeling-compliance</strong><span>Country-specific labels, INCI, allergens, CE/UKCA, multi-language rules.</span></a>
+  <a href="./multi-jurisdiction-scan.html"><strong>multi-jurisdiction-scan</strong><span>Parallel scan across all target markets. One agent per jurisdiction.</span></a>
+  <a href="./customs-and-trade.html"><strong>customs-and-trade</strong><span>HS code, duty, landed cost, dual-use, sanctions.</span></a>
+  <a href="./cosmetics-compliance.html"><strong>cosmetics-compliance</strong><span>EU CPNP/PIF/CPSR, US MoCRA, UK SCPN, JP MHLW, CN NMPA.</span></a>
+</div>
+
+<div class="callout">
+  <strong>Try it in 30 seconds.</strong>
+  <p style="margin-top:8px;margin-bottom:0;">Drop the install one-liner into your Claude Desktop, Cursor or Continue config and ask your agent: <em>"Run a product compliance check on this formula for EU, UK and US."</em> The skill triggers automatically — no manual invocation.</p>
+</div>
+
+<footer>
+  <p>Install: <span class="install">npx -y @cleo-labs/skills-mcp@latest</span></p>
+  <p>Open source. MIT-licensed. Built by <a href="https://cleolabs.co">Cleo Labs</a>. Powered by the MARIA engine — 25,000 regulations, 49 countries, live.</p>
+  <p style="margin-top:16px;font-size:13px;">This is compliance guidance, not legal advice. Always verify against official sources (EUR-Lex, FDA, gov.uk, MHLW) before a business decision.</p>
+</footer>
+
+</div>
+</body>
+</html>

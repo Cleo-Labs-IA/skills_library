@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HS Code Lookup & Customs Compliance — Open-source AI Skill | Cleo Comply</title>
+<meta name="description" content="Free HS code lookup, duty calculation, landed cost, dual-use screening, and sanctions check. Open-source AI skill that runs inside Claude Code, Cursor or any MCP client.">
+<link rel="canonical" href="https://cleo-labs-ia.github.io/skills_library/docs/skills/customs-and-trade.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HS Code Lookup & Customs Compliance — Cleo Comply">
+<meta property="og:description" content="Open-source AI skill for HS code classification, duty calculation, landed cost, dual-use and sanctions screening.">
+<meta property="og:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<meta property="og:url" content="https://cleo-labs-ia.github.io/skills_library/docs/skills/customs-and-trade.html">
+<meta property="og:site_name" content="Cleo Labs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HS Code Lookup & Customs Compliance — Cleo Comply">
+<meta name="twitter:description" content="Open-source AI skill for HS code classification, duty calculation, landed cost, dual-use and sanctions screening.">
+<meta name="twitter:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"HS Code Lookup & Customs Compliance — Cleo Comply","description":"Open-source AI skill for HS code classification, duty calculation, landed cost, dual-use and sanctions screening.","totalTime":"P14D","step":[{"@type": "HowToStep", "name": "Describe the product", "text": "Give the agent the product description, materials, function and use-case. The more specific, the more accurate the classification \u2014 especially for textiles, prepared foods, and machinery."}, {"@type": "HowToStep", "name": "Classify to the destination's tariff schedule", "text": "The skill pulls EU TARIC, US HTSUS, UK GT, China MFN and proposes the 8\u201310 digit code with the WCO Explanatory Notes cited. It flags alternative codes and explains why each was rejected."}, {"@type": "HowToStep", "name": "Calculate duty and VAT/sales tax", "text": "Apply the MFN duty rate, then any preferential origin (USMCA, EUR.1, REX, GSP). Add destination VAT or sales tax, anti-dumping duty if applicable."}, {"@type": "HowToStep", "name": "Estimate landed cost", "text": "Combine ex-works price, freight (sea or air), insurance, duty, VAT, customs broker fee, and last-mile delivery for the destination warehouse."}, {"@type": "HowToStep", "name": "Screen for dual-use and sanctions", "text": "Check the 10-digit code against EU dual-use list, US EAR Commerce Control List, ITAR USML. Screen consignee against EU + OFAC + UK sanctions lists."}, {"@type": "HowToStep", "name": "Generate the customs docs", "text": "Commercial invoice, packing list, certificate of origin (EUR.1, REX statement, USMCA certification), dangerous goods declaration if applicable, Incoterms 2020 responsibility matrix."}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "What is an HS code?", "acceptedAnswer": {"@type": "Answer", "text": "Harmonized System code \u2014 a 6-digit international product classification maintained by the World Customs Organization, used by 200+ countries to assign duty rates. Most countries extend it to 8 or 10 digits for national tariff lines (EU TARIC = 10, US HTSUS = 10, China MFN = 8)."}}, {"@type": "Question", "name": "Why does the wrong HS code matter?", "acceptedAnswer": {"@type": "Answer", "text": "It causes the wrong duty to be paid (usually back-billed with interest), triggers customs inspection delays of 5\u201310 days, and in some jurisdictions can be treated as customs fraud if intentional. It also affects free-trade agreement eligibility."}}, {"@type": "Question", "name": "Can the skill find a preferential rate under USMCA or EUR.1?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The skill checks the product against the rules of origin in each FTA (e.g. USMCA Article 4.2, EU CETA Annex 5) and confirms whether the product qualifies. It then generates the correct origin statement language."}}, {"@type": "Question", "name": "Does it check for sanctions and dual-use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Consignee and vessel are screened against EU consolidated list, OFAC SDN, UK HM Treasury sanctions, and the destination's domestic equivalents. The HS code is matched against the EU dual-use list (Reg 2021/821), the US EAR Commerce Control List, and ITAR USML where applicable."}}, {"@type": "Question", "name": "Does it replace a customs broker?", "acceptedAnswer": {"@type": "Answer", "text": "No. A licensed customs broker is required for actual border clearance in most jurisdictions. The skill prepares the classification, duty calculation, and docs so the broker has accurate inputs \u2014 cutting broker time and reducing surprise duty bills."}}]}
+</script>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --c-blue: #0008CF; --c-blue-light: rgba(0,8,207,0.06); --c-ink: #1A1A1A; --c-white: #FFFFFF; --c-surface: #F9F8F6; --c-card: #F0EFEC; --c-border: rgba(0,0,0,0.08); --c-text: rgba(0,0,0,0.87); --c-text-2: rgba(0,0,0,0.62); --r-md: 16px; --r-pill: 9999px; --font: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif; --font-mono: ui-monospace, 'SF Mono', 'Fira Code', monospace; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); background: var(--c-surface); color: var(--c-text); line-height: 1.6; font-size: 17px; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+nav.top { display:flex; justify-content:space-between; align-items:center; padding-bottom:24px; border-bottom:1px solid var(--c-border); margin-bottom:48px; }
+nav.top .brand { font-weight:700; color:var(--c-ink); text-decoration:none; font-size:17px; }
+nav.top .links a { margin-left:24px; color:var(--c-text-2); text-decoration:none; font-size:15px; }
+nav.top .links a:hover { color:var(--c-blue); }
+.eyebrow { color:var(--c-blue); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px; }
+h1 { font-size: 44px; line-height: 1.15; font-weight: 700; color: var(--c-ink); letter-spacing: -0.02em; margin-bottom: 24px; }
+h2 { font-size: 28px; line-height: 1.25; font-weight: 700; color: var(--c-ink); margin: 64px 0 20px; letter-spacing: -0.01em; }
+p { margin-bottom: 16px; color: var(--c-text); }
+ul, ol { margin: 16px 0 16px 24px; } li { margin-bottom: 8px; }
+a { color: var(--c-blue); text-decoration: none; } a:hover { text-decoration: underline; }
+.lede { font-size: 19px; color: var(--c-text-2); margin-bottom: 32px; }
+.cta-row { display:flex; gap:12px; flex-wrap:wrap; margin: 32px 0; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding: 12px 20px; border-radius: var(--r-pill); font-weight: 600; font-size: 15px; transition: all 0.2s; }
+.btn-primary { background: var(--c-ink); color: var(--c-white); } .btn-primary:hover { background: var(--c-blue); text-decoration: none; }
+.btn-secondary { background: var(--c-white); color: var(--c-ink); border: 1px solid var(--c-border); } .btn-secondary:hover { border-color: var(--c-ink); text-decoration: none; }
+.install-box { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; font-family: var(--font-mono); font-size: 14px; overflow-x: auto; margin: 24px 0; border:1px solid var(--c-border); }
+table { width:100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+th, td { text-align:left; padding: 12px 16px; border-bottom: 1px solid var(--c-border); vertical-align: top; }
+th { font-weight: 600; color: var(--c-ink); background: var(--c-card); }
+pre { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.6; margin: 24px 0; border:1px solid var(--c-border); }
+.faq-item { border-bottom: 1px solid var(--c-border); padding: 20px 0; } .faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; color: var(--c-ink); margin-bottom: 8px; font-size: 17px; }
+.related { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 32px 0; }
+.related a { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 16px 20px; color: var(--c-ink); transition: all 0.2s; display:block; }
+.related a:hover { border-color: var(--c-blue); transform: translateY(-2px); text-decoration: none; }
+.related a strong { display:block; color: var(--c-blue); margin-bottom: 4px; font-size:14px; font-weight:600; }
+.related a span { color: var(--c-text-2); font-size:14px; }
+.callout { background: var(--c-blue-light); border-left: 3px solid var(--c-blue); border-radius: var(--r-md); padding: 20px 24px; margin: 32px 0; }
+footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--c-border); font-size: 14px; color: var(--c-text-2); }
+footer .install { font-family: var(--font-mono); background: var(--c-card); padding: 8px 14px; border-radius: var(--r-pill); display:inline-block; margin: 8px 0; }
+@media (max-width: 600px) { h1 { font-size: 32px; } h2 { font-size: 24px; } .container { padding: 24px 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="top">
+  <a href="https://cleo-labs-ia.github.io/skills_library/" class="brand">Cleo Comply</a>
+  <div class="links">
+    <a href="https://github.com/Cleo-Labs-IA/skills_library">GitHub</a>
+    <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp">npm</a>
+    <a href="https://cleolabs.co">Cleo Labs</a>
+  </div>
+</nav>
+
+<div class="eyebrow">Skill: Customs & Trade</div>
+<h1>HS code lookup, duty calculation, and customs compliance in one AI skill</h1>
+<p class="lede">An open-source AI skill that classifies your product to the right 10-digit HS code, calculates duty and landed cost across destinations, and screens for dual-use and sanctions risk. Free, MIT-licensed, runs inside any MCP-compatible AI client.</p>
+
+<div class="cta-row">
+  <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp" class="btn btn-primary">Install via npm</a>
+  <a href="https://github.com/Cleo-Labs-IA/skills_library/tree/main/skills/customs-and-trade" class="btn btn-secondary">View on GitHub</a>
+  <a href="https://legaldata-public.cleolabs.co" class="btn btn-secondary">Get API key</a>
+</div>
+
+<div class="install-box"><code>npx -y @cleo-labs/skills-mcp@latest</code></div>
+
+<p>Most small importers learn HS code classification the same way: they pick a 6-digit code that looks right, the freight forwarder uses it, and either the shipment clears or it gets held at the border while customs reclassifies it — usually upward by 4–8 percent of duty. Getting the code wrong is the most expensive easy mistake in cross-border trade.</p>
+<p>The <code>customs-and-trade</code> skill takes a product description, a BOM, or a HS suggestion and validates it against the destination country's tariff schedule (EU TARIC, US HTSUS, UK Global Tariff, China MFN). It then calculates the duty rate, applies any preferential-origin reduction (USMCA, EUR.1, REX, GSP), estimates the landed cost, and screens the importer and consignee against EU + US + UK sanctions lists.</p>
+
+<h2>Why it matters</h2>
+<p>A wrong HS code does three things: it pays the wrong duty (usually too low, then back-billed with interest), it triggers a customs inspection that holds the container for 5–10 days, and it can flag the shipment for fraud review if customs concludes the misclassification was intentional. None of those are good for a small brand on its third container.</p>
+<p>The right HS code does the opposite. It lets you predict duty and landed cost before you commit to the shipment. It lets you check whether your product qualifies for a preferential trade agreement that reduces duty to zero. And it surfaces dual-use or export-controlled items before they trigger an ITAR or EAR violation.</p>
+<p>The skill ties HS classification to the actual destination tariff schedule — EU TARIC at 10 digits, US HTSUS at 10 digits, UK Global Tariff post-Brexit, China MFN at 8 digits — so the duty number you get is the duty you will actually pay, not a generic ad-valorem estimate.</p>
+
+<h2>How the customs-and-trade skill works</h2>
+<ol>
+  <li><strong>Describe the product.</strong> Give the agent the product description, materials, function and use-case. The more specific, the more accurate the classification — especially for textiles, prepared foods, and machinery.</li>
+  <li><strong>Classify to the destination's tariff schedule.</strong> The skill pulls EU TARIC, US HTSUS, UK GT, China MFN and proposes the 8–10 digit code with the WCO Explanatory Notes cited. It flags alternative codes and explains why each was rejected.</li>
+  <li><strong>Calculate duty and VAT/sales tax.</strong> Apply the MFN duty rate, then any preferential origin (USMCA, EUR.1, REX, GSP). Add destination VAT or sales tax, anti-dumping duty if applicable.</li>
+  <li><strong>Estimate landed cost.</strong> Combine ex-works price, freight (sea or air), insurance, duty, VAT, customs broker fee, and last-mile delivery for the destination warehouse.</li>
+  <li><strong>Screen for dual-use and sanctions.</strong> Check the 10-digit code against EU dual-use list, US EAR Commerce Control List, ITAR USML. Screen consignee against EU + OFAC + UK sanctions lists.</li>
+  <li><strong>Generate the customs docs.</strong> Commercial invoice, packing list, certificate of origin (EUR.1, REX statement, USMCA certification), dangerous goods declaration if applicable, Incoterms 2020 responsibility matrix.</li>
+</ol>
+
+<h2>Regulations covered</h2>
+<table>
+  <thead><tr><th>Market / scope</th><th>Regulation</th><th>What it requires</th></tr></thead>
+  <tbody>
+    <tr><td>EU 27</td><td>Reg 952/2013 UCC + TARIC</td><td>10-digit classification, duty, VAT at import, anti-dumping</td></tr>
+    <tr><td>US</td><td>HTSUS + 19 CFR</td><td>10-digit HTS, MPF, HMF, anti-dumping, 232/301 tariffs</td></tr>
+    <tr><td>UK</td><td>UK Global Tariff post-Brexit</td><td>10-digit UK GT classification, duty, VAT</td></tr>
+    <tr><td>China</td><td>GACC MFN tariff schedule</td><td>8-digit HS, MFN duty, VAT, consumption tax</td></tr>
+    <tr><td>EU/US/UK</td><td>Sanctions lists</td><td>EU consolidated, OFAC SDN, UK HM Treasury, screen consignee + vessel</td></tr>
+    <tr><td>EU</td><td>Reg 2021/821 Dual-Use</td><td>Export control on listed items + catch-all WMD/military</td></tr>
+    <tr><td>US</td><td>EAR + ITAR</td><td>Commerce Control List (CCL), USML, license requirements</td></tr>
+    <tr><td>All</td><td>WCO HS Convention</td><td>6-digit base code shared across 200 jurisdictions</td></tr>
+    <tr><td>EU+UK+US+CA+MX+JP+KR</td><td>Free Trade Agreements</td><td>Preferential origin: USMCA, EUR.1, REX, GSP, CETA, JEFTA</td></tr>
+  </tbody>
+</table>
+
+<h2>Example output</h2>
+<pre>Product: Bluetooth wireless speaker, 5W output, USB-C charging, plastic + aluminum housing
+Origin: Shenzhen, China
+Destination 1: Frankfurt, Germany (EU)
+Destination 2: Los Angeles, California (US)
+
+EU classification:
+  Proposed HS: 8518.22.00 — Multiple loudspeakers, mounted in the same enclosure
+  Alternative considered: 8517.69.00 (other audio apparatus) — rejected because device is primarily a loudspeaker, BT is incidental
+  TARIC 10-digit: 8518 22 00 90
+  MFN duty: 4.5% ad valorem
+  Origin: non-preferential (China). No preferential agreement available.
+  VAT at import (DE): 19%
+  Landed cost (ex-works $12 unit, 1000 units, sea freight): $13.85/unit landed
+
+US classification:
+  Proposed HTS: 8518.22.0000 — Multiple loudspeakers, mounted in the same enclosure
+  MFN duty: 4.9%
+  Section 301 (China origin, List 4A): +7.5%
+  MPF: 0.3464% of entered value (cap $634.62)
+  HMF: 0.125%
+  Total effective tariff on China-origin BT speakers: ~12.4%
+  Landed cost: $14.92/unit landed
+
+Sanctions screen: PASS (consignee + vessel checked against OFAC/EU/UK)
+Dual-use screen: PASS (consumer audio device, not on EU 821/2021 or EAR CCL)
+FCC: required, Part 15 Subpart B + Subpart C (Bluetooth)
+CE: required, RED 2014/53/EU + EMC + RoHS
+
+Verdict: Cleared for both EU and US. US duty significantly higher due to S301.
+Action: Consider origin shift to non-China (e.g. Vietnam, Indonesia) to drop S301.</pre>
+
+<h2>FAQ</h2>
+<div class="faq-item"><div class="faq-q">What is an HS code?</div><p>Harmonized System code — a 6-digit international product classification maintained by the World Customs Organization, used by 200+ countries to assign duty rates. Most countries extend it to 8 or 10 digits for national tariff lines (EU TARIC = 10, US HTSUS = 10, China MFN = 8).</p></div>
+<div class="faq-item"><div class="faq-q">Why does the wrong HS code matter?</div><p>It causes the wrong duty to be paid (usually back-billed with interest), triggers customs inspection delays of 5–10 days, and in some jurisdictions can be treated as customs fraud if intentional. It also affects free-trade agreement eligibility.</p></div>
+<div class="faq-item"><div class="faq-q">Can the skill find a preferential rate under USMCA or EUR.1?</div><p>Yes. The skill checks the product against the rules of origin in each FTA (e.g. USMCA Article 4.2, EU CETA Annex 5) and confirms whether the product qualifies. It then generates the correct origin statement language.</p></div>
+<div class="faq-item"><div class="faq-q">Does it check for sanctions and dual-use?</div><p>Yes. Consignee and vessel are screened against EU consolidated list, OFAC SDN, UK HM Treasury sanctions, and the destination's domestic equivalents. The HS code is matched against the EU dual-use list (Reg 2021/821), the US EAR Commerce Control List, and ITAR USML where applicable.</p></div>
+<div class="faq-item"><div class="faq-q">Does it replace a customs broker?</div><p>No. A licensed customs broker is required for actual border clearance in most jurisdictions. The skill prepares the classification, duty calculation, and docs so the broker has accurate inputs — cutting broker time and reducing surprise duty bills.</p></div>
+
+<h2>Related skills</h2>
+<div class="related">
+  <a href="./product-compliance.html"><strong>product-compliance</strong><span>Full substance check across 13 databases, verdict per market.</span></a>
+  <a href="./import-export-docs.html"><strong>import-export-docs</strong><span>Commercial invoice, packing list, EUR.1/REX/USMCA, DG declarations.</span></a>
+  <a href="./marketplace-compliance.html"><strong>marketplace-compliance</strong><span>Required docs per platform per category.</span></a>
+  <a href="./multi-jurisdiction-scan.html"><strong>multi-jurisdiction-scan</strong><span>Parallel scan across all target markets.</span></a>
+  <a href="./electronics-compliance.html"><strong>electronics-compliance</strong><span>CE marking electronics, FCC Part 15, EU Battery Reg.</span></a>
+</div>
+
+<div class="callout">
+  <strong>Try it in 30 seconds.</strong>
+  <p style="margin-top:8px;margin-bottom:0;">Drop the install one-liner into your Claude Desktop, Cursor or Continue config and ask your agent for a customs & trade check. The skill triggers automatically.</p>
+</div>
+
+<footer>
+  <p>Install: <span class="install">npx -y @cleo-labs/skills-mcp@latest</span></p>
+  <p>Open source. MIT-licensed. Built by <a href="https://cleolabs.co">Cleo Labs</a>. Powered by the MARIA engine — 25,000 regulations, 49 countries, live.</p>
+  <p style="margin-top:16px;font-size:13px;">This is compliance guidance, not legal advice. Always verify against official sources (EUR-Lex, FDA, gov.uk, MHLW) before a business decision.</p>
+</footer>
+
+</div>
+</body>
+</html>

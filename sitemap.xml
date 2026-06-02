@@ -1,21 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://cleo-labs-ia.github.io/skills_library/</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://cleo-labs-ia.github.io/skills_library/index.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://cleo-labs-ia.github.io/skills_library/distribution.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
+  <!-- Root + main pages -->
+  <url><loc>https://cleo-labs-ia.github.io/skills_library/</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://cleo-labs-ia.github.io/skills_library/index.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://cleo-labs-ia.github.io/skills_library/distribution.html</loc><lastmod>2026-05-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- README translations -->
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/README.md</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/README.fr.md</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/README.es.md</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/README.de.md</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/README.ja.md</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/README.zh.md</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- Per-skill SEO landing pages (10 top skills) -->
+  <url><loc>https://cleo-labs-ia.github.io/skills_library/docs/skills/product-compliance.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://cleo-labs-ia.github.io/skills_library/docs/skills/cosmetics-compliance.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://cleo-labs-ia.github.io/skills_library/docs/skills/food-compliance.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://cleo-labs-ia.github.io/skills_library/docs/skills/customs-and-trade.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://cleo-labs-ia.github.io/skills_library/docs/skills/electronics-compliance.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://cleo-labs-ia.github.io/skills_library/docs/skills/labeling-compliance.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://cleo-labs-ia.github.io/skills_library/docs/skills/medical-device-compliance.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://cleo-labs-ia.github.io/skills_library/docs/skills/toy-compliance.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://cleo-labs-ia.github.io/skills_library/docs/skills/marketplace-compliance.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://cleo-labs-ia.github.io/skills_library/docs/skills/multi-jurisdiction-scan.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+
+  <!-- Tutorials (per client) -->
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/tutorials/claude-desktop.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/tutorials/cursor.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/tutorials/continue.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/tutorials/custom-client.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/tutorials/headless.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Case studies -->
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/case-studies/cosmetics-eu-retinol.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/case-studies/electronics-bluetooth-speaker.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/case-studies/food-supplement-japan.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/case-studies/marketplace-amazon-eu-gpsr.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/case-studies/medical-class-1-device.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/case-studies/multi-jurisdiction-launch.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/case-studies/pet-product-uk-rebrand.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/case-studies/recall-detection.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/case-studies/textile-pfas-restriction.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/case-studies/toy-childrens-eu.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Reference docs -->
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/INSTALL.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/EXAMPLES.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/FAQ.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/ROADMAP.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/BENCHMARK.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/CONTRIBUTORS.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://github.com/Cleo-Labs-IA/skills_library/blob/main/comparison.md</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- npm package -->
+  <url><loc>https://www.npmjs.com/package/@cleo-labs/skills-mcp</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
 </urlset>

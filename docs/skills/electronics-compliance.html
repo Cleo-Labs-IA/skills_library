@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CE Marking Electronics — Open-source AI Skill | Cleo Comply</title>
+<meta name="description" content="CE marking for electronics: LVD, EMC, RED, RoHS, EU Battery Reg, FCC Part 15, UKCA, EU Cyber Resilience Act. Open-source AI skill that runs in Claude Code.">
+<link rel="canonical" href="https://cleo-labs-ia.github.io/skills_library/docs/skills/electronics-compliance.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CE Marking Electronics — Cleo Comply">
+<meta property="og:description" content="Open-source AI skill covering CE (LVD/EMC/RED/RoHS), FCC Part 15, UKCA, EU Battery Regulation and the Cyber Resilience Act.">
+<meta property="og:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<meta property="og:url" content="https://cleo-labs-ia.github.io/skills_library/docs/skills/electronics-compliance.html">
+<meta property="og:site_name" content="Cleo Labs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CE Marking Electronics — Cleo Comply">
+<meta name="twitter:description" content="Open-source AI skill covering CE (LVD/EMC/RED/RoHS), FCC Part 15, UKCA, EU Battery Regulation and the Cyber Resilience Act.">
+<meta name="twitter:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"CE Marking Electronics — Cleo Comply","description":"Open-source AI skill covering CE (LVD/EMC/RED/RoHS), FCC Part 15, UKCA, EU Battery Regulation and the Cyber Resilience Act.","totalTime":"P14D","step":[{"@type": "HowToStep", "name": "Identify all applicable directives", "text": "Most consumer electronics products trigger at least 4 CE directives at once. The skill maps function and components to the directive list \u2014 LVD, EMC, RED, RoHS, ErP, Battery, CRA where applicable."}, {"@type": "HowToStep", "name": "Pick the right harmonized standards", "text": "For each directive, pick the harmonized EN standard that gives presumption of conformity. The skill matches product class to standard (EN 60335 vs EN 62368, EN 55032 vs CISPR 25, EN 300 328 for 2.4 GHz)."}, {"@type": "HowToStep", "name": "Run the conformity assessment", "text": "Internal Production Control (Module A) for most consumer electronics; Notified Body for Class III medical or where harmonized standards are absent."}, {"@type": "HowToStep", "name": "Compile the technical file", "text": "Description, drawings, BOM, test reports, risk assessment, EU DoC. Retain 10 years post last unit placed on market."}, {"@type": "HowToStep", "name": "Affix CE mark and write the DoC", "text": "CE on product or rating plate, DoC drafted in EU official language of the market, with all directives and standards listed."}, {"@type": "HowToStep", "name": "Mirror for UKCA", "text": "UKCA mark required for GB market. UKCA standards designated by gov.uk; effectively the same as EN for now but diverging. Northern Ireland still on CE."}, {"@type": "HowToStep", "name": "Handle FCC for US market", "text": "Part 15 Subpart B for unintentional radiators (any digital device); Subpart C for intentional radiators (Wi-Fi, BT). SDoC (self-declaration) or full certification depending on type."}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "What is CE marking for electronics?", "acceptedAnswer": {"@type": "Answer", "text": "CE is the EU manufacturer self-declaration that the product meets all applicable EU product directives (LVD, EMC, RED, RoHS, ErP, Battery, CRA as applicable) and supporting harmonized standards. It is required for placing electronics on the EU market."}}, {"@type": "Question", "name": "Do I need a Notified Body for CE on electronics?", "acceptedAnswer": {"@type": "Answer", "text": "Usually no. Most consumer electronics use Module A (self-declaration) and need no Notified Body. Notified Body involvement is required for radio equipment using non-harmonized standards (RED Module B+C), high-power radio, or specific medical/PPE-adjacent products."}}, {"@type": "Question", "name": "What changed with RED Article 3.3 in 2025?", "acceptedAnswer": {"@type": "Answer", "text": "From August 2025, internet-connected radio devices, wearables, and toys with radio must satisfy three new essential requirements: network resilience, personal data protection, and protection against fraud. Harmonized standards EN 18031-1/-2/-3 give presumption of conformity."}}, {"@type": "Question", "name": "Is UKCA still required?", "acceptedAnswer": {"@type": "Answer", "text": "Yes for GB market \u2014 but the UK Product Regulation and Metrology Bill 2024 extends indefinite recognition of CE for most product categories. UKCA is still valid; CE is sufficient for GB in most categories as of 2025."}}, {"@type": "Question", "name": "What is the EU Cyber Resilience Act?", "acceptedAnswer": {"@type": "Answer", "text": "Reg 2024/2847, applicable Dec 2027 for most products. Any product with a digital element placed on the EU market must meet security-by-design, vulnerability handling, and 24h-incident reporting requirements. Penalties up to 2.5% of global turnover."}}]}
+</script>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --c-blue: #0008CF; --c-blue-light: rgba(0,8,207,0.06); --c-ink: #1A1A1A; --c-white: #FFFFFF; --c-surface: #F9F8F6; --c-card: #F0EFEC; --c-border: rgba(0,0,0,0.08); --c-text: rgba(0,0,0,0.87); --c-text-2: rgba(0,0,0,0.62); --r-md: 16px; --r-pill: 9999px; --font: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif; --font-mono: ui-monospace, 'SF Mono', 'Fira Code', monospace; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); background: var(--c-surface); color: var(--c-text); line-height: 1.6; font-size: 17px; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+nav.top { display:flex; justify-content:space-between; align-items:center; padding-bottom:24px; border-bottom:1px solid var(--c-border); margin-bottom:48px; }
+nav.top .brand { font-weight:700; color:var(--c-ink); text-decoration:none; font-size:17px; }
+nav.top .links a { margin-left:24px; color:var(--c-text-2); text-decoration:none; font-size:15px; }
+nav.top .links a:hover { color:var(--c-blue); }
+.eyebrow { color:var(--c-blue); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px; }
+h1 { font-size: 44px; line-height: 1.15; font-weight: 700; color: var(--c-ink); letter-spacing: -0.02em; margin-bottom: 24px; }
+h2 { font-size: 28px; line-height: 1.25; font-weight: 700; color: var(--c-ink); margin: 64px 0 20px; letter-spacing: -0.01em; }
+p { margin-bottom: 16px; color: var(--c-text); }
+ul, ol { margin: 16px 0 16px 24px; } li { margin-bottom: 8px; }
+a { color: var(--c-blue); text-decoration: none; } a:hover { text-decoration: underline; }
+.lede { font-size: 19px; color: var(--c-text-2); margin-bottom: 32px; }
+.cta-row { display:flex; gap:12px; flex-wrap:wrap; margin: 32px 0; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding: 12px 20px; border-radius: var(--r-pill); font-weight: 600; font-size: 15px; transition: all 0.2s; }
+.btn-primary { background: var(--c-ink); color: var(--c-white); } .btn-primary:hover { background: var(--c-blue); text-decoration: none; }
+.btn-secondary { background: var(--c-white); color: var(--c-ink); border: 1px solid var(--c-border); } .btn-secondary:hover { border-color: var(--c-ink); text-decoration: none; }
+.install-box { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; font-family: var(--font-mono); font-size: 14px; overflow-x: auto; margin: 24px 0; border:1px solid var(--c-border); }
+table { width:100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+th, td { text-align:left; padding: 12px 16px; border-bottom: 1px solid var(--c-border); vertical-align: top; }
+th { font-weight: 600; color: var(--c-ink); background: var(--c-card); }
+pre { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.6; margin: 24px 0; border:1px solid var(--c-border); }
+.faq-item { border-bottom: 1px solid var(--c-border); padding: 20px 0; } .faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; color: var(--c-ink); margin-bottom: 8px; font-size: 17px; }
+.related { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 32px 0; }
+.related a { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 16px 20px; color: var(--c-ink); transition: all 0.2s; display:block; }
+.related a:hover { border-color: var(--c-blue); transform: translateY(-2px); text-decoration: none; }
+.related a strong { display:block; color: var(--c-blue); margin-bottom: 4px; font-size:14px; font-weight:600; }
+.related a span { color: var(--c-text-2); font-size:14px; }
+.callout { background: var(--c-blue-light); border-left: 3px solid var(--c-blue); border-radius: var(--r-md); padding: 20px 24px; margin: 32px 0; }
+footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--c-border); font-size: 14px; color: var(--c-text-2); }
+footer .install { font-family: var(--font-mono); background: var(--c-card); padding: 8px 14px; border-radius: var(--r-pill); display:inline-block; margin: 8px 0; }
+@media (max-width: 600px) { h1 { font-size: 32px; } h2 { font-size: 24px; } .container { padding: 24px 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="top">
+  <a href="https://cleo-labs-ia.github.io/skills_library/" class="brand">Cleo Comply</a>
+  <div class="links">
+    <a href="https://github.com/Cleo-Labs-IA/skills_library">GitHub</a>
+    <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp">npm</a>
+    <a href="https://cleolabs.co">Cleo Labs</a>
+  </div>
+</nav>
+
+<div class="eyebrow">Skill: Electronics Compliance</div>
+<h1>CE marking electronics: the open-source AI playbook</h1>
+<p class="lede">From low-voltage isolation to RED Article 3.3 cyber requirements, this open-source AI skill maps every directive that touches a consumer electronics product — CE (LVD/EMC/RED/RoHS), FCC Part 15, UKCA, EU Battery Regulation, and the Cyber Resilience Act applicable from 2027.</p>
+
+<div class="cta-row">
+  <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp" class="btn btn-primary">Install via npm</a>
+  <a href="https://github.com/Cleo-Labs-IA/skills_library/tree/main/skills/electronics-compliance" class="btn btn-secondary">View on GitHub</a>
+  <a href="https://legaldata-public.cleolabs.co" class="btn btn-secondary">Get API key</a>
+</div>
+
+<div class="install-box"><code>npx -y @cleo-labs/skills-mcp@latest</code></div>
+
+<p>CE marking electronics looks like a single mark on the back of the device. It is actually a stacked compliance regime: LVD for electrical safety, EMC for electromagnetic compatibility, RED for any product with a radio (Wi-Fi, Bluetooth, Zigbee, NFC, GPS), RoHS for restricted substances, ErP for energy-related products, EU Battery Regulation for any product with a built-in or removable battery, and from 2027 the Cyber Resilience Act for products with digital elements.</p>
+<p>The <code>electronics-compliance</code> skill walks through each directive that applies to your specific product, identifies the right harmonized standards (EN 60335 family for appliances, EN 55032 for EMC, EN 300 328 for 2.4 GHz radios), and produces the EU Declaration of Conformity structure. It also handles the US equivalent path: FCC Part 15 Subpart B unintentional + Subpart C intentional, UL listing where retailer-required, and California Energy Commission appliance standards.</p>
+
+<h2>Why it matters</h2>
+<p>A consumer electronics product launched without proper CE testing has roughly a 30 percent chance of being pulled from Amazon EU within 12 months of launch — usually via a competitor or watchdog complaint that triggers a marketplace audit. The retailer requires the test reports and DoC, not just the mark itself.</p>
+<p>The Cyber Resilience Act adds a new dimension. From late 2027, any product with a digital element placed on the EU market must satisfy security-by-design requirements, vulnerability handling obligations, and reporting duties. This applies whether the product has Wi-Fi, Bluetooth, or just a USB firmware update path.</p>
+<p>EU Battery Regulation 2023/1542 replaces the old Battery Directive and applies in waves through 2027. Passport requirements for industrial and EV batteries from 2026; due diligence on cobalt, lithium, nickel, and natural graphite from 2025; carbon footprint declaration mandatory from 2026 onward.</p>
+
+<h2>How the electronics-compliance skill works</h2>
+<ol>
+  <li><strong>Identify all applicable directives.</strong> Most consumer electronics products trigger at least 4 CE directives at once. The skill maps function and components to the directive list — LVD, EMC, RED, RoHS, ErP, Battery, CRA where applicable.</li>
+  <li><strong>Pick the right harmonized standards.</strong> For each directive, pick the harmonized EN standard that gives presumption of conformity. The skill matches product class to standard (EN 60335 vs EN 62368, EN 55032 vs CISPR 25, EN 300 328 for 2.4 GHz).</li>
+  <li><strong>Run the conformity assessment.</strong> Internal Production Control (Module A) for most consumer electronics; Notified Body for Class III medical or where harmonized standards are absent.</li>
+  <li><strong>Compile the technical file.</strong> Description, drawings, BOM, test reports, risk assessment, EU DoC. Retain 10 years post last unit placed on market.</li>
+  <li><strong>Affix CE mark and write the DoC.</strong> CE on product or rating plate, DoC drafted in EU official language of the market, with all directives and standards listed.</li>
+  <li><strong>Mirror for UKCA.</strong> UKCA mark required for GB market. UKCA standards designated by gov.uk; effectively the same as EN for now but diverging. Northern Ireland still on CE.</li>
+  <li><strong>Handle FCC for US market.</strong> Part 15 Subpart B for unintentional radiators (any digital device); Subpart C for intentional radiators (Wi-Fi, BT). SDoC (self-declaration) or full certification depending on type.</li>
+</ol>
+
+<h2>Regulations covered</h2>
+<table>
+  <thead><tr><th>Market / scope</th><th>Regulation</th><th>What it requires</th></tr></thead>
+  <tbody>
+    <tr><td>EU LVD</td><td>Directive 2014/35/EU</td><td>Electrical safety 50–1000V AC / 75–1500V DC</td></tr>
+    <tr><td>EU EMC</td><td>Directive 2014/30/EU</td><td>Electromagnetic compatibility, EN 55032/35</td></tr>
+    <tr><td>EU RED</td><td>Directive 2014/53/EU</td><td>Radio equipment, Art. 3.3 cybersecurity from Aug 2025</td></tr>
+    <tr><td>EU RoHS</td><td>Directive 2011/65/EU</td><td>10 restricted substances: Pb, Cd, Hg, Cr6+, PBB, PBDE, 4 phthalates</td></tr>
+    <tr><td>EU ErP</td><td>Directive 2009/125/EC + Lots</td><td>Energy-related products ecodesign, standby/off-mode limits</td></tr>
+    <tr><td>EU Battery</td><td>Reg 2023/1542</td><td>Removability, passport (industrial+EV from 2026), due diligence</td></tr>
+    <tr><td>EU CRA</td><td>Reg 2024/2847</td><td>Cyber resilience for digital products, applicable Dec 2027</td></tr>
+    <tr><td>UK</td><td>UKCA framework</td><td>Mirrored CE for GB market; CE accepted via Product Regulation Bill 2024 extension</td></tr>
+    <tr><td>US</td><td>47 CFR Part 15</td><td>FCC unintentional + intentional radiators, SDoC or certification</td></tr>
+    <tr><td>US</td><td>UL listing (private)</td><td>Retailer-required for hardline electronics in US (Walmart, Costco, Best Buy)</td></tr>
+    <tr><td>CA</td><td>ISED RSS + IC certification</td><td>Canadian equivalent of FCC for radios</td></tr>
+  </tbody>
+</table>
+
+<h2>Example output</h2>
+<pre>Product: USB-C charger, GaN, 65W, with USB-A QC4 fallback
+Origin: Vietnam
+Target markets: EU, UK, US, CA
+
+EU applicable directives:
+  LVD 2014/35/EU — YES (rated &gt;50V AC at input)
+    Harmonized standard: EN 62368-1:2020 (audio/video, ICT, communication equipment)
+  EMC 2014/30/EU — YES (mains-connected)
+    EN 55032:2015 (emissions) + EN 55035:2017 (immunity)
+  ErP Lot 7 — YES (external power supply)
+    Reg 2019/1782: efficiency tier VI, no-load &lt;0.075W, average active &gt;87%
+  RoHS 2011/65/EU — YES (all electronics)
+    Test report per IEC 63000:2018
+  Battery 2023/1542 — NO (no internal battery)
+  RED 2014/53/EU — NO (no radio)
+  CRA — Marginal — USB-PD negotiation has firmware but no network connectivity. Likely OUT OF SCOPE.
+
+Required conformity assessment: Module A (Internal Production Control)
+EU DoC: required in language of destination MS
+
+UK: UKCA + UKCA-mirrored standards (currently equal to EN). CE accepted via PRB extension.
+
+US:
+  FCC Part 15 Subpart B (unintentional radiator) — yes, SDoC route
+  DOE energy efficiency: yes, Level VI external power supply standard
+  CEC: required for sale in California; Tier 1 EPS spec
+
+CA:
+  ISED RSS exempt (no radio)
+  CSA / cULus mark recommended for retail acceptance
+
+Verdict: Path is clear. Estimated test cost €4–8k EU + $2–5k US.
+Time: 4–6 weeks test + 2 weeks documentation.</pre>
+
+<h2>FAQ</h2>
+<div class="faq-item"><div class="faq-q">What is CE marking for electronics?</div><p>CE is the EU manufacturer self-declaration that the product meets all applicable EU product directives (LVD, EMC, RED, RoHS, ErP, Battery, CRA as applicable) and supporting harmonized standards. It is required for placing electronics on the EU market.</p></div>
+<div class="faq-item"><div class="faq-q">Do I need a Notified Body for CE on electronics?</div><p>Usually no. Most consumer electronics use Module A (self-declaration) and need no Notified Body. Notified Body involvement is required for radio equipment using non-harmonized standards (RED Module B+C), high-power radio, or specific medical/PPE-adjacent products.</p></div>
+<div class="faq-item"><div class="faq-q">What changed with RED Article 3.3 in 2025?</div><p>From August 2025, internet-connected radio devices, wearables, and toys with radio must satisfy three new essential requirements: network resilience, personal data protection, and protection against fraud. Harmonized standards EN 18031-1/-2/-3 give presumption of conformity.</p></div>
+<div class="faq-item"><div class="faq-q">Is UKCA still required?</div><p>Yes for GB market — but the UK Product Regulation and Metrology Bill 2024 extends indefinite recognition of CE for most product categories. UKCA is still valid; CE is sufficient for GB in most categories as of 2025.</p></div>
+<div class="faq-item"><div class="faq-q">What is the EU Cyber Resilience Act?</div><p>Reg 2024/2847, applicable Dec 2027 for most products. Any product with a digital element placed on the EU market must meet security-by-design, vulnerability handling, and 24h-incident reporting requirements. Penalties up to 2.5% of global turnover.</p></div>
+
+<h2>Related skills</h2>
+<div class="related">
+  <a href="./product-compliance.html"><strong>product-compliance</strong><span>Full substance check across 13 databases, verdict per market.</span></a>
+  <a href="./customs-and-trade.html"><strong>customs-and-trade</strong><span>HS code, duty, landed cost, dual-use, sanctions.</span></a>
+  <a href="./testing-certification.html"><strong>testing-certification</strong><span>Lab selection, costs, timelines per market.</span></a>
+  <a href="./labeling-compliance.html"><strong>labeling-compliance</strong><span>Country-specific labels, CE/UKCA marks, multi-language.</span></a>
+  <a href="./marketplace-compliance.html"><strong>marketplace-compliance</strong><span>Amazon EU GPSR for electronics + Walmart UL requirements.</span></a>
+</div>
+
+<div class="callout">
+  <strong>Try it in 30 seconds.</strong>
+  <p style="margin-top:8px;margin-bottom:0;">Drop the install one-liner into your Claude Desktop, Cursor or Continue config and ask your agent for a electronics compliance check. The skill triggers automatically.</p>
+</div>
+
+<footer>
+  <p>Install: <span class="install">npx -y @cleo-labs/skills-mcp@latest</span></p>
+  <p>Open source. MIT-licensed. Built by <a href="https://cleolabs.co">Cleo Labs</a>. Powered by the MARIA engine — 25,000 regulations, 49 countries, live.</p>
+  <p style="margin-top:16px;font-size:13px;">This is compliance guidance, not legal advice. Always verify against official sources (EUR-Lex, FDA, gov.uk, MHLW) before a business decision.</p>
+</footer>
+
+</div>
+</body>
+</html>

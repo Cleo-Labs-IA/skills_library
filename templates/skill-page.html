@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--
+  Cleo Comply — Programmatic SEO landing page TEMPLATE
+  Design system: Cleo V4 (Satoshi font, light mode, #0008CF accent)
+
+  Placeholders to replace when generating a real page:
+    {{TARGET_QUERY}}        — the exact search query this page targets, lowercase
+                              e.g. "product compliance checker"
+    {{TARGET_QUERY_TC}}     — the same query, title case
+                              e.g. "Product Compliance Checker"
+    {{H1_NATURAL}}          — natural-language H1 rephrasing of the query
+                              e.g. "The open-source product compliance checker for global brands"
+    {{META_DESCRIPTION}}    — 150–160 char meta description, must include {{TARGET_QUERY}}
+    {{SKILL_SLUG}}          — the skill folder name, e.g. "product-compliance"
+    {{SKILL_NAME_TC}}       — human-readable skill name, e.g. "Product Compliance"
+    {{INTRO_PARAGRAPH}}     — opening paragraph (~120 words) that answers the query
+    {{WHY_SECTION}}         — why-it-matters block, 2–3 paragraphs
+    {{HOW_IT_WORKS_STEPS}}  — ordered list of HowTo steps (Schema.org HowToStep, in body)
+    {{REGULATIONS_TABLE}}   — table rows for key regulations: name | scope | what it requires
+    {{EXAMPLE_OUTPUT}}      — sample agent output snippet
+    {{FAQ_ITEMS}}            — array of {q, a} for FAQPage JSON-LD + visible FAQ section
+    {{INTERNAL_LINKS}}      — 3–5 sibling skill pages
+    {{HOWTO_JSONLD_STEPS}}  — JSON-LD steps array
+    {{FAQ_JSONLD}}          — JSON-LD FAQ array
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{TARGET_QUERY_TC}} — Open-source AI Skill | Cleo Comply</title>
+<meta name="description" content="{{META_DESCRIPTION}}">
+<link rel="canonical" href="https://cleo-labs-ia.github.io/skills_library/docs/skills/{{SKILL_SLUG}}.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{TARGET_QUERY_TC}} — Cleo Comply">
+<meta property="og:description" content="{{META_DESCRIPTION}}">
+<meta property="og:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<meta property="og:url" content="https://cleo-labs-ia.github.io/skills_library/docs/skills/{{SKILL_SLUG}}.html">
+<meta property="og:site_name" content="Cleo Labs">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{TARGET_QUERY_TC}}">
+<meta name="twitter:description" content="{{META_DESCRIPTION}}">
+<meta name="twitter:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+
+<!-- Schema.org HowTo -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "{{TARGET_QUERY_TC}}",
+  "description": "{{META_DESCRIPTION}}",
+  "totalTime": "PT15M",
+  "step": [{{HOWTO_JSONLD_STEPS}}]
+}
+</script>
+
+<!-- Schema.org FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{{FAQ_JSONLD}}]
+}
+</script>
+
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --c-blue: #0008CF; --c-blue-hover: #0006A8; --c-blue-light: rgba(0,8,207,0.06);
+  --c-ink: #1A1A1A; --c-white: #FFFFFF; --c-surface: #F9F8F6; --c-card: #F0EFEC;
+  --c-border: rgba(0,0,0,0.08); --c-text: rgba(0,0,0,0.87); --c-text-2: rgba(0,0,0,0.62);
+  --r-md: 16px; --r-lg: 24px; --r-pill: 9999px;
+  --font: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Fira Code', monospace;
+}
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); background: var(--c-surface); color: var(--c-text); line-height: 1.6; font-size: 17px; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+nav.top { display:flex; justify-content:space-between; align-items:center; padding-bottom:24px; border-bottom:1px solid var(--c-border); margin-bottom:48px; }
+nav.top .brand { font-weight:700; color:var(--c-ink); text-decoration:none; font-size:17px; }
+nav.top .links a { margin-left:24px; color:var(--c-text-2); text-decoration:none; font-size:15px; }
+nav.top .links a:hover { color:var(--c-blue); }
+.eyebrow { color:var(--c-blue); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px; }
+h1 { font-size: 44px; line-height: 1.15; font-weight: 700; color: var(--c-ink); letter-spacing: -0.02em; margin-bottom: 24px; }
+h2 { font-size: 28px; line-height: 1.25; font-weight: 700; color: var(--c-ink); margin: 64px 0 20px; letter-spacing: -0.01em; }
+h3 { font-size: 20px; font-weight: 600; color: var(--c-ink); margin: 32px 0 12px; }
+p { margin-bottom: 16px; color: var(--c-text); }
+ul, ol { margin: 16px 0 16px 24px; }
+li { margin-bottom: 8px; }
+a { color: var(--c-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.lede { font-size: 19px; color: var(--c-text-2); margin-bottom: 32px; }
+.cta-row { display:flex; gap:12px; flex-wrap:wrap; margin: 32px 0; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding: 12px 20px; border-radius: var(--r-pill); font-weight: 600; font-size: 15px; transition: all 0.2s; cursor: pointer; }
+.btn-primary { background: var(--c-ink); color: var(--c-white); }
+.btn-primary:hover { background: var(--c-blue); text-decoration: none; }
+.btn-secondary { background: var(--c-white); color: var(--c-ink); border: 1px solid var(--c-border); }
+.btn-secondary:hover { border-color: var(--c-ink); text-decoration: none; }
+.install-box { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; font-family: var(--font-mono); font-size: 14px; overflow-x: auto; margin: 24px 0; border:1px solid var(--c-border); }
+.install-box code { color: var(--c-ink); }
+table { width:100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+th, td { text-align:left; padding: 12px 16px; border-bottom: 1px solid var(--c-border); vertical-align: top; }
+th { font-weight: 600; color: var(--c-ink); background: var(--c-card); }
+pre { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.6; margin: 24px 0; border:1px solid var(--c-border); }
+.faq-item { border-bottom: 1px solid var(--c-border); padding: 20px 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; color: var(--c-ink); margin-bottom: 8px; font-size: 17px; }
+.related { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 32px 0; }
+.related a { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 16px 20px; color: var(--c-ink); transition: all 0.2s; display:block; }
+.related a:hover { border-color: var(--c-blue); transform: translateY(-2px); text-decoration: none; }
+.related a strong { display:block; color: var(--c-blue); margin-bottom: 4px; font-size:14px; font-weight:600; }
+.related a span { color: var(--c-text-2); font-size:14px; }
+.callout { background: var(--c-blue-light); border-left: 3px solid var(--c-blue); border-radius: var(--r-md); padding: 20px 24px; margin: 32px 0; }
+footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--c-border); font-size: 14px; color: var(--c-text-2); }
+footer .install { font-family: var(--font-mono); background: var(--c-card); padding: 8px 14px; border-radius: var(--r-pill); display:inline-block; margin: 8px 0; }
+@media (max-width: 600px) { h1 { font-size: 32px; } h2 { font-size: 24px; } .container { padding: 24px 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="top">
+  <a href="https://cleo-labs-ia.github.io/skills_library/" class="brand">Cleo Comply</a>
+  <div class="links">
+    <a href="https://github.com/Cleo-Labs-IA/skills_library">GitHub</a>
+    <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp">npm</a>
+    <a href="https://cleolabs.co">Cleo Labs</a>
+  </div>
+</nav>
+
+<div class="eyebrow">Skill: {{SKILL_NAME_TC}}</div>
+<h1>{{H1_NATURAL}}</h1>
+<p class="lede">{{META_DESCRIPTION}}</p>
+
+<div class="cta-row">
+  <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp" class="btn btn-primary">Install via npm</a>
+  <a href="https://github.com/Cleo-Labs-IA/skills_library/tree/main/skills/{{SKILL_SLUG}}" class="btn btn-secondary">View on GitHub</a>
+  <a href="https://legaldata-public.cleolabs.co" class="btn btn-secondary">Get API key</a>
+</div>
+
+<div class="install-box"><code>npx -y @cleo-labs/skills-mcp@latest</code></div>
+
+{{INTRO_PARAGRAPH}}
+
+<h2>Why it matters</h2>
+{{WHY_SECTION}}
+
+<h2>How the {{SKILL_NAME_TC}} skill works</h2>
+{{HOW_IT_WORKS_STEPS}}
+
+<h2>Regulations covered</h2>
+{{REGULATIONS_TABLE}}
+
+<h2>Example output</h2>
+<pre>{{EXAMPLE_OUTPUT}}</pre>
+
+<h2>FAQ</h2>
+{{FAQ_ITEMS}}
+
+<h2>Related skills</h2>
+<div class="related">
+{{INTERNAL_LINKS}}
+</div>
+
+<div class="callout">
+  <strong>Try it in 30 seconds.</strong>
+  <p style="margin-top:8px;margin-bottom:0;">Drop this into your Claude Desktop, Cursor or Continue config and ask your agent a compliance question. The skill triggers automatically.</p>
+</div>
+
+<footer>
+  <p>Install: <span class="install">npx -y @cleo-labs/skills-mcp@latest</span></p>
+  <p>Open source. MIT-licensed. Built by <a href="https://cleolabs.co">Cleo Labs</a>. Powered by the MARIA engine — 25,000 regulations, 49 countries, live.</p>
+  <p style="margin-top:16px;font-size:13px;">This is compliance guidance, not legal advice. Always verify against official sources (EUR-Lex, FDA, gov.uk, MHLW) before a business decision.</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EU MDR Compliance — Open-source AI Skill | Cleo Comply</title>
+<meta name="description" content="EU MDR 2017/745 compliance walkthrough for small medical device companies: classification, Notified Body, UDI, EUDAMED, ISO 13485, clinical evaluation. Free AI skill.">
+<link rel="canonical" href="https://cleo-labs-ia.github.io/skills_library/docs/skills/medical-device-compliance.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EU MDR Compliance — Cleo Comply">
+<meta property="og:description" content="Open-source AI skill covering EU MDR 2017/745 + IVDR 2017/746, FDA 510(k) / De Novo / PMA, UKCA MDR.">
+<meta property="og:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<meta property="og:url" content="https://cleo-labs-ia.github.io/skills_library/docs/skills/medical-device-compliance.html">
+<meta property="og:site_name" content="Cleo Labs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EU MDR Compliance — Cleo Comply">
+<meta name="twitter:description" content="Open-source AI skill covering EU MDR 2017/745 + IVDR 2017/746, FDA 510(k) / De Novo / PMA, UKCA MDR.">
+<meta name="twitter:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"EU MDR Compliance — Cleo Comply","description":"Open-source AI skill covering EU MDR 2017/745 + IVDR 2017/746, FDA 510(k) / De Novo / PMA, UKCA MDR.","totalTime":"P14D","step":[{"@type": "HowToStep", "name": "Classify the device", "text": "Annex VIII Rules 1\u201322. Skill walks through the rule that drives the highest class (the highest applicable rule wins). Common surprises: software classification has its own Rule 11, contact-with-mucosa rules upgrade many products one class."}, {"@type": "HowToStep", "name": "Choose conformity assessment route", "text": "Annex IX (full QMS + technical documentation) for IIa/IIb/III; Annex X (type examination) for some III; Annex XI for production quality assurance. Class I has self-declaration route except sterile, measuring, or reusable surgical."}, {"@type": "HowToStep", "name": "Pick a Notified Body", "text": "Required for Class IIa and above. Cross-check the NB's scope (MDR codes) against your device. Confirm lead time. Typical fees: \u20ac25\u201380k for IIa first audit, \u20ac60\u2013180k for IIb/III."}, {"@type": "HowToStep", "name": "Build the technical file", "text": "Annex II + III. Device description, design info, risk management (ISO 14971), V&V testing, biocompatibility (ISO 10993), labels/IFU, clinical evaluation, post-market plan."}, {"@type": "HowToStep", "name": "Clinical evaluation", "text": "MEDDEV 2.7/1 rev 4 + MDCG 2020-13. Literature route, equivalence route, or clinical investigation. Equivalence narrower under MDR than MDD."}, {"@type": "HowToStep", "name": "Register on EUDAMED", "text": "Actor module mandatory Feb 2026. UDI/Device module also mandatory. Vigilance and Market Surveillance modules in transition."}, {"@type": "HowToStep", "name": "Run post-market surveillance", "text": "Article 83. PMS plan, PMCF if Class IIa+, PSUR (Class IIa annually for higher class, otherwise as needed). Vigilance reporting under Article 87 (10 working days for serious incident)."}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "What is EU MDR compliance?", "acceptedAnswer": {"@type": "Answer", "text": "EU MDR compliance is the set of obligations under Regulation 2017/745 that every medical device placed on the EU market must satisfy: classification under Annex VIII, conformity assessment under the appropriate Annex, technical documentation under Annex II/III, clinical evaluation, QMS under ISO 13485, UDI/EUDAMED registration, and post-market surveillance under Article 83."}}, {"@type": "Question", "name": "How long does Notified Body certification take?", "acceptedAnswer": {"@type": "Answer", "text": "Under MDR, typical lead time from submission to certificate is 9\u201314 months for a Class IIa device, 12\u201318 months for Class IIb/III. The bottleneck is Notified Body capacity, which contracted under MDR (~50 designated bodies down from 70+ under MDD)."}}, {"@type": "Question", "name": "Is EUDAMED mandatory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes for the Actor and UDI/Device modules, mandatory since February 2026. Clinical Investigation, Vigilance and Market Surveillance modules are in staged activation through 2027. Full mandatory use of all modules is now in force."}}, {"@type": "Question", "name": "Can I use MDD legacy certificates?", "acceptedAnswer": {"@type": "Answer", "text": "Reg 2023/607 extended the MDD legacy certificates through December 2027 for Class III and IIb implants, and through December 2028 for Class IIa, IIb non-implant and Class I sterile/measuring/reusable surgical \u2014 subject to conditions in the regulation."}}, {"@type": "Question", "name": "Does the skill cover IVDR?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, alongside MDR. The IVDR (Reg 2017/746) classification (Class A\u2013D), conformity routes, and EUDAMED IVD obligations are covered in the same skill."}}, {"@type": "Question", "name": "How does FDA 510(k) compare to MDR?", "acceptedAnswer": {"@type": "Answer", "text": "FDA 510(k) is the US predicate-based path for moderate-risk devices (similar to MDR Class IIa/IIb scope but with a substantial equivalence standard rather than performance-against-essential-requirements). Typical FDA 510(k) review 4\u20137 months vs MDR Notified Body 9\u201314 months."}}]}
+</script>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --c-blue: #0008CF; --c-blue-light: rgba(0,8,207,0.06); --c-ink: #1A1A1A; --c-white: #FFFFFF; --c-surface: #F9F8F6; --c-card: #F0EFEC; --c-border: rgba(0,0,0,0.08); --c-text: rgba(0,0,0,0.87); --c-text-2: rgba(0,0,0,0.62); --r-md: 16px; --r-pill: 9999px; --font: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif; --font-mono: ui-monospace, 'SF Mono', 'Fira Code', monospace; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); background: var(--c-surface); color: var(--c-text); line-height: 1.6; font-size: 17px; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+nav.top { display:flex; justify-content:space-between; align-items:center; padding-bottom:24px; border-bottom:1px solid var(--c-border); margin-bottom:48px; }
+nav.top .brand { font-weight:700; color:var(--c-ink); text-decoration:none; font-size:17px; }
+nav.top .links a { margin-left:24px; color:var(--c-text-2); text-decoration:none; font-size:15px; }
+nav.top .links a:hover { color:var(--c-blue); }
+.eyebrow { color:var(--c-blue); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px; }
+h1 { font-size: 44px; line-height: 1.15; font-weight: 700; color: var(--c-ink); letter-spacing: -0.02em; margin-bottom: 24px; }
+h2 { font-size: 28px; line-height: 1.25; font-weight: 700; color: var(--c-ink); margin: 64px 0 20px; letter-spacing: -0.01em; }
+p { margin-bottom: 16px; color: var(--c-text); }
+ul, ol { margin: 16px 0 16px 24px; } li { margin-bottom: 8px; }
+a { color: var(--c-blue); text-decoration: none; } a:hover { text-decoration: underline; }
+.lede { font-size: 19px; color: var(--c-text-2); margin-bottom: 32px; }
+.cta-row { display:flex; gap:12px; flex-wrap:wrap; margin: 32px 0; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding: 12px 20px; border-radius: var(--r-pill); font-weight: 600; font-size: 15px; transition: all 0.2s; }
+.btn-primary { background: var(--c-ink); color: var(--c-white); } .btn-primary:hover { background: var(--c-blue); text-decoration: none; }
+.btn-secondary { background: var(--c-white); color: var(--c-ink); border: 1px solid var(--c-border); } .btn-secondary:hover { border-color: var(--c-ink); text-decoration: none; }
+.install-box { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; font-family: var(--font-mono); font-size: 14px; overflow-x: auto; margin: 24px 0; border:1px solid var(--c-border); }
+table { width:100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+th, td { text-align:left; padding: 12px 16px; border-bottom: 1px solid var(--c-border); vertical-align: top; }
+th { font-weight: 600; color: var(--c-ink); background: var(--c-card); }
+pre { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.6; margin: 24px 0; border:1px solid var(--c-border); }
+.faq-item { border-bottom: 1px solid var(--c-border); padding: 20px 0; } .faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; color: var(--c-ink); margin-bottom: 8px; font-size: 17px; }
+.related { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 32px 0; }
+.related a { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 16px 20px; color: var(--c-ink); transition: all 0.2s; display:block; }
+.related a:hover { border-color: var(--c-blue); transform: translateY(-2px); text-decoration: none; }
+.related a strong { display:block; color: var(--c-blue); margin-bottom: 4px; font-size:14px; font-weight:600; }
+.related a span { color: var(--c-text-2); font-size:14px; }
+.callout { background: var(--c-blue-light); border-left: 3px solid var(--c-blue); border-radius: var(--r-md); padding: 20px 24px; margin: 32px 0; }
+footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--c-border); font-size: 14px; color: var(--c-text-2); }
+footer .install { font-family: var(--font-mono); background: var(--c-card); padding: 8px 14px; border-radius: var(--r-pill); display:inline-block; margin: 8px 0; }
+@media (max-width: 600px) { h1 { font-size: 32px; } h2 { font-size: 24px; } .container { padding: 24px 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="top">
+  <a href="https://cleo-labs-ia.github.io/skills_library/" class="brand">Cleo Comply</a>
+  <div class="links">
+    <a href="https://github.com/Cleo-Labs-IA/skills_library">GitHub</a>
+    <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp">npm</a>
+    <a href="https://cleolabs.co">Cleo Labs</a>
+  </div>
+</nav>
+
+<div class="eyebrow">Skill: Medical Device Compliance</div>
+<h1>EU MDR compliance for small medical device companies</h1>
+<p class="lede">From Class I self-certification to Class III Notified Body audit, this open-source AI skill maps the full EU MDR 2017/745 path for small medical device companies — plus the FDA 510(k) / De Novo / PMA decision tree and UKCA MDR for the UK market.</p>
+
+<div class="cta-row">
+  <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp" class="btn btn-primary">Install via npm</a>
+  <a href="https://github.com/Cleo-Labs-IA/skills_library/tree/main/skills/medical-device-compliance" class="btn btn-secondary">View on GitHub</a>
+  <a href="https://legaldata-public.cleolabs.co" class="btn btn-secondary">Get API key</a>
+</div>
+
+<div class="install-box"><code>npx -y @cleo-labs/skills-mcp@latest</code></div>
+
+<p>EU MDR 2017/745 fully applied from May 2021 and tightened from May 2024 for legacy Directive 93/42 devices. For small medical device companies — class I startups, low-volume orthopedic shops, IVD spin-outs — the MDR is the most expensive regulation the founder will encounter. A Class IIa device commonly costs €80–250k to bring to market under MDR (Notified Body, clinical evaluation, technical file, QMS, post-market surveillance) versus €15–60k under the old MDD.</p>
+<p>The <code>medical-device-compliance</code> skill walks through the MDR path: classify the device under Annex VIII Rules 1–22, determine the conformity assessment route under Annex IX/X/XI, select a Notified Body for non-Class I, build the technical documentation per Annex II/III, plan the clinical evaluation per MEDDEV 2.7/1, register on EUDAMED, and structure post-market surveillance under Article 83. It also handles the FDA 510(k) vs De Novo vs PMA decision and the UKCA MDR equivalence.</p>
+
+<h2>Why it matters</h2>
+<p>Class is everything in MDR. A Class I device (e.g. surgical retractor, basic stethoscope) is self-declared. A Class IIa (e.g. dental crown, contact lens solution) requires a Notified Body audit of the QMS plus technical documentation review for a sample. A Class IIb (e.g. infusion pump) requires Notified Body review of the technical documentation for every device. A Class III (e.g. heart valve, implantable defibrillator) requires Notified Body review plus design dossier examination. Misclassify, and the launch slips by 12–18 months.</p>
+<p>Notified Body availability is the second bottleneck. Notified Body capacity contracted under MDR (number of designated bodies dropped from 70+ under MDD to ~50). Waiting times for IIa/IIb audit slots can be 8–14 months. The skill helps you understand which Notified Bodies serve your device family and the realistic lead time.</p>
+<p>EUDAMED partial activation has staggered key transparency obligations through 2025–2027. The Actor and UDI/Device modules went mandatory in February 2026; Clinical Investigation, Vigilance and Market Surveillance modules are following. The skill flags which modules apply to your device today and which obligations are still in voluntary/transition phase.</p>
+
+<h2>How the medical-device-compliance skill works</h2>
+<ol>
+  <li><strong>Classify the device.</strong> Annex VIII Rules 1–22. Skill walks through the rule that drives the highest class (the highest applicable rule wins). Common surprises: software classification has its own Rule 11, contact-with-mucosa rules upgrade many products one class.</li>
+  <li><strong>Choose conformity assessment route.</strong> Annex IX (full QMS + technical documentation) for IIa/IIb/III; Annex X (type examination) for some III; Annex XI for production quality assurance. Class I has self-declaration route except sterile, measuring, or reusable surgical.</li>
+  <li><strong>Pick a Notified Body.</strong> Required for Class IIa and above. Cross-check the NB's scope (MDR codes) against your device. Confirm lead time. Typical fees: €25–80k for IIa first audit, €60–180k for IIb/III.</li>
+  <li><strong>Build the technical file.</strong> Annex II + III. Device description, design info, risk management (ISO 14971), V&V testing, biocompatibility (ISO 10993), labels/IFU, clinical evaluation, post-market plan.</li>
+  <li><strong>Clinical evaluation.</strong> MEDDEV 2.7/1 rev 4 + MDCG 2020-13. Literature route, equivalence route, or clinical investigation. Equivalence narrower under MDR than MDD.</li>
+  <li><strong>Register on EUDAMED.</strong> Actor module mandatory Feb 2026. UDI/Device module also mandatory. Vigilance and Market Surveillance modules in transition.</li>
+  <li><strong>Run post-market surveillance.</strong> Article 83. PMS plan, PMCF if Class IIa+, PSUR (Class IIa annually for higher class, otherwise as needed). Vigilance reporting under Article 87 (10 working days for serious incident).</li>
+</ol>
+
+<h2>Regulations covered</h2>
+<table>
+  <thead><tr><th>Market / scope</th><th>Regulation</th><th>What it requires</th></tr></thead>
+  <tbody>
+    <tr><td>EU</td><td>Reg 2017/745 MDR</td><td>All medical devices, full Annex II/III TF, Notified Body for IIa+</td></tr>
+    <tr><td>EU</td><td>Reg 2017/746 IVDR</td><td>In vitro diagnostics, Class A–D, IVD CTRC role</td></tr>
+    <tr><td>EU</td><td>MDCG guidance</td><td>MDCG 2019-11 software, 2020-13 CE, 2021-24 IFU, 2022-7 Article 16</td></tr>
+    <tr><td>EU</td><td>ISO 13485:2016</td><td>QMS standard giving presumption of conformity for MDR Annex IX</td></tr>
+    <tr><td>EU</td><td>ISO 14971:2019</td><td>Risk management for medical devices</td></tr>
+    <tr><td>EU</td><td>ISO 10993</td><td>Biological evaluation of medical devices</td></tr>
+    <tr><td>EU</td><td>IEC 60601 / 62304</td><td>Electrical safety / medical software lifecycle</td></tr>
+    <tr><td>UK</td><td>UK MDR 2002 + UKCA</td><td>UK MDR; CE accepted via post-Brexit extensions</td></tr>
+    <tr><td>US</td><td>FDA 21 CFR 807 / 820</td><td>510(k), De Novo, PMA pathways; QSR/CGMP transitioning to ISO 13485</td></tr>
+    <tr><td>CA</td><td>Health Canada SOR/98-282</td><td>MDEL + Class I-IV licensing</td></tr>
+    <tr><td>JP</td><td>PMD Act + PMDA</td><td>PMDA review, Class I–IV, foreign manufacturer registration</td></tr>
+    <tr><td>AU</td><td>TGA Therapeutic Goods Act</td><td>Australian Conformity Assessment + ARTG listing</td></tr>
+  </tbody>
+</table>
+
+<h2>Example output</h2>
+<pre>Device: Pulse oximeter with Bluetooth connectivity, finger clip, consumer-facing app
+Target markets: EU, UK, US
+
+EU classification (Annex VIII):
+  Rule 10 (active diagnostic) → Class IIa
+  Rule 11 (software contributing to diagnosis) → Class IIa
+  Highest applicable: Class IIa
+
+Conformity assessment route: Annex IX (QMS + product TF sample review by NB)
+Required QMS: ISO 13485:2016
+
+Notified Body: required (Class IIa). Scope code MDR 1207 (active devices for sensing).
+Estimated NB fee: €30–60k first audit + €15–25k annual surveillance.
+Estimated NB lead time: 9–12 months from submission.
+
+Clinical evaluation: required.
+  Pulse oximeter is well-established tech; literature route + equivalence to predicate is likely.
+  PMCF plan required because Class IIa Article 83.
+
+UDI: required. Basic UDI-DI on label, IFU, packaging.
+EUDAMED: register as manufacturer, register the device (UDI module live Feb 2026).
+
+UK: UKCA + UK MDR 2002. CE accepted in GB via PRB indefinite extension. UK RP required.
+
+US:
+  Predicate-based: 510(k) likely.
+  Predicate device class: II under 21 CFR 870.2700 (oximeter).
+  De Novo only if no predicate.
+  Submission fee 2025: $24,335 (standard) or $6,084 (small business).
+  Lead time: 4–7 months typical.
+
+Estimated total cost EU+UK+US: €120–220k first launch year.
+Lead time critical path: NB lead time (9–12 months) is the bottleneck.</pre>
+
+<h2>FAQ</h2>
+<div class="faq-item"><div class="faq-q">What is EU MDR compliance?</div><p>EU MDR compliance is the set of obligations under Regulation 2017/745 that every medical device placed on the EU market must satisfy: classification under Annex VIII, conformity assessment under the appropriate Annex, technical documentation under Annex II/III, clinical evaluation, QMS under ISO 13485, UDI/EUDAMED registration, and post-market surveillance under Article 83.</p></div>
+<div class="faq-item"><div class="faq-q">How long does Notified Body certification take?</div><p>Under MDR, typical lead time from submission to certificate is 9–14 months for a Class IIa device, 12–18 months for Class IIb/III. The bottleneck is Notified Body capacity, which contracted under MDR (~50 designated bodies down from 70+ under MDD).</p></div>
+<div class="faq-item"><div class="faq-q">Is EUDAMED mandatory?</div><p>Yes for the Actor and UDI/Device modules, mandatory since February 2026. Clinical Investigation, Vigilance and Market Surveillance modules are in staged activation through 2027. Full mandatory use of all modules is now in force.</p></div>
+<div class="faq-item"><div class="faq-q">Can I use MDD legacy certificates?</div><p>Reg 2023/607 extended the MDD legacy certificates through December 2027 for Class III and IIb implants, and through December 2028 for Class IIa, IIb non-implant and Class I sterile/measuring/reusable surgical — subject to conditions in the regulation.</p></div>
+<div class="faq-item"><div class="faq-q">Does the skill cover IVDR?</div><p>Yes, alongside MDR. The IVDR (Reg 2017/746) classification (Class A–D), conformity routes, and EUDAMED IVD obligations are covered in the same skill.</p></div>
+<div class="faq-item"><div class="faq-q">How does FDA 510(k) compare to MDR?</div><p>FDA 510(k) is the US predicate-based path for moderate-risk devices (similar to MDR Class IIa/IIb scope but with a substantial equivalence standard rather than performance-against-essential-requirements). Typical FDA 510(k) review 4–7 months vs MDR Notified Body 9–14 months.</p></div>
+
+<h2>Related skills</h2>
+<div class="related">
+  <a href="./product-compliance.html"><strong>product-compliance</strong><span>Full substance check across 13 databases, verdict per market.</span></a>
+  <a href="./testing-certification.html"><strong>testing-certification</strong><span>Lab selection, costs, timelines per market.</span></a>
+  <a href="./labeling-compliance.html"><strong>labeling-compliance</strong><span>IFU, UDI, language requirements per market.</span></a>
+  <a href="./regulatory-calendar.html"><strong>regulatory-calendar</strong><span>MDR transition dates, EUDAMED module activations.</span></a>
+  <a href="./evidence-blitz.html"><strong>evidence-blitz</strong><span>Parallel gather of clinical, biocomp, V&V evidence for tech file.</span></a>
+</div>
+
+<div class="callout">
+  <strong>Try it in 30 seconds.</strong>
+  <p style="margin-top:8px;margin-bottom:0;">Drop the install one-liner into your Claude Desktop, Cursor or Continue config and ask your agent for a medical device compliance check. The skill triggers automatically.</p>
+</div>
+
+<footer>
+  <p>Install: <span class="install">npx -y @cleo-labs/skills-mcp@latest</span></p>
+  <p>Open source. MIT-licensed. Built by <a href="https://cleolabs.co">Cleo Labs</a>. Powered by the MARIA engine — 25,000 regulations, 49 countries, live.</p>
+  <p style="margin-top:16px;font-size:13px;">This is compliance guidance, not legal advice. Always verify against official sources (EUR-Lex, FDA, gov.uk, MHLW) before a business decision.</p>
+</footer>
+
+</div>
+</body>
+</html>

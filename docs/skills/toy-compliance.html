@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EN 71 Testing — Open-source AI Skill | Cleo Comply</title>
+<meta name="description" content="EN 71 testing for toys: mechanical, flammability, chemical migration, CPSIA, ASTM F963, age grading. Free open-source AI skill that runs in Claude Code.">
+<link rel="canonical" href="https://cleo-labs-ia.github.io/skills_library/docs/skills/toy-compliance.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EN 71 Testing — Cleo Comply">
+<meta property="og:description" content="Open-source AI skill covering EU Toy Safety Directive EN 71 suite, US CPSIA + ASTM F963, China CCC, JP ST Mark.">
+<meta property="og:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<meta property="og:url" content="https://cleo-labs-ia.github.io/skills_library/docs/skills/toy-compliance.html">
+<meta property="og:site_name" content="Cleo Labs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EN 71 Testing — Cleo Comply">
+<meta name="twitter:description" content="Open-source AI skill covering EU Toy Safety Directive EN 71 suite, US CPSIA + ASTM F963, China CCC, JP ST Mark.">
+<meta name="twitter:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"EN 71 Testing — Cleo Comply","description":"Open-source AI skill covering EU Toy Safety Directive EN 71 suite, US CPSIA + ASTM F963, China CCC, JP ST Mark.","totalTime":"P14D","step":[{"@type": "HowToStep", "name": "Classify the toy and age grade", "text": "Toy or non-toy? EU Toy Safety Directive applies to products designed or intended for use in play by children under 14. Age grading per EN 71-6: <3, 3+, 8+, 14+."}, {"@type": "HowToStep", "name": "Map the EN 71 parts that apply", "text": "EN 71-1 mechanical & physical (universal). EN 71-2 flammability (textiles, costumes, masks). EN 71-3 chemical migration of 19 elements (any toy with paint/coating). EN 62115 electrical (if powered)."}, {"@type": "HowToStep", "name": "Run the testing", "text": "Send to ISO 17025 accredited lab. Typical timeline: 3\u20134 weeks. Typical cost EN 71-1+2+3 + EN 62115: \u20ac2,500\u20135,000 per SKU."}, {"@type": "HowToStep", "name": "Compile the technical file", "text": "Description, drawings, BOM, test reports, risk assessment per Annex II, DoC, age warning labels, traceability batch system."}, {"@type": "HowToStep", "name": "Affix CE mark and write the EU DoC", "text": "CE on product or packaging, in EU language(s) of destination, with all directives and standards listed including EN 71 parts."}, {"@type": "HowToStep", "name": "Handle US: CPSIA + ASTM F963", "text": "CPSIA: lead 100 ppm content (not just migration), 8 phthalates 0.1%, tracking labels. ASTM F963: mechanical, flammability, heavy metal soluble migration."}, {"@type": "HowToStep", "name": "Run the China and Japan paths", "text": "China CCC required for 6 toy categories under GB 6675 (rolling toys, ride-ons, dolls, electric toys, plastic toys, metal toys). JP ST Mark is voluntary but retailer-required."}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "What is EN 71 testing?", "acceptedAnswer": {"@type": "Answer", "text": "EN 71 is the European toy safety standard suite, divided into 11+ parts that give presumption of conformity to the EU Toy Safety Directive 2009/48/EC. The most-tested parts are EN 71-1 (mechanical), EN 71-2 (flammability), and EN 71-3 (migration of 19 elements from coating). Cost per SKU typically \u20ac1,500\u20135,000."}}, {"@type": "Question", "name": "Is CE the same as EN 71?", "acceptedAnswer": {"@type": "Answer", "text": "No. CE is the manufacturer self-declaration that the toy meets the Toy Safety Directive. EN 71 is the harmonised standard you use to demonstrate that conformity. You can in principle achieve CE without EN 71 (by demonstrating compliance another way), but in practice every toy uses EN 71 because it gives the presumption of conformity."}}, {"@type": "Question", "name": "What changed with the new EU Toy Safety Regulation?", "acceptedAnswer": {"@type": "Answer", "text": "The new TSR, expected to apply from 2027, replaces Directive 2009/48/EC. Key changes: digital product passport mandatory; explicit PFAS bans; chemical migration aligned with REACH SVHC; importer obligations expanded; expanded scope to toys with software/connectivity; broader endocrine-disruptor restriction in toys."}}, {"@type": "Question", "name": "What is Reese's Law?", "acceptedAnswer": {"@type": "Answer", "text": "US Public Law 117-171 (2022) requires child-resistant compartments and warning labels on any consumer product with a button cell or coin cell battery. Triggered by ingestion fatalities. ANSI/UL 4200A specifies the compartment performance test."}}, {"@type": "Question", "name": "Do I need a Children's Product Certificate?", "acceptedAnswer": {"@type": "Answer", "text": "Yes for the US. CPSIA Section 102 requires manufacturers and importers of children's products (designed for children 12 and under) to certify compliance with applicable rules based on third-party CPSC-accepted lab testing. The CPC is issued by the manufacturer/importer."}}, {"@type": "Question", "name": "Does the skill cover toy-adjacent products (children's textiles, baby products)?", "acceptedAnswer": {"@type": "Answer", "text": "For children's textiles use the <code>textile-compliance</code> skill (CPSIA + REACH for textiles + flammability). For baby products (cots, strollers, high chairs) use <code>baby-children-products-compliance</code> \u2014 different EN standards."}}]}
+</script>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --c-blue: #0008CF; --c-blue-light: rgba(0,8,207,0.06); --c-ink: #1A1A1A; --c-white: #FFFFFF; --c-surface: #F9F8F6; --c-card: #F0EFEC; --c-border: rgba(0,0,0,0.08); --c-text: rgba(0,0,0,0.87); --c-text-2: rgba(0,0,0,0.62); --r-md: 16px; --r-pill: 9999px; --font: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif; --font-mono: ui-monospace, 'SF Mono', 'Fira Code', monospace; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); background: var(--c-surface); color: var(--c-text); line-height: 1.6; font-size: 17px; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+nav.top { display:flex; justify-content:space-between; align-items:center; padding-bottom:24px; border-bottom:1px solid var(--c-border); margin-bottom:48px; }
+nav.top .brand { font-weight:700; color:var(--c-ink); text-decoration:none; font-size:17px; }
+nav.top .links a { margin-left:24px; color:var(--c-text-2); text-decoration:none; font-size:15px; }
+nav.top .links a:hover { color:var(--c-blue); }
+.eyebrow { color:var(--c-blue); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px; }
+h1 { font-size: 44px; line-height: 1.15; font-weight: 700; color: var(--c-ink); letter-spacing: -0.02em; margin-bottom: 24px; }
+h2 { font-size: 28px; line-height: 1.25; font-weight: 700; color: var(--c-ink); margin: 64px 0 20px; letter-spacing: -0.01em; }
+p { margin-bottom: 16px; color: var(--c-text); }
+ul, ol { margin: 16px 0 16px 24px; } li { margin-bottom: 8px; }
+a { color: var(--c-blue); text-decoration: none; } a:hover { text-decoration: underline; }
+.lede { font-size: 19px; color: var(--c-text-2); margin-bottom: 32px; }
+.cta-row { display:flex; gap:12px; flex-wrap:wrap; margin: 32px 0; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding: 12px 20px; border-radius: var(--r-pill); font-weight: 600; font-size: 15px; transition: all 0.2s; }
+.btn-primary { background: var(--c-ink); color: var(--c-white); } .btn-primary:hover { background: var(--c-blue); text-decoration: none; }
+.btn-secondary { background: var(--c-white); color: var(--c-ink); border: 1px solid var(--c-border); } .btn-secondary:hover { border-color: var(--c-ink); text-decoration: none; }
+.install-box { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; font-family: var(--font-mono); font-size: 14px; overflow-x: auto; margin: 24px 0; border:1px solid var(--c-border); }
+table { width:100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+th, td { text-align:left; padding: 12px 16px; border-bottom: 1px solid var(--c-border); vertical-align: top; }
+th { font-weight: 600; color: var(--c-ink); background: var(--c-card); }
+pre { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.6; margin: 24px 0; border:1px solid var(--c-border); }
+.faq-item { border-bottom: 1px solid var(--c-border); padding: 20px 0; } .faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; color: var(--c-ink); margin-bottom: 8px; font-size: 17px; }
+.related { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 32px 0; }
+.related a { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 16px 20px; color: var(--c-ink); transition: all 0.2s; display:block; }
+.related a:hover { border-color: var(--c-blue); transform: translateY(-2px); text-decoration: none; }
+.related a strong { display:block; color: var(--c-blue); margin-bottom: 4px; font-size:14px; font-weight:600; }
+.related a span { color: var(--c-text-2); font-size:14px; }
+.callout { background: var(--c-blue-light); border-left: 3px solid var(--c-blue); border-radius: var(--r-md); padding: 20px 24px; margin: 32px 0; }
+footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--c-border); font-size: 14px; color: var(--c-text-2); }
+footer .install { font-family: var(--font-mono); background: var(--c-card); padding: 8px 14px; border-radius: var(--r-pill); display:inline-block; margin: 8px 0; }
+@media (max-width: 600px) { h1 { font-size: 32px; } h2 { font-size: 24px; } .container { padding: 24px 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="top">
+  <a href="https://cleo-labs-ia.github.io/skills_library/" class="brand">Cleo Comply</a>
+  <div class="links">
+    <a href="https://github.com/Cleo-Labs-IA/skills_library">GitHub</a>
+    <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp">npm</a>
+    <a href="https://cleolabs.co">Cleo Labs</a>
+  </div>
+</nav>
+
+<div class="eyebrow">Skill: Toy Compliance</div>
+<h1>EN 71 testing for toys and children's products, end to end</h1>
+<p class="lede">From small-parts cylinder to phthalate migration to the new EU Toy Safety Regulation replacing 2009/48/EC, this open-source AI skill maps every test, certification and label required to sell a toy in the EU, US, UK, JP and CN.</p>
+
+<div class="cta-row">
+  <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp" class="btn btn-primary">Install via npm</a>
+  <a href="https://github.com/Cleo-Labs-IA/skills_library/tree/main/skills/toy-compliance" class="btn btn-secondary">View on GitHub</a>
+  <a href="https://legaldata-public.cleolabs.co" class="btn btn-secondary">Get API key</a>
+</div>
+
+<div class="install-box"><code>npx -y @cleo-labs/skills-mcp@latest</code></div>
+
+<p>EN 71 testing is the European toy safety standard suite that gives presumption of conformity to the EU Toy Safety Directive 2009/48/EC (being replaced by the new Toy Safety Regulation, expected to apply from 2027). For US, the equivalent is CPSIA + ASTM F963; for China, CCC + GB 6675; for Japan, the ST Mark scheme.</p>
+<p>The <code>toy-compliance</code> skill maps each part of EN 71 — mechanical (EN 71-1), flammability (EN 71-2), chemical migration (EN 71-3), experimental sets (EN 71-4), other chemical (EN 71-5), age grading (EN 71-6 + 71-7), playground (EN 71-8), organic compounds (EN 71-9 to 11), electrical (EN 62115) — to your specific toy and lists the labs and typical costs per test.</p>
+
+<h2>Why it matters</h2>
+<p>Toys are the single most-recalled category in the EU Safety Gate and CPSC. The most common recall causes are small parts hazards for under-3 toys, button-cell battery accessibility, magnet ingestion risk, and chemical migration (phthalates, lead, cadmium). Each of these is detectable in standard EN 71 / ASTM F963 testing for €1,500–6,000 per toy.</p>
+<p>The new EU Toy Safety Regulation, expected to enter into force in 2026 with a 30-month transition, replaces the Directive. Key changes: digital product passport mandatory; explicit bans on PFAS in toys; chemical migration tightened to align with REACH SVHC concentration limits; importer obligations expanded; expanded scope to toys with software/connectivity.</p>
+<p>Amazon and other marketplaces have started requesting test reports proactively for toys, especially under-3 categories. Listings without a recent EN 71 / ASTM F963 test report are at risk of removal even without a specific complaint.</p>
+
+<h2>How the toy-compliance skill works</h2>
+<ol>
+  <li><strong>Classify the toy and age grade.</strong> Toy or non-toy? EU Toy Safety Directive applies to products designed or intended for use in play by children under 14. Age grading per EN 71-6: <3, 3+, 8+, 14+.</li>
+  <li><strong>Map the EN 71 parts that apply.</strong> EN 71-1 mechanical & physical (universal). EN 71-2 flammability (textiles, costumes, masks). EN 71-3 chemical migration of 19 elements (any toy with paint/coating). EN 62115 electrical (if powered).</li>
+  <li><strong>Run the testing.</strong> Send to ISO 17025 accredited lab. Typical timeline: 3–4 weeks. Typical cost EN 71-1+2+3 + EN 62115: €2,500–5,000 per SKU.</li>
+  <li><strong>Compile the technical file.</strong> Description, drawings, BOM, test reports, risk assessment per Annex II, DoC, age warning labels, traceability batch system.</li>
+  <li><strong>Affix CE mark and write the EU DoC.</strong> CE on product or packaging, in EU language(s) of destination, with all directives and standards listed including EN 71 parts.</li>
+  <li><strong>Handle US: CPSIA + ASTM F963.</strong> CPSIA: lead 100 ppm content (not just migration), 8 phthalates 0.1%, tracking labels. ASTM F963: mechanical, flammability, heavy metal soluble migration.</li>
+  <li><strong>Run the China and Japan paths.</strong> China CCC required for 6 toy categories under GB 6675 (rolling toys, ride-ons, dolls, electric toys, plastic toys, metal toys). JP ST Mark is voluntary but retailer-required.</li>
+</ol>
+
+<h2>Regulations covered</h2>
+<table>
+  <thead><tr><th>Market / scope</th><th>Regulation</th><th>What it requires</th></tr></thead>
+  <tbody>
+    <tr><td>EU</td><td>Dir 2009/48/EC + Toy Safety Regulation 2025/...</td><td>CE mark, EN 71 suite, EN 62115, DoC, traceability</td></tr>
+    <tr><td>EU</td><td>EN 71-1 / -2 / -3</td><td>Mechanical, flammability, chemical migration (19 elements)</td></tr>
+    <tr><td>EU</td><td>EN 62115</td><td>Electric toys safety</td></tr>
+    <tr><td>EU</td><td>REACH Annex XVII entry 51 + 52</td><td>Phthalates 0.1% in toys, BPA</td></tr>
+    <tr><td>UK</td><td>Toys (Safety) Reg 2011</td><td>UKCA mark; mirrors EU</td></tr>
+    <tr><td>US</td><td>CPSIA + 16 CFR 1303 / 1500</td><td>Lead 100 ppm content, 8 phthalates 0.1%, tracking label</td></tr>
+    <tr><td>US</td><td>ASTM F963-23</td><td>Toy mechanical, flammability, heavy metal soluble migration</td></tr>
+    <tr><td>US</td><td>Reese's Law (2022)</td><td>Button cell battery accessibility, child-resistant compartment</td></tr>
+    <tr><td>US</td><td>Federal Hazardous Substances Act</td><td>Banned hazardous substances, choking hazard warning</td></tr>
+    <tr><td>CN</td><td>GB 6675 + CCC</td><td>Toy classification, CCC required for 6 categories</td></tr>
+    <tr><td>JP</td><td>ST Mark scheme (JTA)</td><td>Voluntary but retailer-required; aligned with EN 71</td></tr>
+    <tr><td>CA</td><td>Toys Regulations SOR/2011-17</td><td>Phthalates 0.1%, mechanical, flammability</td></tr>
+    <tr><td>AU/NZ</td><td>AS/NZS 8124</td><td>Mirrors ISO 8124; toy safety standard</td></tr>
+  </tbody>
+</table>
+
+<h2>Example output</h2>
+<pre>Toy: Wooden ride-on truck with detachable trailer + 2 small wooden figures
+Age grade: 3+
+Target markets: EU (DE/FR/IT), UK, US, JP
+
+EU EN 71 mapping:
+  EN 71-1 mechanical: REQUIRED
+    Small parts cylinder: trailer pin and figures = potential &lt;3 hazard
+    Age &gt;3: pass if warning visible. If declared 18m+, would FAIL.
+  EN 71-2 flammability: REQUIRED (textile elements? none → minimal)
+  EN 71-3 migration of 19 elements: REQUIRED (wood paint/coating)
+  EN 71-9/-10/-11: only if organic chemicals declared (no)
+  EN 62115: NOT REQUIRED (no electronics)
+Estimated test fee: €1,500–2,200 per SKU.
+
+REACH Annex XVII:
+  Phthalate test: only if plastic/rubber elements present.
+  Lead: covered by EN 71-3.
+
+US (CPSIA + ASTM F963):
+  CPSIA total lead 100 ppm (not migration): tested via XRF + wet chem on coating
+  8 phthalates 0.1% (DEHP, DBP, BBP, DINP, DIDP, DnOP, DIBP, DCHP): N/A if no plastic
+  ASTM F963-23: mechanical, flammability, heavy metal soluble
+  Tracking label per CPSIA 103: required
+  Children&#x27;s Product Certificate (CPC): manufacturer issues based on lab tests
+Estimated US test fee: $800–1,500 per SKU.
+
+UK: UKCA + Toys (Safety) Regs 2011; mirrors EU. CE accepted via PRB extension.
+JP: ST Mark voluntary; retailer-required for Toys R Us / Tomy Plaza / Amazon JP toy category.
+
+Verdict: Path is clear. Test budget €3.5–5k total (EU+US+ST), 4–5 weeks.
+Risk: ensure trailer pin diameter passes small-parts cylinder (35 mm internal, 25 mm depth).
+Age 3+ warning label mandatory: &#x27;Not suitable for children under 36 months. Choking hazard - small parts.&#x27;</pre>
+
+<h2>FAQ</h2>
+<div class="faq-item"><div class="faq-q">What is EN 71 testing?</div><p>EN 71 is the European toy safety standard suite, divided into 11+ parts that give presumption of conformity to the EU Toy Safety Directive 2009/48/EC. The most-tested parts are EN 71-1 (mechanical), EN 71-2 (flammability), and EN 71-3 (migration of 19 elements from coating). Cost per SKU typically €1,500–5,000.</p></div>
+<div class="faq-item"><div class="faq-q">Is CE the same as EN 71?</div><p>No. CE is the manufacturer self-declaration that the toy meets the Toy Safety Directive. EN 71 is the harmonised standard you use to demonstrate that conformity. You can in principle achieve CE without EN 71 (by demonstrating compliance another way), but in practice every toy uses EN 71 because it gives the presumption of conformity.</p></div>
+<div class="faq-item"><div class="faq-q">What changed with the new EU Toy Safety Regulation?</div><p>The new TSR, expected to apply from 2027, replaces Directive 2009/48/EC. Key changes: digital product passport mandatory; explicit PFAS bans; chemical migration aligned with REACH SVHC; importer obligations expanded; expanded scope to toys with software/connectivity; broader endocrine-disruptor restriction in toys.</p></div>
+<div class="faq-item"><div class="faq-q">What is Reese's Law?</div><p>US Public Law 117-171 (2022) requires child-resistant compartments and warning labels on any consumer product with a button cell or coin cell battery. Triggered by ingestion fatalities. ANSI/UL 4200A specifies the compartment performance test.</p></div>
+<div class="faq-item"><div class="faq-q">Do I need a Children's Product Certificate?</div><p>Yes for the US. CPSIA Section 102 requires manufacturers and importers of children's products (designed for children 12 and under) to certify compliance with applicable rules based on third-party CPSC-accepted lab testing. The CPC is issued by the manufacturer/importer.</p></div>
+<div class="faq-item"><div class="faq-q">Does the skill cover toy-adjacent products (children's textiles, baby products)?</div><p>For children's textiles use the <code>textile-compliance</code> skill (CPSIA + REACH for textiles + flammability). For baby products (cots, strollers, high chairs) use <code>baby-children-products-compliance</code> — different EN standards.</p></div>
+
+<h2>Related skills</h2>
+<div class="related">
+  <a href="./product-compliance.html"><strong>product-compliance</strong><span>Full substance check across 13 databases.</span></a>
+  <a href="./testing-certification.html"><strong>testing-certification</strong><span>Lab selection, costs, timelines per market.</span></a>
+  <a href="./labeling-compliance.html"><strong>labeling-compliance</strong><span>Country-specific labels, CE/UKCA, multi-language.</span></a>
+  <a href="./baby-children-products-compliance.html"><strong>baby-children-products-compliance</strong><span>Nursery products: cots, strollers, high chairs, baby bottles.</span></a>
+  <a href="./marketplace-compliance.html"><strong>marketplace-compliance</strong><span>Amazon EU GPSR + UK toy retailer requirements.</span></a>
+</div>
+
+<div class="callout">
+  <strong>Try it in 30 seconds.</strong>
+  <p style="margin-top:8px;margin-bottom:0;">Drop the install one-liner into your Claude Desktop, Cursor or Continue config and ask your agent for a toy compliance check. The skill triggers automatically.</p>
+</div>
+
+<footer>
+  <p>Install: <span class="install">npx -y @cleo-labs/skills-mcp@latest</span></p>
+  <p>Open source. MIT-licensed. Built by <a href="https://cleolabs.co">Cleo Labs</a>. Powered by the MARIA engine — 25,000 regulations, 49 countries, live.</p>
+  <p style="margin-top:16px;font-size:13px;">This is compliance guidance, not legal advice. Always verify against official sources (EUR-Lex, FDA, gov.uk, MHLW) before a business decision.</p>
+</footer>
+
+</div>
+</body>
+</html>

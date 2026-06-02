@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EU Cosmetics Compliance — Open-source AI Skill | Cleo Comply</title>
+<meta name="description" content="EU cosmetics compliance for indie brands: 1223/2009, CPNP notification, PIF, CPSR, Responsible Person, annex updates. Free AI skill that runs in Claude Code.">
+<link rel="canonical" href="https://cleo-labs-ia.github.io/skills_library/docs/skills/cosmetics-compliance.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EU Cosmetics Compliance — Cleo Comply">
+<meta property="og:description" content="EU 1223/2009, CPNP, PIF, CPSR, Responsible Person — open-source AI skill covering EU + UK + US + JP + KR + CN + CA + ASEAN.">
+<meta property="og:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<meta property="og:url" content="https://cleo-labs-ia.github.io/skills_library/docs/skills/cosmetics-compliance.html">
+<meta property="og:site_name" content="Cleo Labs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EU Cosmetics Compliance">
+<meta name="twitter:description" content="The open-source EU cosmetics compliance skill for indie cosmetic brands.">
+<meta name="twitter:image" content="https://cleo-labs-ia.github.io/skills_library/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to make a cosmetic product EU-compliant","description":"Step-by-step path from formulation to EU CPNP notification using the cosmetics-compliance skill.","totalTime":"P30D","step":[
+ {"@type":"HowToStep","name":"Confirm classification","text":"Confirm the product is a cosmetic and not a biocide, medical device or quasi-drug. The skill checks borderline categories like SPF, hair growth, anti-acne, and probiotic claims."},
+ {"@type":"HowToStep","name":"Screen the formula","text":"Run the formula against EU 1223/2009 Annexes II–VI (banned, restricted, colorants, preservatives, UV filters). Common blockers: BHT >0.8%, lilial post-2022, retinol >0.3% face."},
+ {"@type":"HowToStep","name":"Appoint a Responsible Person","text":"Every cosmetic product sold in the EU must have an RP established in the EU. The skill compares costs (€100–600/month), CPNP rights, and contractual obligations."},
+ {"@type":"HowToStep","name":"Build the PIF and CPSR","text":"Product Information File requires formula, stability, microbiology, packaging migration, RIPT, claims substantiation. CPSR Part B must be signed by a qualified safety assessor."},
+ {"@type":"HowToStep","name":"Notify on CPNP","text":"Upload the product on the EU Cosmetic Products Notification Portal before placing on market. Free. Required even for re-import."},
+ {"@type":"HowToStep","name":"Label per Article 19","text":"Mandatory: RP name and address, batch number, function, warnings, ingredients in INCI descending order, allergens above thresholds, country of origin if outside EU."}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"What is EU cosmetics compliance?","acceptedAnswer":{"@type":"Answer","text":"EU cosmetics compliance is the body of obligations under Regulation 1223/2009 that any product placed on the EU market must satisfy: classification as a cosmetic, formula against Annexes II–VI, appointment of an EU-established Responsible Person, Product Information File (PIF), Cosmetic Product Safety Report (CPSR) signed by a qualified safety assessor, notification on the CPNP portal, and labeling under Article 19."}},
+ {"@type":"Question","name":"Do I need an EU Responsible Person if I sell only on Amazon UK?","acceptedAnswer":{"@type":"Answer","text":"For UK sales you need a UK Responsible Person under UK Cosmetics Regulation (SCPN portal). For EU sales (DE, FR, IT, etc.) you need a separate EU RP. Post-Brexit the two regimes are independent. Many indie brands appoint one provider that covers both for ~€150–400/month combined."}},
+ {"@type":"Question","name":"How much does a CPSR cost?","acceptedAnswer":{"@type":"Answer","text":"A Cosmetic Product Safety Report signed by a qualified safety assessor typically costs €400–1500 per product for simple formulations and €1500–4000 for complex products with active ingredients, leave-on facial, or children's products. The CPSR is required before placing on market and must be updated whenever the formula or claims change."}},
+ {"@type":"Question","name":"What changed with the 2024 Annex III amendments?","acceptedAnswer":{"@type":"Answer","text":"Retinol face products are capped at 0.3% (body 0.05%) per Reg 2024/996, applicable November 2025. Three salicylate esters were added to Annex III in late 2024. Methylsalicylate was restricted for use in children's products. The skill flags these automatically and suggests substitutions."}},
+ {"@type":"Question","name":"Can the skill replace a safety assessor?","acceptedAnswer":{"@type":"Answer","text":"No. Article 10 requires the CPSR Part B to be signed by a person with a recognized pharmacy, toxicology, medicine or related diploma. The skill builds the structured Part A documentation (physical-chemical, microbiology, exposure, toxicology profile) that the assessor uses as input, cutting assessor time by 50–70%."}}]}
+</script>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --c-blue: #0008CF; --c-blue-light: rgba(0,8,207,0.06); --c-ink: #1A1A1A; --c-white: #FFFFFF; --c-surface: #F9F8F6; --c-card: #F0EFEC; --c-border: rgba(0,0,0,0.08); --c-text: rgba(0,0,0,0.87); --c-text-2: rgba(0,0,0,0.62); --r-md: 16px; --r-pill: 9999px; --font: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif; --font-mono: ui-monospace, 'SF Mono', 'Fira Code', monospace; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); background: var(--c-surface); color: var(--c-text); line-height: 1.6; font-size: 17px; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+nav.top { display:flex; justify-content:space-between; align-items:center; padding-bottom:24px; border-bottom:1px solid var(--c-border); margin-bottom:48px; }
+nav.top .brand { font-weight:700; color:var(--c-ink); text-decoration:none; font-size:17px; }
+nav.top .links a { margin-left:24px; color:var(--c-text-2); text-decoration:none; font-size:15px; }
+nav.top .links a:hover { color:var(--c-blue); }
+.eyebrow { color:var(--c-blue); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px; }
+h1 { font-size: 44px; line-height: 1.15; font-weight: 700; color: var(--c-ink); letter-spacing: -0.02em; margin-bottom: 24px; }
+h2 { font-size: 28px; line-height: 1.25; font-weight: 700; color: var(--c-ink); margin: 64px 0 20px; letter-spacing: -0.01em; }
+h3 { font-size: 20px; font-weight: 600; color: var(--c-ink); margin: 32px 0 12px; }
+p { margin-bottom: 16px; color: var(--c-text); }
+ul, ol { margin: 16px 0 16px 24px; } li { margin-bottom: 8px; }
+a { color: var(--c-blue); text-decoration: none; } a:hover { text-decoration: underline; }
+.lede { font-size: 19px; color: var(--c-text-2); margin-bottom: 32px; }
+.cta-row { display:flex; gap:12px; flex-wrap:wrap; margin: 32px 0; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding: 12px 20px; border-radius: var(--r-pill); font-weight: 600; font-size: 15px; transition: all 0.2s; }
+.btn-primary { background: var(--c-ink); color: var(--c-white); } .btn-primary:hover { background: var(--c-blue); text-decoration: none; }
+.btn-secondary { background: var(--c-white); color: var(--c-ink); border: 1px solid var(--c-border); } .btn-secondary:hover { border-color: var(--c-ink); text-decoration: none; }
+.install-box { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; font-family: var(--font-mono); font-size: 14px; overflow-x: auto; margin: 24px 0; border:1px solid var(--c-border); }
+table { width:100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+th, td { text-align:left; padding: 12px 16px; border-bottom: 1px solid var(--c-border); vertical-align: top; }
+th { font-weight: 600; color: var(--c-ink); background: var(--c-card); }
+pre { background: var(--c-card); border-radius: var(--r-md); padding: 20px 24px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.6; margin: 24px 0; border:1px solid var(--c-border); }
+.faq-item { border-bottom: 1px solid var(--c-border); padding: 20px 0; } .faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; color: var(--c-ink); margin-bottom: 8px; font-size: 17px; }
+.related { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 32px 0; }
+.related a { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 16px 20px; color: var(--c-ink); transition: all 0.2s; display:block; }
+.related a:hover { border-color: var(--c-blue); transform: translateY(-2px); text-decoration: none; }
+.related a strong { display:block; color: var(--c-blue); margin-bottom: 4px; font-size:14px; font-weight:600; }
+.related a span { color: var(--c-text-2); font-size:14px; }
+.callout { background: var(--c-blue-light); border-left: 3px solid var(--c-blue); border-radius: var(--r-md); padding: 20px 24px; margin: 32px 0; }
+footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--c-border); font-size: 14px; color: var(--c-text-2); }
+footer .install { font-family: var(--font-mono); background: var(--c-card); padding: 8px 14px; border-radius: var(--r-pill); display:inline-block; margin: 8px 0; }
+@media (max-width: 600px) { h1 { font-size: 32px; } h2 { font-size: 24px; } .container { padding: 24px 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="top">
+  <a href="https://cleo-labs-ia.github.io/skills_library/" class="brand">Cleo Comply</a>
+  <div class="links">
+    <a href="https://github.com/Cleo-Labs-IA/skills_library">GitHub</a>
+    <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp">npm</a>
+    <a href="https://cleolabs.co">Cleo Labs</a>
+  </div>
+</nav>
+
+<div class="eyebrow">Skill: Cosmetics Compliance</div>
+<h1>EU cosmetics compliance, demystified for indie brands</h1>
+<p class="lede">From formula screen to CPNP notification: the open-source AI skill that walks you through EU 1223/2009, Annex updates, Responsible Person selection, PIF assembly and CPSR — plus UK SCPN, US MoCRA, Japan MHLW, Korea MFDS, China NMPA, and ASEAN.</p>
+
+<div class="cta-row">
+  <a href="https://www.npmjs.com/package/@cleo-labs/skills-mcp" class="btn btn-primary">Install via npm</a>
+  <a href="https://github.com/Cleo-Labs-IA/skills_library/tree/main/skills/cosmetics-compliance" class="btn btn-secondary">View on GitHub</a>
+  <a href="https://legaldata-public.cleolabs.co" class="btn btn-secondary">Get API key</a>
+</div>
+
+<div class="install-box"><code>npx -y @cleo-labs/skills-mcp@latest</code></div>
+
+<p>EU cosmetics compliance is the most well-documented and least understood regulatory regime an indie brand will ever encounter. The text of Regulation 1223/2009 runs 36 articles and 8 annexes, but the practical path from a finished formula to a live CPNP notification involves at least six gates: classification, formula screen against Annexes II–VI, Responsible Person appointment, Product Information File, Cosmetic Product Safety Report, and label per Article 19. Miss any one and the product is unsellable — and Amazon, Sephora and Douglas now check.</p>
+
+<p>The <code>cosmetics-compliance</code> skill walks you through all six gates in sequence, with the specific articles cited, the typical fees for each step, and the timeline you should budget. It also extends to UK SCPN (post-Brexit), US FDA MoCRA (2024+), Japan MHLW quasi-drug rules, Korea MFDS notification, China NMPA, and the eight-country ASEAN cosmetic harmonization.</p>
+
+<h2>Why it matters</h2>
+<p>Almost every indie brand we have spoken to launches a face product, gets European traction through Amazon EU or a marketplace like Sephora's third-party offer, and only then discovers that the product needs a CPSR signed by a qualified safety assessor. At that point the launch is paused for 4–6 weeks while the brand finds an assessor, builds the PIF, and pays €1,000–4,000 per SKU. Almost all of that delay is preventable by treating the CPSR as a launch dependency, not an afterthought.</p>
+<p>The skill flips the timing. You run the formula through the EU annex screen before you order packaging. You appoint a Responsible Person before your first EU customs entry. You assemble the PIF in parallel with bottle artwork. By the time the product is ready to ship, the notification is live and the CPSR signed.</p>
+<p>It also handles the moving parts. The 2024 retinol cap. The lilial ban from August 2022 that some assessors still miss. The new 80-allergen list under Reg 2023/1545 with the 2026–2028 transition. The skill flags every Annex update that affects your specific formula, with the citation and the substitution path.</p>
+
+<h2>How the cosmetics-compliance skill works</h2>
+<ol>
+  <li><strong>Confirm classification.</strong> Borderline products (SPF, hair growth, anti-acne, probiotic, intimate care, baby) get classified as cosmetic, biocide, medical device, or quasi-drug depending on the claim and the ingredient. The skill checks all four borders.</li>
+  <li><strong>Screen the formula.</strong> Every ingredient at every concentration is checked against Annexes II (banned), III (restricted), IV (colorants), V (preservatives), VI (UV filters). Common blockers: BHT &gt;0.8%, lilial post-2022, retinol &gt;0.3% face, methylisothiazolinone in leave-on, BHA &gt;0.001%.</li>
+  <li><strong>Appoint a Responsible Person.</strong> The skill compares EU RP providers, costs (€100–600/month), CPNP-management rights, accessory market notification, and contract terms. Same flow for UK RP.</li>
+  <li><strong>Build the PIF.</strong> Product Information File requires the formula, stability tests, microbiology challenge test, packaging migration data, claims substantiation, RIPT, plus the CPSR Part B. The skill outputs a complete PIF skeleton.</li>
+  <li><strong>Sign the CPSR.</strong> Part A is structured documentation (physical/chemical, microbiology, exposure, toxicology profile, undesirable effects). Part B is the assessor's signed safety conclusion. The skill prepares Part A; a qualified human signs Part B.</li>
+  <li><strong>Notify on CPNP.</strong> Upload via your RP before placing on market. Notification is free, takes 15 minutes, and is mandatory even for re-import or relaunch.</li>
+  <li><strong>Label per Article 19.</strong> Mandatory: RP address, batch, function, warnings, INCI descending order, allergens above thresholds, country of origin if outside EU, PAO or expiry, nominal content.</li>
+</ol>
+
+<h2>Regulations covered</h2>
+<table>
+  <thead><tr><th>Market</th><th>Regulation</th><th>What it requires</th></tr></thead>
+  <tbody>
+    <tr><td>EU 27</td><td>Reg 1223/2009 + Annexes II–VI</td><td>RP, PIF, CPSR, CPNP notification, Art. 19 labeling</td></tr>
+    <tr><td>UK</td><td>UK Cosmetics Regulation</td><td>UK RP, SCPN portal, near-EU label</td></tr>
+    <tr><td>US</td><td>FDA MoCRA + 21 CFR 700</td><td>Facility registration, product listing, fragrance allergens (2024+)</td></tr>
+    <tr><td>US-CA</td><td>California Prop 65, CSCA</td><td>Warning labels, intentionally added ingredients disclosure</td></tr>
+    <tr><td>Japan</td><td>MHLW PMDL + Quasi-drug list</td><td>Cosmetic vs quasi-drug threshold, function claims</td></tr>
+    <tr><td>Korea</td><td>MFDS Cosmetics Act</td><td>Notification, functional cosmetics review, RP</td></tr>
+    <tr><td>China</td><td>NMPA CSAR</td><td>New ingredient filing, RP, animal testing exemption for general use</td></tr>
+    <tr><td>Canada</td><td>Health Canada CNF</td><td>Notification within 10 days of first sale, Hotlist check</td></tr>
+    <tr><td>ASEAN</td><td>ACD harmonized scheme</td><td>National notification per member state, ACD ingredient annexes</td></tr>
+  </tbody>
+</table>
+
+<h2>Example output</h2>
+<pre>Product: Retinol 0.5% night serum, 30 ml
+Target markets: EU, UK, US
+
+Annex screen (EU 1223/2009):
+  Retinol 0.5% face product
+    BLOCKED: Reg 2024/996 caps retinol at 0.3% (face products), applicable Nov 2025
+    Action: Reformulate to 0.3% OR position as body product (cap 0.05% body) OR
+            switch to retinaldehyde (no current cap)
+
+Annex screen (UK Cosmetics Reg):
+  Retinol 0.5%
+    BLOCKED: UK SCPN mirrored EU cap with same Nov 2025 date
+    Action: same as EU
+
+US FDA MoCRA:
+  No federal concentration cap on retinol
+  OK to launch at 0.5% in US
+  CA Prop 65: not required at this dose
+
+Verdict:
+  US: SHIPPABLE at 0.5%
+  EU/UK: Reformulate to 0.3% (or substitute) before Nov 2025 deadline
+
+Revenue at risk: ~€420k/yr (EU+UK combined) if not reformulated.
+Time to remediate: 8–12 weeks (reformulation, stability, micro re-test, CPSR amendment).</pre>
+
+<h2>FAQ</h2>
+<div class="faq-item"><div class="faq-q">What is EU cosmetics compliance?</div><p>EU cosmetics compliance is the body of obligations under Regulation 1223/2009 that any product placed on the EU market must satisfy: classification as a cosmetic, formula against Annexes II–VI, appointment of an EU-established Responsible Person, Product Information File, Cosmetic Product Safety Report signed by a qualified safety assessor, notification on the CPNP portal, and Article 19 labeling.</p></div>
+<div class="faq-item"><div class="faq-q">Do I need an EU Responsible Person if I sell only on Amazon UK?</div><p>For UK sales you need a UK Responsible Person under UK Cosmetics Regulation (SCPN portal). For EU sales (DE, FR, IT, etc.) you need a separate EU RP. The two regimes are independent post-Brexit. Many indie brands appoint one provider that covers both for ~€150–400/month combined.</p></div>
+<div class="faq-item"><div class="faq-q">How much does a CPSR cost?</div><p>A CPSR signed by a qualified safety assessor typically costs €400–1500 per product for simple formulations and €1500–4000 for complex products with active ingredients, leave-on facial, or children's products. It must be updated whenever the formula or claims change materially.</p></div>
+<div class="faq-item"><div class="faq-q">What changed with the 2024 Annex III amendments?</div><p>Retinol face products are capped at 0.3% (body 0.05%) per Reg 2024/996, applicable November 2025. Three salicylate esters were added to Annex III in late 2024. Methylsalicylate was restricted for use in children's products. The skill flags these automatically.</p></div>
+<div class="faq-item"><div class="faq-q">Can the skill replace a safety assessor?</div><p>No. Article 10 requires the CPSR Part B to be signed by a person with a recognized pharmacy, toxicology, medicine or related diploma. The skill builds the structured Part A documentation that the assessor uses as input, cutting assessor time by 50–70 percent.</p></div>
+<div class="faq-item"><div class="faq-q">Does it cover China NMPA?</div><p>Yes — China NMPA registration (general use cosmetics post-2021 reform), new ingredient filing, RP appointment in China, and the animal testing exemption are all covered. The skill flags ingredients that still require animal testing in China for special-use cosmetics (hair dye, sunscreen, anti-hair-loss).</p></div>
+
+<h2>Related skills</h2>
+<div class="related">
+  <a href="./product-compliance.html"><strong>product-compliance</strong><span>Full substance check across 13 databases, verdict per market, Revenue-at-Risk.</span></a>
+  <a href="./labeling-compliance.html"><strong>labeling-compliance</strong><span>INCI, allergens, warnings, CE/UKCA, multi-language rules.</span></a>
+  <a href="./multi-jurisdiction-scan.html"><strong>multi-jurisdiction-scan</strong><span>Parallel scan across all target markets.</span></a>
+  <a href="./marketplace-compliance.html"><strong>marketplace-compliance</strong><span>Amazon EU GPSR+EPR, MoCRA marketplace requirements.</span></a>
+  <a href="./multi-jurisdiction-scan.html"><strong>multi-jurisdiction-scan</strong><span>RED/ORANGE/YELLOW/GREEN per market.</span></a>
+</div>
+
+<div class="callout">
+  <strong>Try it in 30 seconds.</strong>
+  <p style="margin-top:8px;margin-bottom:0;">Drop the install one-liner into your config and ask your agent: <em>"Run cosmetics-compliance on this formula for EU, UK, US and JP."</em> The skill triggers automatically.</p>
+</div>
+
+<footer>
+  <p>Install: <span class="install">npx -y @cleo-labs/skills-mcp@latest</span></p>
+  <p>Open source. MIT-licensed. Built by <a href="https://cleolabs.co">Cleo Labs</a>. Powered by the MARIA engine — 25,000 regulations, 49 countries, live.</p>
+  <p style="margin-top:16px;font-size:13px;">This is compliance guidance, not legal advice. Always verify against official sources (EUR-Lex, FDA, gov.uk, MHLW) before a business decision.</p>
+</footer>
+
+</div>
+</body>
+</html>
