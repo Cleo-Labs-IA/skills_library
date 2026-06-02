@@ -60,7 +60,7 @@ jobs:
           rm -rf mcp-server/skills
           cp -R skills mcp-server/skills
 
-      - uses: docker/setup-buildx-action@v3
+      - uses: docker/setup-buildx-action@v4
 
       - name: Build image
         uses: docker/build-push-action@v6
