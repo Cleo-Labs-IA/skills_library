@@ -1,0 +1,137 @@
+# OpenSSF Best Practices Baseline
+#
+# Documents the security posture of the skills_library project against the
+# OpenSSF Best Practices Badge criteria (https://www.bestpractices.dev/).
+# This file is informational. The canonical source of truth for the project
+# is the GitHub repository settings; this file simply documents intent.
+#
+# Schema is loosely modelled on the OpenSSF baseline checklist
+# (https://baseline.openssf.org/).
+
+project:
+  name: skills_library
+  description: >
+    Compliance Product Guidance — 45 production-grade skills + MCP server for
+    physical product compliance across 49 countries.
+  homepage: https://github.com/Cleo-Labs-IA/skills_library
+  vcs: git
+  repository: https://github.com/Cleo-Labs-IA/skills_library
+  maintainer: Cleo Labs (contact@cleolabs.co)
+
+# ---------------------------------------------------------------------------
+# Basics
+# ---------------------------------------------------------------------------
+basics:
+  public_repository: true
+  license:
+    spdx: MIT
+    file: LICENSE
+  description_present: true        # README.md
+  interaction_present: true        # CONTRIBUTING.md + GitHub Discussions
+  contributing_present: true       # CONTRIBUTING.md
+  code_of_conduct: true            # CODE_OF_CONDUCT.md
+
+# ---------------------------------------------------------------------------
+# Change control
+# ---------------------------------------------------------------------------
+change_control:
+  public_vcs: true
+  release_artifacts:
+    - npm:@cleo-labs/skills-mcp
+    - github_release_tarballs
+  semver: true
+  changelog: CHANGELOG.md
+
+# ---------------------------------------------------------------------------
+# Reporting
+# ---------------------------------------------------------------------------
+reporting:
+  bug_tracker: github_issues
+  issue_templates: true            # .github/ISSUE_TEMPLATE/
+  vulnerability_report_process: true   # SECURITY.md
+  vulnerability_report_email: security@cleolabs.co
+  disclosure_window_days: 90
+  bounty_program: false
+  acknowledgement_guaranteed: true
+
+# ---------------------------------------------------------------------------
+# Quality
+# ---------------------------------------------------------------------------
+quality:
+  build_reproducible: true         # npm pack is deterministic
+  automated_tests: true            # workflows/mcp-server.yml
+  test_policy_documented: true     # CONTRIBUTING.md
+  warnings_clean: true
+  dependency_management:
+    tool: npm
+    lockfile: mcp-server/package-lock.json
+    review_tool: dependabot         # .github/dependabot.yml (npm + actions weekly)
+
+# ---------------------------------------------------------------------------
+# Security
+# ---------------------------------------------------------------------------
+security:
+  knowledge_secure_design: true
+  secure_design_documented: true   # CLAUDE.md + mcp-server/README.md
+  cryptography:
+    used: false                    # No crypto primitives shipped
+    documented: n/a
+  secure_release_process: true
+  branch_protection:
+    main: recommended
+    note: >
+      Branch protection on `main` is recommended (require PR, require status
+      checks, require linear history). Enabling it requires the repo admin to
+      configure it in GitHub Settings → Branches; this file documents intent
+      only.
+  signed_commits:
+    enforced: false
+    note: >
+      Commit signing is not currently enforced. We plan to enable signed
+      commits once GitHub Sigstore / gitsign is GA across the team.
+  signed_releases:
+    enforced: false
+    note: npm package is published with provenance via GitHub Actions OIDC.
+  two_factor_authentication:
+    required_for_maintainers: true
+  dependency_review:
+    enabled: true
+    tool: github_default            # GitHub dependency-review-action default
+  sast:
+    enabled: recommended
+    tool: github_codeql
+    note: >
+      GitHub CodeQL scanning is recommended for the TypeScript MCP server.
+      To enable, add `.github/workflows/codeql.yml` from the GitHub-supplied
+      template. Not yet active.
+  secret_scanning:
+    enabled: true                  # GitHub default for public repos
+    push_protection: recommended
+  vulnerability_alerts:
+    enabled: true                  # GitHub Dependabot alerts on public repo
+
+# ---------------------------------------------------------------------------
+# Analysis
+# ---------------------------------------------------------------------------
+analysis:
+  static_analysis: recommended     # CodeQL (see security.sast)
+  dynamic_analysis: not_applicable # No long-running service in repo
+  fuzzing: not_applicable
+
+# ---------------------------------------------------------------------------
+# Governance
+# ---------------------------------------------------------------------------
+governance:
+  governance_documented: false
+  note: >
+    The project is currently a Cleo Labs initiative. Formal governance
+    (steering committee, voting, etc.) will be drafted once external
+    maintainers are onboarded.
+
+# ---------------------------------------------------------------------------
+# Last review
+# ---------------------------------------------------------------------------
+last_review:
+  date: 2026-06-02
+  reviewer: Cleo Labs maintainer team
+  next_review_due: 2026-12-02
