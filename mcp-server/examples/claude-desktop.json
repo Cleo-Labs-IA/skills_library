@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "cleo-skills": {
+      "command": "npx",
+      "args": ["-y", "@cleo-labs/skills-mcp@latest"]
+    }
+  }
+}

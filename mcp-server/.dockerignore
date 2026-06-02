@@ -1,0 +1,9 @@
+node_modules
+dist
+.vitest-cache
+coverage
+test
+*.log
+.DS_Store
+.git
+.github

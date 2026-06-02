@@ -1,0 +1,84 @@
+{
+  "name": "@cleo-labs/skills-mcp",
+  "version": "0.1.0",
+  "description": "MCP server exposing 45 production-grade product compliance skills as native MCP resources, prompts, and tools.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "compliance",
+    "regulatory",
+    "product-compliance",
+    "cosmetics",
+    "food",
+    "electronics",
+    "textiles",
+    "toys",
+    "supplements",
+    "medical-devices",
+    "EU",
+    "FDA",
+    "CE",
+    "REACH",
+    "claude",
+    "cursor",
+    "continue"
+  ],
+  "homepage": "https://github.com/Cleo-Labs-IA/skills_library/tree/main/mcp-server",
+  "bugs": "https://github.com/Cleo-Labs-IA/skills_library/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Naomie Halioua",
+    "email": "contact@cleolabs.co",
+    "url": "https://cleolabs.co"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cleo-Labs-IA/skills_library.git",
+    "directory": "mcp-server"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "skills-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "skills",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node -e \"require('fs').chmodSync('dist/index.js', 0o755)\"",
+    "prepack": "npm run build && npm run sync:skills",
+    "sync:skills": "node scripts/sync-skills.mjs",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "yaml": "^2.6.1",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "eslint": "^9.17.0",
+    "prettier": "^3.4.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -53,6 +53,23 @@ cp -r skills_library/skills/* ~/.claude/skills/
 
 Point your skills directory at `skills_library/skills/`. Each skill is a self-contained folder with a `SKILL.md` plus references — runtime-agnostic by design.
 
+### As an MCP server (Claude Desktop, Cursor, Continue, Zed, …)
+
+The same 45 skills are also shipped as a standalone MCP server in [`mcp-server/`](./mcp-server). Drop this into your client config and the skills appear as native MCP resources (`skill://<name>`), parameterized prompts, and three structured tools (`list_skills`, `find_skill`, `read_skill`):
+
+```json
+{
+  "mcpServers": {
+    "cleo-skills": {
+      "command": "npx",
+      "args": ["-y", "@cleo-labs/skills-mcp@latest"]
+    }
+  }
+}
+```
+
+See [`mcp-server/README.md`](./mcp-server/README.md) for full setup, Docker, and per-client examples.
+
 ### Coming soon
 
 ```bash

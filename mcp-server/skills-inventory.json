@@ -1,0 +1,306 @@
+{
+  "generated_at": "2026-06-02T10:08:51.908Z",
+  "count": 45,
+  "verticals": [
+    "agricultural",
+    "alcohol-spirits",
+    "automotive-aftermarket",
+    "baby-children-products",
+    "baby-formula",
+    "candle-fragrance",
+    "cosmetics",
+    "electronics",
+    "firearms",
+    "food",
+    "herbal-medicine",
+    "household-chemicals",
+    "jewelry",
+    "labeling",
+    "marketplace",
+    "medical-device",
+    "optical-eyewear",
+    "packaging",
+    "pet-product",
+    "product",
+    "professional-cosmetics",
+    "sporting-goods",
+    "supplement",
+    "sustainability",
+    "textile",
+    "tobacco-vape",
+    "toy",
+    "workflow"
+  ],
+  "skills": [
+    {
+      "name": "agricultural-compliance",
+      "description": "Use when selling fertilizers, pesticides, seeds, plant protection products, biostimulants, organic farming inputs, or agricultural commodities - covers EU CAP, Reg 2019/1009 fertilizers, Reg 1107/2009 pesticides, Reg 2018/848 organic, USDA NOP, JAS, GMO labeling, MRLs, ISPM 15 phytosanitary",
+      "vertical": "agricultural",
+      "path": "skills/agricultural-compliance/SKILL.md"
+    },
+    {
+      "name": "alcohol-spirits-compliance",
+      "description": "Use when selling wine, beer, spirits, RTD cocktails, or any alcoholic beverage in any market, applying for TTB COLA, HMRC excise registration, EU wine certification, navigating US state-by-state direct-to-consumer shipping, or calculating excise duty",
+      "vertical": "alcohol-spirits",
+      "path": "skills/alcohol-spirits-compliance/SKILL.md"
+    },
+    {
+      "name": "automotive-aftermarket-compliance",
+      "description": "Use when selling automotive aftermarket parts, accessories, electronics, tyres, batteries, brake components, lighting, or retrofit kits in any market - covers UN/ECE regulations, DOT, EU Type Approval 2018/858, REACH 6PPD, EU Battery Regulation, CISPR 25 EMC, road-legal vs racing distinction",
+      "vertical": "automotive-aftermarket",
+      "path": "skills/automotive-aftermarket-compliance/SKILL.md"
+    },
+    {
+      "name": "baby-children-products-compliance",
+      "description": "Use when selling strollers, cots, high chairs, carry cots, baby walkers, bibs, baby bottles, child-care articles, or any product designed for children under 14 in any market - covers EN 1888 (strollers), EN 716 (cots), EN 14988 (high chairs), CPSIA stricter limits, ASTM F963, BPA/BPS bans, phthalates, drawstrings EN 14682",
+      "vertical": "baby-children-products",
+      "path": "skills/baby-children-products-compliance/SKILL.md"
+    },
+    {
+      "name": "baby-formula-compliance",
+      "description": "Use when selling infant formula (0-6 months), follow-on formula (6-12 months), growing-up milk, toddler milk, specialty formula (hypoallergenic, organic, A2, goat, soy, premature) in any market, navigating EU 609/2013 + 2016/127, FDA 21 CFR 106-107, NMPA registration, WHO Code marketing restrictions, or recall response",
+      "vertical": "baby-formula",
+      "path": "skills/baby-formula-compliance/SKILL.md"
+    },
+    {
+      "name": "candle-fragrance-compliance",
+      "description": "Use when selling candles, wax melts, reed diffusers, room sprays, fragrance oils, incense, or scented home products in any market - covers IFRA Standards 51st amendment, CLP fragrance allergens (26 expanded to 80), fire safety EN 15493/ASTM F2417, lead wick restrictions, airline transport UN 3175",
+      "vertical": "candle-fragrance",
+      "path": "skills/candle-fragrance-compliance/SKILL.md"
+    },
+    {
+      "name": "claims-substantiation",
+      "description": "Use when validating marketing claims on product packaging or advertising, checking if a claim is permitted in a market, determining evidence requirements for a specific claim type, avoiding greenwashing violations, or answering \"can I legally say [claim] on my product?\"",
+      "vertical": "workflow",
+      "path": "skills/claims-substantiation/SKILL.md"
+    },
+    {
+      "name": "compliance-audit-sprint",
+      "description": "Use when running a pre-launch compliance sprint for a product, preparing for market entry across multiple countries, or conducting a full product compliance assessment before launch",
+      "vertical": "workflow",
+      "path": "skills/compliance-audit-sprint/SKILL.md"
+    },
+    {
+      "name": "compliance-frameworks-ref",
+      "description": "Use when looking up specific product regulations, comparing requirements between frameworks, understanding what a regulation requires, or scoping certification for a physical product",
+      "vertical": "workflow",
+      "path": "skills/compliance-frameworks-ref/SKILL.md"
+    },
+    {
+      "name": "compliance-mcp-tools",
+      "description": "Use when calling Cleo Legal API, Cleo Insight, or Bastion MCP tools, planning a multi-tool compliance workflow, troubleshooting MCP tool errors, or choosing which tool to use for a product compliance task",
+      "vertical": "workflow",
+      "path": "skills/compliance-mcp-tools/SKILL.md"
+    },
+    {
+      "name": "compliance-remediation",
+      "description": "Use when fixing compliance issues to unblock market entry, deciding between reformulation or relabeling, finding testing labs or certification bodies, or answering \"how do I fix this compliance problem?\"",
+      "vertical": "workflow",
+      "path": "skills/compliance-remediation/SKILL.md"
+    },
+    {
+      "name": "compliance-reporting",
+      "description": "Use when generating compliance status reports for a product portfolio, preparing documentation for retail buyers or distributors, creating compliance matrices for marketplace listings, or summarizing compliance posture per product per market",
+      "vertical": "workflow",
+      "path": "skills/compliance-reporting/SKILL.md"
+    },
+    {
+      "name": "cosmetics-compliance",
+      "description": "Use when selling cosmetics, skincare, haircare, fragrance, or personal care products in any market, checking cosmetic-specific regulations, preparing CPNP/SCPN notifications, commissioning a CPSR, or navigating ingredient restrictions for beauty products",
+      "vertical": "cosmetics",
+      "path": "skills/cosmetics-compliance/SKILL.md"
+    },
+    {
+      "name": "customs-and-trade",
+      "description": "Use when classifying a product by HS code, calculating import duties or landed cost, screening for dual-use or sanctions, checking import/export restrictions, or estimating total cost to enter a market",
+      "vertical": "workflow",
+      "path": "skills/customs-and-trade/SKILL.md"
+    },
+    {
+      "name": "electronics-compliance",
+      "description": "Use when selling electronics, IoT devices, consumer appliances, battery-powered products, or radio-equipped devices in any market, checking CE/FCC/UKCA requirements, EMC/safety/radio testing, RoHS, WEEE, battery regulations, or the EU Cyber Resilience Act",
+      "vertical": "electronics",
+      "path": "skills/electronics-compliance/SKILL.md"
+    },
+    {
+      "name": "evidence-blitz",
+      "description": "Use when gathering all compliance evidence for a certification or audit, preparing documentation for retail buyers or marketplace listings, or bulk-collecting product compliance documents",
+      "vertical": "workflow",
+      "path": "skills/evidence-blitz/SKILL.md"
+    },
+    {
+      "name": "firearms-compliance",
+      "description": "Use when selling firearms, ammunition, replicas, deactivated weapons, airsoft, airguns, paintball markers, BB guns, or firearm parts/accessories in any market, checking BATFE/ATF rules, EU Firearms Directive 2017/853 categorization, UK Firearms Act Section 5 prohibitions, ITAR/EAR export controls, or marketplace bans",
+      "vertical": "firearms",
+      "path": "skills/firearms-compliance/SKILL.md"
+    },
+    {
+      "name": "food-compliance",
+      "description": "Use when selling food, beverages, dietary supplements, or novel food ingredients in any market, checking food safety regulations, allergen declarations, labeling requirements, HACCP, or import procedures for food products",
+      "vertical": "food",
+      "path": "skills/food-compliance/SKILL.md"
+    },
+    {
+      "name": "herbal-medicine-compliance",
+      "description": "Use when selling herbal medicines, botanical drugs, traditional plant remedies, Ayurvedic products, TCM (Traditional Chinese Medicine), Kampo, or specific botanicals (Echinacea, Ginseng, Saw Palmetto, Turmeric, Ashwagandha, CBD, Kratom) in any market, navigating Directive 2004/24/EC THMPD, MHRA THR, FDA botanical drug pathway, BELFRIT lists, or per-plant restrictions",
+      "vertical": "herbal-medicine",
+      "path": "skills/herbal-medicine-compliance/SKILL.md"
+    },
+    {
+      "name": "household-chemicals-compliance",
+      "description": "Use when selling detergents, cleaners, disinfectants, biocides, aerosol sprays, glues, paints, polishes, or any household chemical product in any market - covers EU Detergents Reg 648/2004, REACH, CLP labeling, BPR 528/2012, ISO 8317 child-resistant packaging, aerosol Dir 75/324, VOC limits, CARB",
+      "vertical": "household-chemicals",
+      "path": "skills/household-chemicals-compliance/SKILL.md"
+    },
+    {
+      "name": "import-export-docs",
+      "description": "Use when preparing import or export documentation for a shipment, generating commercial invoices, determining which certificates of origin to use, checking dangerous goods declaration requirements, calculating Incoterms document responsibilities, or answering \"what paperwork do I need to ship to [country]?\"",
+      "vertical": "workflow",
+      "path": "skills/import-export-docs/SKILL.md"
+    },
+    {
+      "name": "jewelry-compliance",
+      "description": "Use when selling jewelry, watches, precious metals, or gemstones in any market, applying hallmarks, navigating nickel/lead/cadmium restrictions, conflict minerals reporting (3TG), Kimberley Process diamond certification, or CITES for ivory/coral/protected materials",
+      "vertical": "jewelry",
+      "path": "skills/jewelry-compliance/SKILL.md"
+    },
+    {
+      "name": "labeling-compliance",
+      "description": "Use when checking labeling requirements for a product in a target market, creating compliant labels, verifying INCI nomenclature, checking allergen declarations, or understanding CE/UKCA/FCC marking requirements",
+      "vertical": "labeling",
+      "path": "skills/labeling-compliance/SKILL.md"
+    },
+    {
+      "name": "market-entry-checklist",
+      "description": "Use when entering a new market with a physical product, preparing for product launch in a new country, or needing a step-by-step guide to legally sell a product in a specific jurisdiction",
+      "vertical": "workflow",
+      "path": "skills/market-entry-checklist/SKILL.md"
+    },
+    {
+      "name": "marketplace-compliance",
+      "description": "Use when listing products on Amazon, Shopify, Etsy, Walmart, or TikTok Shop, resolving marketplace compliance blocks or listing suspensions, uploading compliance documents to seller portals, checking EPR registration requirements for marketplace sales, or answering \"what do I need to sell on [marketplace]?\"",
+      "vertical": "marketplace",
+      "path": "skills/marketplace-compliance/SKILL.md"
+    },
+    {
+      "name": "medical-device-compliance",
+      "description": "Use when developing, manufacturing, or selling medical devices, IVDs, software as a medical device (SaMD), or wellness products that cross the medical-device threshold in any market - covers EU MDR/IVDR, FDA 510(k)/PMA/De Novo, UKCA MDR, classification, Notified Body selection, UDI, post-market surveillance",
+      "vertical": "medical-device",
+      "path": "skills/medical-device-compliance/SKILL.md"
+    },
+    {
+      "name": "multi-jurisdiction-scan",
+      "description": "Use when mapping all regulations for a product across multiple target markets, building a compliance map before international expansion, or comparing regulatory requirements between countries",
+      "vertical": "workflow",
+      "path": "skills/multi-jurisdiction-scan/SKILL.md"
+    },
+    {
+      "name": "optical-eyewear-compliance",
+      "description": "Use when selling sunglasses, prescription eyewear, reading glasses, safety glasses, blue-light filters, sports goggles, ski goggles, swim goggles, children's eyewear, VR/AR headsets, or 3D glasses in any market, checking ISO 12312/ANSI Z80.3/ANSI Z87.1 standards, PPE Regulation 2016/425, or FDA 21 CFR 801 sunglass rules",
+      "vertical": "optical-eyewear",
+      "path": "skills/optical-eyewear-compliance/SKILL.md"
+    },
+    {
+      "name": "packaging-compliance",
+      "description": "Use when registering for EPR (Extended Producer Responsibility) in EU member states, checking packaging waste obligations, selecting recycling symbols for labels, assessing single-use plastics restrictions, calculating plastic tax liability, or preparing packaging composition declarations",
+      "vertical": "packaging",
+      "path": "skills/packaging-compliance/SKILL.md"
+    },
+    {
+      "name": "pet-product-compliance",
+      "description": "Use when selling pet food, treats, supplements, toys, accessories, or veterinary products in any market, navigating EU 767/2009 feed labeling, AAFCO model regulations, FEDIAF nutrition guidelines, EMA/FDA CVM for veterinary medicines, microchipping rules, or CITES for exotic pet products",
+      "vertical": "pet-product",
+      "path": "skills/pet-product-compliance/SKILL.md"
+    },
+    {
+      "name": "product-compliance",
+      "description": "Use when checking if a product is compliant in target markets, running substance checks against ingredient lists, calculating revenue-at-risk, or answering \"can I sell this product in [country]?\"",
+      "vertical": "product",
+      "path": "skills/product-compliance/SKILL.md"
+    },
+    {
+      "name": "product-safety-incident",
+      "description": "Use when a product safety incident is detected, a customer reports injury, a quality defect is found, a market surveillance authority contacts you, you need to assess recall obligations, or you need to notify authorities (CPSC, Safety Gate, OPSS) about a product safety issue",
+      "vertical": "workflow",
+      "path": "skills/product-safety-incident/SKILL.md"
+    },
+    {
+      "name": "professional-cosmetics-compliance",
+      "description": "Use when selling salon-only cosmetics, professional hair dyes, professional skincare, semi-permanent makeup pigments, professional nail products, hair smoothing treatments, professional peels, or aesthetic device consumables in any market, navigating EU Reg 1223/2009 Article 19, REACH Annex XVII tattoo pigments, professional concentration limits, or salon licensing",
+      "vertical": "professional-cosmetics",
+      "path": "skills/professional-cosmetics-compliance/SKILL.md"
+    },
+    {
+      "name": "recall-response",
+      "description": "Use when a product recall or safety alert is triggered, a substance is newly banned in a market where you sell, a safety defect is discovered, a contamination report is received, or when monitoring competitors' recalls for proactive risk assessment",
+      "vertical": "workflow",
+      "path": "skills/recall-response/SKILL.md"
+    },
+    {
+      "name": "regulatory-calendar",
+      "description": "Use when tracking compliance deadlines, certificate renewals, upcoming regulation enforcement dates, planning product launches around regulatory timelines, setting up monitoring for regulation changes, or exporting compliance deadlines to a calendar",
+      "vertical": "workflow",
+      "path": "skills/regulatory-calendar/SKILL.md"
+    },
+    {
+      "name": "regulatory-intelligence",
+      "description": "Use when monitoring regulations that affect a physical product, triaging new signals about substance bans or labeling changes, tracking regulatory deadlines, or answering \"what changed that could affect my product?\"",
+      "vertical": "workflow",
+      "path": "skills/regulatory-intelligence/SKILL.md"
+    },
+    {
+      "name": "responsible-person",
+      "description": "Use when setting up a Responsible Person or Legal Representative for EU, UK, US, or other markets, appointing an Authorized Representative, understanding post-market surveillance obligations, or answering \"do I need a local representative to sell in [market]?\"",
+      "vertical": "workflow",
+      "path": "skills/responsible-person/SKILL.md"
+    },
+    {
+      "name": "sporting-goods-compliance",
+      "description": "Use when selling helmets, PPE, buoyancy aids, climbing gear, archery equipment, paintball, firearms, e-bikes, e-scooters, ski/snowboard equipment, or competition sports gear in any market - covers EU PPE Reg 2016/425, EN safety standards, EAPC/EPAC rules, firearms compliance",
+      "vertical": "sporting-goods",
+      "path": "skills/sporting-goods-compliance/SKILL.md"
+    },
+    {
+      "name": "substance-screening",
+      "description": "Use when screening ingredients or materials against regulatory substance databases, resolving INCI names to CAS numbers, checking concentration limits, running batch ingredient lists through multi-jurisdiction compliance checks, or answering \"is this substance allowed in [market] at [concentration]?\"",
+      "vertical": "workflow",
+      "path": "skills/substance-screening/SKILL.md"
+    },
+    {
+      "name": "supplement-compliance",
+      "description": "Use when selling dietary supplements, vitamins, minerals, botanicals, probiotics, or nutraceuticals in any market, navigating FDA DSHEA, EU 2002/46/EC, novel food applications, structure/function claims, China Blue Hat, Japan FOSHU, or Korea HFF registration",
+      "vertical": "supplement",
+      "path": "skills/supplement-compliance/SKILL.md"
+    },
+    {
+      "name": "sustainability-compliance",
+      "description": "Use when dealing with EU Green Deal obligations, sustainability reporting (CSRD/ESRS), supply chain due diligence (CSDDD/LkSG), deforestation regulation (EUDR), carbon border adjustment (CBAM), Extended Producer Responsibility (EPR), Digital Product Passport (DPP), green claims, or packaging waste obligations for physical products",
+      "vertical": "sustainability",
+      "path": "skills/sustainability-compliance/SKILL.md"
+    },
+    {
+      "name": "testing-certification",
+      "description": "Use when mapping required tests and certifications for a product in target markets, selecting accredited test labs, estimating testing costs and timelines, scheduling certificate renewals, or answering \"what tests do I need before I can sell this?\"",
+      "vertical": "workflow",
+      "path": "skills/testing-certification/SKILL.md"
+    },
+    {
+      "name": "textile-compliance",
+      "description": "Use when selling textiles, apparel, footwear, fashion accessories, or home textiles in any market, checking fiber labeling, chemical restrictions, flammability, care labeling, REACH for textiles, OEKO-TEX, GOTS, or the EU Digital Product Passport for fashion",
+      "vertical": "textile",
+      "path": "skills/textile-compliance/SKILL.md"
+    },
+    {
+      "name": "tobacco-vape-compliance",
+      "description": "Use when selling cigarettes, cigars, RYO tobacco, e-cigarettes, vapes, e-liquids, nicotine pouches, heat-not-burn, or any nicotine-delivery product in any market - covers EU TPD2 (2014/40), FDA Deeming Rule + PMTA, plain packaging, FCTC, nicotine concentration caps, age verification, flavor bans",
+      "vertical": "tobacco-vape",
+      "path": "skills/tobacco-vape-compliance/SKILL.md"
+    },
+    {
+      "name": "toy-compliance",
+      "description": "Use when selling toys, games, puzzles, children's products, or ride-on toys in any market, checking toy safety directives, EN 71 / ASTM F963 testing, age grading, chemical restrictions in toys, CPSIA requirements, or CCC certification for electric toys",
+      "vertical": "toy",
+      "path": "skills/toy-compliance/SKILL.md"
+    }
+  ]
+}

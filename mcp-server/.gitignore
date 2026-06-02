@@ -1,0 +1,12 @@
+node_modules/
+dist/
+coverage/
+.DS_Store
+*.log
+.env
+.env.local
+.vitest-cache/
+
+# Synced from ../skills/ at publish time — never committed at the package root
+/skills/
+*.tgz
