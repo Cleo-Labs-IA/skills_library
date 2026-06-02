@@ -1,6 +1,27 @@
 # Install Compliance Product Guidance in 30 seconds
 
-## One-liner (Claude Code)
+## One-liner (MCP server — Claude Desktop, Cursor, Continue, Zed, …)
+
+```bash
+npx -y @cleo-labs/skills-mcp@latest
+```
+
+Or wire it into your MCP client config:
+
+```json
+{
+  "mcpServers": {
+    "cleo-skills": {
+      "command": "npx",
+      "args": ["-y", "@cleo-labs/skills-mcp@latest"]
+    }
+  }
+}
+```
+
+npm package: [`@cleo-labs/skills-mcp`](https://www.npmjs.com/package/@cleo-labs/skills-mcp). Works with any MCP-compatible client.
+
+## One-liner (Claude Code, file-based)
 
 ```bash
 git clone https://github.com/Cleo-Labs-IA/skills_library.git ~/.claude/skills/comply

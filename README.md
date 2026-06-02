@@ -1,5 +1,8 @@
 # Compliance Product Guidance
 
+[![npm](https://img.shields.io/npm/v/@cleo-labs/skills-mcp?label=%40cleo-labs%2Fskills-mcp)](https://www.npmjs.com/package/@cleo-labs/skills-mcp)
+[![npm downloads](https://img.shields.io/npm/dm/@cleo-labs/skills-mcp)](https://www.npmjs.com/package/@cleo-labs/skills-mcp)
+[![MCP server](https://img.shields.io/badge/MCP-server-blue)](./mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Skills](https://img.shields.io/badge/skills-45-blue)](./skills)
 ![GitHub stars](https://img.shields.io/github/stars/Cleo-Labs-IA/skills_library?style=social)
@@ -34,28 +37,17 @@ Same pattern works for an electronics BOM (RoHS, REACH SVHC, CE/FCC, battery reg
 
 ## Install
 
-### Recommended (Claude Code)
-
 ```bash
+# As an MCP server (fastest)
+npx -y @cleo-labs/skills-mcp@latest
+
+# As Claude Code skills (file-based)
 git clone https://github.com/Cleo-Labs-IA/skills_library.git ~/.claude/skills/comply
 ```
 
-That's it. The skills auto-trigger when you ask Claude Code about substances, labels, customs, markets, or recalls. No manual invocation.
+The npm package is the one-line install for **Claude Desktop, Cursor, Continue, Zed, and any MCP-compatible client**. The skills appear as native MCP resources (`skill://<name>`), parameterized prompts, and three structured tools (`list_skills`, `find_skill`, `read_skill`).
 
-### Manual copy
-
-```bash
-git clone https://github.com/Cleo-Labs-IA/skills_library.git
-cp -r skills_library/skills/* ~/.claude/skills/
-```
-
-### Cursor / Codex / other Claude-skills-compatible runtimes
-
-Point your skills directory at `skills_library/skills/`. Each skill is a self-contained folder with a `SKILL.md` plus references — runtime-agnostic by design.
-
-### As an MCP server (Claude Desktop, Cursor, Continue, Zed, …)
-
-The same 45 skills are also shipped as a standalone MCP server in [`mcp-server/`](./mcp-server). Drop this into your client config and the skills appear as native MCP resources (`skill://<name>`), parameterized prompts, and three structured tools (`list_skills`, `find_skill`, `read_skill`):
+Drop this into your client config:
 
 ```json
 {
@@ -68,17 +60,20 @@ The same 45 skills are also shipped as a standalone MCP server in [`mcp-server/`
 }
 ```
 
-See [`mcp-server/README.md`](./mcp-server/README.md) for full setup, Docker, and per-client examples.
+For **Claude Code**, the `git clone` variant drops the skills into `~/.claude/skills/comply` and they auto-trigger when you ask about substances, labels, customs, markets, or recalls — no manual invocation needed.
 
-### Coming soon
+### Manual copy
 
 ```bash
-npx skills add Cleo-Labs-IA/skills_library
+git clone https://github.com/Cleo-Labs-IA/skills_library.git
+cp -r skills_library/skills/* ~/.claude/skills/
 ```
 
-We're tracking the community `npx skills` installer. Once it stabilizes for multi-skill repos, this will be the one-liner.
+### Cursor / Codex / other Claude-skills-compatible runtimes
 
-See [INSTALL.md](./INSTALL.md) for the 30-second version and [EXAMPLES.md](./EXAMPLES.md) for real prompts.
+Point your skills directory at `skills_library/skills/`. Each skill is a self-contained folder with a `SKILL.md` plus references — runtime-agnostic by design.
+
+See [`mcp-server/README.md`](./mcp-server/README.md) for full MCP setup (Docker, per-client examples) and [INSTALL.md](./INSTALL.md) for the 30-second version and [EXAMPLES.md](./EXAMPLES.md) for real prompts.
 
 ## The 40 skills
 

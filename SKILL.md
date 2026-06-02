@@ -83,6 +83,29 @@ The right sub-skills auto-trigger based on your question.
 
 ## Installation
 
+### As an MCP server (fastest, any MCP client)
+
+```bash
+npx -y @cleo-labs/skills-mcp@latest
+```
+
+Or drop into your client config:
+
+```json
+{
+  "mcpServers": {
+    "cleo-skills": {
+      "command": "npx",
+      "args": ["-y", "@cleo-labs/skills-mcp@latest"]
+    }
+  }
+}
+```
+
+Works with Claude Desktop, Cursor, Continue, Zed, and any MCP-compatible client. npm: [`@cleo-labs/skills-mcp`](https://www.npmjs.com/package/@cleo-labs/skills-mcp).
+
+### As Claude Code skills (file-based)
+
 ```bash
 git clone https://github.com/Cleo-Labs-IA/skills_library.git ~/.claude/skills/comply
 ```

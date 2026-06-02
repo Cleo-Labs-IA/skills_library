@@ -24,5 +24,11 @@
     "CE",
     "REACH",
     "MCP"
-  ]
+  ],
+  "mcpServers": {
+    "skills": {
+      "command": "npx",
+      "args": ["-y", "@cleo-labs/skills-mcp@latest"]
+    }
+  }
 }
