@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-06-02T10:08:51.908Z",
-  "count": 45,
+  "count": 51,
   "verticals": [
     "agricultural",
     "alcohol-spirits",
@@ -301,6 +301,42 @@
       "description": "Use when selling toys, games, puzzles, children's products, or ride-on toys in any market, checking toy safety directives, EN 71 / ASTM F963 testing, age grading, chemical restrictions in toys, CPSIA requirements, or CCC certification for electric toys",
       "vertical": "toy",
       "path": "skills/toy-compliance/SKILL.md"
+    },
+    {
+      "name": "cybersecurity-compliance",
+      "description": "Use when selling connected products, IoT devices, smart home hardware, industrial control systems, or any product with digital elements in EU/UK/US/APAC markets; checking CRA conformity, RED cybersecurity Delegated Reg 2022/30, NIS2, UK PSTI, IoT security labelling, ETSI EN 303 645, IEC 62443, SBOM, or vulnerability disclosure",
+      "vertical": "cross-cutting",
+      "path": "skills/cybersecurity-compliance/SKILL.md"
+    },
+    {
+      "name": "digital-product-passport",
+      "description": "Use when preparing a Digital Product Passport, working with ESPR delegated acts, the battery passport, textile or construction DPP, selecting a data carrier (QR / GS1 Digital Link / NFC / RFID), modelling DPP data, or registering in the EU DPP registry",
+      "vertical": "cross-cutting",
+      "path": "skills/digital-product-passport/SKILL.md"
+    },
+    {
+      "name": "battery-compliance",
+      "description": "Use when selling batteries or battery-powered products, applying the EU Battery Regulation 2023/1542, setting up a battery passport, declaring carbon footprint or recycled content, conducting battery due diligence, labeling, ensuring removability, shipping lithium batteries under UN 38.3, or registering for battery EPR",
+      "vertical": "cross-cutting",
+      "path": "skills/battery-compliance/SKILL.md"
+    },
+    {
+      "name": "dangerous-goods-transport",
+      "description": "Use when shipping hazardous or dangerous goods, classifying by UN number or hazard class, choosing air/sea/road/rail mode, applying IATA DGR / IMDG / ADR / 49 CFR, determining packing group, completing a dangerous goods declaration, or shipping lithium batteries (UN 3480/3481/3090/3091)",
+      "vertical": "cross-cutting",
+      "path": "skills/dangerous-goods-transport/SKILL.md"
+    },
+    {
+      "name": "responsible-sourcing",
+      "description": "Use when handling conflict minerals 3TG reporting (EU 2017/821, Dodd-Frank 1502), cobalt/mica due diligence, forced-labour screening (UFLPA, EU 2024/3015), EUDR deforestation due diligence for leather or timber, CITES exotic materials, CSDDD supply-chain due diligence, or preparing a CMRT/EMRT",
+      "vertical": "cross-cutting",
+      "path": "skills/responsible-sourcing/SKILL.md"
+    },
+    {
+      "name": "packaging-traceability",
+      "description": "Use when reconstructing the full material genealogy of a product's packaging from a product reference, batch number, or formula code: resolving suppliers, per-material quantities, primary/secondary/tertiary tiers, origin, recyclability, and recycled content to feed EPR declarations, the Digital Product Passport, and recyclability claims",
+      "vertical": "cross-cutting",
+      "path": "skills/packaging-traceability/SKILL.md"
     }
   ]
 }

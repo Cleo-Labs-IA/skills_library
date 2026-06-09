@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented here. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [3.2.0] - 2026-06-09
+
+### Added
+- 6 cross-cutting skills sourced from the LVMH, Chanel, and Schneider Electric demo briefs/calls: `cybersecurity-compliance` (CRA/RED/NIS2/PSTI), `digital-product-passport` (ESPR/Battery/textile DPP), `battery-compliance` (EU Battery Reg 2023/1542), `dangerous-goods-transport` (IATA/IMDG/ADR/lithium), `responsible-sourcing` (3TG/EUDR/forced labour), `packaging-traceability` (resolve product ref/batch/formula code -> full packaging bill-of-materials for EPR/DPP/claims).
+
+### Fixed
+- `packaging-compliance`: corrected the PPWR reference (2024/3254 -> Regulation (EU) 2025/40) and entry-into-force dates (11 Feb 2025; applies from 12 Aug 2026).
+
+### Changed
+- `packaging-compliance` deepened: ISPM 15 wood packaging, industrial vs household EPR streams, India Plastic Waste Management Rules 2022, Minnesota/Washington state EPR, South Korea over-packaging (space ratio + layers), Australia/NZ APCO.
+- `sustainability-compliance` deepened: ecodesign + Energy Labelling (EU) 2017/1369 + EPREL, EUDR leather/cattle angle, cross-references to the new dedicated skills.
+
 ## [3.1.0] - 2026-05-28
 
 ### Added
