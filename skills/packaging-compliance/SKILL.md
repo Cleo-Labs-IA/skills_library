@@ -68,7 +68,7 @@ digraph {
 
 ## PPWD to PPWR Transition
 
-| Aspect | Current: PPWD (94/62/EC) | New: PPWR (2024/3254) |
+| Aspect | Current: PPWD (94/62/EC) | New: PPWR (EU) 2025/40 |
 |--------|--------------------------|----------------------|
 | Legal form | Directive (transposed nationally) | Regulation (directly applicable) |
 | Recyclability | Voluntary targets | Mandatory: 100% recyclable by 2030 |
@@ -77,7 +77,7 @@ digraph {
 | Excessive packaging | General principle | Empty space ratio max 50% from 2030 |
 | Labeling | National symbols | Harmonized EU labeling (material ID + sorting) |
 | DRS | National discretion | Mandatory for PET bottles and aluminium cans by 2029 |
-| Timeline | In force | Enter into force Q3 2025, phase 2026-2040 |
+| Timeline | In force | Entered into force 11 Feb 2025; applies from 12 Aug 2026; obligations phase 2026-2040 |
 
 ## Required Symbols by Market
 
@@ -132,6 +132,47 @@ The Triman logo + sorting instructions must appear on ALL packaging sold in Fran
 | **Maine** | LD 1541 (EPR for Packaging) | EPR program managed by stewardship organization; eco-modulated fees | Jul 2024 (phased) |
 | **Oregon** | SB 582 (Plastic Pollution and Recycling Modernization Act) | EPR + truth-in-labeling for recyclability claims | Jul 2025 |
 | **Colorado** | HB 22-1355 (Producer Responsibility for Recycling Act) | EPR; needs assessment phase 2024-2025, fee collection starts 2026 | Phased |
+| **Minnesota** | HF 3911 (Packaging Waste & Cost Reduction Act) | EPR for all packaging; producer responsibility organization; eco-modulated fees | 2025 registration, fees phasing ~2029 |
+| **Washington** | Recycling Reform Act (2025) | EPR for packaging + paper products | Phased |
+
+The US has no federal packaging law -- it is a growing state patchwork. Track each state where you ship: registration deadlines and fee structures differ, and more states pass EPR each session.
+
+## Wood Packaging -- ISPM 15 (Phytosanitary)
+
+Solid-wood packaging used in international shipments -- pallets, crates, dunnage, bracing, spools -- must be heat-treated (HT, core 56 degC for 30 min) or fumigated, then stamped with the IPPC/ISPM 15 mark (wheat symbol + ISO country code + producer code + treatment code). Required on import by virtually all markets (EU, US, China, Australia, Canada, India...). Non-compliant wood means the **entire shipment** can be refused, treated, or destroyed at the border at the importer's cost. Processed wood (plywood, OSB, particleboard) and pieces 6mm thick or less are exempt.
+
+## Industrial vs Household Packaging
+
+EPR is not only household packaging. Most schemes run a **separate B2B / industrial & commercial stream** for transport and secondary/tertiary packaging exchanged between businesses:
+- **France**: distinct commercial/industrial packaging flow alongside the household stream.
+- **Belgium**: VAL-I-PAC (commercial/industrial) vs Fost Plus (household).
+- **Germany**: VerpackG (the law behind LUCID/ZSVR) covers both; system vs. transport packaging obligations differ.
+
+A product such as a server, UPS, or appliance shipped to a business often falls under the **industrial** stream, not the household PRO -- mapping it to the wrong stream means registering with the wrong scheme.
+
+## India -- Plastic Packaging EPR
+
+The **Plastic Waste Management Rules 2022** introduce mandatory EPR for plastic packaging: producers, importers, and brand-owners register on the **CPCB** EPR portal, meet category-wise recycling and recycled-content targets, and file annual returns. Applies to imported products placed on the Indian market with plastic packaging.
+
+## Asia-Pacific Packaging Rules
+
+### South Korea -- Over-Packaging (Space Ratio + Layers)
+
+Korea actively enforces **over-packaging** limits under the Act on the Promotion of Saving and Recycling of Resources and its packaging-method standards:
+- **Packaging space ratio** (empty space inside the box) is capped per product category -- gift sets (cosmetics, perfume, food assortments) face some of the strictest caps. A big decorative gift-set box with mostly empty space fails inspection.
+- **Number of packaging layers** is also limited (often to a small number of layers).
+- ⚠️ The exact percentage and layer count depend on the product category and have been tightening -- **verify the current category threshold** before designing a Korean gift set, do not assume a fixed figure.
+- Separate **EPR** for packaging runs via KECO/producer recycling obligations.
+Non-compliance: inspection failure, fines, and rework -- a recurring blocker for luxury coffrets entering Korea.
+
+### Australia & New Zealand -- APCO / Product Stewardship
+
+| Market | Scheme | Status | Notes |
+|--------|--------|--------|-------|
+| **Australia** | APCO (Australian Packaging Covenant Organisation) + Australasian Recycling Label (ARL) | Co-regulatory; **reform underway toward mandatory obligations** | 2025 packaging reform moving from voluntary covenant to regulated design + recycled-content + reporting requirements -- still phasing, watch closely |
+| **New Zealand** | Product stewardship (Waste Minimisation Act) + shared ARL | Voluntary / phasing | Same trajectory as Australia; ARL label shared across both |
+
+These are not yet hard bans, but the direction is set -- design packaging now as if APCO obligations and recyclability labelling were mandatory.
 
 ## Packaging Composition Declaration Template
 

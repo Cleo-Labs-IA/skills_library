@@ -100,7 +100,7 @@ Abbott Sturgis MI facility shutdown Feb 17, 2022. Triggered US national shortage
 | **Enforcement** | Food Standards Agency (FSA) England + Wales; Food Standards Scotland |
 | **Notification** | Local authority + FSA — separate from EU |
 | **WHO Code** | UK has implemented infant formula advertising restrictions; growing-up milk advertising allowed (subject to ASA) |
-| **Divergence** | UK considering changes to follow-on definitions; track DEFRA + FSA consultations |
+| **Divergence** | UK reviewing changes to follow-on definitions; track DEFRA + FSA consultations |
 
 ## China -- NMPA + GB 10765
 

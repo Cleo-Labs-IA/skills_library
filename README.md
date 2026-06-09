@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@cleo-labs/skills-mcp)](https://www.npmjs.com/package/@cleo-labs/skills-mcp)
 [![MCP server](https://img.shields.io/badge/MCP-server-blue)](./mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Skills](https://img.shields.io/badge/skills-45-blue)](./skills)
+[![Skills](https://img.shields.io/badge/skills-51-blue)](./skills)
 ![GitHub stars](https://img.shields.io/github/stars/Cleo-Labs-IA/skills_library?style=social)
 [![Cleo Labs](https://img.shields.io/badge/built%20by-Cleo%20Labs-0008CF)](https://cleolabs.co)
 [![Powered by Cleo Legal API](https://img.shields.io/badge/powered%20by-Cleo%20Legal%20API-0008CF)](https://legaldata-public.cleolabs.co)
@@ -18,7 +18,7 @@ AI compliance copilot for physical products — REACH, FDA, CE, customs, and 24 
 
 Selling a physical product across borders means navigating 25,000+ regulations spread across 49 countries: substance bans you've never heard of, labels that change every quarter, customs codes that move duty rates by 12%, marketplace rules that delist you overnight. Most small brands learn this the expensive way — at the border, or after Amazon takes the listing down.
 
-Compliance Product Guidance is **40 production-grade skills + 2 MCP servers** that teach an AI agent how to answer one question: *"What do I actually need to do to sell this product in this market?"*
+Compliance Product Guidance is **51 production-grade skills + 2 MCP servers** that teach an AI agent how to answer one question: *"What do I actually need to do to sell this product in this market?"*
 
 The hero skill is `product-compliance`. You paste an ingredient list (or BOM, or formula), pick your target markets, and it runs:
 
@@ -36,7 +36,7 @@ Retinol 0.4%   UK: BLOCKED (UK Cosmetics Reg mirrors EU Annex III)
 Retinol 0.4%   JP: REVIEW (quasi-drug threshold — needs MHLW review)
 ```
 
-Same pattern works for an electronics BOM (RoHS, REACH SVHC, CE/FCC, battery reg), a food recipe (allergens, novel foods, FDA FSMA), a textile (PFAS, fiber labeling, OEKO-TEX), or any of the 18 product verticals below.
+Same pattern works for an electronics BOM (RoHS, REACH SVHC, CE/FCC, battery reg), a food recipe (allergens, novel foods, FDA FSMA), a textile (PFAS, fiber labeling, OEKO-TEX), or any of the 23 product verticals below.
 
 ## Install
 
@@ -78,7 +78,7 @@ Point your skills directory at `skills_library/skills/`. Each skill is a self-co
 
 See [`mcp-server/README.md`](./mcp-server/README.md) for full MCP setup (Docker, per-client examples) and [INSTALL.md](./INSTALL.md) for the 30-second version and [EXAMPLES.md](./EXAMPLES.md) for real prompts.
 
-## The 40 skills
+## The 51 skills
 
 ### Core compliance engine (6)
 
@@ -113,11 +113,24 @@ The skills that move you from "we have a problem" to "we shipped it."
 | `marketplace-compliance` | Required docs per platform per category: Amazon EU GPSR+EPR, Walmart, Shopify, Etsy, TikTok Shop. |
 | `regulatory-calendar` | Notification renewals, cert expiry, upcoming enforcement (GPSR, CRA, MoCRA GMP, EUDR, ESPR). |
 
-### 18 industry verticals
+### Cross-cutting regulatory regimes (6)
+
+Horizontal regimes that hit any product, whatever the category — the 2024-2027 EU regulatory wave enterprise buyers (LVMH, Chanel, Schneider) ask about first.
+
+| Skill | What it does |
+|-------|--------------|
+| `cybersecurity-compliance` | Connected/IoT/digital products: CRA (EU) 2024/2847, RED cyber 2022/30 + EN 18031, NIS2, UK PSTI, US Cyber Trust Mark, ETSI EN 303 645, IEC 62443, SBOM, vuln disclosure. |
+| `digital-product-passport` | DPP across ESPR 2024/1781, Battery passport 2023/1542, textile + construction, data carriers (QR / GS1 Digital Link / NFC), EU DPP registry. |
+| `battery-compliance` | EU Battery Reg 2023/1542 (portable/LMT/EV/industrial/SLI): carbon footprint, recycled content, due diligence, passport (18 Feb 2027), removability, transport, EPR. |
+| `dangerous-goods-transport` | Hazmat transport: 9 UN classes, IATA DGR / IMDG / ADR / 49 CFR, lithium UN 3480/3481/3090/3091 + UN 38.3, packing groups, DG declaration. |
+| `responsible-sourcing` | Conflict minerals 3TG (EU 2017/821, Dodd-Frank 1502, CMRT), EUDR commodities, forced labour (UFLPA, EU 2024/3015), CSDDD, CITES exotic materials. |
+| `packaging-traceability` | Product ref / batch / formula code -> full packaging BOM: suppliers, per-material quantities, primary/secondary/tertiary, origin, recyclability, recycled content. Feeds EPR, DPP, claims. |
+
+### 23 industry verticals
 
 Deep, regulation-specific playbooks per product category:
 
-`cosmetics-compliance` · `food-compliance` · `electronics-compliance` · `textile-compliance` · `toy-compliance` · `alcohol-spirits-compliance` · `supplement-compliance` · `jewelry-compliance` · `medical-device-compliance` · `pet-product-compliance` · `automotive-aftermarket-compliance` · `agricultural-compliance` · `tobacco-vape-compliance` · `sporting-goods-compliance` · `baby-children-products-compliance` · `household-chemicals-compliance` · `candle-fragrance-compliance` · `sustainability-compliance`
+`cosmetics-compliance` · `food-compliance` · `electronics-compliance` · `textile-compliance` · `toy-compliance` · `alcohol-spirits-compliance` · `supplement-compliance` · `jewelry-compliance` · `medical-device-compliance` · `pet-product-compliance` · `automotive-aftermarket-compliance` · `agricultural-compliance` · `tobacco-vape-compliance` · `sporting-goods-compliance` · `baby-children-products-compliance` · `household-chemicals-compliance` · `candle-fragrance-compliance` · `sustainability-compliance` · `firearms-compliance` · `optical-eyewear-compliance` · `baby-formula-compliance` · `herbal-medicine-compliance` · `professional-cosmetics-compliance`
 
 Each vertical covers the full regulatory stack for that category across EU, US, UK, Canada, Japan, Korea, China, ASEAN — not a summary, the actual articles, fee structures, notification portals, and transition dates.
 

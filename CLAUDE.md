@@ -32,6 +32,12 @@ These skills auto-trigger when you work on product compliance tasks. No manual i
 - `recall-response` -- Handle product recall or safety alert: severity assessment, authority notification (EU 10 days, US 24h, UK 3 days), supply chain notification, consumer communication, corrective action, close-out.
 - `import-export-docs` -- Generate import/export documentation: commercial invoice, packing list, certificates of origin (EUR.1, REX, USMCA), dangerous goods declarations, Incoterms 2020 document responsibility.
 - `marketplace-compliance` -- Meet compliance requirements for Amazon (EU GPSR + EPR, US product safety), Walmart, Shopify, Etsy, TikTok Shop. Required documents per platform per category.
+- `cybersecurity-compliance` -- Connected/IoT/digital product cyber: CRA (EU) 2024/2847, RED cyber Delegated Reg 2022/30 + EN 18031, NIS2, UK PSTI, US Cyber Trust Mark, ETSI EN 303 645, IEC 62443, SBOM, coordinated vulnerability disclosure.
+- `digital-product-passport` -- DPP across ESPR (EU) 2024/1781, Battery passport 2023/1542, textile + construction product passports, data carriers (QR / GS1 Digital Link / NFC), EU DPP registry.
+- `battery-compliance` -- EU Battery Regulation 2023/1542 (portable/LMT/EV/industrial/SLI): carbon footprint, recycled content, due diligence, battery passport (18 Feb 2027), removability, UN 38.3 transport, EPR.
+- `dangerous-goods-transport` -- Hazardous-materials transport: 9 UN hazard classes, IATA DGR / IMDG / ADR / 49 CFR, lithium batteries UN 3480/3481/3090/3091 + UN 38.3, packing groups, DG declaration.
+- `responsible-sourcing` -- Supply-chain due diligence: conflict minerals 3TG (EU 2017/821, Dodd-Frank 1502, CMRT/EMRT), EUDR commodities (leather/wood), forced labour (UFLPA, EU 2024/3015), CSDDD, CITES exotic materials.
+- `packaging-traceability` -- Resolve a product ref / batch / formula code (any country's nomenclature) into the full packaging bill-of-materials: suppliers, per-material quantities, primary/secondary/tertiary tiers, origin, recyclability, recycled content. The upstream data layer feeding EPR, DPP, and recyclability claims.
 
 ### Tier 5 -- Vertical Deep Dives (Industry-Specific)
 - `cosmetics-compliance` -- Complete cosmetics compliance across 8 markets: EU 1223/2009 CPNP/PIF/CPSR, US FDA MoCRA, UK SCPN, Japan MHLW, Korea MFDS, China NMPA, Canada CNF, ASEAN. GMP ISO 22716.

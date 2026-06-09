@@ -30,7 +30,7 @@ digraph {
 |-------------|--------|
 | **Legal basis** | Reg (EC) 767/2009 (marketing/use of feed) + Reg 1831/2003 (feed additives) + Reg 178/2002 (general food/feed law) + Reg 183/2005 (feed hygiene) |
 | **Categories** | "Complete feed" (sole ration), "complementary feed" (additional), "mineral feed", "dietetic feed" (PARNUT -- particular nutritional purposes), "feed for pets" |
-| **Mandatory label items** | Feed type, species, ingredients (descending order or % declaration), analytical constituents (protein, fat, fibre, ash; for cats/dogs also moisture if >14%), additives in declared categories (per 1831/2003), net quantity, best-before, batch number, manufacturer name+address, approval number if applicable |
+| **Mandatory label items** | Feed type, species, ingredients (descending order or % declaration), analytical constituents (protein, fat, fibre, ash; for cats/dogs also moisture if >14%), additives in declared categories (per 1831/2003), net quantity, best-before, batch number, manufacturer name+address, approval number where required |
 | **Feed additives** | Pre-authorization required (Reg 1831/2003). EU Register of Feed Additives. 5 functional groups (technological, sensory, nutritional, zootechnical, coccidiostats) |
 | **Banned ingredients** | Annex III: feces, urine, treated hides, certain ruminant materials (BSE controls), genetically modified material without authorization |
 | **PARNUT** | Particular nutritional purposes list (Dir 2008/38/EC). 56 declared dietetic purposes. Each requires specific composition + label phrases |
