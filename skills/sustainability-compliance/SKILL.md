@@ -66,7 +66,7 @@ digraph {
 | **Timeline** | Large operators: Dec 30, 2025 (delayed from Jun 2025). SMEs: Jun 30, 2026 |
 | **Due diligence** | Collect geolocation data -> risk assessment (country benchmarking) -> risk mitigation -> due diligence statement per shipment in EU information system |
 | **Penalties** | Fines proportionate to environmental damage + turnover. Confiscation of products. Temporary exclusion from public procurement |
-| **Physical product impact** | If your product contains palm oil (cosmetics, food), cocoa (food), leather (fashion, accessories), rubber (footwear), wood (packaging, furniture) -- you must comply |
+| **Physical product impact** | If your product contains palm oil (cosmetics, food), cocoa (food), leather (fashion, accessories), rubber (footwear), wood (packaging, furniture) -- you must comply. Operational DDS workflow (geolocation, due diligence statement) -> deep dive: `responsible-sourcing` |
 
 ## CBAM -- Carbon Border Adjustment Mechanism
 
@@ -114,16 +114,27 @@ digraph {
 | **Single-use plastic bans** | Progressive bans on single-use plastic items | Multiple phases 2021-2025 |
 | **Triman marking** | Products subject to EPR must display Triman logo + sorting instructions | In force since Jan 2022 (packaging), expanding to all EPR streams |
 
-## Ecodesign for Sustainable Products Regulation (ESPR) -- Digital Product Passport
+## Ecodesign (ESPR) & Energy Efficiency
 
 | Aspect | Detail |
 |--------|--------|
-| **Regulation** | (EU) 2024/1781 |
-| **Scope** | All physical products on EU market (except food, feed, medicinal products). Priority categories via delegated acts |
-| **Digital Product Passport** | Unique product identifier linked to data carrier (QR code). Contains: materials, origin, carbon footprint, repairability score, recycled content, compliance declarations |
-| **First delegated acts** | Expected 2025-2026 for textiles, electronics, batteries (already covered), furniture, iron/steel |
-| **DPP operational** | Estimated 2027-2030 depending on product category |
-| **Unsold goods destruction** | Ban (already applies to textiles and electronics under Loi AGEC in France; ESPR extends EU-wide) |
+| **Regulation** | ESPR (EU) 2024/1781 |
+| **Scope** | All physical products on EU market (except food, feed, medicinal products). Ecodesign requirements set per product group via delegated acts |
+| **Ecodesign requirements** | Durability, reparability, upgradability, recycled content, energy/resource efficiency, recyclability, carbon & environmental footprint, substances of concern, unsold-goods info |
+| **First delegated acts** | Working plan prioritises textiles/apparel, iron & steel, aluminium, furniture, tyres |
+| **Unsold goods destruction** | Ban (already applies to textiles/electronics under Loi AGEC FR; ESPR extends EU-wide) |
+| **Digital Product Passport** | Carried by ESPR + sector laws -> **deep dive: `digital-product-passport`** |
+
+### Energy Labelling & Energy-Related Products
+
+| Framework | Detail |
+|-----------|--------|
+| **Energy Labelling** | Regulation (EU) 2017/1369 -- A-G energy label + registration in the **EPREL** product database for energy-related products (appliances, lighting, displays, etc.) |
+| **Ecodesign (energy)** | Energy-efficiency minimum requirements (formerly Dir 2009/125/EC, being absorbed into ESPR) |
+| **ENERGY STAR** | Voluntary US/international efficiency mark (e.g. servers, UPS, displays) |
+| **EU JRC Codes of Conduct** | Voluntary best-practice codes (e.g. data centres, UPS, external power supplies) |
+
+> **Cross-cutting deep dives:** batteries -> `battery-compliance` · DPP -> `digital-product-passport` · conflict minerals / EUDR operational / forced labour -> `responsible-sourcing` · connected-product cyber (CRA) -> `cybersecurity-compliance`.
 
 ## Green Claims Directive (Proposed)
 
