@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented here. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [3.3.0] - 2026-06-09
+
+### Added
+- `hs-classification`: customs nomenclature discipline -- classify from part number + description + composition via the General Rules of Interpretation, reconcile codes across national tariffs (EU CN8/TARIC, US HTSUS, EAEU TN VED, China 13-digit), Binding Tariff Information rulings, and multi-signal classification (HS + UN dangerous-goods code + end-use) that routes to duty, controls, and restriction screening. Sourced from a customs-expert (aerospace) discovery call.
+
 ## [3.2.0] - 2026-06-09
 
 ### Added

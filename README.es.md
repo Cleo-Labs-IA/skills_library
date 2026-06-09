@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@cleo-labs/skills-mcp)](https://www.npmjs.com/package/@cleo-labs/skills-mcp)
 [![MCP server](https://img.shields.io/badge/MCP-server-blue)](./mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Skills](https://img.shields.io/badge/skills-51-blue)](./skills)
+[![Skills](https://img.shields.io/badge/skills-52-blue)](./skills)
 ![GitHub stars](https://img.shields.io/github/stars/Cleo-Labs-IA/skills_library?style=social)
 [![Cleo Labs](https://img.shields.io/badge/built%20by-Cleo%20Labs-0008CF)](https://cleolabs.co)
 
@@ -14,7 +14,7 @@ Copiloto de IA para el cumplimiento normativo de productos físicos — REACH, F
 
 Vender un producto físico cruzando fronteras significa moverse entre más de 25.000 normativas repartidas en 49 países: sustancias prohibidas de las que nunca habías oído hablar, etiquetas que cambian cada trimestre, códigos arancelarios que mueven los aranceles un 12 %, reglas de marketplace que te retiran de la noche a la mañana. La mayoría de las marcas pequeñas lo aprenden por las malas — en la frontera, o después de que Amazon retire la ficha.
 
-Compliance Product Guidance son **51 skills de calidad de producción + 2 servidores MCP** que enseñan a un agente de IA a responder una sola pregunta: *«¿Qué tengo que hacer concretamente para vender este producto en este mercado?»*
+Compliance Product Guidance son **52 skills de calidad de producción + 2 servidores MCP** que enseñan a un agente de IA a responder una sola pregunta: *«¿Qué tengo que hacer concretamente para vender este producto en este mercado?»*
 
 El skill estrella es `product-compliance`. Pegas una lista de ingredientes (o un BOM, o una fórmula), eliges tus mercados objetivo y ejecuta:
 
@@ -61,7 +61,7 @@ Añade esto a la configuración de tu cliente:
 
 Para **Claude Code**, la variante `git clone` coloca los skills en `~/.claude/skills/comply` y se activan automáticamente cuando preguntas sobre sustancias, etiquetas, aduanas, mercados o retiradas — sin invocación manual.
 
-## Los 51 skills
+## Los 52 skills
 
 ### Motor de cumplimiento de producto (6)
 

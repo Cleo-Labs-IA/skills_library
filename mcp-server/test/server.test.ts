@@ -8,10 +8,10 @@ const here = fileURLToPath(import.meta.url);
 const SKILLS_DIR = resolve(here, '..', '..', '..', 'skills');
 
 describe('createServer', () => {
-  it('loads the full 51-skill library', async () => {
+  it('loads the full 52-skill library', async () => {
     const { registry, skillsDir } = await createServer({ skillsDir: SKILLS_DIR });
     expect(skillsDir).toBe(SKILLS_DIR);
-    expect(registry.size).toBe(51);
+    expect(registry.size).toBe(52);
     expect(registry.get('product-compliance')).toBeDefined();
     expect(registry.get('cosmetics-compliance')?.description).toMatch(/cosmetics/i);
   });

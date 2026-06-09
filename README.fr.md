@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@cleo-labs/skills-mcp)](https://www.npmjs.com/package/@cleo-labs/skills-mcp)
 [![MCP server](https://img.shields.io/badge/MCP-server-blue)](./mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Skills](https://img.shields.io/badge/skills-51-blue)](./skills)
+[![Skills](https://img.shields.io/badge/skills-52-blue)](./skills)
 ![GitHub stars](https://img.shields.io/github/stars/Cleo-Labs-IA/skills_library?style=social)
 [![Cleo Labs](https://img.shields.io/badge/built%20by-Cleo%20Labs-0008CF)](https://cleolabs.co)
 
@@ -14,7 +14,7 @@ Copilote IA de conformité réglementaire pour produits physiques — REACH, FDA
 
 Vendre un produit physique à l'international, c'est naviguer dans 25 000+ réglementations réparties sur 49 pays : substances interdites dont vous n'avez jamais entendu parler, étiquettes qui changent chaque trimestre, codes douaniers qui font varier les droits de 12 %, règles marketplaces qui font déréférencer une fiche du jour au lendemain. La plupart des petites marques l'apprennent à leurs dépens — à la frontière, ou après qu'Amazon ait retiré l'annonce.
 
-Compliance Product Guidance, c'est **51 skills de qualité production + 2 serveurs MCP** qui apprennent à un agent IA à répondre à une seule question : *« Que dois-je concrètement faire pour vendre ce produit sur ce marché ? »*
+Compliance Product Guidance, c'est **52 skills de qualité production + 2 serveurs MCP** qui apprennent à un agent IA à répondre à une seule question : *« Que dois-je concrètement faire pour vendre ce produit sur ce marché ? »*
 
 Le skill phare est `product-compliance`. Vous collez une liste d'ingrédients (ou un BOM, ou une formule), choisissez vos marchés cibles, et il exécute :
 
@@ -61,7 +61,7 @@ Ajoutez ceci dans la config de votre client :
 
 Pour **Claude Code**, la variante `git clone` dépose les skills dans `~/.claude/skills/comply` et ils se déclenchent automatiquement quand vous parlez substances, étiquettes, douanes, marchés ou rappels — pas d'invocation manuelle.
 
-## Les 51 skills
+## Les 52 skills
 
 ### Moteur de conformité produit (6)
 

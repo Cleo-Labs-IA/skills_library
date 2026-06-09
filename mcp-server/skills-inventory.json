@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-06-02T10:08:51.908Z",
-  "count": 51,
+  "count": 52,
   "verticals": [
     "agricultural",
     "alcohol-spirits",
@@ -337,6 +337,12 @@
       "description": "Use when reconstructing the full material genealogy of a product's packaging from a product reference, batch number, or formula code: resolving suppliers, per-material quantities, primary/secondary/tertiary tiers, origin, recyclability, and recycled content to feed EPR declarations, the Digital Product Passport, and recyclability claims",
       "vertical": "cross-cutting",
       "path": "skills/packaging-traceability/SKILL.md"
+    },
+    {
+      "name": "hs-classification",
+      "description": "Use when classifying a product under the Harmonized System, assigning an HS / CN / HTS / TN VED code, reconciling tariff nomenclatures across countries, applying the General Rules of Interpretation, requesting a Binding Tariff Information ruling, or resolving a classification that drives duty, dangerous-goods, and restriction outcomes from a part number or product description",
+      "vertical": "workflow",
+      "path": "skills/hs-classification/SKILL.md"
     }
   ]
 }
