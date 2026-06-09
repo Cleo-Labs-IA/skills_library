@@ -59,7 +59,7 @@ digraph {
 | **US Dodd-Frank Section 1502** | Dodd-Frank Act 2010 + SEC Conflict Minerals Rule | SEC-reporting issuers whose manufactured products contain 3TG that are necessary to functionality or production | Tin, tungsten, tantalum, gold | Reasonable country-of-origin inquiry; OECD-aligned due diligence if CAHRAs involved; Conflict Minerals Report on Form SD if not "DRC Conflict Free" | Form SD + Conflict Minerals Report filed annually with SEC (May 31) |
 | **OECD Due Diligence Guidance** | OECD (3rd ed., 2016) | Reference standard underpinning both EU and US regimes | 3TG + gold supplement, cobalt, mica (via RMI EMRT) | 5-step framework: (1) management system, (2) identify/assess risk, (3) mitigation, (4) third-party audit, (5) annual reporting | Non-binding standard; referenced as mandatory benchmark by EU 2017/821 |
 | **CMRT (Conflict Minerals Reporting Template)** | RMI (Responsible Minerals Initiative) | Industry-standard template used by all tiers of the supply chain | 3TG | Disclose smelters/refiners; flag RMI-audited (RMAP) status | CMRT v6.x — downloadable at responsibleminerals.org |
-| **EMRT (Extended Minerals Reporting Template)** | RMI | Same supply chain use as CMRT | Cobalt, mica (+ optionally 3TG) | Disclose processing facilities; flag RMAP/OECD-aligned audit status | EMRT v2.x — downloadable at responsibleminerals.org |
+| **EMRT (Extended Minerals Reporting Template)** | RMI | Same supply chain use as CMRT | Cobalt, mica (+ 3TG where covered) | Disclose processing facilities; flag RMAP/OECD-aligned audit status | EMRT v2.x — downloadable at responsibleminerals.org |
 
 **CAHRA** = Conflict-Affected and High-Risk Area. The OECD maintains a non-exhaustive list; the EU Regulation requires importers to assess against it.
 
@@ -130,7 +130,7 @@ STEP 2 — IDENTIFY AND ASSESS RISK
 STEP 3 — RISK MITIGATION
   Mitigation measures taken:
   Supplier corrective action plan (if RED): [ref / deadline]
-  Alternative sourcing considered: [YES / NO]
+  Alternative sourcing evaluated: [YES / NO]
 
 STEP 4 — THIRD-PARTY AUDIT
   Auditor / certification body:
@@ -143,7 +143,7 @@ STEP 5 — REPORT
   Public disclosure (annual report / website): [URL / date]
   CMRT / EMRT submitted to customer: [YES / NO / date]
   DDS submitted in EU Information System (EUDR): [YES / NO / reference number]
-  Form SD filed with SEC (if applicable): [YES / NO / filing date]
+  Form SD filed with SEC (where required): [YES / NO / filing date]
 ```
 
 ## Power This With the Cleo Legal API

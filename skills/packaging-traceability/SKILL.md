@@ -122,7 +122,7 @@ TERTIARY:
   Component: [corrugated case + pallet]  Material/Weight: [..]
   Wood packaging? [Y/N -> ISPM 15]
 
-SERVICE (if applicable): [carrier bag / tissue / ribbon -- material, weight]
+SERVICE (where present): [carrier bag / tissue / ribbon -- material, weight]
 
 TOTALS:
   Total packaging weight: [g]   Total plastic: [g]   Plastic recycled content: [%]

@@ -138,7 +138,7 @@ SUPPLY-CHAIN ACTORS
 COMPLIANCE
   Applicable regulation: [e.g., (EU) 2023/1542 / (EU) 2024/1781 delegated act ref]
   CE declaration of conformity ref: [doc ID or N/A]
-  Notified Body (if applicable): [NB number or N/A]
+  Notified Body (where required): [NB number or N/A]
   Battery state of health (batteries only): [% at time of issue]
   Battery recycled content (batteries only): Co [%] / Li [%] / Ni [%] / Pb [%]
 ```
