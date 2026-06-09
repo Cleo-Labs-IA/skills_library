@@ -17,11 +17,11 @@ async function buildRegistry(): Promise<SkillRegistry> {
 }
 
 describe('tool handlers', () => {
-  it('list_skills returns all 51 by default', async () => {
+  it('list_skills returns all 52 by default', async () => {
     const r = await buildRegistry();
     const out = runListSkills(r, {});
-    expect(out.total).toBe(51);
-    expect(out.count).toBe(51);
+    expect(out.total).toBe(52);
+    expect(out.count).toBe(52);
   });
 
   it('list_skills filters by vertical', async () => {

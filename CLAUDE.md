@@ -17,6 +17,7 @@ These skills auto-trigger when you work on product compliance tasks. No manual i
 - `regulatory-intelligence` -- Monitor signals that could block your product from sale: substance bans, labeling changes, recalls, deadlines.
 - `multi-jurisdiction-scan` -- Parallel scan across all target markets. RED/ORANGE/YELLOW/GREEN per market. One agent per jurisdiction.
 - `customs-and-trade` -- HS code classification, duty calculation, landed cost, dual-use screening, sanctions check.
+- `hs-classification` -- Customs nomenclature discipline: classify from part number + description + composition using the General Rules of Interpretation, reconcile codes across national tariffs (CN8 / HTSUS / TN VED / China 13-digit), Binding Tariff Information rulings, multi-signal classification (HS + UN dangerous-goods code + end-use), then route to duty/controls/restrictions.
 
 ### Tier 3 -- Action & Remediation
 - `compliance-audit-sprint` -- Pre-launch compliance sprint: identify category -> map regulations -> check substances -> verify labels -> check certs -> estimate cost.

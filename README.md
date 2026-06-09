@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@cleo-labs/skills-mcp)](https://www.npmjs.com/package/@cleo-labs/skills-mcp)
 [![MCP server](https://img.shields.io/badge/MCP-server-blue)](./mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Skills](https://img.shields.io/badge/skills-51-blue)](./skills)
+[![Skills](https://img.shields.io/badge/skills-52-blue)](./skills)
 ![GitHub stars](https://img.shields.io/github/stars/Cleo-Labs-IA/skills_library?style=social)
 [![Cleo Labs](https://img.shields.io/badge/built%20by-Cleo%20Labs-0008CF)](https://cleolabs.co)
 [![Powered by Cleo Legal API](https://img.shields.io/badge/powered%20by-Cleo%20Legal%20API-0008CF)](https://legaldata-public.cleolabs.co)
@@ -18,7 +18,7 @@ AI compliance copilot for physical products — REACH, FDA, CE, customs, and 24 
 
 Selling a physical product across borders means navigating 25,000+ regulations spread across 49 countries: substance bans you've never heard of, labels that change every quarter, customs codes that move duty rates by 12%, marketplace rules that delist you overnight. Most small brands learn this the expensive way — at the border, or after Amazon takes the listing down.
 
-Compliance Product Guidance is **51 production-grade skills + 2 MCP servers** that teach an AI agent how to answer one question: *"What do I actually need to do to sell this product in this market?"*
+Compliance Product Guidance is **52 production-grade skills + 2 MCP servers** that teach an AI agent how to answer one question: *"What do I actually need to do to sell this product in this market?"*
 
 The hero skill is `product-compliance`. You paste an ingredient list (or BOM, or formula), pick your target markets, and it runs:
 
@@ -78,7 +78,7 @@ Point your skills directory at `skills_library/skills/`. Each skill is a self-co
 
 See [`mcp-server/README.md`](./mcp-server/README.md) for full MCP setup (Docker, per-client examples) and [INSTALL.md](./INSTALL.md) for the 30-second version and [EXAMPLES.md](./EXAMPLES.md) for real prompts.
 
-## The 51 skills
+## The 52 skills
 
 ### Core compliance engine (6)
 
@@ -93,7 +93,7 @@ The skills that touch your actual product.
 | `claims-substantiation` | Validate marketing claims: EU 655/2013, FDA drug-vs-cosmetic, FTC, green claims. |
 | `market-entry-checklist` | Step-by-step: classify → regulations → substances → labels → certs → customs → notification. |
 
-### Cross-market intelligence & action (13)
+### Cross-market intelligence & action (14)
 
 The skills that move you from "we have a problem" to "we shipped it."
 
@@ -102,6 +102,7 @@ The skills that move you from "we have a problem" to "we shipped it."
 | `regulatory-intelligence` | Signal monitoring: substance bans, labeling changes, recalls, enforcement dates. |
 | `multi-jurisdiction-scan` | Parallel scan across all target markets. RED/ORANGE/YELLOW/GREEN per market. One agent per jurisdiction. |
 | `customs-and-trade` | HS code, duty, landed cost, dual-use, sanctions. |
+| `hs-classification` | Customs nomenclature discipline: classify via GRI from part number + description + composition, reconcile codes across national tariffs, BTI rulings, multi-signal (HS + UN code + end-use) -> route to duty/controls/restrictions. |
 | `compliance-audit-sprint` | Pre-launch sprint: identify → map → check → verify → estimate cost. Dispatches parallel agents. |
 | `compliance-remediation` | Fix issues to unblock market entry: reformulate, relabel, test, certify. |
 | `evidence-blitz` | Parallel gather of compliance evidence for audit, certification, or marketplace listing. |
