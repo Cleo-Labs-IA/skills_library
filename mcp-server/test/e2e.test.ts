@@ -51,8 +51,8 @@ describe('e2e MCP flow', () => {
         client.listPrompts(),
         client.listTools(),
       ]);
-      expect(resources.resources.length).toBe(45);
-      expect(prompts.prompts.length).toBe(45);
+      expect(resources.resources.length).toBe(51);
+      expect(prompts.prompts.length).toBe(51);
       expect(tools.tools.map((t) => t.name).sort()).toEqual([
         'find_skill',
         'list_skills',
@@ -76,14 +76,14 @@ describe('e2e MCP flow', () => {
     }
   });
 
-  it('calls list_skills tool and gets all 45', async () => {
+  it('calls list_skills tool and gets all 51', async () => {
     const { client, close } = await bootClient();
     try {
       const result = await client.callTool({ name: 'list_skills', arguments: {} });
       expect(result.isError).not.toBe(true);
       const structured = result.structuredContent as { count: number; total: number };
-      expect(structured.total).toBe(45);
-      expect(structured.count).toBe(45);
+      expect(structured.total).toBe(51);
+      expect(structured.count).toBe(51);
     } finally {
       await close();
     }
